@@ -33,6 +33,7 @@ services:
       - redis:redis
     ports:
       - '8000:8000'
+    # entrypoint: ["/code/docker-entrypoint.sh"]
     depends_on:
       - db
       - redis
