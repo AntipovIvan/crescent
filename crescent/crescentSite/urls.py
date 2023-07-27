@@ -1,5 +1,5 @@
 from django.urls import path
-from crescent import views
+from crescentSite import views
 
 urlpatterns = [
     path("", views.index, name="index"),
