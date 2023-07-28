@@ -3,6 +3,8 @@
   <HelloWorld msg="Welcome to Your Vue.js App" />
   <div v-for="item in post.results" :key="item.id">
     <h2>{{ item.field1 }}</h2>
+    <p>{{ item.field2 }}</p>
+    <p>{{ item.additional_field2 }}</p>
   </div>
 </template>
 
