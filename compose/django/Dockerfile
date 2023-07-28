@@ -15,6 +15,7 @@ WORKDIR ${PROJ_DIR}
 RUN pip install -U pip \
     pip install -r requirements.txt
 
-COPY ./compose/django/entry.sh /entry.sh
-RUN chmod +x /entry.sh
-ENTRYPOINT [ "/entry.sh" ]
+# COPY ./compose/django/entry.sh /entry.sh
+# RUN chmod +x /entry.sh
+# RUN python manage.py migrate
+CMD ["python", "manage.py", "runserver", "0.0.0.0:7000", "--insecure"]

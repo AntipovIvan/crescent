@@ -7,10 +7,10 @@ services:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
-    ports:
-      - 7000:7000
     volumes:
       - ./back:/my_proj
+    ports:
+      - 7000:7000
     expose:
       - 7000
 
@@ -24,5 +24,6 @@ services:
       - ./front:/vue_proj
     ports:
       - 8080:8080
+    command: npm run serve
     expose:
       - 8080
