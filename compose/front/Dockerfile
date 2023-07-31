@@ -1,19 +1,32 @@
+# Dev
 FROM node:18-alpine 
 
-ARG PROJ_DIR=/vue_proj
+ARG PROJ_DIR=/front
 
 RUN mkdir -p ${PROJ_DIR}
 COPY ./front ${PROJ_DIR}
 
 WORKDIR ${PROJ_DIR}
 
-COPY ./front/package.json ${PROJ_DIR}
-COPY ./front/package-lock.json ${PROJ_DIR}
-
-# Install Vue CLI globally
-RUN npm install -g @vue/cli
-RUN npm install @vue/cli
 RUN npm install -g npm
 RUN npm install
 
-CMD [ "npm", "run", "serve" ]
+CMD [ "npm", "run", "dev" ]
+
+
+# # Prod
+# FROM node:18-alpine 
+
+# ARG PROJ_DIR=/front
+
+# RUN mkdir -p ${PROJ_DIR}
+
+# WORKDIR ${PROJ_DIR}
+
+# COPY ./front/dist ${PROJ_DIR}
+
+# RUN npm install -g serve
+
+# EXPOSE 8080
+
+# CMD [ "serve", "-s", "dist", "-p", "8080" ]
