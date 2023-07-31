@@ -4,6 +4,7 @@
 	import Counter from './lib/Counter.svelte';
 	import CatFacts from './CatFacts.svelte';
 	import FetchApi from './FetchAPI.svelte';
+	import HelloCube from './HelloCube.svelte';
 </script>
 
 <main>
@@ -29,6 +30,10 @@
 		<FetchApi />
 	</div>
 
+	<div class="card2">
+		<HelloCube />
+	</div>
+
 	<p>
 		Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer"
 			>SvelteKit</a
@@ -38,36 +43,21 @@
 	<p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p>
 </main>
 
-<!-- <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style> -->
-
 <style lang="sass">
-main
-  background-color: #fff
-.logo
-  height: 6em
-  padding: 1.5em
-  will-change: filter
-  transition: filter 300ms
-.logo:hover 
-  filter: drop-shadow(0 0 2em #646cffaa)
-.logo.svelte:hover 
-  filter: drop-shadow(0 0 2em #ff3e00aa)
-.read-the-docs 
-  color: #888
+	main
+		background-color: #fff
+	.logo
+		height: 6em
+		padding: 1.5em
+		will-change: filter
+		transition: filter 300ms
+	.logo:hover 
+		filter: drop-shadow(0 0 2em #646cffaa)
+	.logo.svelte:hover 
+		filter: drop-shadow(0 0 2em #ff3e00aa)
+	.read-the-docs 
+		color: #888
+	.card2
+		position: absolute
+		display: block
 </style>
