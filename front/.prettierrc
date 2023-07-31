@@ -1,0 +1,10 @@
+{
+  "useTabs": true,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "printWidth": 100,
+  "plugins": ["svelte.svelte-vscode"],
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true
+
+}

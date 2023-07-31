@@ -1,4 +1,3 @@
-<!-- https://svelte.dev/repl/98ec1a9a45af4d75ac5bbcb1b5bcb160?version=3.20.1 -->
 <script>
   let promise;
   const handleClick = () => {
