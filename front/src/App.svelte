@@ -30,9 +30,9 @@
 		<FetchApi />
 	</div>
 
-	<div class="card2">
+	<!-- <div class="card2">
 		<HelloCube />
-	</div>
+	</div> -->
 
 	<p>
 		Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer"
