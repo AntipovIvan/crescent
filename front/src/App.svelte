@@ -4,43 +4,13 @@
 	import Counter from './lib/Counter.svelte';
 	import CatFacts from './CatFacts.svelte';
 	import FetchApi from './FetchAPI.svelte';
-	import HelloCube from './HelloCube.svelte';
+	import Card from './lib/Card.svelte';
+	import Router, { link } from 'svelte-spa-router';
+	import { routes } from './routes.js';
 </script>
 
 <main>
-	<div>
-		<a href="https://vitejs.dev" target="_blank" rel="noreferrer"
-			><img src={viteLogo} class="logo" alt="Vite Logo" /></a
-		>
-		<a href="https://svelte.dev" target="_blank" rel="noreferrer">
-			<img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-		</a>
-	</div>
-	<h1>Vite + Svelte</h1>
-
-	<div class="card">
-		<Counter />
-	</div>
-
-	<div class="card">
-		<CatFacts />
-	</div>
-
-	<div class="card">
-		<FetchApi />
-	</div>
-
-	<!-- <div class="card2">
-		<HelloCube />
-	</div> -->
-
-	<p>
-		Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer"
-			>SvelteKit</a
-		>, the official Svelte app framework powered by Vite!
-	</p>
-
-	<p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p>
+	<Router {routes} />
 </main>
 
 <style lang="sass">
