@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,15 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-ro(%v+xc9frem+mqh_%o=)5%455wm=p65wwmmnyl4ux-cyodvj"
-)
+# SECRET_KEY = (
+#     "django-insecure-ro(%v+xc9frem+mqh_%o=)5%455wm=p65wwmmnyl4ux-cyodvj"
+# )
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -39,11 +44,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "crescentSite",
+    "corsheaders",
     "rest_framework",
+    "crescentSite",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "csp.middleware.CSPMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -52,6 +60,22 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# Optional: If you want to allow credentials (e.g., cookies) to be sent with the request
+# CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+]
+
+# CORS_ALLOW_HEADERS = "*"
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
+]
+
 
 ROOT_URLCONF = "crescent.urls"
 
@@ -72,7 +96,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "crescent.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -120,6 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = Path(BASE_DIR, "static")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = Path(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -129,4 +156,23 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",  # For traditional web clients
+        "rest_framework.authentication.TokenAuthentication",  # For JavaScript clients
+    ],
 }
+
+CSP_MIDDLEWARE = {
+    "default-src": "'self'",
+    "script-src": [
+        "'self'",
+        "'unsafe-inline'",
+    ],  # Only allow scripts from your own domain, or inline scripts (if necessary)
+}
+
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

@@ -7,3 +7,6 @@ class YourModel(models.Model):
     # Add new fields below
     additional_field1 = models.BooleanField(default=False)
     additional_field2 = models.DateField()
+    cover = models.ImageField(
+        upload_to="images/", default="images/Placeholder.png"
+    )
