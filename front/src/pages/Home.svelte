@@ -32,7 +32,7 @@
 			<h1>NEWS</h1>
 			<button class="more">
 				<span>View more</span>
-				<svg fill="#0b345b" viewBox="0 0 31.33 31.33">
+				<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
 					<path
 						d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
 					/>
@@ -41,28 +41,40 @@
 		</div>
 
 		<article class="news-article">
-			<time>2023.07.31</time>
-			<p>2023年 夏季休業のお知らせ</p>
+			<a href="#">
+				<time>2023.07.31</time>
+				<p>2023年 夏季休業のお知らせ</p>
+			</a>
 		</article>
 		<article class="news-article">
-			<time>2023.06.14</time>
-			<p>メタバース総合展にXRSPACEが参加！</p>
+			<a href="#">
+				<time>2023.06.14</time>
+				<p>メタバース総合展にXRSPACEが参加！</p></a
+			>
 		</article>
 		<article class="news-article">
-			<time>2023.05.23</time>
-			<p>Shogun 1.9 リリースのお知らせ</p>
+			<a href="#">
+				<time>2023.05.23</time>
+				<p>Shogun 1.9 リリースのお知らせ</p></a
+			>
 		</article>
 		<article class="news-article">
-			<time>2023.05.10</time>
-			<p>メタバース総合展に参加します！6/28-30</p>
+			<a href="#">
+				<time>2023.05.10</time>
+				<p>メタバース総合展に参加します！6/28-30</p></a
+			>
 		</article>
 		<article class="news-article">
-			<time>2023.04.26</time>
-			<p>【緊急セミナ!】Arcturus社最新HoloSuite紹...</p>
+			<a href="#">
+				<time>2023.04.26</time>
+				<p>【緊急セミナ!】Arcturus社最新HoloSuite紹...</p></a
+			>
 		</article>
 		<article class="news-article">
-			<time>2023.04.25</time>
-			<p>社内研修のお知らせ（4/27～4/28）</p>
+			<a href="#">
+				<time>2023.04.25</time>
+				<p>社内研修のお知らせ（4/27～4/28）</p></a
+			>
 		</article>
 	</section>
 
@@ -115,7 +127,7 @@
 			<h1>CUSTOMER STORIES</h1>
 			<button class="more">
 				<span>View more</span>
-				<svg fill="#0b345b" viewBox="0 0 31.33 31.33">
+				<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
 					<path
 						d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
 					/>
@@ -236,7 +248,7 @@
 	.blockHeader {
 		display: flex;
 		justify-content: flex-start;
-		gap: 1.5rem;
+		gap: 2.5rem;
 		color: var(--headers-color);
 	}
 
@@ -272,18 +284,19 @@
 		display: flex;
 		gap: 1rem;
 		margin: 0.5rem 0;
-		padding: 1rem 0;
+		/* padding: 1rem 0; */
 		border-bottom: 1px #bebebe solid;
+	}
+
+	.news-article a {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		align-content: center;
 	}
 
 	.news-article:last-child {
 		border-bottom: none;
-	}
-
-	.news-article > time,
-	.news-article > p {
-		margin: 0.2rem;
-		font-size: calc(10px + 0.390625vw);
 	}
 
 	/* FEATURED TOPICS BLOCK */

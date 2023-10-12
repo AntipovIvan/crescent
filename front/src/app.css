@@ -44,6 +44,14 @@ body {
   text-align: center; */
 }
 
+
+a:visited {
+  /* background-color: white; */
+  color: black;
+  /* text-align: center; */
+  display: inline-block;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

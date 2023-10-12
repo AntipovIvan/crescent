@@ -1,17 +1,20 @@
 <script>
+	import { link } from 'svelte-spa-router';
+	import urlSlug from 'url-slug';
 	import logo from '../assets/logo.png';
 </script>
 
 <header>
 	<figure>
-		<img src={logo} class="logo" alt="Crescent" width="170" height="80" />
+		<a href={`/`} use:link><img src={logo} class="logo" alt="Crescent" width="170" height="80" /></a
+		>
 	</figure>
 	<nav>
 		<label>
 			<input type="checkbox" />
 			<span class="menu"> <span class="hamburger" /> </span>
 			<ul>
-				<li><a href="#">製品販売</a></li>
+				<li><a href={`/products/`} use:link>製品販売</a></li>
 				<li><a href="#">スタジオサービス</a></li>
 				<li><a href="#">コンテンツ開発</a></li>
 				<li><a href="#">会社情報</a></li>
@@ -26,13 +29,13 @@
 		text-decoration: none;
 	}
 
-	nav label a:link,
+	/* nav label a:link,
 	nav label a:visited {
 		background-color: white;
 		color: black;
 		text-align: center;
 		display: inline-block;
-	}
+	} */
 
 	nav label a:hover,
 	nav label a:active {
