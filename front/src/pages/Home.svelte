@@ -1,7 +1,5 @@
-<script lang="ts">
-	import Card from '../lib/Card.svelte';
+<script>
 	import Hero from '../lib/Hero.svelte';
-	import Layout from '../routes/+layout.svelte';
 	import banner1 from '../assets/banner1.png';
 	import banner2 from '../assets/banner2.png';
 	import banner3 from '../assets/banner3.png';
@@ -397,6 +395,7 @@
 		width: 12.5rem;
 	}
 	.cardList {
+		padding: 0;
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
@@ -409,6 +408,7 @@
 			margin: 6px 0;
 		}
 		.cardList {
+			padding: 0;
 			justify-content: center;
 		}
 	}
@@ -419,6 +419,9 @@
 	}
 
 	@media only screen and (max-width: 768px) {
+		/* [class*='col-'] {
+			padding: 0;
+		} */
 		/* ORIGINAL CONTENTS */
 		aside {
 			width: auto;
@@ -431,7 +434,7 @@
 			right: 0;
 		}
 		.news {
-			width: 100%;
+			width: auto;
 		}
 		aside,
 		.blockHeader,

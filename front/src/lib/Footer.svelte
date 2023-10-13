@@ -1,10 +1,13 @@
 <script>
+	import { link } from 'svelte-spa-router';
 </script>
 
 <footer class="flex-rw">
 	<div class="footer-flex">
 		<ul class="footer-list-top">
-			<li><a href="#" class="generic-anchor footer-list-anchor">製品販売</a></li>
+			<li>
+				<a href={`/products/`} use:link class="generic-anchor footer-list-anchor">製品販売</a>
+			</li>
 			<li><a href="#" class="generic-anchor footer-list-anchor">スタジオサービス</a></li>
 			<li><a href="#" class="generic-anchor footer-list-anchor">コンテンツ開発</a></li>
 			<li><a href="#" class="generic-anchor footer-list-anchor">会社情報</a></li>

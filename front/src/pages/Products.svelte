@@ -421,7 +421,7 @@
 		border-radius: 20px;
 		object-fit: cover;
 		object-position: 50% 50%;
-		z-index: 2;
+		z-index: 1;
 	}
 
 	.card:hover > .card-img {

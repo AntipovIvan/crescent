@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import Router, { link } from 'svelte-spa-router';
 	import { routes } from './routes.js';
 	import Header from './lib/Header.svelte';
