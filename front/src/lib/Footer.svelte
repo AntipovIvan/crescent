@@ -180,7 +180,12 @@
 		}
 
 		.footer-bottom-wrapper {
-			font-size: 1.3em;
+			font-size: 16px;
+			line-height: 25px;
+		}
+
+		.footer-flex {
+			gap: 2rem;
 		}
 	}
 </style>

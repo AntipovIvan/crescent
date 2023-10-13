@@ -6,5 +6,4 @@
   "plugins": ["svelte.svelte-vscode"],
   "editor.formatOnSave": true,
   "editor.formatOnType": true
-
 }
