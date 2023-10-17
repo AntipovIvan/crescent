@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from .models import YourModel
+from .models import *
 from rest_framework import serializers
 
 
@@ -15,7 +15,14 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ["id", "url", "name"]
 
 
-class YourModelSerializer(serializers.HyperlinkedModelSerializer):
+class NewsModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = YourModel
-        fields = ["id", "field1", "field2", "additional_field2", "cover"]
+        model = NewsModel
+        fields = [
+            "id",
+            "date",
+            "title",
+            "content",
+            "created_at",
+            "updated_at",
+        ]

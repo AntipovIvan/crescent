@@ -10,13 +10,35 @@
 	import volumetrix from '../assets/volumetrix.gif';
 	import capcom from '../assets/story1.png';
 	import osakaUniveristy from '../assets/story2.png';
+	import { onMount } from 'svelte';
 
-	let promise;
+	let news;
+	let error;
 
-	promise = fetch('http://localhost:7000/api/yourmodels', {
-		cache: 'default'
-	}).then((x) => x.json());
-	console.log(promise);
+	onMount(async () => {
+		try {
+			const response = await fetch('http://localhost:7000/api/newsmodels');
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			const { results } = await response.json();
+
+			news = results;
+		} catch (err) {
+			error = err;
+		}
+	});
+
+	// promise = fetch('http://localhost:7000/api/newsmodels', {
+	// 	cache: 'default'
+	// }).then((x) => x.json());
+
+	// const res = await fetch('http://localhost:7000/api/newsmodels', {
+	// 	cache: 'default'
+	// });
+	// const data = res.json();
+	// leagueStore.set(data.response);
+	// console.log(promise);
 </script>
 
 <section class="hero-image">
@@ -38,42 +60,20 @@
 			</button>
 		</div>
 
-		<article class="news-article">
-			<a href="#">
-				<time>2023.07.31</time>
-				<p>2023年 夏季休業のお知らせ</p>
-			</a>
-		</article>
-		<article class="news-article">
-			<a href="#">
-				<time>2023.06.14</time>
-				<p>メタバース総合展にXRSPACEが参加！</p></a
-			>
-		</article>
-		<article class="news-article">
-			<a href="#">
-				<time>2023.05.23</time>
-				<p>Shogun 1.9 リリースのお知らせ</p></a
-			>
-		</article>
-		<article class="news-article">
-			<a href="#">
-				<time>2023.05.10</time>
-				<p>メタバース総合展に参加します！6/28-30</p></a
-			>
-		</article>
-		<article class="news-article">
-			<a href="#">
-				<time>2023.04.26</time>
-				<p>【緊急セミナ!】Arcturus社最新HoloSuite紹...</p></a
-			>
-		</article>
-		<article class="news-article">
-			<a href="#">
-				<time>2023.04.25</time>
-				<p>社内研修のお知らせ（4/27～4/28）</p></a
-			>
-		</article>
+		{#if news}
+			{#each news as { id, date, title, content }, index}
+				{#if index < 6}
+					<article class="news-article">
+						<a href={id}>
+							<time>{date.replaceAll('-', '.')}</time>
+							<p>{title}</p>
+						</a>
+					</article>
+				{/if}
+			{/each}
+		{:else}
+			<p>Loading...</p>
+		{/if}
 	</section>
 
 	<!-- FEATURED TOPICS -->
