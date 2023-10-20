@@ -23,10 +23,11 @@
 		}
 	});
 
-	$: if (data != null) {
-		data.results.forEach((result, index) => {
+	$: if (news != null) {
+		news.forEach((result, index) => {
 			if (params.id === urlSlug(result.id)) {
 				news = result;
+				console.log(news);
 			}
 		});
 	}

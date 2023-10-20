@@ -11,6 +11,8 @@
 	import capcom from '../assets/story1.png';
 	import osakaUniveristy from '../assets/story2.png';
 	import { onMount } from 'svelte';
+	import { link } from 'svelte-spa-router';
+	import urlSlug from 'url-slug';
 
 	let news;
 	let error;
@@ -64,7 +66,7 @@
 			{#each news as { id, date, title, content }, index}
 				{#if index < 6}
 					<article class="news-article">
-						<a href={id}>
+						<a href={`/news/${urlSlug(id)}`} use:link>
 							<time>{date.replaceAll('-', '.')}</time>
 							<p>{title}</p>
 						</a>

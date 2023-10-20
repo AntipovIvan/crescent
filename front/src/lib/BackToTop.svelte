@@ -49,7 +49,7 @@
 	.back-to-top::after {
 		content: '↑';
 		font-size: 2em;
-		line-height: 40px;
+		line-height: 3rem;
 		color: #fff;
 	}
 	.back-to-top:hover {

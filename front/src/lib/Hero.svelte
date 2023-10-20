@@ -1,8 +1,9 @@
 <script>
 	import fourdviews from '../assets/4dviews.png';
+	import Device from 'svelte-device-info';
 </script>
 
-<div class="hero-text">
+<div class={Device.isPhone ? 'heroTextMobile' : 'heroText'}>
 	<figure>
 		<img src={fourdviews} class="newsLogo" alt="4dviews" width="300" height="100" />
 	</figure>
@@ -11,7 +12,7 @@
 </div>
 
 <style>
-	.hero-text {
+	.heroText {
 		text-align: center;
 		position: absolute;
 		bottom: 15%;
@@ -21,7 +22,7 @@
 		font-size: calc(12px + 0.390625vw);
 	}
 
-	.hero-text button {
+	button {
 		border: none;
 		display: inline-block;
 		padding: 15px 30px;
@@ -35,12 +36,12 @@
 		display: flex;
 	}
 
-	.hero-text button:hover {
+	button:hover {
 		background-color: #555;
 		color: white;
 	}
 
-	.hero-text p {
+	p {
 		width: 530px;
 		text-align: left;
 		font-size: calc(18px + 0.390625vw);
@@ -48,23 +49,28 @@
 		font-weight: 600;
 	}
 
-	.hero-text figure {
+	figure {
 		margin: 0;
 		padding: 0;
 		text-align: left;
 	}
 
+	.heroTextMobile {
+		text-align: center;
+		position: absolute;
+		width: 80%;
+		top: 50%;
+		left: 50%;
+		bottom: unset;
+		transform: translate(-50%, -50%);
+		color: white;
+		font-size: calc(12px + 0.390625vw);
+	}
+
 	@media only screen and (max-width: 600px) {
 		/* HERO */
-		.hero-text p {
+		.heroTextMobile p {
 			width: auto;
-		}
-		.hero-text {
-			width: 80%;
-			top: 50%;
-			left: 50%;
-			bottom: unset;
-			transform: translate(-50%, -50%);
 		}
 	}
 </style>

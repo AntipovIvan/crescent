@@ -21,75 +21,78 @@
 </script>
 
 {#if Device.isPhone}
-	<button class:sidebar_show class="hamburger" on:click={() => (sidebar_show = !sidebar_show)}>
+	<header class="mobileHeader">
+		<button class:sidebar_show class="hamburger" on:click={() => (sidebar_show = !sidebar_show)}>
+			{#if sidebar_show}
+				<svg width="32" height="24">
+					<line id="topShow" x1="0" y1="2" x2="32" y2="2" />
+					<line id="middleShow" x1="0" y1="12" x2="24" y2="12" />
+					<line id="bottomShow" x1="0" y1="22" x2="32" y2="22" />
+				</svg>
+			{:else}
+				<svg width="32" height="24">
+					<line id="top" x1="0" y1="2" x2="32" y2="2" />
+					<line id="middle" x1="0" y1="12" x2="24" y2="12" />
+					<line id="bottom" x1="0" y1="22" x2="32" y2="22" />
+				</svg>
+			{/if}
+		</button>
+
+		<figure class="logoContainer">
+			<a href={`/`} use:link
+				><img src={logo} class="logo" alt="Crescent" width="170" height="80" /></a
+			>
+		</figure>
+
 		{#if sidebar_show}
-			<svg width="32" height="24">
-				<line id="topShow" x1="0" y1="2" x2="32" y2="2" />
-				<line id="middleShow" x1="0" y1="12" x2="24" y2="12" />
-				<line id="bottomShow" x1="0" y1="22" x2="32" y2="22" />
-			</svg>
-		{:else}
-			<svg width="32" height="24">
-				<line id="top" x1="0" y1="2" x2="32" y2="2" />
-				<line id="middle" x1="0" y1="12" x2="24" y2="12" />
-				<line id="bottom" x1="0" y1="22" x2="32" y2="22" />
-			</svg>
+			<nav class="mobile" transition:fly={{ x: 250, opacity: 1 }}>
+				<ul class="mobileNavi">
+					<li>
+						<button
+							on:click={() => {
+								sidebar_show = false;
+							}}><a href={`/`} use:link>HOME</a></button
+						>
+					</li>
+					<li>
+						<button
+							on:click={() => {
+								sidebar_show = false;
+							}}><a href={`/products/`} use:link>製品販売</a></button
+						>
+					</li>
+					<li>
+						<button
+							on:click={() => {
+								sidebar_show = false;
+							}}><a href="#">スタジオサービス</a></button
+						>
+					</li>
+					<li>
+						<button
+							on:click={() => {
+								sidebar_show = false;
+							}}><a href="#">コンテンツ開発</a></button
+						>
+					</li>
+					<li>
+						<button
+							on:click={() => {
+								sidebar_show = false;
+							}}><a href="#">会社情報</a></button
+						>
+					</li>
+					<li>
+						<button
+							on:click={() => {
+								sidebar_show = false;
+							}}><a href="#">お問い合わせ</a></button
+						>
+					</li>
+				</ul>
+			</nav>
 		{/if}
-	</button>
-
-	<figure class="logoContainer">
-		<a href={`/`} use:link><img src={logo} class="logo" alt="Crescent" width="170" height="80" /></a
-		>
-	</figure>
-
-	{#if sidebar_show}
-		<nav class="mobile" transition:fly={{ x: 250, opacity: 1 }}>
-			<ul class="mobileNavi">
-				<li>
-					<button
-						on:click={() => {
-							sidebar_show = false;
-						}}><a href={`/`} use:link>HOME</a></button
-					>
-				</li>
-				<li>
-					<button
-						on:click={() => {
-							sidebar_show = false;
-						}}><a href={`/products/`} use:link>製品販売</a></button
-					>
-				</li>
-				<li>
-					<button
-						on:click={() => {
-							sidebar_show = false;
-						}}><a href="#">スタジオサービス</a></button
-					>
-				</li>
-				<li>
-					<button
-						on:click={() => {
-							sidebar_show = false;
-						}}><a href="#">コンテンツ開発</a></button
-					>
-				</li>
-				<li>
-					<button
-						on:click={() => {
-							sidebar_show = false;
-						}}><a href="#">会社情報</a></button
-					>
-				</li>
-				<li>
-					<button
-						on:click={() => {
-							sidebar_show = false;
-						}}><a href="#">お問い合わせ</a></button
-					>
-				</li>
-			</ul>
-		</nav>
-	{/if}
+	</header>
 {:else}
 	<header>
 		<figure>
@@ -110,20 +113,16 @@
 {/if}
 
 <style>
+	.mobileHeader {
+		padding: 1rem 1rem;
+	}
 	.logoContainer {
-		position: absolute;
 		z-index: 1;
-		background-color: white;
-		padding: 1rem;
-		width: 30%;
-		background-color: #fbfbfb45;
+		width: 50%;
 		text-align: center;
 		cursor: pointer;
 		border-radius: 0.5em;
-		backdrop-filter: blur(12px);
-		top: 1rem;
 		margin: 0;
-		left: 1rem;
 	}
 	.pcNavi {
 		display: flex;
@@ -160,7 +159,6 @@
 		top: 0;
 		right: 0;
 		height: 100%;
-		/* padding: 2rem 1rem 0.6rem; */
 		border-left: 1px solid #aaa;
 		background: rgba(0, 0, 0, 0.8);
 		overflow-y: auto;
@@ -184,7 +182,7 @@
 		right: 0;
 		top: 1rem;
 		background: none;
-		border: 1px solid rgb(255, 255, 255);
+		border: 1px solid rgb(0, 0, 0);
 		padding: 0.5rem;
 		border-radius: 10px;
 		margin-right: 1rem;
@@ -197,6 +195,9 @@
 		color: #374151;
 	}
 
+	.sidebar_show {
+		border: 1px solid rgb(255, 255, 255);
+	}
 	.sidebar_show svg {
 		transform: scale(0.7);
 	}
@@ -236,7 +237,7 @@
 	header {
 		background-color: #ffffff;
 		color: #000000;
-		padding: 0 40px;
+		padding: 1rem 5rem;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;

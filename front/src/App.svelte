@@ -11,12 +11,14 @@
 <main>
 	<Router {routes} />
 </main>
+
 <BackToTop />
+
 <Footer />
 
 <style lang="sass">
-	main
-		font-family: 'Lucida Sans', sans-serif
-		background-color: #fff
-		// padding: 1rem 5rem
+	// main
+	// 	font-family: 'Montserrat', sans-serif
+	// 	background-color: #fff
+
 </style>

@@ -1,3 +1,29 @@
+@font-face {
+  font-family: "NotoMont";
+  src: url("https://fonts.gstatic.com/s/montserrat/v10/IQHow_FEYlDC4Gzy_m8fcoWiMMZ7xLd792ULpGE4W_Y.woff2")format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+  font-family: 'NotoMont';
+  src: url("https://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2")format("truetype"); 
+  font-style: normal;
+  font-weight: 400;
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+  font-family: "NotoMont";
+  src: url("https://fonts.gstatic.com/ea/notosansjp/v5/NotoSansJP-Regular.woff2")format("truetype");
+  unicode-range: U+3000-9FFF, U+ff??; /* Japanese glyphs */
+}
+
+body{
+  font-family:"NotoMont";
+}
+
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -18,7 +44,9 @@
   --l: 90%;
   --headers-color: #0b345b;
 }
-
+figure{
+  margin:0;
+}
 a {
   font-weight: 500;
   color: black;
@@ -30,25 +58,19 @@ a:hover {
 
 body {
   margin: 0;
-  /* display: flex; */
   place-items: center;
-  /* min-width: 320px;*/
   min-height: 100vh; 
 }
 
 #app {  
   margin: 0 auto;
-  /* max-width: 1280px;
-
-  padding: 2rem;
-  text-align: center; */
+}
+ul,ol{
+  list-style-type:none;
 }
 
-
 a:visited {
-  /* background-color: white; */
   color: black;
-  /* text-align: center; */
   display: inline-block;
 }
 
