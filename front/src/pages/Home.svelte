@@ -30,17 +30,6 @@
 			error = err;
 		}
 	});
-
-	// promise = fetch('http://localhost:7000/api/newsmodels', {
-	// 	cache: 'default'
-	// }).then((x) => x.json());
-
-	// const res = await fetch('http://localhost:7000/api/newsmodels', {
-	// 	cache: 'default'
-	// });
-	// const data = res.json();
-	// leagueStore.set(data.response);
-	// console.log(promise);
 </script>
 
 <section class="hero-image">

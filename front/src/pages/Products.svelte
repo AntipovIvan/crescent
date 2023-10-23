@@ -9,13 +9,36 @@
 	import syncvv from '../assets/products/syncvv.png';
 	import comingsoon from '../assets/products/comingsoon.png';
 	import Device from 'svelte-device-info';
+	import { onMount } from 'svelte';
+
+	let products;
+	let error;
+
+	onMount(async () => {
+		try {
+			const response = await fetch('http://localhost:7000/api/productcardmodels');
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			const { results } = await response.json();
+
+			products = results;
+		} catch (err) {
+			error = err;
+		}
+	});
 </script>
 
 <section>
 	<h1>PRODUCTS</h1>
 	<div class="content">
 		<input type="radio" id="All" name="categories" value="All" checked />
-		<input type="radio" id="MotionCapture" name="categories" value="MotionCapture" />
+		<input
+			type="radio"
+			id="モーションキャプチャー"
+			name="categories"
+			value="モーションキャプチャー"
+		/>
 		<input type="radio" id="VolumetricCapture" name="categories" value="VolumetricCapture" />
 		<input type="radio" id="Photogrametry" name="categories" value="Photogrametry" />
 		<input type="radio" id="ComingSoon" name="categories" value="ComingSoon" />
@@ -26,7 +49,7 @@
 			<ul class="localNavContainer">
 				<li class="localNavContainerList"><label for="All">All</label></li>
 				<li class="localNavContainerList">
-					<label for="MotionCapture">モーションキャプチャー</label>
+					<label for="モーションキャプチャー">モーションキャプチャー</label>
 				</li>
 				<li class="localNavContainerList">
 					<label for="VolumetricCapture">ボリュメトリックキャプチャー</label>
@@ -37,45 +60,48 @@
 		</nav>
 
 		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
-			<li class="card" data-category="MotionCapture VolumetricCapture">
-				<article>
-					<figure>
-						<a target="_blank" href="story1.png">
-							<img src={vicon} alt="Vicon" width="400" height="200" />
-						</a>
-						<figcaption>
-							<ol class="cardTags">
-								<li>
-									<a href="">モーションキャプチャー</a>
-								</li>
-								<li>
-									<a href="">ボリュメトリックキャプチャー</a>
-								</li>
-							</ol>
-							<p>Vicon</p>
-							<span class="overflowed-text"
-								>業界最高水準の光学反射式モーションキャプチャシステム</span
-							>
-						</figcaption>
-					</figure>
-				</article>
-			</li>
+			{#if products}
+				<!-- <pre>
+				{JSON.stringify(products, null, 2)}
+				
+			  </pre> -->
+				{#each products as { id, title, content, category, thumbnail }, index}
+					<!-- {#if index < 6} -->
+					<li class="card" data-category={category}>
+						<article>
+							<figure>
+								<a target="_blank" href="story1.png">
+									<img src={thumbnail} alt={title} width="400" height="200" />
+								</a>
+								<figcaption>
+									<ul class="cardTags">
+										<li>
+											<a href="">{category}</a>
+										</li>
+									</ul>
+									<p>{title}</p>
+									<span class="overflowed-text">{content}</span>
+								</figcaption>
+							</figure>
+						</article>
+					</li>
+				{/each}
+			{:else}
+				<p>Loading...</p>
+			{/if}
 
-			<li class="card" data-category="MotionCapture VolumetricCapture">
+			<li class="card" data-category="モーションキャプチャー VolumetricCapture">
 				<article>
 					<figure>
 						<a target="_blank" href="story2.png">
 							<img src={fourdviews} alt="4d Views" width="400" height="200" />
 						</a>
 						<figcaption>
-							<ol class="cardTags">
+							<ul class="cardTags">
 								<li>
 									<a href="">モーションキャプチャー</a>
 								</li>
-								<li>
-									<a href="">ボリュメトリックキャプチャー</a>
-								</li>
-							</ol>
+							</ul>
 							<p>4Dviews</p>
 							<span class="overflowed-text">業界最高水準のボリュメトリックキャプチャシステム</span>
 						</figcaption>
@@ -90,14 +116,11 @@
 							<img src={faceware} alt="Faceware" width="400" height="200" />
 						</a>
 						<figcaption>
-							<ol class="cardTags">
+							<ul class="cardTags">
 								<li>
 									<a href="">フォトグラフメトリ</a>
 								</li>
-								<li>
-									<a href="">ボリュメトリックキャプチャー</a>
-								</li>
-							</ol>
+							</ul>
 							<p>Faceware</p>
 							<span class="overflowed-text"
 								>ビデオベースのフェイシャル専用モーションキャプチャーシステム</span
@@ -107,20 +130,17 @@
 				</article>
 			</li>
 
-			<li class="card" data-category="VolumetricCapture MotionCapture">
+			<li class="card" data-category="VolumetricCapture モーションキャプチャー">
 				<figure>
 					<a target="_blank" href="story2.png">
 						<img src={stretchsense} alt="StretchSense" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">モーションキャプチャー</a>
 							</li>
-							<li>
-								<a href="">ボリュメトリックキャプチャー</a>
-							</li>
-						</ol>
+						</ul>
 						<p>StretchSense</p>
 						<span class="overflowed-text"
 							>シリコン素材の伸縮センサーを搭載したワイアレス対応グローブデバイス</span
@@ -135,14 +155,11 @@
 						<img src={holosuite} alt="HoloSuite" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">フォトグラフメトリ</a>
 							</li>
-							<li>
-								<a href="">ボリュメトリックキャプチャー</a>
-							</li>
-						</ol>
+						</ul>
 						<p>HoloSuite</p>
 						<span class="overflowed-text">ボリュメトリックデータの編集・配信ソフトウェア群</span>
 					</figcaption>
@@ -155,14 +172,11 @@
 						<img src={lightcage} alt="LightCage" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">フォトグラフメトリ</a>
 							</li>
-							<li>
-								<a href="">ボリュメトリックキャプチャー</a>
-							</li>
-						</ol>
+						</ul>
 						<p>LightCage</p>
 						<span class="overflowed-text">高精細フォトグラメトリスキャンシステム</span>
 					</figcaption>
@@ -175,11 +189,11 @@
 						<img src={bluefish} alt="Bluefish444" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">フォトグラフメトリ</a>
 							</li>
-						</ol>
+						</ul>
 						<p>Bluefish444</p>
 						<span class="overflowed-text"
 							>Windows・Mac・Linux環境における業界最高品質HD-SDI入出力ボード</span
@@ -194,11 +208,11 @@
 						<img src={syncvv} alt="SyncVV" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">フォトグラフメトリ</a>
 							</li>
-						</ol>
+						</ul>
 						<p>SyncVV</p>
 						<span class="overflowed-text">運用負荷を大幅に軽減する頼れる収録再生システム</span>
 					</figcaption>
@@ -211,11 +225,11 @@
 						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">Coming soon</a>
 							</li>
-						</ol>
+						</ul>
 						<p>DIGITAL HUMAN</p>
 						<span class="overflowed-text"
 							>運昨今、 デジタルアバターはデジタルサイネージやSNS、
@@ -231,11 +245,11 @@
 						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">Coming soon</a>
 							</li>
-						</ol>
+						</ul>
 						<p>Robo-Geppei</p>
 						<span class="overflowed-text"
 							>Robo-Geppeiとは、カナダのAhead.io社が開発した四足歩行ロボットプラットフォームの総称です。</span
@@ -250,11 +264,11 @@
 						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">Coming soon</a>
 							</li>
-						</ol>
+						</ul>
 						<p>Multiverse</p>
 						<span class="overflowed-text"
 							>Multiverseは誰でも簡単に非破壊なワークフローで、非常に巨大な3Dデータセットを再生、レイアウト、ルックデブ、ライティング、レンダリングする事を可能にします。</span
@@ -269,11 +283,11 @@
 						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
 					</a>
 					<figcaption>
-						<ol class="cardTags">
+						<ul class="cardTags">
 							<li>
 								<a href="">Coming soon</a>
 							</li>
-						</ol>
+						</ul>
 						<p>MIST</p>
 						<span class="overflowed-text"
 							>MISTは、ビデオでもファイルシーケンスでも、あらゆる種類のプロジェクトに対応したDI（デジタルインターミディエイト）デッキです。</span
@@ -353,7 +367,7 @@
 	/* FILTERING RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 	[value='All']:checked ~ nav .localNavContainer [for='All'],
-	[value='MotionCapture']:checked ~ nav .localNavContainer [for='MotionCapture'],
+	[value='モーションキャプチャー']:checked ~ nav .localNavContainer [for='モーションキャプチャー'],
 	[value='VolumetricCapture']:checked ~ nav .localNavContainer [for='VolumetricCapture'],
 	[value='Photogrametry']:checked ~ nav .localNavContainer [for='Photogrametry'],
 	[value='ComingSoon']:checked ~ nav .localNavContainer [for='ComingSoon'] {
@@ -365,7 +379,9 @@
 		display: block;
 	}
 
-	[value='MotionCapture']:checked ~ .posts .card:not([data-category~='MotionCapture']),
+	[value='モーションキャプチャー']:checked
+		~ .posts
+		.card:not([data-category~='モーションキャプチャー']),
 	[value='VolumetricCapture']:checked ~ .posts .card:not([data-category~='VolumetricCapture']),
 	[value='Photogrametry']:checked ~ .posts .card:not([data-category~='Photogrametry']),
 	[value='ComingSoon']:checked ~ .posts .card:not([data-category~='ComingSoon']) {
@@ -408,7 +424,7 @@
 	}
 
 	ul,
-	ol {
+	ul {
 		margin: 0;
 		padding: 0;
 	}
@@ -432,6 +448,7 @@
 	.navMobile .localNavContainer {
 		flex-direction: row;
 		flex-wrap: wrap;
+		justify-content: center;
 	}
 	img {
 		width: 100%;

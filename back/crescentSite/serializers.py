@@ -26,3 +26,15 @@ class NewsModelSerializer(serializers.HyperlinkedModelSerializer):
             "created_at",
             "updated_at",
         ]
+
+
+class ProductCardModelSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ProductCardModel
+        fields = [
+            "id",
+            "title",
+            "content",
+            "category",
+            "thumbnail",
+        ]

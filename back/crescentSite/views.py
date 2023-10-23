@@ -34,3 +34,9 @@ class NewsModelViewSet(viewsets.ModelViewSet):
     queryset = NewsModel.objects.all()
     serializer_class = NewsModelSerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+
+class ProductCardModelViewSet(viewsets.ModelViewSet):
+    queryset = ProductCardModel.objects.all()
+    serializer_class = ProductCardModelSerializer
+    # permission_classes = [permissions.IsAuthenticated]
