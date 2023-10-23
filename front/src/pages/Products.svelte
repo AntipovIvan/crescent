@@ -1,13 +1,4 @@
 <script>
-	import vicon from '../assets/products/vicon.png';
-	import fourdviews from '../assets/products/4dviews.png';
-	import faceware from '../assets/products/faceware.png';
-	import stretchsense from '../assets/products/stretchsense.png';
-	import holosuite from '../assets/products/holosuite.png';
-	import lightcage from '../assets/products/lightcage.png';
-	import bluefish from '../assets/products/bluefish.png';
-	import syncvv from '../assets/products/syncvv.png';
-	import comingsoon from '../assets/products/comingsoon.png';
 	import Device from 'svelte-device-info';
 	import { onMount } from 'svelte';
 
@@ -39,8 +30,13 @@
 			name="categories"
 			value="モーションキャプチャー"
 		/>
-		<input type="radio" id="VolumetricCapture" name="categories" value="VolumetricCapture" />
-		<input type="radio" id="Photogrametry" name="categories" value="Photogrametry" />
+		<input
+			type="radio"
+			id="ボリュメトリックキャプチャー"
+			name="categories"
+			value="ボリュメトリックキャプチャー"
+		/>
+		<input type="radio" id="フォトグラフメトリ" name="categories" value="フォトグラフメトリ" />
 		<input type="radio" id="ComingSoon" name="categories" value="ComingSoon" />
 
 		<nav class={Device.isPhone || Device.isTablet ? 'navMobile' : 'nav'}>
@@ -52,22 +48,22 @@
 					<label for="モーションキャプチャー">モーションキャプチャー</label>
 				</li>
 				<li class="localNavContainerList">
-					<label for="VolumetricCapture">ボリュメトリックキャプチャー</label>
+					<label for="ボリュメトリックキャプチャー">ボリュメトリックキャプチャー</label>
 				</li>
-				<li class="localNavContainerList"><label for="Photogrametry">フォトグラフメトリ</label></li>
+				<li class="localNavContainerList">
+					<label for="フォトグラフメトリ">フォトグラフメトリ</label>
+				</li>
 				<li class="localNavContainerList"><label for="ComingSoon">Coming soon</label></li>
 			</ul>
 		</nav>
 
 		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
 			{#if products}
-				<!-- <pre>
-				{JSON.stringify(products, null, 2)}
-				
-			  </pre> -->
 				{#each products as { id, title, content, category, thumbnail }, index}
-					<!-- {#if index < 6} -->
-					<li class="card" data-category={category}>
+					<li
+						class="card"
+						data-category={category === 'Coming soon' ? (category = 'ComingSoon') : category}
+					>
 						<article>
 							<figure>
 								<a target="_blank" href="story1.png">
@@ -89,212 +85,6 @@
 			{:else}
 				<p>Loading...</p>
 			{/if}
-
-			<li class="card" data-category="モーションキャプチャー VolumetricCapture">
-				<article>
-					<figure>
-						<a target="_blank" href="story2.png">
-							<img src={fourdviews} alt="4d Views" width="400" height="200" />
-						</a>
-						<figcaption>
-							<ul class="cardTags">
-								<li>
-									<a href="">モーションキャプチャー</a>
-								</li>
-							</ul>
-							<p>4Dviews</p>
-							<span class="overflowed-text">業界最高水準のボリュメトリックキャプチャシステム</span>
-						</figcaption>
-					</figure>
-				</article>
-			</li>
-
-			<li class="card" data-category="VolumetricCapture Photogrametry">
-				<article>
-					<figure>
-						<a target="_blank" href="story1.png">
-							<img src={faceware} alt="Faceware" width="400" height="200" />
-						</a>
-						<figcaption>
-							<ul class="cardTags">
-								<li>
-									<a href="">フォトグラフメトリ</a>
-								</li>
-							</ul>
-							<p>Faceware</p>
-							<span class="overflowed-text"
-								>ビデオベースのフェイシャル専用モーションキャプチャーシステム</span
-							>
-						</figcaption>
-					</figure>
-				</article>
-			</li>
-
-			<li class="card" data-category="VolumetricCapture モーションキャプチャー">
-				<figure>
-					<a target="_blank" href="story2.png">
-						<img src={stretchsense} alt="StretchSense" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">モーションキャプチャー</a>
-							</li>
-						</ul>
-						<p>StretchSense</p>
-						<span class="overflowed-text"
-							>シリコン素材の伸縮センサーを搭載したワイアレス対応グローブデバイス</span
-						>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="VolumetricCapture Photogrametry">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={holosuite} alt="HoloSuite" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">フォトグラフメトリ</a>
-							</li>
-						</ul>
-						<p>HoloSuite</p>
-						<span class="overflowed-text">ボリュメトリックデータの編集・配信ソフトウェア群</span>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="VolumetricCapture Photogrametry">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={lightcage} alt="LightCage" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">フォトグラフメトリ</a>
-							</li>
-						</ul>
-						<p>LightCage</p>
-						<span class="overflowed-text">高精細フォトグラメトリスキャンシステム</span>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="Photogrametry">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={bluefish} alt="Bluefish444" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">フォトグラフメトリ</a>
-							</li>
-						</ul>
-						<p>Bluefish444</p>
-						<span class="overflowed-text"
-							>Windows・Mac・Linux環境における業界最高品質HD-SDI入出力ボード</span
-						>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="Photogrametry">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={syncvv} alt="SyncVV" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">フォトグラフメトリ</a>
-							</li>
-						</ul>
-						<p>SyncVV</p>
-						<span class="overflowed-text">運用負荷を大幅に軽減する頼れる収録再生システム</span>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="ComingSoon">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">Coming soon</a>
-							</li>
-						</ul>
-						<p>DIGITAL HUMAN</p>
-						<span class="overflowed-text"
-							>運昨今、 デジタルアバターはデジタルサイネージやSNS、
-							メタバース空間といった場所や環境に捉われず活躍の場を広げています。</span
-						>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="ComingSoon">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">Coming soon</a>
-							</li>
-						</ul>
-						<p>Robo-Geppei</p>
-						<span class="overflowed-text"
-							>Robo-Geppeiとは、カナダのAhead.io社が開発した四足歩行ロボットプラットフォームの総称です。</span
-						>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="ComingSoon">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">Coming soon</a>
-							</li>
-						</ul>
-						<p>Multiverse</p>
-						<span class="overflowed-text"
-							>Multiverseは誰でも簡単に非破壊なワークフローで、非常に巨大な3Dデータセットを再生、レイアウト、ルックデブ、ライティング、レンダリングする事を可能にします。</span
-						>
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card" data-category="ComingSoon">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={comingsoon} alt="SyncVV" width="400" height="200" />
-					</a>
-					<figcaption>
-						<ul class="cardTags">
-							<li>
-								<a href="">Coming soon</a>
-							</li>
-						</ul>
-						<p>MIST</p>
-						<span class="overflowed-text"
-							>MISTは、ビデオでもファイルシーケンスでも、あらゆる種類のプロジェクトに対応したDI（デジタルインターミディエイト）デッキです。</span
-						>
-					</figcaption>
-				</figure>
-			</li>
 		</ul>
 	</div>
 </section>
@@ -368,8 +158,11 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 	[value='All']:checked ~ nav .localNavContainer [for='All'],
 	[value='モーションキャプチャー']:checked ~ nav .localNavContainer [for='モーションキャプチャー'],
-	[value='VolumetricCapture']:checked ~ nav .localNavContainer [for='VolumetricCapture'],
-	[value='Photogrametry']:checked ~ nav .localNavContainer [for='Photogrametry'],
+	[value='ボリュメトリックキャプチャー']:checked
+		~ nav
+		.localNavContainer
+		[for='ボリュメトリックキャプチャー'],
+	[value='フォトグラフメトリ']:checked ~ nav .localNavContainer [for='フォトグラフメトリ'],
 	[value='ComingSoon']:checked ~ nav .localNavContainer [for='ComingSoon'] {
 		background: #49b293;
 		color: #fff;
@@ -382,8 +175,10 @@
 	[value='モーションキャプチャー']:checked
 		~ .posts
 		.card:not([data-category~='モーションキャプチャー']),
-	[value='VolumetricCapture']:checked ~ .posts .card:not([data-category~='VolumetricCapture']),
-	[value='Photogrametry']:checked ~ .posts .card:not([data-category~='Photogrametry']),
+	[value='ボリュメトリックキャプチャー']:checked
+		~ .posts
+		.card:not([data-category~='ボリュメトリックキャプチャー']),
+	[value='フォトグラフメトリ']:checked ~ .posts .card:not([data-category~='フォトグラフメトリ']),
 	[value='ComingSoon']:checked ~ .posts .card:not([data-category~='ComingSoon']) {
 		display: none;
 	}
@@ -456,7 +251,7 @@
 		border-radius: 8px 8px 0 0;
 		cursor: pointer;
 		display: block;
-		max-height: 170px;
+		max-height: 160px;
 		object-fit: cover;
 	}
 	figcaption {
@@ -467,7 +262,7 @@
 		gap: 0.5rem;
 		font-size: calc(11px + 0.390625vw);
 		text-align: left;
-		min-height: 120px;
+		min-height: 160px;
 	}
 	.cardList {
 		width: 70%;
@@ -530,7 +325,6 @@
 		.cardList {
 			grid-template-columns: repeat(auto-fill, 15.5rem);
 			margin: 0 auto;
-			/* padding: 0 7vw 1.5vh 7vw; */
 		}
 		figcaption {
 			font-size: calc(16px + 0.390625vw);

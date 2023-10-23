@@ -85,7 +85,6 @@
 	footer {
 		padding: 4rem 6rem;
 		margin-top: auto;
-		/* width: 100%; */
 		color: #ffffff;
 		position: relative;
 		background: #0b345b;

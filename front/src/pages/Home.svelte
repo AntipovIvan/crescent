@@ -183,26 +183,6 @@
 	</section>
 </div>
 
-<!-- <Layout>
-	<h1>Hello!</h1>
-	<p>This is a box. It can contain anything.</p>
-</Layout> -->
-<!-- <div class="card">
-	{#await promise}
-		<p>Loading...</p>
-	{:then data}
-		{#if !data}
-			<p>Nothing to see here</p>
-		{:else}
-			{#each data.results as result, i}
-				<Card field1={result.field1} description={result.field2} image={result.cover} />
-			{/each}
-		{/if}
-	{:catch error}
-		<p>Nothing (rejected)</p>
-	{/await}
-</div> -->
-
 <style>
 	.pageContent::after {
 		content: '';
@@ -410,9 +390,6 @@
 	}
 
 	@media only screen and (max-width: 768px) {
-		/* [class*='col-'] {
-			padding: 0;
-		} */
 		/* ORIGINAL CONTENTS */
 		aside {
 			width: auto;

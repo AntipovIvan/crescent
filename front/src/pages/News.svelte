@@ -36,7 +36,6 @@
 {#if news}
 	<div>
 		<h1>{news.title}</h1>
-		<!-- <img src={news.cover} alt="img" /> -->
 		<p>{news.content}</p>
 		<a href="/" use:link>
 			<h2>Take me home →</h2>
@@ -47,10 +46,6 @@
 {/if}
 
 <style>
-	img {
-		max-width: 100%;
-	}
-
 	p {
 		text-align: justify;
 	}

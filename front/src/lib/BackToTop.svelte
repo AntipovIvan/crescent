@@ -39,8 +39,6 @@
 		bottom: 30px;
 		right: 30px;
 		transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
-		/* opacity: 0; */
-		/* visibility: hidden; */
 		z-index: 1000;
 		opacity: 1;
 		user-select: none;
