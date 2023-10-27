@@ -180,9 +180,9 @@ CSP_MIDDLEWARE = {
     ],  # Only allow scripts from your own domain, or inline scripts (if necessary)
 }
 
-SECURE_BROWSER_XSS_FILTER = True
+SECURE_BROWSER_XSS_FILTER = False
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = "DENY"
 SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
