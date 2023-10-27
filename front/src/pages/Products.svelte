@@ -7,7 +7,7 @@
 
 	onMount(async () => {
 		try {
-			const response = await fetch('http://localhost:7000/api/productcardmodels');
+			const response = await fetch('http://172.31.4.199:7000/api/productcardmodels');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}

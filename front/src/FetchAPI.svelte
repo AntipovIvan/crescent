@@ -1,7 +1,7 @@
 <script>
 	let promise;
 	const handleClick = () => {
-		promise = fetch('http://localhost:7000/api/yourmodels', {
+		promise = fetch('http://172.31.4.199:7000/api/yourmodels', {
 			cache: 'default'
 		}).then((x) => x.json());
 	};
