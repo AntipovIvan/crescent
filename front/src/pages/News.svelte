@@ -11,7 +11,7 @@
 
 	onMount(async () => {
 		try {
-			const response = await fetch('http://13.231.205.59:7000/api/newsmodels');
+			const response = await fetch('http://localhost:7000/api/newsmodels');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
