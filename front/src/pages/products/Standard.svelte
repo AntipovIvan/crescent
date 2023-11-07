@@ -1,42 +1,44 @@
 <script>
 	import urlSlug from 'url-slug';
-	import NotFound from './NotFound.svelte';
+
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
+	import NotFound from '../NotFound.svelte';
 
 	export let params = {};
-	let news;
+	let product;
 	let data;
 	let error;
 
 	onMount(async () => {
 		try {
 			// const response = await fetch('http://52.69.50.8/api/newsmodels');
-			const response = await fetch('http://localhost:7000/api/newsmodels');
+			const response = await fetch('http://localhost:7000/api/productcardmodels');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
 			const { results } = await response.json();
 
-			news = results;
+			product = results;
 		} catch (err) {
 			error = err;
 		}
 	});
 
-	$: if (news != null) {
-		news.forEach((result, index) => {
-			if (params.id === urlSlug(result.id)) {
-				news = result;
+	$: if (product != null) {
+		product.forEach((result, index) => {
+			if (params.title === urlSlug(result.title) && params.title !== 'vicon') {
+				product = result;
 			}
 		});
 	}
 </script>
 
-{#if news}
+{#if product}
 	<div>
-		<h1>{news.title}</h1>
-		<p>{news.content}</p>
+		<h1 class="hero">STANDARD</h1>
+		<h1>{product.title}</h1>
+		<p>{product.content}</p>
 		<a href="/" use:link>
 			<h2>Take me home →</h2>
 		</a>
@@ -46,6 +48,9 @@
 {/if}
 
 <style>
+	.hero {
+		color: black;
+	}
 	p {
 		text-align: justify;
 	}

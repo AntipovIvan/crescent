@@ -26,7 +26,7 @@
 			}
 			const { results } = await response.json();
 
-			news = results;
+			news = results.reverse();
 		} catch (err) {
 			error = err;
 		}
@@ -76,16 +76,16 @@
 
 		<div class="featuredTopics">
 			<figure>
-				<img src={banner1} alt="Banner" class="center-cropped" />
+				<img src={banner1} alt="Banner" />
 			</figure>
 			<figure>
-				<img src={banner2} alt="Banner" class="center-cropped" />
+				<img src={banner2} alt="Banner" />
 			</figure>
 			<figure>
-				<img src={banner3} alt="Banner" class="center-cropped" />
+				<img src={banner3} alt="Banner" />
 			</figure>
 			<figure>
-				<img src={banner4} alt="Banner" class="center-cropped" />
+				<img src={banner4} alt="Banner" />
 			</figure>
 		</div>
 	</section>
@@ -97,16 +97,16 @@
 		</div>
 		<aside>
 			<figure>
-				<img src={geppei} alt="Geppei" class="center-cropped" />
+				<img src={geppei} alt="Geppei" />
 			</figure>
 			<figure>
-				<img src={blog} alt="Staff blog" class="center-cropped" />
+				<img src={blog} alt="Staff blog" />
 			</figure>
 			<figure>
-				<img src={rabbit} alt="Rabbitchant" class="center-cropped" />
+				<img src={rabbit} alt="Rabbitchant" />
 			</figure>
 			<figure>
-				<img src={volumetrix} alt="Volumetrix" class="center-cropped" />
+				<img src={volumetrix} alt="Volumetrix" />
 			</figure>
 		</aside>
 	</section>

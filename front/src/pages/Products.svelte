@@ -1,6 +1,8 @@
 <script>
 	import Device from 'svelte-device-info';
 	import { onMount } from 'svelte';
+	import { link } from 'svelte-spa-router';
+	import urlSlug from 'url-slug';
 
 	let products;
 	let error;
@@ -67,7 +69,10 @@
 					>
 						<article>
 							<figure>
-								<a target="_blank" href="story1.png">
+								<a
+									href={title !== 'Vicon' ? `/products/${urlSlug(title)}` : `/product/vicon`}
+									use:link
+								>
 									<img src={thumbnail} alt={title} width="400" height="200" />
 								</a>
 								<figcaption>

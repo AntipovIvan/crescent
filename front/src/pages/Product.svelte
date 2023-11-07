@@ -5,38 +5,38 @@
 	import { link } from 'svelte-spa-router';
 
 	export let params = {};
-	let news;
+	let product;
 	let data;
 	let error;
 
 	onMount(async () => {
 		try {
 			// const response = await fetch('http://52.69.50.8/api/newsmodels');
-			const response = await fetch('http://localhost:7000/api/newsmodels');
+			const response = await fetch('http://localhost:7000/api/productcardmodels');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
 			const { results } = await response.json();
 
-			news = results;
+			product = results;
 		} catch (err) {
 			error = err;
 		}
 	});
 
-	$: if (news != null) {
-		news.forEach((result, index) => {
+	$: if (product != null) {
+		product.forEach((result, index) => {
 			if (params.id === urlSlug(result.id)) {
-				news = result;
+				product = result;
 			}
 		});
 	}
 </script>
 
-{#if news}
+{#if product}
 	<div>
-		<h1>{news.title}</h1>
-		<p>{news.content}</p>
+		<h1>{product.title}</h1>
+		<p>{product.content}</p>
 		<a href="/" use:link>
 			<h2>Take me home →</h2>
 		</a>

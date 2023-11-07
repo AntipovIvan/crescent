@@ -6,18 +6,18 @@
 
 	let sidebar_show = false;
 
-	console.log('this device is ' + (Device.isMobile ? '' : 'not') + ' mobile');
+	// console.log('this device is ' + (Device.isMobile ? '' : 'not') + ' mobile');
 
-	switch (true) {
-		case Device.isPhone:
-			console.log('this device is a smartphone');
-			break;
-		case Device.isTablet:
-			console.log('this device is a tablet');
-			break;
-		default:
-			console.log('this device is neither a smartphone nor a tablet');
-	}
+	// switch (true) {
+	// 	case Device.isPhone:
+	// 		console.log('this device is a smartphone');
+	// 		break;
+	// 	case Device.isTablet:
+	// 		console.log('this device is a tablet');
+	// 		break;
+	// 	default:
+	// 		console.log('this device is neither a smartphone nor a tablet');
+	// }
 </script>
 
 {#if Device.isPhone}
