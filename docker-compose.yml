@@ -9,6 +9,12 @@ services:
       dockerfile: ./compose/back/Dockerfile
     volumes:
       - ./back:/back
+      - type: bind
+        source: /var/www/static
+        target: /var/www/static
+      - type: bind
+        source: /var/www/media
+        target: /var/www/media
     ports:
       - 7000:7000
     expose:
