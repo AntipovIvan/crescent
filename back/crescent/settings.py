@@ -129,8 +129,7 @@ STATIC_URL = "static/"
 STATIC_ROOT = Path(BASE_DIR, "static")
 
 MEDIA_URL = "/media/"
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # root for media files
+MEDIA_ROOT = Path(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -158,4 +157,3 @@ X_FRAME_OPTIONS = "DENY"
 SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = True
-FORCE_SERVE_STATIC = True
