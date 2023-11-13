@@ -38,3 +38,14 @@ class ProductCardModelSerializer(serializers.HyperlinkedModelSerializer):
             "category",
             "thumbnail",
         ]
+
+
+class ServicesModelSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ServicesModel
+        fields = [
+            "id",
+            "title",
+            "content",
+            "thumbnail",
+        ]

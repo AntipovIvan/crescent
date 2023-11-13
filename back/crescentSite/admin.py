@@ -3,3 +3,4 @@ from .models import *
 
 admin.site.register(NewsModel)
 admin.site.register(ProductCardModel)
+admin.site.register(ServicesModel)

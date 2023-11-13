@@ -65,7 +65,7 @@
 						<button
 							on:click={() => {
 								sidebar_show = false;
-							}}><a href="#">スタジオサービス</a></button
+							}}><a href={`/services/`} use:link>スタジオサービス</a></button
 						>
 					</li>
 					<li>
@@ -103,7 +103,7 @@
 		<nav>
 			<ul class="pcNavi">
 				<li><a href={`/products/`} use:link>製品販売</a></li>
-				<li><a href="#">スタジオサービス</a></li>
+				<li><a href={`/services/`} use:link>スタジオサービス</a></li>
 				<li><a href="#">コンテンツ開発</a></li>
 				<li><a href="#">会社情報</a></li>
 				<li><a href="#">お問い合わせ</a></li>

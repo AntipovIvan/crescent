@@ -40,3 +40,9 @@ class ProductCardModelViewSet(viewsets.ModelViewSet):
     queryset = ProductCardModel.objects.all()
     serializer_class = ProductCardModelSerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+
+class ServicesModelViewSet(viewsets.ModelViewSet):
+    queryset = ServicesModel.objects.all()
+    serializer_class = ServicesModelSerializer
+    # permission_classes = [permissions.IsAuthenticated]

@@ -12,6 +12,7 @@ router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
 router.register(r"newsmodels", views.NewsModelViewSet)
 router.register(r"productcardmodels", views.ProductCardModelViewSet)
+router.register(r"servicesmodels", views.ServicesModelViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

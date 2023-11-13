@@ -1,42 +1,44 @@
 <script>
 	import urlSlug from 'url-slug';
-	import NotFound from './NotFound.svelte';
+
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
+	import NotFound from '../NotFound.svelte';
 
 	export let params = {};
-	let product;
+	let service;
 	let data;
 	let error;
 
 	onMount(async () => {
 		try {
 			// const response = await fetch('http://52.69.50.8:7000/api/productcardmodels');
-			const response = await fetch('http://localhost:7000/api/productcardmodels');
+			const response = await fetch('http://localhost:7000/api/servicesmodels');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
 			const { results } = await response.json();
 
-			product = results;
+			service = results;
 		} catch (err) {
 			error = err;
 		}
 	});
 
-	$: if (product != null) {
-		product.forEach((result, index) => {
-			if (params.id === urlSlug(result.id)) {
-				product = result;
+	$: if (service != null) {
+		service.forEach((result, index) => {
+			if (params.title === urlSlug(result.title)) {
+				service = result;
 			}
 		});
 	}
 </script>
 
-{#if product}
+{#if service}
 	<div>
-		<h1>{product.title}</h1>
-		<p>{product.content}</p>
+		<h1 class="hero">STANDARD</h1>
+		<h1>{service.title}</h1>
+		<p>{service.content}</p>
 		<a href="/" use:link>
 			<h2>Take me home →</h2>
 		</a>
@@ -46,6 +48,9 @@
 {/if}
 
 <style>
+	.hero {
+		color: black;
+	}
 	p {
 		text-align: justify;
 	}

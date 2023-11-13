@@ -21,7 +21,7 @@ PRODUCTS_CATEGORIES = (
 
 class NewsModel(models.Model):
     date = models.DateField(null=True)
-    title = models.CharField(max_length=225)
+    title = models.CharField(max_length=150)
     content = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -34,11 +34,31 @@ class NewsModel(models.Model):
 
 
 class ProductCardModel(models.Model):
-    title = models.CharField(max_length=225)
+    title = models.CharField(max_length=100)
     content = models.TextField(blank=True)
     category = models.CharField(
         max_length=20, choices=PRODUCTS_CATEGORIES, default="モーションキャプチャー"
     )
+
+    def upload_to(self, filename):
+        title = self.title if self.title else "default"
+        title = title.replace(" ", "_")
+        return os.path.join("images", title, filename)
+
+    thumbnail = models.ImageField(
+        upload_to=upload_to, default="images/Placeholder.png"
+    )
+
+    def __str__(self):
+        return self.title
+
+    def __repr__(self):
+        return self.title
+
+
+class ServicesModel(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField(blank=True)
 
     def upload_to(self, filename):
         title = self.title if self.title else "default"
