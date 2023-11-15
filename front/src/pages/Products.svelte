@@ -76,7 +76,10 @@
 									use:link
 								>
 									<img
-										src={thumbnail.replace('localhost:7000', window.location.hostname)}
+										src={thumbnail.replace(
+											window.location.hostname + ':7000',
+											window.location.hostname
+										)}
 										alt={title}
 										width="400"
 										height="200"
