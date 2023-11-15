@@ -114,10 +114,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-STATIC_ROOT = Path(BASE_DIR, "static")
+STATIC_ROOT = "/back/static/"
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = Path(BASE_DIR, "media")
+MEDIA_ROOT = "/back/media/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

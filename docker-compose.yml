@@ -9,7 +9,6 @@ services:
       dockerfile: ./compose/back/Dockerfile
     volumes:
       - ./back:/back
-      - ./back/media:/var/www/static
     ports:
       - 7000:7000
     expose:
@@ -28,11 +27,3 @@ services:
       - 8080:8080
     expose:
       - 8080
-
-  nginx:
-    image: nginx
-    ports:
-      - 80:80
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./back/media:/var/www/static
