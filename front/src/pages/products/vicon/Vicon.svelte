@@ -360,6 +360,7 @@
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
+		justify-content: space-between;
 	}
 	section div figure {
 		flex: 50%;
