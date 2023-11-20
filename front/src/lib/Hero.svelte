@@ -8,10 +8,22 @@
 		<img src={fourdviews} class="newsLogo" alt="4dviews" width="300" height="100" />
 	</figure>
 	<p>カメラの解像度が1200万画素にアップしたHOLOSYS+(プラス)販売開始！</p>
-	<button class="icon"><span>製品ページ</span></button>
+	<div class="heroButtonContainer">
+		<button class="icon"><span>製品ページ</span></button>
+		<button class="icon"><span>スタジオページ</span> </button>
+	</div>
 </div>
 
 <style>
+	.heroButtonContainer {
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
+	}
+
+	.icon span {
+		font-size: calc(12px + 0.390625vw);
+	}
 	.heroText {
 		text-align: center;
 		position: absolute;
@@ -71,6 +83,12 @@
 		/* HERO */
 		.heroTextMobile p {
 			width: auto;
+		}
+	}
+
+	@media only screen and (max-width: 1150px) {
+		header {
+			padding: 0 2rem;
 		}
 	}
 </style>

@@ -226,7 +226,6 @@
 		font-weight: bold;
 	}
 
-	ul,
 	ul {
 		margin: 0;
 		padding: 0;

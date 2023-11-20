@@ -11,6 +11,10 @@
 	import vue from '../../../assets/products/vicon/vue.jpg';
 	import lock from '../../../assets/products/vicon/lock.jpg';
 	import bicam from '../../../assets/products/vicon/bicam.jpg';
+
+	import cert from '../../../assets/products/vicon/viconCert.jpg';
+	import tutorial from '../../../assets/products/vicon/videoTut.jpg';
+	import customers from '../../../assets/products/vicon/customerLink.jpg';
 </script>
 
 <div class="content">
@@ -231,67 +235,138 @@
 		</div>
 	</section>
 
-	<div class="otherContent">
-		<div class="certificate">
-			<p>モーションキャプチャスペシャリスト<br />養成講座</p>
-		</div>
+	<section class="relatedLinks">
+		<h2>関連リンク</h2>
+		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
+			<li class="card">
+				<article>
+					<figure>
+						<a href={'/'} use:link>
+							<img src={cert} alt="Certificate" width="400" height="200" />
+						</a>
+						<figcaption>
+							<p>モーションキャプチャスペシャリスト養成講座</p>
+							<span class="overflowed-text">モーキャプエンジニア短期集中型養成講座</span>
+						</figcaption>
+					</figure>
+				</article>
+			</li>
 
-		<div class="tutorial">
-			<p>ビデオ<br />チュートリアル</p>
-		</div>
+			<li class="card">
+				<article>
+					<figure>
+						<a href={'/'} use:link>
+							<img src={tutorial} alt="Video Tutorial" width="400" height="200" />
+						</a>
+						<figcaption>
+							<p>ビデオチュートリアル</p>
+							<span class="overflowed-text"
+								>お客様から寄せられる主なご質問をまとめたビデオチュートリアル</span
+							>
+						</figcaption>
+					</figure>
+				</article>
+			</li>
 
-		<div class="customers">
-			<p>カスタマーズリンク</p>
-		</div>
-	</div>
+			<li class="card">
+				<article>
+					<figure>
+						<a href={'/'} use:link>
+							<img src={customers} alt="Customers links" width="400" height="200" />
+						</a>
+						<figcaption>
+							<p>カスタマーズリンク</p>
+							<span class="overflowed-text"
+								>Viconを運用いただいているお客様の情報をまとめました</span
+							>
+						</figcaption>
+					</figure>
+				</article>
+			</li>
+		</ul>
+	</section>
 </div>
 
 <style>
-	.otherContent {
-		display: flex;
-		gap: 2rem;
-		justify-content: center;
-		padding: 4rem 6rem;
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	.relatedLinks {
+		overflow: hidden;
+		padding: 4rem 0;
 		background-color: #dddddd;
 		margin: 5rem 0 0 0;
-	}
-	.certificate,
-	.tutorial,
-	.customers {
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		position: relative;
-		width: 30%;
-		border-radius: 20px;
-		height: 19vw;
-	}
-	.certificate {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(/src/assets/products/vicon/viconCert.jpg);
-	}
-	.tutorial {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(/src/assets/products/vicon/videoTut.jpg);
-	}
-	.customers {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(/src/assets/products/vicon/customerLink.jpg);
-	}
-	.certificate p,
-	.tutorial p,
-	.customers p {
-		font-size: calc(24px + 0.390625vw);
 		text-align: center;
-		position: relative;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		display: table;
-		color: white;
-		width: 75%;
-		font-weight: 600;
+		width: 100%;
 	}
+	.card article figure {
+		margin: 0;
+		width: inherit;
+		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		border-radius: 8px;
+		height: 100%;
+	}
+
+	.card article figure figcaption {
+		padding: 15px;
+		display: flex;
+		flex-direction: column;
+		align-items: baseline;
+		gap: 0.5rem;
+		font-size: calc(11px + 0.390625vw);
+		text-align: left;
+		min-height: 130px;
+		background: white;
+	}
+
+	.card article figure a img {
+		width: 100%;
+		height: auto;
+		border-radius: 8px 8px 0 0;
+		cursor: pointer;
+		display: block;
+		max-height: 160px;
+		object-fit: cover;
+	}
+	.cardList {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		list-style: none;
+	}
+
+	.cardList .card {
+		width: 13.5rem;
+		margin-right: 2rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	.cardListMobile {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 13.5rem);
+		grid-gap: 2rem;
+		justify-content: center;
+		align-content: flex-start;
+		list-style: none;
+		margin: 2vh auto;
+		padding: 0 0 1.5vh 0;
+		overflow: hidden;
+	}
+
+	.cardListMobile .card {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	.noImageContainer {
 		display: flex;
 		flex-direction: row;
@@ -438,14 +513,9 @@
 			padding: 5rem;
 			max-width: 86vw;
 		}
-		.otherContent {
-			flex-direction: column;
-		}
-		.certificate,
-		.tutorial,
-		.customers {
-			width: 100%;
-			height: 24rem;
+		.cardList {
+			grid-template-columns: repeat(auto-fill, 15.5rem);
+			margin: 0 auto;
 		}
 		.noImageContainer {
 			flex-direction: column;

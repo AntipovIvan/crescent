@@ -9,20 +9,20 @@ PRODUCTS_CATEGORIES = (
     ("Coming soon", "COMING_SOON"),
 )
 
-# class YourModel(models.Model):
-#     field1 = models.CharField(max_length=100)
-#     field2 = models.IntegerField()
-#     additional_field1 = models.BooleanField(default=False)
-#     additional_field2 = models.DateField()
-#     cover = models.ImageField(
-#         upload_to="images/", default="images/Placeholder.png"
-#     )
+NEWS_CATEGORIES = (
+    ("イベント", "EVENT"),
+    ("製品情報", "PRODUCT_INFO"),
+    ("その他", "OTHER"),
+)
 
 
 class NewsModel(models.Model):
     date = models.DateField(null=True)
     title = models.CharField(max_length=150)
     content = models.TextField(blank=True)
+    category = models.CharField(
+        max_length=20, choices=NEWS_CATEGORIES, default="イベント"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

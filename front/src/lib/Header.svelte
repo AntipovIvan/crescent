@@ -100,7 +100,7 @@
 				><img src={logo} class="logo" alt="Crescent" width="170" height="80" /></a
 			>
 		</figure>
-		<nav>
+		<nav class="pc">
 			<ul class="pcNavi">
 				<li><a href={`/products/`} use:link>製品販売</a></li>
 				<li><a href={`/services/`} use:link>スタジオサービス</a></li>
@@ -124,11 +124,27 @@
 		border-radius: 0.5em;
 		margin: 0;
 	}
+	.pc {
+		height: 100%;
+	}
 	.pcNavi {
 		display: flex;
-		gap: 2rem;
 		font-size: calc(12px + 0.390625vw);
 		list-style-type: none;
+		padding: 0;
+
+		margin: 0;
+	}
+	.pcNavi li {
+		border-left: 2px solid black;
+		height: 5rem;
+		padding: 0 3rem 0 1rem;
+		display: flex;
+	}
+
+	.pcNavi li a {
+		align-self: flex-end;
+		font-weight: 600;
 	}
 	.mobileNavi {
 		display: flex;
@@ -235,9 +251,9 @@
 	}
 
 	header {
-		background-color: #ffffff;
+		background-color: #f9f7f0;
 		color: #000000;
-		padding: 1rem 5rem;
+		padding: 0 8rem;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -247,7 +263,19 @@
 	/* HEADER */
 	.logo {
 		width: 100%;
-		max-width: 170px;
+		max-width: 130px;
 		height: auto;
+	}
+	@media only screen and (max-width: 1150px) {
+		header {
+			padding: 0 2rem;
+		}
+		.pcNavi li {
+			padding: 0 1rem 0 1rem;
+		}
+
+		.pcNavi li a {
+			align-self: center;
+		}
 	}
 </style>

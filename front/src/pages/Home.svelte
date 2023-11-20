@@ -1,15 +1,20 @@
 <script>
 	import Hero from '../lib/Hero.svelte';
-	import banner1 from '../assets/banner1.png';
-	import banner2 from '../assets/banner2.png';
-	import banner3 from '../assets/banner3.png';
-	import banner4 from '../assets/banner4.png';
+	import banner1 from '../assets/MashiMashi.jpg';
+	import banner2 from '../assets/Iratto.jpg';
+	import banner3 from '../assets/certificate.jpg';
+	import banner4 from '../assets/robogeppei.jpg';
+	import banner5 from '../assets/stretchsense.jpg';
+	import banner6 from '../assets/syncvv.jpg';
 	import geppei from '../assets/geppei.gif';
 	import blog from '../assets/blog.png';
 	import rabbit from '../assets/rabbit.jpg';
 	import volumetrix from '../assets/volumetrix.gif';
-	import capcom from '../assets/story1.png';
-	import osakaUniveristy from '../assets/story2.png';
+	import story1 from '../assets/capcom.jpg';
+	import story2 from '../assets/osaka.jpg';
+	import story3 from '../assets/aura.jpg';
+	import story4 from '../assets/balus.jpg';
+	import story5 from '../assets/soup.jpg';
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
 	import urlSlug from 'url-slug';
@@ -39,39 +44,77 @@
 
 <div class="pageContent">
 	<!-- NEWS -->
-	<section class="col-5 news">
+	<section class="col-4 col-s-12 newsSection">
 		<div class="blockHeader">
 			<h1>NEWS</h1>
+			<h4>お知らせ</h4>
 			<button class="more">
-				<span>View more</span>
-				<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
+				<span>VIEW MORE</span>
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+					<circle cx="12" cy="12" r="12" fill="#313132" />
 					<path
-						d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
+						d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+						fill="white"
 					/>
 				</svg>
 			</button>
 		</div>
 
+		<input type="radio" id="All" name="categories" value="All" checked />
+		<input type="radio" id="イベント" name="categories" value="イベント" />
+		<input type="radio" id="製品情報" name="categories" value="製品情報" />
+		<input type="radio" id="その他" name="categories" value="その他" />
+
+		<nav class="navMobile">
+			<ul class="localNavContainer">
+				<li class="localNavContainerList"><label for="All">All</label></li>
+				<li class="localNavContainerList">
+					<label for="イベント">イベント</label>
+				</li>
+				<li class="localNavContainerList">
+					<label for="製品情報">製品情報</label>
+				</li>
+				<li class="localNavContainerList">
+					<label for="その他">その他</label>
+				</li>
+			</ul>
+		</nav>
+
 		{#if news}
-			{#each news as { id, date, title, content }, index}
-				{#if index < 6}
-					<article class="news-article">
-						<a href={`/news/${urlSlug(id)}`} use:link>
-							<time>{date.replaceAll('-', '.')}</time>
-							<p>{title}</p>
-						</a>
-					</article>
-				{/if}
-			{/each}
+			<ul class="posts">
+				{#each news as { id, date, title, content, category }, index}
+					<li class="news" data-category={category}>
+						{#if index < 6}
+							<article class="news-article">
+								<a href={`/news/${urlSlug(id)}`} use:link>
+									<time>{date.replaceAll('-', '.')}</time>
+									<p>{title}</p>
+								</a>
+							</article>
+						{/if}
+					</li>
+				{/each}
+			</ul>
 		{:else}
 			<p>Loading...</p>
 		{/if}
 	</section>
 
 	<!-- FEATURED TOPICS -->
-	<section class="col-5 col-s-12">
+	<section class="col-5 col-s-12 topicsSection">
 		<div class="blockHeader">
-			<h1>FEATURED TOPICS</h1>
+			<h1>FEATURES</h1>
+			<h4>特集</h4>
+			<button class="more">
+				<span>VIEW MORE</span>
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+					<circle cx="12" cy="12" r="12" fill="#313132" />
+					<path
+						d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+						fill="white"
+					/>
+				</svg>
+			</button>
 		</div>
 
 		<div class="featuredTopics">
@@ -86,6 +129,12 @@
 			</figure>
 			<figure>
 				<img src={banner4} alt="Banner" />
+			</figure>
+			<figure>
+				<img src={banner5} alt="Banner" />
+			</figure>
+			<figure>
+				<img src={banner6} alt="Banner" />
 			</figure>
 		</div>
 	</section>
@@ -112,14 +161,16 @@
 	</section>
 
 	<!-- CUSTOMER STORIES -->
-	<section class="col-9 col-s-12">
+	<section class="col-9 col-s-12 storiesSection">
 		<div class="blockHeader">
 			<h1>CUSTOMER STORIES</h1>
 			<button class="more">
-				<span>View more</span>
-				<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
+				<span>VIEW MORE</span>
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+					<circle cx="12" cy="12" r="12" fill="#313132" />
 					<path
-						d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
+						d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+						fill="white"
 					/>
 				</svg>
 			</button>
@@ -129,18 +180,21 @@
 			<li class="card">
 				<figure>
 					<a target="_blank" href="story1.png">
-						<img src={capcom} alt="Capcom" width="400" height="200" />
+						<img src={story1} alt="Capcom" width="400" height="200" />
 					</a>
 					<figcaption>
 						<time>2023.08.10</time>カプコンが新しくクリエイティブスタジオをオープン
 					</figcaption>
+					<!-- <div class="skewed-outer">
+						<div class="skewed-inner" />
+					</div> -->
 				</figure>
 			</li>
 
 			<li class="card">
 				<figure>
 					<a target="_blank" href="story2.png">
-						<img src={osakaUniveristy} alt="Osaka University" width="400" height="200" />
+						<img src={story2} alt="Osaka University" width="400" height="200" />
 					</a>
 					<figcaption>
 						<time>2023.06.11</time>大阪電気通信大学に日本教育機関最大級のスタジオが完成
@@ -151,10 +205,10 @@
 			<li class="card">
 				<figure>
 					<a target="_blank" href="story1.png">
-						<img src={capcom} alt="Capcom" width="400" height="200" />
+						<img src={story3} alt="Capcom" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.08.10</time>カプコンが新しくクリエイティブスタジオをオープン
+						<time>2023.05.10</time>アウラの成り立ちやVICON導入のきっかけと今後の展望
 					</figcaption>
 				</figure>
 			</li>
@@ -162,10 +216,10 @@
 			<li class="card">
 				<figure>
 					<a target="_blank" href="story2.png">
-						<img src={osakaUniveristy} alt="Osaka University" width="400" height="200" />
+						<img src={story4} alt="Osaka University" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.06.11</time>大阪電気通信大学に日本教育機関最大級のスタジオが完成
+						<time>2023.03.10</time>多方面で活躍するBalusの最近のスタジオ動向を取材
 					</figcaption>
 				</figure>
 			</li>
@@ -173,10 +227,10 @@
 			<li class="card">
 				<figure>
 					<a target="_blank" href="story1.png">
-						<img src={capcom} alt="Capcom" width="400" height="200" />
+						<img src={story5} alt="Capcom" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.08.10</time>カプコンが新しくクリエイティブスタジオをオープン
+						<time>2023.02.10</time>渋谷区代々木のスタジオSoup.が一般に向けても利用可能に
 					</figcaption>
 				</figure>
 			</li>
@@ -185,6 +239,166 @@
 </div>
 
 <style>
+	.card figure div {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+	.skewed-outer {
+		z-index: -1;
+		left: 0;
+		top: 0;
+		border-bottom: 10px solid #bada55;
+		transform: skewy(5deg);
+		overflow: hidden;
+	}
+
+	.skewed-inner {
+		border-left: 10px solid #bada55;
+		border-top: 10px solid #bada55;
+		border-right: 10px solid #bada55;
+		transform: skewy(-10deg);
+		/* Trigonometry, bitches */
+		top: 1.5748em;
+		left: 0;
+		overflow: hidden;
+	}
+	.skewed-inner::after {
+		content: '';
+		display: block;
+		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAG0lEQVQYV2NkYGD4D8QEASNUIYjGC0YVUid4ALAnCgo7ftFaAAAAAElFTkSuQmCC);
+		height: 110%;
+		width: 110%;
+		position: absolute;
+		top: -5%;
+		transform: skewy(5deg);
+	}
+
+	.localNavContainer label {
+		color: #a1a1a1;
+	}
+	.localNavContainerList {
+		padding-top: 1rem;
+		margin-top: 0.3rem;
+		border-top: 3px solid #a1a1a1;
+		width: 25%;
+	}
+	.posts {
+		display: flex;
+		gap: 1rem;
+		flex-direction: column;
+		margin-top: 2rem;
+	}
+	.navMobile {
+		width: 100%;
+		text-align: center;
+	}
+	.navMobile .localNavContainer {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	input[type='radio'] {
+		position: absolute;
+		left: -9999px;
+	}
+	/* FILTERING RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+	[value='All']:checked ~ nav .localNavContainer [for='All'],
+	[value='イベント']:checked ~ nav .localNavContainer [for='イベント'],
+	[value='製品情報']:checked ~ nav .localNavContainer [for='製品情報'],
+	[value='その他']:checked ~ nav .localNavContainer [for='その他'] {
+		color: black;
+	}
+
+	[value='All']:checked ~ nav .localNavContainer .localNavContainerList:has(label[for='All']) {
+		border-top: 3px solid #ff4b33;
+	}
+
+	[data-category='イベント'] .news-article a time {
+		border-left: 6px solid #ffb34e;
+	}
+	[data-category='製品情報'] .news-article a time {
+		border-left: 6px solid #47b7f6;
+	}
+	[data-category='その他'] .news-article a time {
+		border-left: 6px solid #3ed144;
+	}
+
+	[value='イベント']:checked
+		~ nav
+		.localNavContainer
+		.localNavContainerList:has(label[for='イベント']) {
+		border-top: 3px solid #ffb34e;
+	}
+
+	[value='製品情報']:checked
+		~ nav
+		.localNavContainer
+		.localNavContainerList:has(label[for='製品情報']) {
+		border-top: 3px solid #47b7f6;
+	}
+
+	[value='その他']:checked
+		~ nav
+		.localNavContainer
+		.localNavContainerList:has(label[for='その他']) {
+		border-top: 3px solid #3ed144;
+	}
+
+	[value='All']:checked ~ .posts [data-category] {
+		display: block;
+	}
+
+	[value='イベント']:checked ~ .posts .news:not([data-category~='イベント']),
+	[value='製品情報']:checked ~ .posts .news:not([data-category~='製品情報']),
+	[value='その他']:checked ~ .posts .news:not([data-category~='その他']),
+	[value='ComingSoon']:checked ~ .posts .news:not([data-category~='ComingSoon']) {
+		display: none;
+	}
+
+	h1 {
+		font-size: calc(28px + 0.390625vw);
+	}
+	h4 {
+		padding-bottom: 0.2rem;
+	}
+
+	section {
+		padding: 0 0.3rem;
+	}
+	.newsSection,
+	.topicsSection,
+	.originalContentsSection,
+	.storiesSection {
+		border-top: 13px solid #313132;
+	}
+	.topicsSection .blockHeader,
+	.storiesSection .blockHeader {
+		border-bottom: 1px solid black;
+		padding-bottom: 0.4rem;
+	}
+
+	/* Head with button of the block */
+	.blockHeader {
+		display: flex;
+		justify-content: flex-start;
+		gap: 0.5rem;
+		color: var(--headers-color);
+		align-items: flex-end;
+		margin-top: 1.5rem;
+	}
+
+	.originalContentsSection .blockHeader {
+		border-bottom: 1px solid black;
+	}
+	.news {
+		grid-area: news;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
 	.pageContent::after {
 		content: '';
 		clear: both;
@@ -193,7 +407,7 @@
 
 	[class*='col-'] {
 		float: left;
-		padding: 15px;
+		margin: 15px;
 	}
 
 	a {
@@ -214,15 +428,7 @@
 		list-style-type: none;
 	}
 
-	/* Head with button of the block */
-	.blockHeader {
-		display: flex;
-		justify-content: flex-start;
-		gap: 2.5rem;
-		color: var(--headers-color);
-	}
-
-	/* "More" button (like "View more") */
+	/* "More" button (like "VIEW MORE") */
 	.more {
 		display: flex;
 		align-items: center;
@@ -231,6 +437,12 @@
 		border: none;
 		cursor: pointer;
 		color: var(--headers-color);
+		align-self: center;
+		margin: 0 0 0 auto;
+	}
+
+	.more span {
+		font-weight: 600;
 	}
 
 	/* For mobile phones: */
@@ -251,11 +463,10 @@
 
 	/* NEWS BLOCK */
 	.news-article {
-		display: flex;
-		gap: 1rem;
-		margin: 0.5rem 0;
-		/* padding: 1rem 0; */
-		border-bottom: 1px #bebebe solid;
+		-webkit-box-shadow: 0px 1px 4px 0 rgba(173, 173, 173, 1);
+		-moz-box-shadow: 0px 1px 4px 0 rgba(173, 173, 173, 1);
+		box-shadow: 0px 1px 4px 0 rgba(173, 173, 173, 1);
+		background-color: #fffef9;
 	}
 
 	.news-article a {
@@ -263,6 +474,21 @@
 		gap: 2rem;
 		align-items: center;
 		align-content: center;
+		padding: 0.3rem 0;
+	}
+	.news-article a p {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+		white-space: pre-wrap;
+	}
+
+	.news-article a time {
+		min-width: 85px;
+		color: #606060;
+		padding-left: 1rem;
 	}
 
 	.news-article:last-child {
@@ -271,23 +497,35 @@
 
 	/* FEATURED TOPICS BLOCK */
 	.featuredTopics {
-		display: flex;
-		flex-wrap: wrap;
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 9.8rem);
+		grid-gap: 1rem;
+		justify-content: center;
+		align-content: flex-start;
+		list-style: none;
+		margin: 2vh auto;
+		padding: 0 0 1.5vh 0;
+		overflow: hidden;
 	}
 
 	.featuredTopics figure {
-		margin: 1rem 0.5rem;
+		/* margin: 1rem 0.5rem; */
+		padding: 0.3rem 0.3rem 0 0.3rem;
+		border: 1px solid black;
+		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 	}
 
 	.featuredTopics figure img {
 		object-fit: cover;
 		object-position: center;
 		height: 140px;
-		width: 140px;
-		border-radius: 20px;
-		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		width: 145px;
+		/* -webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
-		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1); */
 	}
 
 	/* ORIGINAL CONTENTS BLOCK */
@@ -309,7 +547,7 @@
 	}
 
 	.originalContentsSection {
-		border-left: 2px #bebebe solid;
+		/* border-left: 2px #bebebe solid; */
 		height: 100%;
 		position: absolute;
 		right: 5%;
@@ -466,8 +704,7 @@
 			width: 33.33%;
 		}
 		.col-5 {
-			/* CHANGED (41) */
-			width: 37.66%;
+			width: 41%;
 		}
 		.col-6 {
 			width: 50%;
