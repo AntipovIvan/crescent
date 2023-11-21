@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "NotoMont";
+  font-family: "OutAru";
   src: url("../src/assets/fonts/outfit.woff2")format("truetype");
   font-style: normal;
   font-weight: 700;
@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: 'NotoMont';
+  font-family: 'OutAru';
   src: url("../src/assets/fonts/outfit.woff2")format("truetype"); 
   font-style: normal;
   font-weight: 400;
@@ -15,27 +15,18 @@
 }
 
 @font-face {
-  font-family: "NotoMont";
+  font-family: "OutAru";
   src: url("../src/assets/fonts/kosugi-maru.woff2")format("truetype");
   unicode-range: U+3000-9FFF, U+ff??; /* Japanese glyphs */
 }
 
-body{
-  font-family:"NotoMont";
+@font-face {
+  font-family: "NotoSans";
+  src: url("https://fonts.gstatic.com/ea/notosansjp/v5/NotoSansJP-Regular.woff2")format("truetype");
 }
 
-:root {
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%; */
+body{
+  font-family:"OutAru";
 }
 
 :root {
@@ -43,6 +34,12 @@ body{
   --s: 90%;
   --l: 90%;
   --headers-color: #313132;
+  --page-padding: 1rem 5rem;
+  --page-padding-tablet: 1rem 2rem;
+  --hero-height:80vh;
+  --card-width: 15.5rem;
+  color: #213547;
+    background-color: #F9F7F0;
 }
 
 h1,
@@ -90,10 +87,6 @@ a:visited {
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #F9F7F0;
-  }
   a:hover {
     color: #747bff;
   }

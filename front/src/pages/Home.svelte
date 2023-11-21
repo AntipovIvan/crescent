@@ -6,10 +6,10 @@
 	import banner4 from '../assets/robogeppei.jpg';
 	import banner5 from '../assets/stretchsense.jpg';
 	import banner6 from '../assets/syncvv.jpg';
-	import geppei from '../assets/geppei.gif';
-	import blog from '../assets/blog.png';
-	import rabbit from '../assets/rabbit.jpg';
-	import volumetrix from '../assets/volumetrix.gif';
+	import geppei from '../assets/geppei.jpg';
+	import blog from '../assets/staffblog.jpg';
+	import rabbit from '../assets/tsukimi.jpg';
+	import volumetrix from '../assets/volumetrix.jpg';
 	import story1 from '../assets/capcom.jpg';
 	import story2 from '../assets/osaka.jpg';
 	import story3 from '../assets/aura.jpg';
@@ -164,6 +164,7 @@
 	<section class="col-9 col-s-12 storiesSection">
 		<div class="blockHeader">
 			<h1>CUSTOMER STORIES</h1>
+			<h4>ユーザー事例</h4>
 			<button class="more">
 				<span>VIEW MORE</span>
 				<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -183,11 +184,11 @@
 						<img src={story1} alt="Capcom" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.08.10</time>カプコンが新しくクリエイティブスタジオをオープン
+						<time>2023.08.10</time>
+						<span>カプコンが新しくクリエイティブスタジオをオープン</span>
+						<a href=""><p>&#8250;</p></a>
+						<div class="trapezoid" />
 					</figcaption>
-					<!-- <div class="skewed-outer">
-						<div class="skewed-inner" />
-					</div> -->
 				</figure>
 			</li>
 
@@ -197,7 +198,10 @@
 						<img src={story2} alt="Osaka University" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.06.11</time>大阪電気通信大学に日本教育機関最大級のスタジオが完成
+						<time>2023.06.11</time>
+						<span>大阪電気通信大学に日本教育機関最大級のスタジオが完成</span>
+						<a href=""><p>&#8250;</p></a>
+						<div class="trapezoid" />
 					</figcaption>
 				</figure>
 			</li>
@@ -208,7 +212,10 @@
 						<img src={story3} alt="Capcom" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.05.10</time>アウラの成り立ちやVICON導入のきっかけと今後の展望
+						<time>2023.05.10</time>
+						<span>アウラの成り立ちやVICON導入のきっかけと今後の展望</span>
+						<a href=""><p>&#8250;</p></a>
+						<div class="trapezoid" />
 					</figcaption>
 				</figure>
 			</li>
@@ -219,7 +226,10 @@
 						<img src={story4} alt="Osaka University" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.03.10</time>多方面で活躍するBalusの最近のスタジオ動向を取材
+						<time>2023.03.10</time>
+						<span>多方面で活躍するBalusの最近のスタジオ動向を取材</span>
+						<a href=""><p>&#8250;</p></a>
+						<div class="trapezoid" />
 					</figcaption>
 				</figure>
 			</li>
@@ -230,7 +240,10 @@
 						<img src={story5} alt="Capcom" width="400" height="200" />
 					</a>
 					<figcaption>
-						<time>2023.02.10</time>渋谷区代々木のスタジオSoup.が一般に向けても利用可能に
+						<time>2023.02.10</time>
+						<span>渋谷区代々木のスタジオSoup.が一般に向けても利用可能に</span>
+						<a href=""><p>&#8250;</p></a>
+						<div class="trapezoid" />
 					</figcaption>
 				</figure>
 			</li>
@@ -239,43 +252,9 @@
 </div>
 
 <style>
-	.card figure div {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-	}
-	.skewed-outer {
-		z-index: -1;
-		left: 0;
-		top: 0;
-		border-bottom: 10px solid #bada55;
-		transform: skewy(5deg);
-		overflow: hidden;
-	}
-
-	.skewed-inner {
-		border-left: 10px solid #bada55;
-		border-top: 10px solid #bada55;
-		border-right: 10px solid #bada55;
-		transform: skewy(-10deg);
-		/* Trigonometry, bitches */
-		top: 1.5748em;
-		left: 0;
-		overflow: hidden;
-	}
-	.skewed-inner::after {
-		content: '';
-		display: block;
-		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAG0lEQVQYV2NkYGD4D8QEASNUIYjGC0YVUid4ALAnCgo7ftFaAAAAAElFTkSuQmCC);
-		height: 110%;
-		width: 110%;
-		position: absolute;
-		top: -5%;
-		transform: skewy(5deg);
-	}
-
 	.localNavContainer label {
 		color: #a1a1a1;
+		cursor: pointer;
 	}
 	.localNavContainerList {
 		padding-top: 1rem;
@@ -365,17 +344,16 @@
 		padding-bottom: 0.2rem;
 	}
 
-	section {
-		padding: 0 0.3rem;
-	}
 	.newsSection,
 	.topicsSection,
 	.originalContentsSection,
 	.storiesSection {
 		border-top: 13px solid #313132;
+		padding: 0 0.3rem;
 	}
 	.topicsSection .blockHeader,
-	.storiesSection .blockHeader {
+	.storiesSection .blockHeader,
+	.originalContentsSection .blockHeader {
 		border-bottom: 1px solid black;
 		padding-bottom: 0.4rem;
 	}
@@ -392,6 +370,10 @@
 
 	.originalContentsSection .blockHeader {
 		border-bottom: 1px solid black;
+	}
+
+	.originalContentsSection .blockHeader h2 {
+		margin: 0 auto;
 	}
 	.news {
 		grid-area: news;
@@ -415,12 +397,18 @@
 	}
 
 	.pageContent {
-		padding: 1rem 5rem;
+		padding: var(--page-padding);
 	}
 
 	@media only screen and (max-width: 768px) {
 		.pageContent {
 			padding: 1rem 0;
+		}
+	}
+
+	@media only screen and (min-width: 768px) and (max-width: 870px) {
+		.pageContent {
+			padding: var(--page-padding-tablet);
 		}
 	}
 
@@ -452,12 +440,12 @@
 
 	/* HERO */
 	.hero-image {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-			url('../assets/hero.png');
-		height: 88vh;
-		background-position: center;
+		/* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+			url('../assets/hero.png'); */
+		height: var(--hero-height);
+		/* background-position: center;
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: cover; */
 		position: relative;
 	}
 
@@ -523,19 +511,15 @@
 		object-position: center;
 		height: 140px;
 		width: 145px;
-		/* -webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
-		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
-		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1); */
 	}
 
 	/* ORIGINAL CONTENTS BLOCK */
 	aside {
-		background-color: #ffffff;
 		padding: 15px;
 		color: #000000;
 		text-align: center;
 		font-size: 14px;
-		width: 70%;
+		width: 100%;
 	}
 
 	aside figure {
@@ -543,12 +527,16 @@
 	}
 
 	.originalContentsSection .blockHeader {
-		width: 60%;
+		width: 100%;
+		min-height: 45px;
+	}
+
+	.originalContentsSection .blockHeader h2 {
+		font-size: calc(15px + 0.390625vw);
 	}
 
 	.originalContentsSection {
-		/* border-left: 2px #bebebe solid; */
-		height: 100%;
+		/* height: 100%; */
 		position: absolute;
 		right: 5%;
 		text-align: center;
@@ -560,9 +548,7 @@
 	aside figure img {
 		object-fit: cover;
 		object-position: center;
-		height: 90px;
-		width: 130px;
-		border-radius: 15px;
+		width: 100%;
 		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
@@ -573,22 +559,26 @@
 		border: none;
 	}
 
+	.card figure a {
+		height: 100%;
+		display: block;
+	}
 	.card figure {
 		margin: 0.5rem 0;
 		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
-		border-radius: 8px;
 	}
 
 	.card figure img {
 		width: 100%;
-		height: auto;
-		border-radius: 8px 8px 0 0;
+		/* height: auto; */
+		/* border-radius: 8px 8px 0 0; */
 		cursor: pointer;
 	}
 
 	.card figcaption {
+		position: relative;
 		padding: 15px;
 		display: flex;
 		flex-direction: column;
@@ -596,13 +586,30 @@
 		gap: 0.5rem;
 		font-size: calc(10px + 0.390625vw);
 		text-align: left;
-		min-height: 120px;
+		min-height: 7rem;
+	}
+
+	.card figcaption time {
+		z-index: 3;
+		margin-top: -2rem;
+		color: #2a8cb7;
+	}
+
+	.card figcaption span {
+		z-index: 3;
+	}
+
+	.card figcaption a {
+		color: black;
+		z-index: 4;
+		margin: auto 0 0 auto;
+		font-size: 1.8rem;
 	}
 
 	.card {
 		padding: 0 6px;
 		float: left;
-		width: 12.5rem;
+		width: var(--card-width);
 	}
 	.cardList {
 		padding: 0;
@@ -610,6 +617,33 @@
 		flex-wrap: wrap;
 		flex-direction: row;
 		justify-content: space-between;
+		margin-top: 2rem;
+	}
+
+	.trapezoid {
+		border-bottom: var(--card-width) solid #ffffff;
+		border-left: 50px solid transparent;
+		border-right: 0 solid transparent;
+		width: calc(var(--card-width) - 6.1rem);
+		transform: rotate(90deg);
+		position: absolute;
+		top: -5.13rem;
+		left: 1.5rem;
+		height: 0;
+	}
+	.trapezoid::before,
+	.trapezoid::after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 0;
+	}
+
+	.trapezoid::after {
+		top: 0;
+		right: 0;
+		border-top: var(--card-width) solid #e7e7e7; /* Adjust the colors as per your requirements */
+		border-left: calc(var(--card-width) / 2) solid transparent; /* Adjust the border width to change the angle */
 	}
 
 	@media only screen and (max-width: 700px) {
@@ -726,6 +760,38 @@
 		}
 		.col-12 {
 			width: auto;
+		}
+	}
+
+	@media only screen and (max-width: 700px) {
+		.card figcaption {
+			position: relative;
+			padding: 15px;
+			display: flex;
+			flex-direction: column;
+			align-items: baseline;
+			gap: 0.5rem;
+			font-size: calc(18px + 0.390625vw);
+			text-align: left;
+			min-height: 7rem;
+		}
+
+		.card {
+			width: 18rem;
+		}
+		.storiesSection .blockHeader h1 {
+			font-size: 21px;
+		}
+		.trapezoid {
+			border-bottom: 18rem solid #ffffff;
+			border-left: 50px solid transparent;
+			border-right: 0 solid transparent;
+			width: calc(18rem - 8.1rem);
+			transform: rotate(90deg);
+			position: absolute;
+			top: -6.6rem;
+			left: 2.5rem;
+			height: 0;
 		}
 	}
 </style>
