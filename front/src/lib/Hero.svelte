@@ -112,10 +112,6 @@
 		font-size: calc(11px + 0.390625vw);
 	}
 
-	.onimage p {
-		margin-top: 2rem;
-	}
-
 	button {
 		border: none;
 		padding: 15px 30px;
@@ -137,9 +133,8 @@
 	}
 
 	p {
-		/* width: 530px; */
 		text-align: left;
-		font-size: calc(18px + 0.390625vw);
+		font-size: calc(24px + 0.390625vw);
 		text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
 		font-weight: 600;
 	}
@@ -153,15 +148,15 @@
 	.onimage {
 		text-align: center;
 		position: absolute;
-		width: 30%;
-		top: 50%;
+		width: 40%;
+		top: 60%;
 		left: 20%;
-		transform: translate(-20%, -50%);
+		transform: translate(-20%, -60%);
 		color: white;
 		font-size: calc(12px + 0.390625vw);
-	}
-	.heroButtonContainer {
-		margin-top: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
 	}
 
 	@media only screen and (max-width: 600px) {

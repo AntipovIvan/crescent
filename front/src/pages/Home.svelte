@@ -564,7 +564,7 @@
 		display: block;
 	}
 	.card figure {
-		margin: 0.5rem 0;
+		margin: 0;
 		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
@@ -586,7 +586,7 @@
 		gap: 0.5rem;
 		font-size: calc(10px + 0.390625vw);
 		text-align: left;
-		min-height: 7rem;
+		min-height: 5rem;
 	}
 
 	.card figcaption time {
@@ -597,6 +597,12 @@
 
 	.card figcaption span {
 		z-index: 3;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		white-space: pre-wrap;
 	}
 
 	.card figcaption a {
@@ -607,9 +613,10 @@
 	}
 
 	.card {
-		padding: 0 6px;
+		padding: 0;
 		float: left;
 		width: var(--card-width);
+		border: 2px solid black;
 	}
 	.cardList {
 		padding: 0;
@@ -618,17 +625,18 @@
 		flex-direction: row;
 		justify-content: space-between;
 		margin-top: 2rem;
+		row-gap: 1rem;
 	}
 
 	.trapezoid {
 		border-bottom: var(--card-width) solid #ffffff;
 		border-left: 50px solid transparent;
 		border-right: 0 solid transparent;
-		width: calc(var(--card-width) - 6.1rem);
+		width: calc(var(--card-width) - 7.1rem);
 		transform: rotate(90deg);
 		position: absolute;
-		top: -5.13rem;
-		left: 1.5rem;
+		top: -6.5rem;
+		left: 2rem;
 		height: 0;
 	}
 	.trapezoid::before,
@@ -643,7 +651,7 @@
 		top: 0;
 		right: 0;
 		border-top: var(--card-width) solid #e7e7e7; /* Adjust the colors as per your requirements */
-		border-left: calc(var(--card-width) / 2) solid transparent; /* Adjust the border width to change the angle */
+		border-left: calc(var(--card-width) / 3) solid transparent; /* Adjust the border width to change the angle */
 	}
 
 	@media only screen and (max-width: 700px) {
@@ -765,15 +773,7 @@
 
 	@media only screen and (max-width: 700px) {
 		.card figcaption {
-			position: relative;
-			padding: 15px;
-			display: flex;
-			flex-direction: column;
-			align-items: baseline;
-			gap: 0.5rem;
 			font-size: calc(18px + 0.390625vw);
-			text-align: left;
-			min-height: 7rem;
 		}
 
 		.card {
@@ -786,11 +786,11 @@
 			border-bottom: 18rem solid #ffffff;
 			border-left: 50px solid transparent;
 			border-right: 0 solid transparent;
-			width: calc(18rem - 8.1rem);
+			width: calc(18rem - 10.1rem);
 			transform: rotate(90deg);
 			position: absolute;
-			top: -6.6rem;
-			left: 2.5rem;
+			top: -6.7rem;
+			left: 3.5rem;
 			height: 0;
 		}
 	}
