@@ -552,6 +552,7 @@
 		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
 		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		max-height: 12.5rem;
 	}
 
 	/* CUSTOMER STORIES BLOCK */
@@ -560,7 +561,7 @@
 	}
 
 	.card figure a {
-		height: 100%;
+		/* height: 100%; */
 		display: block;
 	}
 	.card figure {
@@ -587,11 +588,13 @@
 		font-size: calc(10px + 0.390625vw);
 		text-align: left;
 		min-height: 5rem;
+		height: 5rem;
+		/* max-height: 5rem; */
 	}
 
 	.card figcaption time {
 		z-index: 3;
-		margin-top: -2rem;
+		margin-top: -3rem;
 		color: #2a8cb7;
 	}
 
@@ -635,7 +638,7 @@
 		width: calc(var(--card-width) - 7.1rem);
 		transform: rotate(90deg);
 		position: absolute;
-		top: -6.5rem;
+		top: -6.6rem;
 		left: 2rem;
 		height: 0;
 	}
@@ -654,16 +657,6 @@
 		border-left: calc(var(--card-width) / 3) solid transparent; /* Adjust the border width to change the angle */
 	}
 
-	@media only screen and (max-width: 700px) {
-		.card {
-			width: 49.99999%;
-			margin: 6px 0;
-		}
-		.cardList {
-			padding: 0;
-			justify-content: center;
-		}
-	}
 	@media only screen and (max-width: 500px) {
 		.card {
 			width: 100%;
@@ -775,7 +768,9 @@
 		.card figcaption {
 			font-size: calc(18px + 0.390625vw);
 		}
-
+		h1 {
+			font-size: calc(24px + 0.390625vw);
+		}
 		.card {
 			width: 18rem;
 		}
@@ -789,9 +784,17 @@
 			width: calc(18rem - 10.1rem);
 			transform: rotate(90deg);
 			position: absolute;
-			top: -6.7rem;
+			top: -7.6rem;
 			left: 3.5rem;
 			height: 0;
+		}
+		.card {
+			width: 49.99999%;
+			margin: 6px 0;
+		}
+		.cardList {
+			padding: 0;
+			justify-content: center;
 		}
 	}
 </style>

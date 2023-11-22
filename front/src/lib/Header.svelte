@@ -20,7 +20,7 @@
 	// }
 </script>
 
-{#if Device.isPhone}
+{#if Device.isPhone || Device.isTablet}
 	<header class="mobileHeader">
 		<button class:sidebar_show class="hamburger" on:click={() => (sidebar_show = !sidebar_show)}>
 			{#if sidebar_show}

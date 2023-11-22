@@ -26,7 +26,7 @@
 </script>
 
 <section>
-	<h1>PRODUCTS</h1>
+	<h1>製品販売</h1>
 	<div class="content">
 		<input type="radio" id="All" name="categories" value="All" checked />
 		<input
@@ -107,7 +107,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 	.localNavContainer {
 		text-align: center;
-		margin-bottom: 2rem;
+		margin: 1rem 0;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -194,10 +194,12 @@
 	h1 {
 		margin: 0;
 		font-size: calc(32px + 0.390625vw);
+		font-weight: 600;
 	}
 	h2 {
 		padding-bottom: 1rem;
 		border-bottom: 1px solid black;
+		width: max-content;
 	}
 	section {
 		padding: 5rem;

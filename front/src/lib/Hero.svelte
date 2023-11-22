@@ -30,7 +30,7 @@
 		</svg>
 	</div>
 	<div class="heroContainer">
-		<img src={hero} class="heroImage" alt="4dviews" width="550" height="150" />
+		<img src={hero} class="heroImage" alt="4dviews" width="400" height="100" />
 		<div class="onimage">
 			<figure>
 				<img src={fourdviews} class="newsLogo" alt="4dviews" width="400" height="125" />
@@ -49,7 +49,7 @@
 		</div>
 	</div>
 	<div class="heroContainer">
-		<img src={valkyrie} class="heroImage" alt="4dviews" width="550" height="150" />
+		<img src={valkyrie} class="heroImage" alt="4dviews" width="400" height="100" />
 		<div class="onimage">
 			<!-- <figure>
 				<img src={fourdviews} class="newsLogo" alt="4dviews" width="400" height="125" />
@@ -76,6 +76,12 @@
 </Carousel>
 
 <style>
+	.heroContainer {
+		height: var(--hero-height);
+	}
+	.newsLogo {
+		max-width: 80vw;
+	}
 	.icon {
 		width: 55px;
 	}
@@ -96,11 +102,12 @@
 		position: relative;
 	}
 	.heroImage {
-		height: var(--hero-height);
 		width: 100%;
 		object-fit: cover;
 		filter: brightness(85%);
 		margin-left: 7rem;
+		position: absolute;
+		height: 100%;
 	}
 	.heroButtonContainer {
 		display: flex;
@@ -150,8 +157,8 @@
 		position: absolute;
 		width: 40%;
 		top: 60%;
-		left: 20%;
-		transform: translate(-20%, -60%);
+		left: 30%;
+		transform: translate(-30%, -60%);
 		color: white;
 		font-size: calc(12px + 0.390625vw);
 		display: flex;
@@ -161,14 +168,30 @@
 
 	@media only screen and (max-width: 600px) {
 		/* HERO */
+
 		.onimage p {
 			width: auto;
 		}
 	}
 
 	@media only screen and (max-width: 1150px) {
-		header {
-			padding: 0 2rem;
+		.newsLogo {
+			max-width: 35vw;
+			max-height: 10vw;
+		}
+		.onimage {
+			gap: 1rem;
+			width: 85%;
+			left: 35%;
+		}
+		.button {
+			padding: 5px 15px;
+		}
+		.heroImage {
+			margin-left: 0;
+		}
+		p {
+			font-size: calc(18px + 0.390625vw);
 		}
 	}
 </style>

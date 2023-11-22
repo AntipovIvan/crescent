@@ -318,7 +318,7 @@
 		gap: 0.5rem;
 		font-size: calc(11px + 0.390625vw);
 		text-align: left;
-		min-height: 130px;
+		min-height: 8rem;
 		background: white;
 	}
 
@@ -340,7 +340,7 @@
 	}
 
 	.cardList .card {
-		width: 13.5rem;
+		width: 15.5rem;
 		margin-right: 2rem;
 
 		&:last-child {
@@ -398,11 +398,11 @@
 	}
 	h1 {
 		font-size: calc(32px + 0.390625vw);
-		margin: 0;
+		font-weight: 600;
 	}
 	h2 {
 		font-size: calc(28px + 0.390625vw);
-		margin: 0 0 2rem 0;
+		font-weight: 600;
 	}
 	.content {
 		background: #eeeeee;
