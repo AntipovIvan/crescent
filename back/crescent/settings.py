@@ -42,8 +42,6 @@ MIDDLEWARE = [
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
-
-# Optional: If you want to allow credentials (e.g., cookies) to be sent with the request
 # CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [

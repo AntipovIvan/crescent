@@ -72,7 +72,11 @@
 						<article>
 							<figure>
 								<a
-									href={title !== 'Vicon' ? `/products/${urlSlug(title)}` : `/product/vicon`}
+									href={title !== 'Vicon' && title !== '4Dviews'
+										? `/products/${urlSlug(title)}`
+										: title === 'Vicon'
+										? `/product/vicon`
+										: `/product/4dviews`}
 									use:link
 								>
 									<img src={thumbnail} alt={title} width="400" height="200" />

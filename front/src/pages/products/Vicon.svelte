@@ -2,19 +2,19 @@
 	import urlSlug from 'url-slug';
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
-	import NotFound from '../../NotFound.svelte';
+	import NotFound from '../NotFound.svelte';
 	import Device from 'svelte-device-info';
-	import valkyrie from '../../../assets/products/vicon/valkyrie.jpg';
-	import vero from '../../../assets/products/vicon/vero.jpg';
-	import shogun from '../../../assets/products/vicon/shogun.jpg';
-	import nexus from '../../../assets/products/vicon/nexus.jpg';
-	import vue from '../../../assets/products/vicon/vue.jpg';
-	import lock from '../../../assets/products/vicon/lock.jpg';
-	import bicam from '../../../assets/products/vicon/bicam.jpg';
+	import valkyrie from '../../assets/products/vicon/valkyrie.jpg';
+	import vero from '../../assets/products/vicon/vero.jpg';
+	import shogun from '../../assets/products/vicon/shogun.jpg';
+	import nexus from '../../assets/products/vicon/nexus.jpg';
+	import vue from '../../assets/products/vicon/vue.jpg';
+	import lock from '../../assets/products/vicon/lock.jpg';
+	import bicam from '../../assets/products/vicon/bicam.jpg';
 
-	import cert from '../../../assets/products/vicon/viconCert.jpg';
-	import tutorial from '../../../assets/products/vicon/videoTut.jpg';
-	import customers from '../../../assets/products/vicon/customerLink.jpg';
+	import cert from '../../assets/products/vicon/viconCert.jpg';
+	import tutorial from '../../assets/products/vicon/videoTut.jpg';
+	import customers from '../../assets/products/vicon/customerLink.jpg';
 </script>
 
 <div class="content">
