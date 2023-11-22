@@ -25,7 +25,7 @@
 	onMount(async () => {
 		try {
 			// const response = await fetch('http://52.69.50.8:7000/api/newsmodels');
-			const response = await fetch('http://' + window.location.hostname + ':80/api/newsmodels');
+			const response = await fetch('http://' + window.location.hostname + ':7000/api/newsmodels');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
