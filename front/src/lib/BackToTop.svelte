@@ -3,7 +3,7 @@
 	let hidden = true;
 
 	function goTop() {
-		document.body.scrollIntoView();
+		document.body.scrollIntoView({ behavior: 'smooth' });
 	}
 
 	function scrollContainer() {
@@ -38,7 +38,10 @@
 		position: fixed;
 		bottom: 30px;
 		right: 30px;
-		transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+		transition:
+			background-color 0.3s,
+			opacity 0.5s,
+			visibility 0.5s;
 		z-index: 1000;
 		opacity: 1;
 		user-select: none;

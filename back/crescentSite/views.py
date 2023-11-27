@@ -42,6 +42,12 @@ class ProductCardModelViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
 
 
+class ViconProductViewSet(viewsets.ModelViewSet):
+    queryset = ViconProduct.objects.all()
+    serializer_class = ViconProductSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
 class ServicesModelViewSet(viewsets.ModelViewSet):
     queryset = ServicesModel.objects.all()
     serializer_class = ServicesModelSerializer

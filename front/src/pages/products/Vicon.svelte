@@ -11,7 +11,6 @@
 	import vue from '../../assets/products/vicon/vue.jpg';
 	import lock from '../../assets/products/vicon/lock.jpg';
 	import bicam from '../../assets/products/vicon/bicam.jpg';
-
 	import cert from '../../assets/products/vicon/viconCert.jpg';
 	import tutorial from '../../assets/products/vicon/videoTut.jpg';
 	import customers from '../../assets/products/vicon/customerLink.jpg';

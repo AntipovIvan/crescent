@@ -37,7 +37,10 @@
 					>
 						<article>
 							<figure>
-								<a href={`/services/${urlSlug(title)}`} use:link>
+								<a
+									href={title !== '4DSTUDIO' ? `/services/${urlSlug(title)}` : `/services/4dstudio`}
+									use:link
+								>
 									<img src={thumbnail} alt={title} width="400" height="200" />
 
 									<figcaption>

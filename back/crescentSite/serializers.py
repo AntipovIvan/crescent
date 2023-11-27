@@ -41,6 +41,18 @@ class ProductCardModelSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
+class ViconProductSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ViconProduct
+        fields = [
+            "id",
+            "title",
+            "contents",
+            "category",
+            "images",
+        ]
+
+
 class ServicesModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ServicesModel
