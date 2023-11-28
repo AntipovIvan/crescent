@@ -36,15 +36,9 @@ class NewsModelViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
 
 
-class ProductCardModelViewSet(viewsets.ModelViewSet):
-    queryset = ProductCardModel.objects.all()
-    serializer_class = ProductCardModelSerializer
-    # permission_classes = [permissions.IsAuthenticated]
-
-
-class ViconProductViewSet(viewsets.ModelViewSet):
-    queryset = ViconProduct.objects.all()
-    serializer_class = ViconProductSerializer
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
     # permission_classes = [permissions.IsAuthenticated]
 
 

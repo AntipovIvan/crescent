@@ -10,11 +10,10 @@ class ImageInline(admin.StackedInline):
     model = Image
 
 
-@admin.register(ViconProduct)
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ContentInline, ImageInline]
 
 
 admin.site.register(NewsModel)
-admin.site.register(ProductCardModel)
 admin.site.register(ServicesModel)

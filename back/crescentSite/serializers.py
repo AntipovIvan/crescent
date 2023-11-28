@@ -3,6 +3,18 @@ from .models import *
 from rest_framework import serializers
 
 
+class ContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Content
+        fields = "__all__"
+
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = "__all__"
+
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -29,21 +41,12 @@ class NewsModelSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class ProductCardModelSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = ProductCardModel
-        fields = [
-            "id",
-            "title",
-            "content",
-            "category",
-            "thumbnail",
-        ]
+class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    contents = ContentSerializer(many=True, read_only=True)
+    images = ImageSerializer(many=True, read_only=True)
 
-
-class ViconProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = ViconProduct
+        model = Product
         fields = [
             "id",
             "title",

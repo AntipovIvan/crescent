@@ -5,20 +5,45 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('crescentSite', '0007_delete_yourmodel'),
+        ("crescentSite", "0007_delete_yourmodel"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ProductCardModel',
+            name="ProductCardModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=225)),
-                ('content', models.TextField(blank=True)),
-                ('category', models.CharField(choices=[('MOTION_CAPTURE', 'モーションキャプチャー'), ('VOLUMETRICS_CAPTURE', 'ボリュメトリックキャプチャー'), ('PHOTOGRAMMETRY', 'フォトグラフメトリ'), ('COMING_SOON', 'Coming soon')], default='MOTION_CAPTURE', max_length=20)),
-                ('thumbnail', models.ImageField(default='images/Placeholder.png', upload_to=crescentSite.models.ProductCardModel.upload_to)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=225)),
+                ("content", models.TextField(blank=True)),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("MOTION_CAPTURE", "モーションキャプチャー"),
+                            ("VOLUMETRICS_CAPTURE", "ボリュメトリックキャプチャー"),
+                            ("PHOTOGRAMMETRY", "フォトグラフメトリ"),
+                            ("COMING_SOON", "Coming soon"),
+                        ],
+                        default="MOTION_CAPTURE",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "thumbnail",
+                    models.ImageField(
+                        default="images/Placeholder.png",
+                        upload_to=crescentSite.models.Product.upload_to,
+                    ),
+                ),
             ],
         ),
     ]
