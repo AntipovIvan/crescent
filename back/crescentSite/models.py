@@ -73,7 +73,7 @@ class ViconProduct(models.Model):
     title = models.CharField(max_length=100)
     contents = models.TextField(blank=True)
     category = models.CharField(
-        max_length=20, choices=VICON_PRODUCTS_CATEGORIES, default="モーションキャプチャー"
+        max_length=20, choices=VICON_PRODUCTS_CATEGORIES, default="CAMERA"
     )
 
     def upload_to(self, filename):
@@ -102,13 +102,10 @@ class Content(models.Model):
 
 
 class Image(models.Model):
-    title = models.CharField(max_length=100)
     product = models.ForeignKey(ViconProduct, on_delete=models.CASCADE)
 
     def upload_to(self, filename):
-        title = self.title if self.title else "default"
-        title = title.replace(" ", "_")
-        return os.path.join("images", title, filename)
+        return self.product.upload_to(filename)
 
     image = models.ImageField(upload_to=upload_to)
 
