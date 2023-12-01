@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from django.contrib import admin
 import os
 
@@ -42,7 +44,6 @@ class NewsModel(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
-
     category = models.CharField(
         max_length=20, choices=PRODUCTS_CATEGORIES, default="CAMERA"
     )
@@ -51,6 +52,10 @@ class Product(models.Model):
         title = self.title if self.title else "default"
         title = title.replace(" ", "_")
         return os.path.join("images", title, filename)
+
+    thumbnail = models.ImageField(
+        upload_to=upload_to, default="images/Placeholder.png"
+    )
 
     def __str__(self):
         return self.title
@@ -79,6 +84,12 @@ class Image(models.Model):
         return self.product.upload_to(filename)
 
     image = models.ImageField(upload_to=upload_to)
+
+
+@receiver(pre_delete, sender=Image)
+def delete_image_files(sender, instance, **kwargs):
+    # Delete the physical file when an Image object is deleted
+    instance.image.delete(save=False)
 
 
 class ServicesModel(models.Model):

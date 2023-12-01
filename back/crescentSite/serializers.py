@@ -47,13 +47,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Product
-        fields = [
-            "id",
-            "title",
-            "contents",
-            "category",
-            "images",
-        ]
+        fields = ["id", "title", "contents", "category", "images", "thumbnail"]
 
 
 class ServicesModelSerializer(serializers.HyperlinkedModelSerializer):
