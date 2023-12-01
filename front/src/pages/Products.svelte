@@ -11,8 +11,9 @@
 		MOTION_CAPTURE: 'モーションキャプチャー',
 		VOLUMETRICS_CAPTURE: 'ボリュメトリックキャプチャー',
 		PHOTOGRAMMETRY: 'フォトグラフメトリ',
-		HARDWARE: 'Hardware',
+		CAMERA: 'Camera',
 		SOFTWARE: 'Software',
+		HARDWARE: 'Hardware',
 		COMING_SOON: 'Coming soon'
 	};
 
@@ -24,6 +25,7 @@
 				throw new Error('Network response was not ok');
 			}
 			const { results } = await response.json();
+			results.sort((a, b) => parseFloat(a.sorting_order) - parseFloat(b.sorting_order));
 
 			products = results.map((result) => {
 				result.category = categoryMapping[result.category];
@@ -55,8 +57,9 @@
 			value="ボリュメトリックキャプチャー"
 		/>
 		<input type="radio" id="フォトグラフメトリ" name="categories" value="フォトグラフメトリ" />
-		<input type="radio" id="Hardware" name="categories" value="Hardware" />
+		<input type="radio" id="Camera" name="categories" value="Camera" />
 		<input type="radio" id="Software" name="categories" value="Software" />
+		<input type="radio" id="Hardware" name="categories" value="Hardware" />
 		<input type="radio" id="Coming soon" name="categories" value="Coming soon" />
 
 		<nav class={Device.isPhone || Device.isTablet ? 'navMobile' : 'nav'}>
@@ -73,14 +76,16 @@
 				<li class="localNavContainerList">
 					<label for="フォトグラフメトリ">フォトグラフメトリ</label>
 				</li>
-
+				<li class="localNavContainerList">
+					<label for="Camera">Camera</label>
+				</li>
+				<li class="localNavContainerList">
+					<label for="Software">Software</label>
+				</li>
 				<li class="localNavContainerList">
 					<label for="Hardware">Hardware</label>
 				</li>
 
-				<li class="localNavContainerList">
-					<label for="Software">Software</label>
-				</li>
 				<li class="localNavContainerList"><label for="Coming soon">Coming soon</label></li>
 			</ul>
 		</nav>
@@ -202,8 +207,9 @@
 		.localNavContainer
 		[for='ボリュメトリックキャプチャー'],
 	[value='フォトグラフメトリ']:checked ~ nav .localNavContainer [for='フォトグラフメトリ'],
-	[value='Hardware']:checked ~ nav .localNavContainer [for='Hardware'],
+	[value='Camera']:checked ~ nav .localNavContainer [for='Camera'],
 	[value='Software']:checked ~ nav .localNavContainer [for='Software'],
+	[value='Hardware']:checked ~ nav .localNavContainer [for='Hardware'],
 	[value='Coming soon']:checked ~ nav .localNavContainer [for='Coming soon'] {
 		background: #0b345b;
 		color: #fff;
@@ -220,8 +226,9 @@
 		~ .posts
 		.card:not([data-category~='ボリュメトリックキャプチャー']),
 	[value='フォトグラフメトリ']:checked ~ .posts .card:not([data-category~='フォトグラフメトリ']),
-	[value='Hardware']:checked ~ .posts .card:not([data-category~='Hardware']),
+	[value='Camera']:checked ~ .posts .card:not([data-category~='Camera']),
 	[value='Software']:checked ~ .posts .card:not([data-category~='Software']),
+	[value='Hardware']:checked ~ .posts .card:not([data-category~='Hardware']),
 	[value='Coming soon']:checked ~ .posts .card:not([data-category~='Coming soon']) {
 		display: none;
 	}

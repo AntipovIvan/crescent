@@ -1,5 +1,6 @@
 <script>
 	import { link } from 'svelte-spa-router';
+	import active from 'svelte-spa-router/active';
 	import { fly } from 'svelte/transition';
 	import logo from '../assets/logo.png';
 	import Device from 'svelte-device-info';
@@ -102,8 +103,8 @@
 		</figure>
 		<nav class="pc">
 			<ul class="pcNavi">
-				<li><a href={`/products/`} use:link>製品販売</a></li>
-				<li><a href={`/services/`} use:link>スタジオサービス</a></li>
+				<li><a href={`/products/`} use:link use:active>製品販売</a></li>
+				<li><a href={`/services/`} use:link use:active>スタジオサービス</a></li>
 				<li><a href="#">コンテンツ開発</a></li>
 				<li><a href="#">会社情報</a></li>
 				<li><a href="#">お問い合わせ</a></li>
@@ -113,6 +114,12 @@
 {/if}
 
 <style>
+	:global(header li:has(a.active)) {
+		background-color: black;
+	}
+	:global(header a.active) {
+		color: #f9f7f0;
+	}
 	.mobileHeader {
 		padding: 1rem 1rem;
 	}

@@ -47,6 +47,7 @@ class Product(models.Model):
     category = models.CharField(
         max_length=20, choices=PRODUCTS_CATEGORIES, default="CAMERA"
     )
+    sorting_order = models.IntegerField(default=0)
 
     def upload_to(self, filename):
         title = self.title if self.title else "default"

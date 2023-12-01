@@ -4,11 +4,13 @@
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
 	import NotFound from '../NotFound.svelte';
+	import Loading from '../../lib/Loading.svelte';
 
 	export let params = {};
 	let product;
 	let data;
 	let error;
+	let isLoading = true;
 
 	onMount(async () => {
 		try {
@@ -18,7 +20,7 @@
 				throw new Error('Network response was not ok');
 			}
 			const { results } = await response.json();
-
+			isLoading = false;
 			product = results;
 		} catch (err) {
 			error = err;
@@ -34,7 +36,9 @@
 	}
 </script>
 
-{#if product}
+{#if isLoading}
+	<Loading />
+{:else if product}
 	<div>
 		<h1 class="hero">STANDARD</h1>
 		<h1>{product.title}</h1>
