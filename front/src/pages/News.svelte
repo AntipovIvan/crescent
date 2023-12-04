@@ -6,6 +6,12 @@
 	import Device from 'svelte-device-info';
 	import Pagination from '../lib/Pagination.svelte';
 
+	const categoryMapping = {
+		EVENT: 'イベント',
+		PRODUCT_INFO: '製品情報',
+		NOTICE: 'お知らせ'
+	};
+
 	// export let params = {};
 	let news;
 	let error;
@@ -22,7 +28,10 @@
 			}
 			const { results } = await response.json();
 
-			news = results;
+			news = results.map((result) => {
+				result.category = categoryMapping[result.category];
+				return result;
+			});
 			calculateTotalPages();
 		} catch (err) {
 			error = err;
@@ -37,26 +46,7 @@
 	}
 
 	setContext('pagination', { currentPage, totalPages, onPageChange });
-	// $: if (news != null) {
-	// 	news.forEach((result, index) => {
-	// 		if (params.id === urlSlug(result.id)) {
-	// 			news = result;
-	// 		}
-	// 	});
-	// }
 </script>
-
-<!-- {#if news}
-	<div>
-		<h1>{news.title}</h1>
-		<p>{news.content}</p>
-		<a href="/" use:link>
-			<h2>Take me home →</h2>
-		</a>
-	</div>
-{:else}
-	<NotFound />
-{/if} -->
 
 <section class="section">
 	<h1>ニュース</h1>
@@ -88,7 +78,7 @@
 				{#each news.slice((currentPage - 1) * pageSize, currentPage * pageSize) as { id, date, title, contents, category }, index}
 					<li class="card" data-category={category}>
 						<article>
-							<a href="" class="cardLink">
+							<a href={`/news/${urlSlug(id)}`} use:link class="cardLink">
 								<time>{date.replaceAll('-', '.')}</time>
 								<span class="cardTitle">{title}</span>
 							</a>

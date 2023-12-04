@@ -22,6 +22,12 @@
 	let news;
 	let error;
 
+	const categoryMapping = {
+		EVENT: 'イベント',
+		PRODUCT_INFO: '製品情報',
+		NOTICE: 'お知らせ'
+	};
+
 	onMount(async () => {
 		try {
 			// const response = await fetch('http://52.69.50.8:7000/api/newsmodels');
@@ -32,6 +38,10 @@
 			const { results } = await response.json();
 
 			news = results.reverse();
+			news = results.map((result) => {
+				result.category = categoryMapping[result.category];
+				return result;
+			});
 		} catch (err) {
 			error = err;
 		}

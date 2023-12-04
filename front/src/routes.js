@@ -4,21 +4,22 @@ import Products from "./pages/Products.svelte";
 import News from "./pages/News.svelte";
 import Fourdviews from "./pages/products/4dviews.svelte";
 import Vicon from "./pages/products/Vicon.svelte";
-import Standard from "./pages/products/Standard.svelte";
+import ProductTemplate from "./pages/products/ProductTemplate.svelte";
 import Services from "./pages/Services.svelte";
-import Service from "./pages/services/Service.svelte";
+import ServiceTemplate from "./pages/services/ServiceTemplate.svelte";
 import Fourdstudio from "./pages/services/4dstudio.svelte";
+import NewsTemplate from "./pages/news/NewsTemplate.svelte";
 
 export const routes = {
   "/": Home,
   "/products": Products,
   "/services": Services,
   "/services/4dstudio": Fourdstudio,
-  "/services/:title": Service,
+  "/services/:title": ServiceTemplate,
   "/product/vicon": Vicon,
   "/product/4dviews": Fourdviews,
-  "/products/:title": Standard,
+  "/products/:title": ProductTemplate,
   "/news": News,
-  // "/news/:id": News,
+  "/news/:id": NewsTemplate,
   "*": NotFound
 };

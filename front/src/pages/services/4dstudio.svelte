@@ -26,6 +26,7 @@
 			products = results.filter((result) => {
 				return result.title.includes('4D') || result.title.includes('Holo');
 			});
+			console.log(products);
 		} catch (err) {
 			error = err;
 		}
@@ -198,7 +199,7 @@
 	<h2>関連リンク</h2>
 	<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
 		{#if products}
-			{#each products as { id, title, content, category, thumbnail }, index}
+			{#each products as { id, title, contents, category, thumbnail }, index}
 				<li class="card">
 					<article>
 						<figure>
@@ -210,7 +211,7 @@
 							</a>
 							<figcaption>
 								<p>{title}</p>
-								<span class="overflowed-text">{content}</span>
+								<span class="overflowed-text">{contents[0].content}</span>
 							</figcaption>
 						</figure>
 					</article>
@@ -223,6 +224,16 @@
 </section>
 
 <style>
+	.overflowed-text {
+		margin: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		white-space: pre-wrap;
+	}
 	.sidebar-item {
 		font-size: calc(14px + 0.390625vw);
 		color: #ababab;

@@ -5,6 +5,7 @@
 	import digicast from '../assets/digicast.png';
 	import Device from 'svelte-device-info';
 	import Carousel from 'svelte-carousel';
+	import { link } from 'svelte-spa-router';
 
 	let carousel; // for calling methods of the carousel instance
 
@@ -37,7 +38,9 @@
 			</figure>
 			<p>カメラの解像度が1200万画素にアップしたHOLOSYS+(プラス)販売開始！</p>
 			<div class="heroButtonContainer">
-				<button class="button"><span>製品ページ</span></button>
+				<a href={`/product/4dviews`} use:link>
+					<button class="button"><span>製品ページ</span></button>
+				</a>
 				<button class="button"
 					><span>スタジオページ</span><img
 						class="icon"

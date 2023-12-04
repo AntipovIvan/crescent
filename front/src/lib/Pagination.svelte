@@ -21,9 +21,11 @@
 	<ul>
 		{#each Array.from({ length: totalPages }, (_, i) => i + 1) as page}
 			{#if page >= currentPage - pageRange && page <= currentPage + pageRange}
-				<li class:selected={currentPage === page} on:click={() => onPageChange(page)}>
-					{page}
-				</li>
+				<button on:click={() => onPageChange(page)}>
+					<li class:selected={currentPage === page}>
+						{page}
+					</li></button
+				>
 			{/if}
 		{/each}
 	</ul>
@@ -51,7 +53,7 @@
 	}
 	.selected {
 		color: #929292;
-		border-bottom: 1px solid #929292;
+		/* border-bottom: 1px solid #929292; */
 	}
 	nav {
 		width: fit-content;

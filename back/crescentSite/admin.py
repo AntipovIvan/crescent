@@ -11,6 +11,10 @@ class ImageInline(admin.StackedInline):
     model = Image
 
 
+class NewsImagesInline(admin.StackedInline):
+    model = NewsImages
+
+
 class ProductAdminForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -35,6 +39,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 class NewsAdmin(admin.ModelAdmin):
     form = NewsAdminForm
+    inlines = [NewsImagesInline]
     list_display = [
         "date",
         "title",

@@ -16,9 +16,9 @@ PRODUCTS_CATEGORIES = (
 )
 
 NEWS_CATEGORIES = (
-    ("イベント", "EVENT"),
-    ("製品情報", "PRODUCT_INFO"),
-    ("お知らせ", "NOTICE"),
+    ("EVENT", "イベント"),
+    ("PRODUCT_INFO", "製品情報"),
+    ("NOTICE", "お知らせ"),
 )
 
 
@@ -31,6 +31,11 @@ class NewsModel(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def upload_to(self, filename):
+        date = self.date if self.date else "default"
+        date = str(date)
+        return os.path.join("images/news", date, filename)
 
     def __str__(self):
         return self.title
@@ -79,6 +84,17 @@ class Content(models.Model):
 class Image(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name="images"
+    )
+
+    def upload_to(self, filename):
+        return self.product.upload_to(filename)
+
+    image = models.ImageField(upload_to=upload_to)
+
+
+class NewsImages(models.Model):
+    product = models.ForeignKey(
+        NewsModel, on_delete=models.CASCADE, related_name="images"
     )
 
     def upload_to(self, filename):
