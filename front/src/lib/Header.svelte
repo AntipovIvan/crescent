@@ -52,13 +52,6 @@
 						<button
 							on:click={() => {
 								sidebar_show = false;
-							}}><a href={`/`} use:link>HOME</a></button
-						>
-					</li>
-					<li>
-						<button
-							on:click={() => {
-								sidebar_show = false;
 							}}><a href={`/products/`} use:link>製品販売</a></button
 						>
 					</li>

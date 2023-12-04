@@ -24,8 +24,8 @@
 			<p>Mail: info@crescentinc.co.jp</p>
 		</div>
 		<div class="mainlinks">
-			<p>ホーム</p>
-			<p>お知らせ</p>
+			<a href={`/`} use:link><p>ホーム</p></a>
+			<a href={`/news`} use:link><p>お知らせ</p></a>
 			<p>会社情報</p>
 			<p>採用情報</p>
 		</div>
@@ -140,6 +140,16 @@
 			text-align: center;
 			width: 100%;
 			margin-top: 10px;
+		}
+		.mainlinks,
+		.sublinks {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			text-align: left;
+		}
+		.footer-container {
+			font-size: 13px;
 		}
 	}
 

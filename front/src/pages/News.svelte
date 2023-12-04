@@ -83,7 +83,7 @@
 			</ul>
 		</nav>
 
-		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
+		<ul class="posts cardList">
 			{#if news}
 				{#each news.slice((currentPage - 1) * pageSize, currentPage * pageSize) as { id, date, title, contents, category }, index}
 					<li class="card" data-category={category}>
@@ -248,14 +248,11 @@
 		column-gap: 1rem;
 	}
 	.cardList {
-		/* width: 100%; */
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: flex-start;
 		list-style: none;
-		/* margin: 2vh auto; */
-		/* padding: 0 0 1.5vh 0; */
 		overflow: hidden;
 		flex: 1;
 	}
@@ -268,30 +265,26 @@
 		width: 100%;
 	}
 
-	.cardListMobile {
-		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, 13.5rem);
-		grid-gap: 2rem;
-		justify-content: center;
-		align-content: flex-start;
-		list-style: none;
-		margin: 2vh auto;
-		padding: 0 0 1.5vh 0;
-		overflow: hidden;
-	}
-
-	.cardListMobile .card {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 	@media screen and (max-width: 700px) {
 		.content {
 			flex-direction: column;
 		}
 		ul {
 			flex-direction: column;
+		}
+		.cardTitle {
+			margin-left: 1rem;
+		}
+		.cardLink {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 1;
+			white-space: pre-wrap;
+		}
+		.cardList .card {
+			padding: 1rem 0;
 		}
 	}
 	@media screen and (max-width: 950px) {

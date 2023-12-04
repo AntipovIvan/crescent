@@ -1,11 +1,15 @@
 <script>
 	import Device from 'svelte-device-info';
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { link } from 'svelte-spa-router';
 	import urlSlug from 'url-slug';
+	import Pagination from '../lib/Pagination.svelte';
 
 	let products;
 	let error;
+	let currentPage = 1;
+	let totalPages = 1;
+	const pageSize = 20;
 
 	const categoryMapping = {
 		MOTION_CAPTURE: 'モーションキャプチャー',
@@ -31,13 +35,24 @@
 				result.category = categoryMapping[result.category];
 				return result;
 			});
+			calculateTotalPages();
 		} catch (err) {
 			error = err;
 		}
 	});
+
+	function calculateTotalPages() {
+		totalPages = Math.ceil(products.length / pageSize);
+	}
+
+	function onPageChange(page) {
+		currentPage = page;
+	}
+
+	setContext('pagination', { currentPage, totalPages, onPageChange });
 </script>
 
-<section>
+<section class="section">
 	<h1>製品販売</h1>
 	<div class="content">
 		<input type="radio" id="All" name="categories" value="All" checked />
@@ -92,7 +107,7 @@
 
 		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
 			{#if products}
-				{#each products as { id, title, contents, category, thumbnail }, index}
+				{#each products.slice((currentPage - 1) * pageSize, currentPage * pageSize) as { id, title, contents, category, thumbnail }, index}
 					<li
 						class="card"
 						data-category={category === 'Coming soon' ? (category = 'Coming soon') : category}
@@ -127,9 +142,14 @@
 			{/if}
 		</ul>
 	</div>
+	<Pagination {currentPage} {totalPages} {onPageChange} />
 </section>
 
 <style>
+	.section {
+		min-height: 53vh;
+		position: relative;
+	}
 	input[type='radio'] {
 		position: absolute;
 		left: -9999px;
