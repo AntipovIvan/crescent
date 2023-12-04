@@ -234,7 +234,7 @@
 	}
 
 	h1 {
-		margin: 0;
+		margin: 0 0 3rem 0;
 		font-size: calc(32px + 0.390625vw);
 		font-weight: 600;
 	}
@@ -295,6 +295,7 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
+		column-gap: 1rem;
 	}
 	img {
 		width: 100%;

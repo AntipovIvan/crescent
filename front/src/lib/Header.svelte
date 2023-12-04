@@ -139,7 +139,6 @@
 		font-size: calc(12px + 0.390625vw);
 		list-style-type: none;
 		padding: 0;
-
 		margin: 0;
 	}
 	.pcNavi li {

@@ -18,6 +18,7 @@ export const routes = {
   "/product/vicon": Vicon,
   "/product/4dviews": Fourdviews,
   "/products/:title": Standard,
-  "/news/:id": News,
+  "/news": News,
+  // "/news/:id": News,
   "*": NotFound
 };

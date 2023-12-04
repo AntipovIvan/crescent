@@ -17,7 +17,7 @@
 @font-face {
   font-family: "NotoMont";
   src: url("https://fonts.gstatic.com/ea/notosansjp/v5/NotoSansJP-Regular.woff2")format("truetype");
-  unicode-range: U+3000-9FFF, U+ff??; /* Japanese glyphs */
+  unicode-range: U+3000-9FFF, U+ff??, U+0030-0039; /* Japanese glyphs */
 }
 
 /* @font-face {

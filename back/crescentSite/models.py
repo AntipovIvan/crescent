@@ -18,7 +18,7 @@ PRODUCTS_CATEGORIES = (
 NEWS_CATEGORIES = (
     ("イベント", "EVENT"),
     ("製品情報", "PRODUCT_INFO"),
-    ("その他", "OTHER"),
+    ("お知らせ", "NOTICE"),
 )
 
 

@@ -49,33 +49,35 @@
 			<h1>NEWS</h1>
 			<h4>お知らせ</h4>
 			<button class="more">
-				<span>VIEW MORE</span>
-				<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-					<circle cx="12" cy="12" r="12" fill="#313132" />
-					<path
-						d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
-						fill="white"
-					/>
-				</svg>
+				<a href={`/news/`} class="moreLink" use:link>
+					<span>VIEW MORE</span>
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+						<circle cx="12" cy="12" r="12" fill="#313132" />
+						<path
+							d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+							fill="white"
+						/>
+					</svg>
+				</a>
 			</button>
 		</div>
 
 		<input type="radio" id="All" name="categories" value="All" checked />
-		<input type="radio" id="イベント" name="categories" value="イベント" />
+		<input type="radio" id="お知らせ" name="categories" value="お知らせ" />
 		<input type="radio" id="製品情報" name="categories" value="製品情報" />
-		<input type="radio" id="その他" name="categories" value="その他" />
+		<input type="radio" id="イベント" name="categories" value="イベント" />
 
 		<nav class="navMobile">
 			<ul class="localNavContainer">
 				<li class="localNavContainerList"><label for="All">All</label></li>
 				<li class="localNavContainerList">
-					<label for="イベント">イベント</label>
+					<label for="お知らせ">お知らせ</label>
 				</li>
 				<li class="localNavContainerList">
 					<label for="製品情報">製品情報</label>
 				</li>
 				<li class="localNavContainerList">
-					<label for="その他">その他</label>
+					<label for="イベント">イベント</label>
 				</li>
 			</ul>
 		</nav>
@@ -252,6 +254,9 @@
 </div>
 
 <style>
+	.moreLink {
+		display: contents;
+	}
 	.localNavContainer label {
 		color: #a1a1a1;
 		cursor: pointer;
@@ -287,7 +292,7 @@
 	[value='All']:checked ~ nav .localNavContainer [for='All'],
 	[value='イベント']:checked ~ nav .localNavContainer [for='イベント'],
 	[value='製品情報']:checked ~ nav .localNavContainer [for='製品情報'],
-	[value='その他']:checked ~ nav .localNavContainer [for='その他'] {
+	[value='お知らせ']:checked ~ nav .localNavContainer [for='お知らせ'] {
 		color: black;
 	}
 
@@ -296,20 +301,20 @@
 	}
 
 	[data-category='イベント'] .news-article a time {
-		border-left: 6px solid #ffb34e;
+		border-left: 6px solid #3ed144;
 	}
 	[data-category='製品情報'] .news-article a time {
 		border-left: 6px solid #47b7f6;
 	}
-	[data-category='その他'] .news-article a time {
-		border-left: 6px solid #3ed144;
+	[data-category='お知らせ'] .news-article a time {
+		border-left: 6px solid #ffb34e;
 	}
 
 	[value='イベント']:checked
 		~ nav
 		.localNavContainer
 		.localNavContainerList:has(label[for='イベント']) {
-		border-top: 3px solid #ffb34e;
+		border-top: 3px solid #3ed144;
 	}
 
 	[value='製品情報']:checked
@@ -319,11 +324,11 @@
 		border-top: 3px solid #47b7f6;
 	}
 
-	[value='その他']:checked
+	[value='お知らせ']:checked
 		~ nav
 		.localNavContainer
-		.localNavContainerList:has(label[for='その他']) {
-		border-top: 3px solid #3ed144;
+		.localNavContainerList:has(label[for='お知らせ']) {
+		border-top: 3px solid #ffb34e;
 	}
 
 	[value='All']:checked ~ .posts [data-category] {
@@ -332,7 +337,7 @@
 
 	[value='イベント']:checked ~ .posts .news:not([data-category~='イベント']),
 	[value='製品情報']:checked ~ .posts .news:not([data-category~='製品情報']),
-	[value='その他']:checked ~ .posts .news:not([data-category~='その他']),
+	[value='お知らせ']:checked ~ .posts .news:not([data-category~='お知らせ']),
 	[value='ComingSoon']:checked ~ .posts .news:not([data-category~='ComingSoon']) {
 		display: none;
 	}
@@ -767,6 +772,7 @@
 	@media only screen and (max-width: 700px) {
 		.card figcaption {
 			font-size: calc(18px + 0.390625vw);
+			gap: 0;
 		}
 		h1 {
 			font-size: calc(24px + 0.390625vw);
@@ -788,10 +794,10 @@
 			left: 3.5rem;
 			height: 0;
 		}
-		.card {
-			width: 49.99999%;
+		/* .card {
+			width: 86%;
 			margin: 6px 0;
-		}
+		} */
 		.cardList {
 			padding: 0;
 			justify-content: center;
