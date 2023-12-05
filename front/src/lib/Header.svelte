@@ -80,7 +80,7 @@
 						<button
 							on:click={() => {
 								sidebar_show = false;
-							}}><a href="#">お問い合わせ</a></button
+							}}><a href={`/contactus/`} use:link>お問い合わせ</a></button
 						>
 					</li>
 				</ul>
@@ -100,7 +100,7 @@
 				<li><a href={`/services/`} use:link use:active>スタジオサービス</a></li>
 				<li><a href="#">コンテンツ開発</a></li>
 				<li><a href="#">会社情報</a></li>
-				<li><a href="#">お問い合わせ</a></li>
+				<li><a href={`/contactus/`} use:link>お問い合わせ</a></li>
 			</ul>
 		</nav>
 	</header>
