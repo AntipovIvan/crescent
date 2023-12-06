@@ -30,7 +30,6 @@
 
 	onMount(async () => {
 		try {
-			// const response = await fetch('http://52.69.50.8:7000/api/newsmodels');
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/newsmodels');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
@@ -431,7 +430,6 @@
 		list-style-type: none;
 	}
 
-	/* "More" button (like "VIEW MORE") */
 	.more {
 		display: flex;
 		align-items: center;
@@ -455,12 +453,7 @@
 
 	/* HERO */
 	.hero-image {
-		/* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-			url('../assets/hero.png'); */
 		height: var(--hero-height);
-		/* background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover; */
 		position: relative;
 	}
 
@@ -513,7 +506,6 @@
 	}
 
 	.featuredTopics figure {
-		/* margin: 1rem 0.5rem; */
 		padding: 0.3rem 0.3rem 0 0.3rem;
 		border: 1px solid black;
 		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
@@ -551,7 +543,6 @@
 	}
 
 	.originalContentsSection {
-		/* height: 100%; */
 		position: absolute;
 		right: 5%;
 		text-align: center;
@@ -576,7 +567,6 @@
 	}
 
 	.card figure a {
-		/* height: 100%; */
 		display: block;
 	}
 	.card figure {
@@ -588,8 +578,6 @@
 
 	.card figure img {
 		width: 100%;
-		/* height: auto; */
-		/* border-radius: 8px 8px 0 0; */
 		cursor: pointer;
 	}
 
@@ -604,7 +592,6 @@
 		text-align: left;
 		min-height: 5rem;
 		height: 5rem;
-		/* max-height: 5rem; */
 	}
 
 	.card figcaption time {
@@ -668,8 +655,8 @@
 	.trapezoid::after {
 		top: 0;
 		right: 0;
-		border-top: var(--card-width) solid #e7e7e7; /* Adjust the colors as per your requirements */
-		border-left: calc(var(--card-width) / 3) solid transparent; /* Adjust the border width to change the angle */
+		border-top: var(--card-width) solid #e7e7e7;
+		border-left: calc(var(--card-width) / 3) solid transparent;
 	}
 
 	@media only screen and (max-width: 500px) {
@@ -701,7 +688,7 @@
 	}
 	@media only screen and (min-width: 600px) {
 		/* For tablets: */
-		.col-s-1 {
+		/* .col-s-1 {
 			width: 8.33%;
 		}
 		.col-s-2 {
@@ -733,30 +720,30 @@
 		}
 		.col-s-11 {
 			width: 91.66%;
-		}
+		} */
 		.col-s-12 {
 			width: auto;
 		}
 	}
 	@media only screen and (min-width: 768px) {
 		/* For desktop: */
-		.col-1 {
+		/* .col-1 {
 			width: 8.33%;
-		}
+		} */
 		.col-2 {
 			/* CHANGED (16) */
 			width: 16.66%;
 		}
-		.col-3 {
+		/* .col-3 {
 			width: 25%;
-		}
+		} */
 		.col-4 {
 			width: 33.33%;
 		}
 		.col-5 {
 			width: 41%;
 		}
-		.col-6 {
+		/* .col-6 {
 			width: 50%;
 		}
 		.col-7 {
@@ -764,11 +751,11 @@
 		}
 		.col-8 {
 			width: 66.66%;
-		}
+		} */
 		.col-9 {
 			width: 75%;
 		}
-		.col-10 {
+		/* .col-10 {
 			width: 83.33%;
 		}
 		.col-11 {
@@ -776,7 +763,7 @@
 		}
 		.col-12 {
 			width: auto;
-		}
+		} */
 	}
 
 	@media only screen and (max-width: 700px) {
@@ -804,10 +791,6 @@
 			left: 3.5rem;
 			height: 0;
 		}
-		/* .card {
-			width: 86%;
-			margin: 6px 0;
-		} */
 		.cardList {
 			padding: 0;
 			justify-content: center;

@@ -12,7 +12,6 @@
 
 	onMount(async () => {
 		try {
-			// const response = await fetch('http://52.69.50.8:7000/api/productcardmodels');
 			const response = await fetch(
 				'http://' + window.location.hostname + ':7000/api/servicesmodels'
 			);

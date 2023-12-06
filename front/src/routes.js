@@ -9,13 +9,15 @@ import Services from "./pages/Services.svelte";
 import ServiceTemplate from "./pages/services/ServiceTemplate.svelte";
 import Fourdstudio from "./pages/services/4dstudio.svelte";
 import NewsTemplate from "./pages/news/NewsTemplate.svelte";
-import Contactus from "./pages/Contactus.svelte";
+import Contact from "./pages/Contact.svelte";
+import Aboutus from "./pages/Aboutus.svelte";
 
 export const routes = {
   "/": Home,
   "/products": Products,
   "/services": Services,
-  "/contactus": Contactus,
+  "/contact": Contact,
+  "/aboutus": Aboutus,
   "/services/4dstudio": Fourdstudio,
   "/services/:title": ServiceTemplate,
   "/product/vicon": Vicon,

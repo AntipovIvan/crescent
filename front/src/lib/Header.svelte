@@ -73,14 +73,14 @@
 						<button
 							on:click={() => {
 								sidebar_show = false;
-							}}><a href="#">会社情報</a></button
+							}}><a href={`/aboutus/`} use:link>会社情報</a></button
 						>
 					</li>
 					<li>
 						<button
 							on:click={() => {
 								sidebar_show = false;
-							}}><a href={`/contactus/`} use:link>お問い合わせ</a></button
+							}}><a href={`/contact/`} use:link>お問い合わせ</a></button
 						>
 					</li>
 				</ul>
@@ -99,8 +99,8 @@
 				<li><a href={`/products/`} use:link use:active>製品販売</a></li>
 				<li><a href={`/services/`} use:link use:active>スタジオサービス</a></li>
 				<li><a href="#">コンテンツ開発</a></li>
-				<li><a href="#">会社情報</a></li>
-				<li><a href={`/contactus/`} use:link use:active>お問い合わせ</a></li>
+				<li><a href={`/aboutus/`} use:link use:active>会社情報</a></li>
+				<li><a href={`/contact/`} use:link use:active>お問い合わせ</a></li>
 			</ul>
 		</nav>
 	</header>
