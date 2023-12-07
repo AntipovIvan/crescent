@@ -26,7 +26,6 @@
 			products = results.filter((result) => {
 				return result.title.includes('4D') || result.title.includes('Holo');
 			});
-			console.log(products);
 		} catch (err) {
 			error = err;
 		}

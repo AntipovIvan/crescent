@@ -11,10 +11,8 @@ SECRET_KEY = "42le!p&pkezf(n#ymp6j7s&&t!@uv@r2yd!_vvfu62v+dg6fb)"
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "127.0.0.1",
     "localhost",
     "52.69.50.8",
-    "172.31.4.199",
 ]
 
 INSTALLED_APPS = [
@@ -45,19 +43,17 @@ MIDDLEWARE = [
 # CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
+    "http://localhost",
     "http://52.69.50.8:8080",
+    "http://52.69.50.8",
     "https://52.69.50.8:8080",
-    "http://172.31.4.199:8080",
-    "https://172.31.4.199:8080",
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "http://127.0.0.1:8080",
+    "http://localhost",
     "http://52.69.50.8:8080",
     "https://52.69.50.8:8080",
-    "http://172.31.4.199:8080",
-    "https://172.31.4.199:8080",
+    "http://52.69.50.8",
 ]
 
 
