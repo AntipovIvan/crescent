@@ -26,7 +26,7 @@
 		<div class="mainlinks">
 			<a href={`/`} use:link><p>ホーム</p></a>
 			<a href={`/news`} use:link><p>お知らせ</p></a>
-			<p>会社情報</p>
+			<a href={`/aboutus`} use:link><p>会社情報</p></a>
 			<p>採用情報</p>
 		</div>
 		<div class="sublinks">

@@ -127,7 +127,6 @@
 	}
 	h2 {
 		padding-bottom: 1rem;
-
 		width: max-content;
 	}
 	section {
@@ -164,6 +163,11 @@
 		}
 		.cardTitle {
 			margin-left: 1rem;
+		}
+	}
+	@media screen and (max-width: 500px) {
+		h2 {
+			width: auto;
 		}
 	}
 	@media screen and (max-width: 950px) {

@@ -1,13 +1,8 @@
 <script>
-	import { link } from 'svelte-spa-router';
-	import Device from 'svelte-device-info';
 	import hero from '../assets/aboutustop.jpg';
 
 	import { onMount } from 'svelte';
-	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
@@ -115,7 +110,7 @@
 						<tr>
 							<th>連絡先</th>
 							<td colspan="3">
-								<a href="tel:03-5875-9707">03-5875-9707</a>(TEL)/9708(FAX)<br />
+								<a href="tel:03-5875-9707">03-5875-9707</a> (TEL) / 9708 (FAX)
 							</td>
 						</tr>
 						<tr>
