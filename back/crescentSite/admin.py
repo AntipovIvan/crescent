@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django import forms
 from .models import *
+from adminsortable2.admin import SortableAdminMixin
 
 
 class ContentInline(admin.StackedInline):
@@ -9,6 +10,11 @@ class ContentInline(admin.StackedInline):
 
 class ImageInline(admin.StackedInline):
     model = Image
+
+
+class ProductContentInline(admin.StackedInline):
+    model = ProductContent
+    extra = 0
 
 
 class NewsImagesInline(admin.StackedInline):
@@ -27,9 +33,9 @@ class NewsAdminForm(forms.ModelForm):
         fields = "__all__"
 
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = ProductAdminForm
-    inlines = [ContentInline, ImageInline]
+    inlines = [ContentInline, ImageInline, ProductContentInline]
     list_display = [
         "title",
         "sorting_order",

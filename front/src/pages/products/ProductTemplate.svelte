@@ -12,6 +12,14 @@
 	let isFixedNav = false;
 	let activeSection = null;
 
+	const sectionsMapping = {
+		OVERVIEW: '概要',
+		USAGE: '用途',
+		DETAILS_PRICE: '詳細・金額',
+		CATALOG_DOWNLOAD: 'カタログダウンロード',
+		OTHER: 'その他'
+	};
+
 	onMount(async () => {
 		try {
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
@@ -20,38 +28,43 @@
 			}
 			const { results } = await response.json();
 			isLoading = false;
-			product = results;
+			product = results.map((result) => {
+				result.productContent.map((content) => {
+					content.section = sectionsMapping[content.section];
+				});
+				return result;
+			});
 		} catch (err) {
 			error = err;
 		}
 
-		const sidebarItems = document.querySelectorAll('.sidebar-item');
-		const sections = document.querySelectorAll('.content > section');
+		setTimeout(() => {
+			const sidebarItems = document.querySelectorAll('.sidebar-item');
+			const sections = document.querySelectorAll('.content > section');
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-						const targetId = entry.target.id;
-						activeSection = targetId;
-						sidebarItems.forEach((item) => {
-							if (item.getAttribute('href') === `#${targetId}`) {
-								console.log('trigger');
-								item.classList.add('active');
-							} else {
-								console.log('trigger');
-								item.classList.remove('active');
-							}
-						});
-					}
-				});
-			},
-			{ threshold: 0.3 }
-		);
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+							const targetId = entry.target.id;
+							activeSection = targetId;
+							sidebarItems.forEach((item) => {
+								if (item.getAttribute('href') === `#${targetId}`) {
+									item.classList.add('active');
+								} else {
+									item.classList.remove('active');
+								}
+							});
+						}
+					});
+				},
+				{ threshold: 0.5 }
+			);
 
-		sections.forEach((section) => {
-			observer.observe(section);
-		});
+			sections.forEach((section) => {
+				observer.observe(section);
+			});
+		}, 1000);
 
 		window.addEventListener('scroll', () => {
 			const heroHeight = document.querySelector('.hero');
@@ -69,7 +82,6 @@
 			}
 		});
 	}
-
 	function scrollToElement(event) {
 		event.preventDefault();
 
@@ -77,13 +89,19 @@
 		const targetElement = document.getElementById(targetId);
 
 		if (targetElement) {
-			targetElement.scrollIntoView({ behavior: 'smooth' });
-		}
-	}
+			const sidebarItems = document.querySelectorAll('.sidebar-item');
 
-	function convertUrlsToLinks(text) {
-		const urlRegex = /(https?:\/\/[^\s]+)/g;
-		return text.replace(urlRegex, '<a href="$&" target="_blank">$&</a>');
+			sidebarItems.forEach((item) => {
+				item.classList.remove('active');
+				if (item.getAttribute('href') === `#${targetId}`) {
+					item.classList.add('active');
+				}
+			});
+
+			setTimeout(() => {
+				targetElement.scrollIntoView();
+			}, 0);
+		}
 	}
 </script>
 
@@ -94,7 +112,7 @@
 		<div class="hero">
 			<h1>{product.title}</h1>
 			<figure class="hero-image-container">
-				<img class="hero-image" src={product.images[0].image} alt={product.images[0].id} />
+				<img class="hero-image" src={product.hero} alt="Hero" />
 			</figure>
 		</div>
 
@@ -106,86 +124,72 @@
 		</div>
 
 		<div class="content">
-			<section class="overview" id="overview">
-				<div class="container">
-					<h3>製品概要</h3>
-					<p class="explanation">
-						{@html convertUrlsToLinks(product.contents[0].content)}
-					</p>
+			{#if product.productContent.length > 0}
+				<section class="overview" id="overview">
+					{#each product.productContent.filter((item) => item.section === '概要') as { id, productTitle, productText, image }}
+						<div class="container">
+							<h3>{productTitle}</h3>
+							<div class="explanation">
+								{@html productText}
+							</div>
+							{#if image}
+								<figure>
+									<img src={image} alt={productTitle} />
+								</figure>{/if}
+						</div>
+					{/each}
+				</section>
 
-					<figure>
-						<img src={product.images[1].image} alt={product.images[1].id} />
-					</figure>
-				</div>
+				<section class="usage" id="usage">
+					{#each product.productContent.filter((item) => item.section === '用途') as { id, productTitle, productText, image }}
+						<div class="container">
+							<h3>{productTitle}</h3>
+							<div class="explanation">
+								{@html productText}
+							</div>
+							{#if image}
+								<figure>
+									<img src={image} alt={productTitle} />
+								</figure>
+							{/if}
+						</div>
+					{/each}
+				</section>
 
-				<div class="container">
-					<h3>製品特徴</h3>
-					<figure>
-						<img src={product.images[2].image} alt={product.images[2].id} />
-					</figure>
-					<p class="explanation">
-						{@html convertUrlsToLinks(product.contents[1].content)}
-					</p>
-				</div>
-			</section>
+				<section class="price" id="price">
+					{#each product.productContent.filter((item) => item.section === '詳細・金額') as { id, productTitle, productText, image }}
+						<div class="container">
+							<h3>{productTitle}</h3>
+							{#if image}
+								<figure>
+									<img src={image} alt={productTitle} />
+								</figure>
+							{/if}
 
-			<section class="usage" id="usage">
-				<div class="container">
-					<h3>オフライン用途</h3>
+							<div class="explanation">
+								{@html productText}
+							</div>
+						</div>
+					{/each}
+				</section>
 
-					<p class="explanation">
-						{@html convertUrlsToLinks(product.contents[2].content)}
-					</p>
-					<figure>
-						<img src={product.images[3].image} alt={product.images[3].id} />
-					</figure>
-				</div>
+				<section class="other" id="other">
+					{#each product.productContent.filter((item) => item.section === 'その他') as { id, productTitle, productText, image }}
+						<div class="container">
+							<h3>{productTitle}</h3>
+							{#if image}
+								<figure>
+									<img src={image} alt={productTitle} />
+								</figure>
+							{/if}
 
-				<div class="container">
-					<h3>リアルタイム用途</h3>
-
-					<p class="explanation">
-						{@html convertUrlsToLinks(product.contents[3].content)}
-					</p>
-					<figure>
-						<img src={product.images[4].image} alt={product.images[4].id} />
-					</figure>
-				</div>
-			</section>
-
-			<section class="price" id="price">
-				<div class="container">
-					<h3>リアルタイムフェイシャルアニメーションプラットフォーム Faceware Studio</h3>
-					<figure>
-						<img src={product.images[5].image} alt={product.images[5].id} />
-					</figure>
-					<p class="explanation">
-						{@html convertUrlsToLinks(product.contents[4].content)}
-					</p>
-				</div>
-
-				<div class="container">
-					<h3>画像解析ソフトウェア　Faceware™ Analyzer 3</h3>
-
-					<figure>
-						<img src={product.images[6].image} alt={product.images[6].id} />
-					</figure>
-
-					<p class="explanation">
-						{@html convertUrlsToLinks(product.contents[5].content)}
-					</p>
-				</div>
-			</section>
-
-			<section class="other" id="other">
-				<div class="container">
-					<h2>用途・事例</h2>
-
-					<!-- <figure>
-					<img src={figures} alt="Figures" />
-				</figure> -->
-				</div>
-			</section>
+							<div class="explanation">
+								{@html productText}
+							</div>
+						</div>
+					{/each}
+				</section>
+			{/if}
 		</div>
 	</div>
 {:else}
@@ -193,8 +197,9 @@
 {/if}
 
 <style>
-	p {
-		white-space: pre-wrap;
+	ul,
+	ol {
+		list-style-type: unset;
 	}
 	.overflowed-text {
 		margin: 0;
@@ -242,7 +247,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		padding: 2rem 8rem;
+		padding: 2rem 0 2rem 8rem;
 	}
 
 	.content {

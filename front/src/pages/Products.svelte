@@ -106,7 +106,7 @@
 
 		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
 			{#if products}
-				{#each products.slice((currentPage - 1) * pageSize, currentPage * pageSize) as { id, title, contents, category, thumbnail }, index}
+				{#each products.slice((currentPage - 1) * pageSize, currentPage * pageSize) as { id, title, description, category, thumbnail }, index}
 					<li
 						class="card"
 						data-category={category === 'Coming soon' ? (category = 'Coming soon') : category}
@@ -130,7 +130,7 @@
 										</li>
 									</ul>
 									<p>{title}</p>
-									<span class="overflowed-text">{contents[0].content}</span>
+									<span class="overflowed-text">{description}</span>
 								</figcaption>
 							</figure>
 						</article>
@@ -275,6 +275,7 @@
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
 		white-space: pre-wrap;
+		width: 100%;
 	}
 	.content {
 		display: flex;

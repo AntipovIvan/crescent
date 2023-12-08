@@ -15,6 +15,12 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ProductContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductContent
+        fields = "__all__"
+
+
 class NewsImagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsImages
@@ -53,6 +59,7 @@ class NewsModelSerializer(serializers.HyperlinkedModelSerializer):
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     contents = ContentSerializer(many=True, read_only=True)
     images = ImageSerializer(many=True, read_only=True)
+    productContent = ProductContentSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
@@ -61,7 +68,10 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             "title",
             "contents",
             "category",
+            "description",
+            "hero",
             "images",
+            "productContent",
             "thumbnail",
             "sorting_order",
         ]
