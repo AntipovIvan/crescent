@@ -198,7 +198,7 @@
 	<h2>関連リンク</h2>
 	<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
 		{#if products}
-			{#each products as { id, title, contents, category, thumbnail }, index}
+			{#each products as { id, title, description, category, thumbnail }, index}
 				<li class="card">
 					<article>
 						<figure>
@@ -210,7 +210,7 @@
 							</a>
 							<figcaption>
 								<p>{title}</p>
-								<span class="overflowed-text">{contents[0].content}</span>
+								<span class="overflowed-text">{description}</span>
 							</figcaption>
 						</figure>
 					</article>

@@ -66,7 +66,7 @@
 						<button
 							on:click={() => {
 								sidebar_show = false;
-							}}><a href="#">コンテンツ開発</a></button
+							}}><a href={`/development/`} use:link>コンテンツ開発</a></button
 						>
 					</li>
 					<li>
@@ -98,7 +98,7 @@
 			<ul class="pcNavi">
 				<li><a href={`/products/`} use:link use:active>製品販売</a></li>
 				<li><a href={`/services/`} use:link use:active>スタジオサービス</a></li>
-				<li><a href="#">コンテンツ開発</a></li>
+				<li><a href={`/development/`} use:link use:active>コンテンツ開発</a></li>
 				<li><a href={`/aboutus/`} use:link use:active>会社情報</a></li>
 				<li><a href={`/contact/`} use:link use:active>お問い合わせ</a></li>
 			</ul>

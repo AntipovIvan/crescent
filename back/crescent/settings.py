@@ -254,8 +254,10 @@ CKEDITOR_CONFIGS = {
                     "SpecialChar",
                     "PageBreak",
                     "Iframe",
+                    "Embed",
                 ],
             },
+            {"extraPlugins": ",".join(["youtube"])},
             "/",
             {
                 "name": "styles",

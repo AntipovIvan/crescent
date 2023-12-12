@@ -3,65 +3,105 @@
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
 	import urlSlug from 'url-slug';
+	import fourdstudio from '../assets/services/4dstudioHero.jpg';
+	import bodyLightcage from '../assets/services/lightcageFull.jpg';
+	import faceLightcage from '../assets/services/lightcageFace.jpg';
 
-	let services;
+	// let services;
 	let error;
 
-	onMount(async () => {
-		try {
-			const response = await fetch(
-				'http://' + window.location.hostname + ':7000/api/servicesmodels'
-			);
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
+	// onMount(async () => {
+	// 	try {
+	// 		const response = await fetch(
+	// 			'http://' + window.location.hostname + ':7000/api/servicesmodels'
+	// 		);
+	// 		if (!response.ok) {
+	// 			throw new Error('Network response was not ok');
+	// 		}
+	// 		const { results } = await response.json();
 
-			services = results;
-		} catch (err) {
-			error = err;
-		}
-	});
+	// 		services = results;
+	// 	} catch (err) {
+	// 		error = err;
+	// 	}
+	// });
 </script>
 
 <section>
-	<h1>STUDIO SERVICES</h1>
+	<h1>スタジオサービス</h1>
 	<div class="content">
 		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
-			{#if services}
-				{#each services as { id, title, content, category, thumbnail }, index}
-					<li
-						class="card"
-						data-category={category === 'Coming soon' ? (category = 'ComingSoon') : category}
-					>
-						<article>
-							<figure>
-								<a
-									href={title !== '4DSTUDIO' ? `/services/${urlSlug(title)}` : `/services/4dstudio`}
-									use:link
+			<li class="card">
+				<article>
+					<figure>
+						<a href={`/services/4dstudio`} use:link>
+							<img src={fourdstudio} alt="4dstudio" width="400" height="200" />
+							<figcaption>
+								<p>4DSTUDIO</p>
+								<span class="overflowed-text"
+									>4Dviews社 HOLOSYSを使用したボリュメトリックキャプチャスタジオ</span
 								>
-									<img src={thumbnail} alt={title} width="400" height="200" />
+								<button class="more">
+									<span class="viewMore">View more</span>
+									<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
+										<path
+											d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
+										/>
+									</svg>
+								</button>
+							</figcaption>
+						</a>
+					</figure>
+				</article>
+			</li>
 
-									<figcaption>
-										<p>{title}</p>
-										<span class="overflowed-text">{content}</span>
-										<button class="more">
-											<span class="viewMore">View more</span>
-											<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
-												<path
-													d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
-												/>
-											</svg>
-										</button>
-									</figcaption>
-								</a>
-							</figure>
-						</article>
-					</li>
-				{/each}
-			{:else}
-				<p>Loading...</p>
-			{/if}
+			<li class="card">
+				<article>
+					<figure>
+						<a href={`/services/bodylightcage`} use:link>
+							<img src={bodyLightcage} alt="bodylightcage" width="400" height="200" />
+							<figcaption>
+								<p>FullBodyLightCageスタジオ（全身用）</p>
+								<span class="overflowed-text"
+									>ESPER社 FullBodyLightCageを使用した高精細な3D全身メッシュスキャン</span
+								>
+								<button class="more">
+									<span class="viewMore">View more</span>
+									<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
+										<path
+											d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
+										/>
+									</svg>
+								</button>
+							</figcaption>
+						</a>
+					</figure>
+				</article>
+			</li>
+
+			<li class="card">
+				<article>
+					<figure>
+						<a href={`/services/facelightcage`} use:link>
+							<img src={faceLightcage} alt="facelightcage" width="400" height="200" />
+							<figcaption>
+								<p>LightCageスタジオ（顔用）</p>
+								<span class="overflowed-text"
+									>ESPER社 LightCageを使用した高精細な3Dフェイスメッシュスキャン</span
+								>
+								<button class="more">
+									<span class="viewMore">View more</span>
+									<svg fill="#0b345b" viewBox="0 0 31.33 31.33" width="35">
+										<path
+											d="M15.667,0C7.029,0,0.001,7.028,0.001,15.667c0,8.64,7.028,15.667,15.666,15.667c8.639,0,15.666-7.027,15.666-15.667 C31.333,7.028,24.306,0,15.667,0z M18.097,23.047c-0.39,0.393-0.902,0.587-1.414,0.587s-1.022-0.194-1.414-0.587 c-0.781-0.779-0.781-2.047,0-2.827l2.552-2.553H8.687c-1.104,0-2-0.896-2-2c0-1.104,0.896-2,2-2h9.132l-2.552-2.552 c-0.781-0.781-0.781-2.047,0-2.828c0.78-0.781,2.048-0.781,2.828,0l7.381,7.381L18.097,23.047z"
+										/>
+									</svg>
+								</button>
+							</figcaption>
+						</a>
+					</figure>
+				</article>
+			</li>
 		</ul>
 	</div>
 </section>
