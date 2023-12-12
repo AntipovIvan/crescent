@@ -83,12 +83,6 @@ class Migration(migrations.Migration):
                 ),
                 ("title", models.CharField(max_length=100)),
                 (
-                    "image",
-                    models.ImageField(
-                        upload_to=crescentSite.models.Image.upload_to
-                    ),
-                ),
-                (
                     "product",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,

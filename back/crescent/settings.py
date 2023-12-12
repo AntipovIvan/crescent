@@ -3,7 +3,9 @@ import os
 from dotenv import load_dotenv
 from ckeditor.configs import DEFAULT_CONFIG
 
+
 load_dotenv()
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,6 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "ckeditor",
+    "ckeditor_uploader",
     "rest_framework",
     "crescentSite",
     "adminsortable2",
@@ -115,6 +118,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "/back/media/"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+# CKEDITOR_RESTRICT_BY_USER = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

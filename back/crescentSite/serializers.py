@@ -3,18 +3,6 @@ from .models import *
 from rest_framework import serializers
 
 
-class ContentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Content
-        fields = "__all__"
-
-
-class ImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Image
-        fields = "__all__"
-
-
 class ProductContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductContent
@@ -57,8 +45,6 @@ class NewsModelSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
-    contents = ContentSerializer(many=True, read_only=True)
-    images = ImageSerializer(many=True, read_only=True)
     productContent = ProductContentSerializer(many=True, read_only=True)
 
     class Meta:
@@ -66,11 +52,9 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             "id",
             "title",
-            "contents",
             "category",
             "description",
             "hero",
-            "images",
             "productContent",
             "thumbnail",
             "sorting_order",

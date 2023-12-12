@@ -84,6 +84,26 @@ a:visited {
   display: inline-block;
 }
 
+.image-text-flexbox {
+  display: flex;
+  flex-direction: row;
+  gap:2rem;
+}
+
+hr{
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .image-text-flexbox {
+    flex-direction: column;
+  }
+  .image-text-flexbox img{
+    height: auto;
+    width: 100%;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   a:hover {
     color: #747bff;

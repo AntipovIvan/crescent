@@ -14,9 +14,9 @@
 
 	const sectionsMapping = {
 		OVERVIEW: '概要',
-		USAGE: '用途',
-		DETAILS_PRICE: '詳細・金額',
-		CATALOG_DOWNLOAD: 'カタログダウンロード',
+		FEATURE: '特徴',
+		DETAILS_PRICE: '仕様・価格',
+		SUPPORT: 'サポート',
 		OTHER: 'その他'
 	};
 
@@ -28,12 +28,7 @@
 			}
 			const { results } = await response.json();
 			isLoading = false;
-			product = results.map((result) => {
-				result.productContent.map((content) => {
-					content.section = sectionsMapping[content.section];
-				});
-				return result;
-			});
+			product = results;
 		} catch (err) {
 			error = err;
 		}
@@ -45,7 +40,7 @@
 			const observer = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((entry) => {
-						if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+						if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
 							const targetId = entry.target.id;
 							activeSection = targetId;
 							sidebarItems.forEach((item) => {
@@ -58,13 +53,13 @@
 						}
 					});
 				},
-				{ threshold: 0.5 }
+				{ threshold: 0.3 }
 			);
 
 			sections.forEach((section) => {
 				observer.observe(section);
 			});
-		}, 1000);
+		}, 200);
 
 		window.addEventListener('scroll', () => {
 			const heroHeight = document.querySelector('.hero');
@@ -103,6 +98,8 @@
 			}, 0);
 		}
 	}
+
+	// function hasCategory
 </script>
 
 {#if isLoading}
@@ -117,78 +114,106 @@
 		</div>
 
 		<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
-			<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>概要</a>
-			<a class="sidebar-item" href="#usage" on:click={scrollToElement}>用途</a>
-			<a class="sidebar-item" href="#price" on:click={scrollToElement}>詳細・金額</a>
-			<a class="sidebar-item" href="#other" on:click={scrollToElement}>その他</a>
+			{#each Object.entries(sectionsMapping) as [key, value]}
+				{#if product.productContent.some((item) => item.section === key)}
+					<a class="sidebar-item active" href={`#${key}`} on:click={scrollToElement}>{value}</a>
+				{/if}
+			{/each}
 		</div>
 
 		<div class="content">
 			{#if product.productContent.length > 0}
-				<section class="overview" id="overview">
-					{#each product.productContent.filter((item) => item.section === '概要') as { id, productTitle, productText, image }}
-						<div class="container">
-							<h3>{productTitle}</h3>
-							<div class="explanation">
-								{@html productText}
+				{#if product.productContent.some((item) => item.section === 'OVERVIEW')}
+					<section class="overview" id="OVERVIEW">
+						{#each product.productContent.filter((item) => item.section === 'OVERVIEW') as { id, productTitle, productText, image }}
+							<div class="container">
+								<h3>{productTitle}</h3>
+								<div class="explanation">
+									{@html productText}
+								</div>
+								{#if image}
+									<figure>
+										<img src={image} alt={productTitle} />
+									</figure>{/if}
 							</div>
-							{#if image}
-								<figure>
-									<img src={image} alt={productTitle} />
-								</figure>{/if}
-						</div>
-					{/each}
-				</section>
+						{/each}
+					</section>
+				{/if}
 
-				<section class="usage" id="usage">
-					{#each product.productContent.filter((item) => item.section === '用途') as { id, productTitle, productText, image }}
-						<div class="container">
-							<h3>{productTitle}</h3>
-							<div class="explanation">
-								{@html productText}
+				{#if product.productContent.some((item) => item.section === 'FEATURE')}
+					<section class="feature" id="FEATURE">
+						{#each product.productContent.filter((item) => item.section === 'FEATURE') as { id, productTitle, productText, image }}
+							<div class="container">
+								<h3>{productTitle}</h3>
+								<div class="explanation">
+									{@html productText}
+								</div>
+								{#if image}
+									<figure>
+										<img src={image} alt={productTitle} />
+									</figure>
+								{/if}
 							</div>
-							{#if image}
-								<figure>
-									<img src={image} alt={productTitle} />
-								</figure>
-							{/if}
-						</div>
-					{/each}
-				</section>
+						{/each}
+					</section>
+				{/if}
 
-				<section class="price" id="price">
-					{#each product.productContent.filter((item) => item.section === '詳細・金額') as { id, productTitle, productText, image }}
-						<div class="container">
-							<h3>{productTitle}</h3>
-							{#if image}
-								<figure>
-									<img src={image} alt={productTitle} />
-								</figure>
-							{/if}
+				{#if product.productContent.some((item) => item.section === 'DETAILS_PRICE')}
+					<section class="price" id="DETAILS_PRICE">
+						{#each product.productContent.filter((item) => item.section === 'DETAILS_PRICE') as { id, productTitle, productText, image }}
+							<div class="container">
+								<h3>{productTitle}</h3>
+								{#if image}
+									<figure>
+										<img src={image} alt={productTitle} />
+									</figure>
+								{/if}
 
-							<div class="explanation">
-								{@html productText}
+								<div class="explanation">
+									{@html productText}
+								</div>
 							</div>
-						</div>
-					{/each}
-				</section>
+						{/each}
+					</section>
+				{/if}
 
-				<section class="other" id="other">
-					{#each product.productContent.filter((item) => item.section === 'その他') as { id, productTitle, productText, image }}
-						<div class="container">
-							<h3>{productTitle}</h3>
-							{#if image}
-								<figure>
-									<img src={image} alt={productTitle} />
-								</figure>
-							{/if}
+				{#if product.productContent.some((item) => item.section === 'SUPPORT')}
+					<section class="support" id="SUPPORT">
+						{#each product.productContent.filter((item) => item.section === 'SUPPORT') as { id, productTitle, productText, image }}
+							<div class="container">
+								<h3>{productTitle}</h3>
+								{#if image}
+									<figure>
+										<img src={image} alt={productTitle} />
+									</figure>
+								{/if}
 
-							<div class="explanation">
-								{@html productText}
+								<div class="explanation">
+									{@html productText}
+								</div>
 							</div>
-						</div>
-					{/each}
-				</section>
+						{/each}
+					</section>
+				{/if}
+
+				{#if product.productContent.some((item) => item.section === 'OTHER')}
+					<section class="other" id="OTHER">
+						{#each product.productContent.filter((item) => item.section === 'OTHER') as { id, productTitle, productText, image }}
+							<div class="container">
+								<h3>{productTitle}</h3>
+								{#if image}
+									<figure>
+										<img src={image} alt={productTitle} />
+									</figure>
+								{/if}
+
+								<div class="explanation">
+									{@html productText}
+								</div>
+							</div>
+						{/each}
+					</section>
+				{/if}
 			{/if}
 		</div>
 	</div>
@@ -201,6 +226,7 @@
 	ol {
 		list-style-type: unset;
 	}
+
 	.overflowed-text {
 		margin: 0;
 		white-space: nowrap;

@@ -12,13 +12,9 @@
 	const pageSize = 20;
 
 	const categoryMapping = {
-		MOTION_CAPTURE: 'モーションキャプチャー',
-		VOLUMETRICS_CAPTURE: 'ボリュメトリックキャプチャー',
-		PHOTOGRAMMETRY: 'フォトグラフメトリ',
-		CAMERA: 'Camera',
-		SOFTWARE: 'Software',
-		HARDWARE: 'Hardware',
-		COMING_SOON: 'Coming soon'
+		SOLUTION: 'ソリューション',
+		SOFTWARE: 'ソフトウェア',
+		DEVICE: 'デバイス'
 	};
 
 	onMount(async () => {
@@ -58,23 +54,9 @@
 		<!-- {#each Object.entries(categoryMapping) as [fetch, category]}
 			<input type="radio" id={category} name="categories" value={category} />
 		{/each} -->
-		<input
-			type="radio"
-			id="モーションキャプチャー"
-			name="categories"
-			value="モーションキャプチャー"
-		/>
-		<input
-			type="radio"
-			id="ボリュメトリックキャプチャー"
-			name="categories"
-			value="ボリュメトリックキャプチャー"
-		/>
-		<input type="radio" id="フォトグラフメトリ" name="categories" value="フォトグラフメトリ" />
-		<input type="radio" id="Camera" name="categories" value="Camera" />
-		<input type="radio" id="Software" name="categories" value="Software" />
-		<input type="radio" id="Hardware" name="categories" value="Hardware" />
-		<input type="radio" id="Coming soon" name="categories" value="Coming soon" />
+		<input type="radio" id="ソリューション" name="categories" value="ソリューション" />
+		<input type="radio" id="ソフトウェア" name="categories" value="ソフトウェア" />
+		<input type="radio" id="デバイス" name="categories" value="デバイス" />
 
 		<nav class={Device.isPhone || Device.isTablet ? 'navMobile' : 'nav'}>
 			<h2>CATEGORY</h2>
@@ -82,25 +64,14 @@
 			<ul class="localNavContainer">
 				<li class="localNavContainerList"><label for="All">All</label></li>
 				<li class="localNavContainerList">
-					<label for="モーションキャプチャー">モーションキャプチャー</label>
+					<label for="ソリューション">ソリューション</label>
 				</li>
 				<li class="localNavContainerList">
-					<label for="ボリュメトリックキャプチャー">ボリュメトリックキャプチャー</label>
+					<label for="ソフトウェア">ソフトウェア</label>
 				</li>
 				<li class="localNavContainerList">
-					<label for="フォトグラフメトリ">フォトグラフメトリ</label>
+					<label for="デバイス">デバイス</label>
 				</li>
-				<li class="localNavContainerList">
-					<label for="Camera">Camera</label>
-				</li>
-				<li class="localNavContainerList">
-					<label for="Software">Software</label>
-				</li>
-				<li class="localNavContainerList">
-					<label for="Hardware">Hardware</label>
-				</li>
-
-				<li class="localNavContainerList"><label for="Coming soon">Coming soon</label></li>
 			</ul>
 		</nav>
 
@@ -220,16 +191,9 @@
 	/* FILTERING RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 	[value='All']:checked ~ nav .localNavContainer [for='All'],
-	[value='モーションキャプチャー']:checked ~ nav .localNavContainer [for='モーションキャプチャー'],
-	[value='ボリュメトリックキャプチャー']:checked
-		~ nav
-		.localNavContainer
-		[for='ボリュメトリックキャプチャー'],
-	[value='フォトグラフメトリ']:checked ~ nav .localNavContainer [for='フォトグラフメトリ'],
-	[value='Camera']:checked ~ nav .localNavContainer [for='Camera'],
-	[value='Software']:checked ~ nav .localNavContainer [for='Software'],
-	[value='Hardware']:checked ~ nav .localNavContainer [for='Hardware'],
-	[value='Coming soon']:checked ~ nav .localNavContainer [for='Coming soon'] {
+	[value='ソリューション']:checked ~ nav .localNavContainer [for='ソリューション'],
+	[value='ソフトウェア']:checked ~ nav .localNavContainer [for='ソフトウェア'],
+	[value='デバイス']:checked ~ nav .localNavContainer [for='デバイス'] {
 		background: #0b345b;
 		color: #fff;
 	}
@@ -238,17 +202,9 @@
 		display: block;
 	}
 
-	[value='モーションキャプチャー']:checked
-		~ .posts
-		.card:not([data-category~='モーションキャプチャー']),
-	[value='ボリュメトリックキャプチャー']:checked
-		~ .posts
-		.card:not([data-category~='ボリュメトリックキャプチャー']),
-	[value='フォトグラフメトリ']:checked ~ .posts .card:not([data-category~='フォトグラフメトリ']),
-	[value='Camera']:checked ~ .posts .card:not([data-category~='Camera']),
-	[value='Software']:checked ~ .posts .card:not([data-category~='Software']),
-	[value='Hardware']:checked ~ .posts .card:not([data-category~='Hardware']),
-	[value='Coming soon']:checked ~ .posts .card:not([data-category~='Coming soon']) {
+	[value='ソリューション']:checked ~ .posts .card:not([data-category~='ソリューション']),
+	[value='ソフトウェア']:checked ~ .posts .card:not([data-category~='ソフトウェア']),
+	[value='デバイス']:checked ~ .posts .card:not([data-category~='デバイス']) {
 		display: none;
 	}
 

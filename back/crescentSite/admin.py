@@ -4,14 +4,6 @@ from .models import *
 from adminsortable2.admin import SortableAdminMixin
 
 
-class ContentInline(admin.StackedInline):
-    model = Content
-
-
-class ImageInline(admin.StackedInline):
-    model = Image
-
-
 class ProductContentInline(admin.StackedInline):
     model = ProductContent
     extra = 0
@@ -35,7 +27,7 @@ class NewsAdminForm(forms.ModelForm):
 
 class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = ProductAdminForm
-    inlines = [ContentInline, ImageInline, ProductContentInline]
+    inlines = [ProductContentInline]
     list_display = [
         "title",
         "sorting_order",
