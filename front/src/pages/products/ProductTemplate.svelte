@@ -4,7 +4,6 @@
 	import { link } from 'svelte-spa-router';
 	import NotFound from '../NotFound.svelte';
 	import Loading from '../../lib/Loading.svelte';
-	import './style.css';
 
 	export let params = {};
 	let product;

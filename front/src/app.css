@@ -55,7 +55,9 @@ h1,
 figure{
   margin:0;
 }
-
+.explanation img {
+  width: 100%;
+}
 a {
   font-weight: 500;
   color: black;
