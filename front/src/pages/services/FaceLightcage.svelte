@@ -1,12 +1,9 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../assets/services/4dstudio/hero.png';
-	import overview from '../../assets/services/4dstudio/overview.jpg';
-	import specs from '../../assets/services/4dstudio/specs.jpg';
-	import banner from '../../assets/services/4dstudio/banner.jpg';
-	import shootsystem from '../../assets/services/4dstudio/shootsystem.jpg';
-	import about from '../../assets/services/4dstudio/about.jpg';
+	import hero from '../../assets/services/lightcageFace/lcstudio_top2.png';
+	import man from '../../assets/services/lightcageFace/lcstudio_syosai1.png';
+	import video from '../../assets/services/lightcageFace/DigiTada_new_maps_test03.mp4';
 	import figures from '../../assets/services/4dstudio/figures.jpg';
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
@@ -77,119 +74,153 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>4D STUDIO</h1>
+		<h1>LightCageスタジオ（顔用）</h1>
 		<figure class="hero-image-container">
-			<img class="hero-image" src={hero} alt="4d studios" />
+			<img class="hero-image" src={hero} alt="FullBodyLightCage" />
 		</figure>
 	</div>
 
 	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
-		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>スタジオ概要</a>
-		<a class="sidebar-item" href="#system" on:click={scrollToElement}>撮影システム</a>
-		<a class="sidebar-item" href="#example" on:click={scrollToElement}>用途・事例</a>
+		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>概要</a>
+		<a class="sidebar-item" href="#system" on:click={scrollToElement}>詳細</a>
+		<a class="sidebar-item" href="#example" on:click={scrollToElement}>スタジオ利用価格</a>
 	</div>
 
 	<div class="content">
 		<section class="overview" id="overview">
 			<div class="container">
-				<h2>スタジオ概要</h2>
+				<h2>クレッセント ESPER LIGHTCAGE 専用スタジオ</h2>
 				<p class="explanation">
-					清澄白河駅から徒歩数分。ボリュメトリックビデオの量産体制を整えました。カメラ48台の4Dviewsシステムを常設、吸音材を全壁面と天井に設置、オーディオの同録も可能です。また、Viconによるモーションキャプチャの同録、LightCageによるフォトグラメトリ撮影、ステージ上でのスチル撮影なども行える最新鋭のスタジオです。400坪の広さをフル活用して大勢のスタッフ様、演者様を迎えても快適な撮影進行が可能です。オフラインデータ・ストリーミング配信等の活用についても一気通貫でサポートいたします。
+					LIGHTCAGEを使用した高精細な3Dのフェイスメッシュスキャン、様々なテクスチャーのキャプチャーを行って頂けます。
+					デジタルヒューマン製作の要となります、フェイス製作に必要なハイクオリティな素材を提供致します。
+					控室、打合せスペースのご用意もございます。
 				</p>
-
-				<figure>
-					<img src={overview} alt="Studio overview" />
-				</figure>
-			</div>
-
-			<div class="container">
-				<h3>ボリュメトリックビデオとは</h3>
-				<p class="explanation">
-					ボリュメトリックビデオ（Volumetric
-					Video）とは、現実の人や物をそのまま三次元デジタルデータとして撮影する技術のことです。ビデオという名のとおり、写真のように一瞬をとらえるのではなく、立体的な動画として撮影することができます。三次元動画や自由視点動画とも呼ばれ、次世代の映像技術として注目されています。
-				</p>
-			</div>
-
-			<div class="container">
-				<h3>ボリュメトリックビデオの特徴</h3>
-				<ul class="features-list">
-					<li class="features-list-item">好きな角度から映像を観ることができる</li>
-					<li class="features-list-item">
-						撮影した後に人物やセットの位置関係やカメラワークを何度でも自由に変えることができる
-					</li>
-					<li class="features-list-item">
-						実写撮影には難しい、もしくは不可能なカメラワークを実現できる
-					</li>
-					<li class="features-list-item">
-						人物のリアルな表情や服の揺れ・皺など、CGで再現するのが困難な動きや形状を簡単にデジタル化することができる
-					</li>
-					<li class="features-list-item">
-						曲げたり巨大化させたり増殖させたりなど、CGに対して行えるさまざまな加工を行うことができる
-					</li>
-					<li class="features-list-item">
-						遠く離れた場所にいる人やバーチャル空間にしか存在しないキャラクターが同じ空間で共演することができる
-					</li>
-				</ul>
-				<figure>
-					<img src={specs} alt="Volumetric video features" />
-				</figure>
-			</div>
-
-			<div class="container">
-				<h3>4Dviewsのボリュメトリックキャプチャシステム</h3>
-				<p class="explanation">
-					このスタジオでは、4Dviews社のボリュメトリックキャプチャシステム HOLOSYS
-					を使用しています。4Dviewsは2007年以来、ボリュメトリックキャプチャのパイオニアとして活躍してきました。2010年には、私たちクレッセントと共同で世界初の商用ボリュメトリックキャプチャスタジオを開設し、映画やCM、ミュージックビデオ、アート、アパレル、教育など、さまざまな分野でボリュメトリックビデオを活用したプロジェクトを生み出しています。4DviewsはHOLOSYSのほかにもノンリニア編集ソフトウェア
-					4Dfx
-					を開発しており、ボリュメトリックビデオのエコシステムの構築に大きく貢献しています。私たちクレッセントは日本・台湾における4Dviews製品の総代理店です。
-				</p>
-				<figure>
-					<img src={banner} alt="4DViews banner" />
-				</figure>
-				<iframe
-					width="560"
-					height="315"
-					src="https://www.youtube.com/embed/Rkp7bjVsVgc?si=mVGQao_rS8gcHbAw"
-					title="YouTube video player"
-					frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					allowfullscreen
-				></iframe>
 			</div>
 		</section>
 
 		<section class="system" id="system">
 			<div class="container">
-				<h2>撮影システム</h2>
-				<p class="explanation">
-					このスタジオでは、4Dviews社のボリュメトリックキャプチャシステム HOLOSYS
-					を使用しています。2023年3月に、HOLOSYSが HOLOSYS+(プラス)
-					にバージョンアップしたことにより、カメラ1台ごとの解像度が500万画素から1200万画素に上がり、より広いエリアをより精細にキャプチャすることが可能になりました。立体化のアルゴリズムも進化しており、よりリアルで実写と見まがうほどのクオリティに近づいています。
-				</p>
+				<h2>詳細</h2>
 
-				<figure>
-					<img src={shootsystem} alt="Shooting system" />
-				</figure>
+				<h3>クレッセントスタジオ　設置カメラ</h3>
+				<p>CANON　EOS 7D MarkII 53台</p>
 			</div>
 
 			<div class="container">
-				<h3>システムの特徴</h3>
-				<p class="explanation">
-					HOLOSYSでは中央のキャプチャエリアを取り囲む48台のカメラが完全に同期し、すべて同じタイミングで動画撮影を行います。撮影後、それらの動画をもとに1フレームずつサーバで計算することで、三次元のメッシュとテクスチャのシーケンスを生成します。カメラと照明がセットになったスタジオレイアウトになっているため、色ムラや影の少ないテクスチャの生成が可能です。
-				</p>
-				<figure>
-					<img src={about} alt="About 4D studio" />
-				</figure>
+				<h3>出力データフォーマット</h3>
+				<div>
+					<ul>
+						<li>
+							撮影画像
+							<ul>
+								<li>
+									CANON EOS 7D MarkII　53台分
+									<ul>
+										<li>解像度　　3648×5472</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							テクスチャーマップ
+							<ul>
+								<li>DiffuseMap</li>
+								<li>SpecularMap</li>
+								<li>UnpolarizedMap</li>
+								<li>
+									TangentMap
+									<ul>
+										<li>bit 16bit</li>
+										<li>解像度　16384×16384</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							メッシュデータ
+							<ul>
+								<li>RAWメッシュ 500万ポリゴン程度</li>
+								<li>クリーンナップメッシュ</li>
+								<li>リトポロジーメッシュ</li>
+							</ul>
+						</li>
+					</ul>
+					<figure>
+						<img src={man} alt="man" />
+					</figure>
+				</div>
+				<p>※希望のベースメッシュを頂けますと、そちらに沿って製作致します。</p>
+			</div>
+
+			<div class="container">
+				<h3>レンダリング例</h3>
+
+				<p>MAYA/Arnold使用例</p>
+				<video width="100%" height="100%" controls>
+					<track default kind="captions" srclang="en" src="" />
+					<source src={video} type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+			</div>
+
+			<div class="container">
+				<h3>サンプルデータ</h3>
+
+				<p>・メッシュ</p>
+				<p>・各種テクスチャーマップ</p>
+				<p>https://send.crescentinc.co.jp/LightCage/Sample/LightCage_Sample.zip 1.21GB</p>
 			</div>
 		</section>
 
 		<section class="example" id="example">
 			<div class="container">
-				<h2>用途・事例</h2>
+				<h2>スタジオ利用価格</h2>
 
-				<figure>
-					<img src={figures} alt="Figures" />
-				</figure>
+				<h3>スタジオ利用価格</h3>
+				<p>◇一日撮影利用料：　60万円(税別)</p>
+				<p>(EOS 7D MarkII　53台分　撮影画像納品含む)</p>
+			</div>
+
+			<div class="container">
+				<h3>データ処理価格</h3>
+
+				<ul>
+					<li>
+						テクスチャマップフルセット生成・メッシュクリーンナップ：　18万円(税別)
+						<ul>
+							<li>
+								各テクスチャマップ生成
+								<ul>
+									<li>
+										DiffuseMap / SpecularMap / NormalMap (object space / tangent
+										spaceから選択できます)
+									</li>
+								</ul>
+							</li>
+							<li>メッシュ生成</li>
+							<li>クリーンナップ</li>
+							<li>リトポロジー処理</li>
+							<li>ブレンドシェイプ用処理</li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul>
+					<li>
+						メッシュクリーンナップ（ブレンドシェイプ用）：　1表情 12万円(税別)
+						<ul>
+							<li>メッシュ生成</li>
+							<li>クリーンナップ</li>
+							<li>リトポロジー処理</li>
+							<li>ブレンドシェイプ用処理</li>
+						</ul>
+					</li>
+				</ul>
+
+				<p>撮影について詳細、デモや打合せのご要望につきましては、</p>
+				<p>
+					lightcage@crescentinc.co.jp もしくは お電話（ 03-5875-9707 ）まで お問い合わせください
+				</p>
 			</div>
 		</section>
 	</div>
@@ -223,6 +254,16 @@
 </section>
 
 <style>
+	p {
+		font-size: calc(14px + 0.390625vw);
+	}
+	ul {
+		padding-left: 1rem;
+		font-size: calc(14px + 0.390625vw);
+	}
+	li {
+		padding-bottom: 0.5rem;
+	}
 	.overflowed-text {
 		margin: 0;
 		white-space: nowrap;
@@ -416,6 +457,12 @@
 		flex: 50%;
 		justify-content: space-between;
 	}
+	.system div div {
+		display: flex;
+		flex-direction: row;
+		gap: 5rem;
+		justify-content: space-between;
+	}
 	section div figure {
 		flex: 50%;
 	}
@@ -465,8 +512,9 @@
 		div.content {
 			margin-left: 0;
 		}
-		iframe {
-			width: 100%;
+		.system div div {
+			flex-direction: column;
+			gap: 2rem;
 		}
 	}
 

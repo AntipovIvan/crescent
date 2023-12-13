@@ -17,6 +17,7 @@ import PluginDev from "./pages/development/PluginDev.svelte";
 import Support from "./pages/development/Support.svelte";
 import BodyLightcage from "./pages/services/BodyLightcage.svelte";
 import FaceLightcage from "./pages/services/FaceLightcage.svelte";
+import Holosuite from "./pages/products/Holosuite.svelte";
 
 export const routes = {
   "/": Home,
@@ -34,6 +35,7 @@ export const routes = {
   "/services/:title": ServiceTemplate,
   "/product/vicon": Vicon,
   "/product/4dviews": Fourdviews,
+  "/product/holosuite": Holosuite,
   "/products/:title": ProductTemplate,
   "/news": News,
   "/news/:id": NewsTemplate,

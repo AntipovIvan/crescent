@@ -55,6 +55,7 @@ h1,
 figure{
   margin:0;
 }
+
 a {
   font-weight: 500;
   color: black;
@@ -88,6 +89,7 @@ a:visited {
   display: flex;
   flex-direction: row;
   gap:2rem;
+  align-items: center;
 }
 
 hr{

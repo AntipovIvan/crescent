@@ -4,6 +4,7 @@
 	import { link } from 'svelte-spa-router';
 	import NotFound from '../NotFound.svelte';
 	import Loading from '../../lib/Loading.svelte';
+	import './style.css';
 
 	export let params = {};
 	let product;
@@ -40,7 +41,7 @@
 			const observer = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((entry) => {
-						if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+						if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
 							const targetId = entry.target.id;
 							activeSection = targetId;
 							sidebarItems.forEach((item) => {
@@ -53,7 +54,7 @@
 						}
 					});
 				},
-				{ threshold: 0.3 }
+				{ threshold: 0.1 }
 			);
 
 			sections.forEach((section) => {
@@ -226,7 +227,9 @@
 	ol {
 		list-style-type: unset;
 	}
-
+	img {
+		width: 100%;
+	}
 	.overflowed-text {
 		margin: 0;
 		white-space: nowrap;

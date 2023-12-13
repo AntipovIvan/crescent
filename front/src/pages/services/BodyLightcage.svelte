@@ -3,10 +3,13 @@
 	import Device from 'svelte-device-info';
 	import hero from '../../assets/services/lightcageFull.jpg';
 	import man from '../../assets/services/lightcageBody/man.jpeg';
-	import specs from '../../assets/services/4dstudio/specs.jpg';
-	import banner from '../../assets/services/4dstudio/banner.jpg';
-	import shootsystem from '../../assets/services/4dstudio/shootsystem.jpg';
-	import about from '../../assets/services/4dstudio/about.jpg';
+	import studio1 from '../../assets/services/lightcageBody/Dress1.png';
+	import studio2 from '../../assets/services/lightcageBody/Dress2.png';
+	import studio3 from '../../assets/services/lightcageBody/Stage.png';
+	import studio4 from '../../assets/services/lightcageBody/owl.png';
+	import studio5 from '../../assets/services/lightcageBody/Free.png';
+	import studio6 from '../../assets/services/lightcageBody/alcohol.png';
+	import studio7 from '../../assets/services/lightcageBody/parking.png';
 	import figures from '../../assets/services/4dstudio/figures.jpg';
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
@@ -70,7 +73,7 @@
 		const targetElement = document.getElementById(targetId);
 
 		if (targetElement) {
-			targetElement.scrollIntoView({ behavior: 'smooth' });
+			targetElement.scrollIntoView();
 		}
 	}
 </script>
@@ -104,6 +107,22 @@
 
 			<div class="container">
 				<h3>システムの特徴</h3>
+				<table border="1" cellpadding="3">
+					<tbody>
+						<tr>
+							<td>RigSize</td>
+							<td>5m</td>
+						</tr>
+						<tr>
+							<td>Camera</td>
+							<td>Sony α6400 168台 </td>
+						</tr>
+						<tr>
+							<td>Light</td>
+							<td>ESPER MultiFlash V3 290台</td>
+						</tr>
+					</tbody>
+				</table>
 				<p class="explanation">
 					専用の同期信号分配システム「ESPER ControllerBox」「ESPER
 					TriggerBox」により、CameraとMultiFlashは完全に同期された連続撮影を行います。 MultiFlash
@@ -164,36 +183,183 @@
 
 		<section class="system" id="system">
 			<div class="container">
-				<h2>撮影システム</h2>
-				<p class="explanation">
-					このスタジオでは、4Dviews社のボリュメトリックキャプチャシステム HOLOSYS
-					を使用しています。2023年3月に、HOLOSYSが HOLOSYS+(プラス)
-					にバージョンアップしたことにより、カメラ1台ごとの解像度が500万画素から1200万画素に上がり、より広いエリアをより精細にキャプチャすることが可能になりました。立体化のアルゴリズムも進化しており、よりリアルで実写と見まがうほどのクオリティに近づいています。
-				</p>
+				<h2>データ形式・価格等</h2>
 
-				<figure>
-					<img src={shootsystem} alt="Shooting system" />
-				</figure>
+				<h3>データ形式</h3>
+				<ul>
+					<li>
+						撮影画像
+						<ul>
+							<li>
+								SONY α6400 168台分
+								<ul>
+									<li>解像度 4000×6000</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						テクスチャーマップ "tiff .png"
+						<ul>
+							<li>DiffuseMap</li>
+							<li>SpecularMap</li>
+							<li>
+								UnpolarizedMap
+								<ul>
+									<li>bit 16bit</li>
+									<li>解像度 8192×8192</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						メッシュデータ "obj .fbx"
+						<ul>
+							<li>RAWメッシュ 1000万ポリゴン程度</li>
+							<li>クリーンナップメッシュ</li>
+							<li>リトポロジーメッシュ</li>
+						</ul>
+					</li>
+				</ul>
 			</div>
 
 			<div class="container">
-				<h3>システムの特徴</h3>
-				<p class="explanation">
-					HOLOSYSでは中央のキャプチャエリアを取り囲む48台のカメラが完全に同期し、すべて同じタイミングで動画撮影を行います。撮影後、それらの動画をもとに1フレームずつサーバで計算することで、三次元のメッシュとテクスチャのシーケンスを生成します。カメラと照明がセットになったスタジオレイアウトになっているため、色ムラや影の少ないテクスチャの生成が可能です。
-				</p>
-				<figure>
-					<img src={about} alt="About 4D studio" />
-				</figure>
+				<h3>価格</h3>
+				<table border="1" cellpadding="3">
+					<tbody
+						><tr>
+							<th>タイトル</th>
+							<th>数</th>
+							<th>価格</th>
+						</tr>
+						<tr>
+							<td>FullBodyLightCageStudio</td>
+							<td>一日使用料</td>
+							<td>100万円</td>
+						</tr>
+						<tr>
+							<td>FullBodyLightCageStudio</td>
+							<td>半日使用料</td>
+							<td>70万円</td>
+						</tr>
+						<tr>
+							<td>画像納品</td>
+							<td>1Shot 504枚</td>
+							<td>3万円</td>
+						</tr>
+						<tr>
+							<td>RAWメッシュ(リファレンステクスチャマップ含む)</td>
+							<td>1体</td>
+							<td>3万円</td>
+						</tr>
+						<tr>
+							<td>メッシュクリーンナップ</td>
+							<td>1体</td>
+							<td>3万円</td>
+						</tr>
+						<tr>
+							<td>リトポロジー処理</td>
+							<td>1体</td>
+							<td>6万円</td>
+						</tr>
+						<tr>
+							<td>テクスチャマップ生成(Diffuse/Specular/Unpolarized)</td>
+							<td>1体</td>
+							<td>3万円</td>
+						</tr>
+						<tr>
+							<td>オートリギング/オートブレンドシェイプ</td>
+							<td>1体</td>
+							<td>お問い合わせください</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
 
 		<section class="example" id="example">
 			<div class="container">
-				<h2>用途・事例</h2>
+				<h2>スタジオ設備</h2>
+
+				<h3>楽屋</h3>
+				<p>お着替え室つきの大部屋を2部屋ご用意。広々とした空間で大勢の演者様でも対応可能です。</p>
+				<figure>
+					<img src={studio1} alt="Studio 1" />
+				</figure>
+				<figure>
+					<img src={studio2} alt="Studio 2" />
+				</figure>
+			</div>
+
+			<div class="container">
+				<h3>ステージ</h3>
 
 				<figure>
-					<img src={figures} alt="Figures" />
+					<img src={studio3} alt="Studio 3" />
 				</figure>
+				<figure>
+					<img src={studio4} alt="Studio 4" />
+				</figure>
+			</div>
+
+			<div class="container">
+				<h3>ミーティング用個室ほかフリースペース</h3>
+
+				<figure>
+					<img src={studio5} alt="Studio 5" />
+				</figure>
+			</div>
+
+			<div class="container">
+				<h3>感染防止対策</h3>
+				<ul>
+					<li>各部屋に手指アルコール消毒スプレーなどを配備</li>
+					<li>予備マスク常備</li>
+					<li>次亜塩素酸水生成器コアクリーンの設置</li>
+					<li>使い捨てカップの使用</li>
+				</ul>
+				<figure>
+					<img src={studio6} alt="Studio 6" />
+				</figure>
+			</div>
+
+			<div class="container">
+				<h3>その他</h3>
+				<ul>
+					<li>シャワールームあり</li>
+					<li>ゲストwifiあり</li>
+					<li>飲料・お茶菓子のご提供</li>
+					<li>駐車場あり※3台まで、事前にお知らせください</li>
+					<li>犬あり ※苦手な方はお知らせください</li>
+				</ul>
+				<figure>
+					<img src={studio7} alt="Studio 7" />
+				</figure>
+			</div>
+		</section>
+
+		<section class="access" id="access">
+			<div class="container">
+				<h2>アクセス・問合せ</h2>
+
+				<h3>アクセス</h3>
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d810.2391349384023!2d139.8034515!3d35.6780721!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601889ee15f69fe3%3A0x6cbe90ef9134b552!2z44Kv44Os44OD44K744Oz44OIIOS6jOOCueOCvw!5e0!3m2!1sja!2sjp!4v1680571156281!5m2!1sja!2sjp"
+					width="600"
+					height="450"
+					frameborder="0"
+					style="border:0"
+				></iframe>
+			</div>
+
+			<div class="container">
+				<h3>問合せ</h3>
+
+				<p>お問い合わせは以下メールアドレスまで。</p>
+				<p><a href="mailto:info@crescentinc.co.jp">info@crescentinc.co.jp</a></p>
+				<p><a href="mailto:lightcage@crescentinc.co.jp">lightcage@crescentinc.co.jp</a></p>
+				<p>スタジオ見学はいつでも行っております。</p>
+				<p>スタジオ導入・製品販売・見積りもこちらからお問い合わせください。</p>
 			</div>
 		</section>
 	</div>
@@ -227,6 +393,16 @@
 </section>
 
 <style>
+	p {
+		font-size: calc(14px + 0.390625vw);
+	}
+	ul {
+		padding-left: 1rem;
+		font-size: calc(14px + 0.390625vw);
+	}
+	li {
+		padding-bottom: 0.5rem;
+	}
 	.overflowed-text {
 		margin: 0;
 		white-space: nowrap;
