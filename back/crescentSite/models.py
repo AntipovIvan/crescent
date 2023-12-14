@@ -31,7 +31,7 @@ PRODUCT_SECTIONS = (
 class NewsModel(models.Model):
     date = models.DateField(null=True)
     title = models.CharField(max_length=150)
-    content = models.TextField(blank=True)
+    content = RichTextUploadingField(verbose_name="Text", blank=True, null=True)
     category = models.CharField(
         max_length=20, choices=NEWS_CATEGORIES, default="イベント"
     )

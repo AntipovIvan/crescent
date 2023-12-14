@@ -51,9 +51,9 @@
 		<article class="content">
 			<time>{news.date.replaceAll('-', '.')}</time>
 			<h2 class="cardTitle">{news.title}</h2>
-			<p>{news.content}</p>
+			{@html news.content}
 
-			{#if news.images.length > 0}
+			<!-- {#if news.images.length > 0}
 				<ul class="image-gallery">
 					{#each news.images as image}
 						<li>
@@ -61,7 +61,7 @@
 						</li>
 					{/each}
 				</ul>
-			{/if}
+			{/if} -->
 		</article>
 	{:else}
 		<NotFound />
@@ -143,6 +143,15 @@
 		margin-bottom: 5rem;
 		align-items: baseline;
 		padding: 0 10%;
+	}
+
+	.content * {
+		margin: 0 auto;
+	}
+
+	.content:empty {
+		display: flex;
+		justify-content: center;
 	}
 
 	p {

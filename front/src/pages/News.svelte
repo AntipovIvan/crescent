@@ -27,6 +27,18 @@
 			}
 			const { results } = await response.json();
 
+			results.sort((a, b) => {
+				const dateA = a.date.toUpperCase();
+				const dateB = b.date.toUpperCase();
+				if (dateA < dateB) {
+					return 1;
+				}
+				if (dateA > dateB) {
+					return -1;
+				}
+
+				return 0;
+			});
 			news = results.map((result) => {
 				result.category = categoryMapping[result.category];
 				return result;

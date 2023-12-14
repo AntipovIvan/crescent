@@ -36,7 +36,21 @@
 			}
 			const { results } = await response.json();
 
-			news = results.reverse();
+			news = results;
+
+			results.sort((a, b) => {
+				const dateA = a.date.toUpperCase();
+				const dateB = b.date.toUpperCase();
+				if (dateA < dateB) {
+					return 1;
+				}
+				if (dateA > dateB) {
+					return -1;
+				}
+
+				return 0;
+			});
+
 			news = results.map((result) => {
 				result.category = categoryMapping[result.category];
 				return result;
@@ -93,17 +107,16 @@
 
 		{#if news}
 			<ul class="posts">
-				{#each news as { id, date, title, content, category }, index}
-					<li class="news" data-category={category}>
-						{#if index < 6}
+				{#each news as { id, date, title, content, category }, index}{#if index < 6}
+						<li class="news" data-category={category}>
 							<article class="news-article">
 								<a href={`/news/${urlSlug(id)}`} use:link>
 									<time>{date.replaceAll('-', '.')}</time>
 									<p>{title}</p>
 								</a>
 							</article>
-						{/if}
-					</li>
+						</li>
+					{/if}
 				{/each}
 			</ul>
 		{:else}
