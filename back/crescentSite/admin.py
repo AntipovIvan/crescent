@@ -9,10 +9,6 @@ class ProductContentInline(admin.StackedInline):
     extra = 0
 
 
-class NewsImagesInline(admin.StackedInline):
-    model = NewsImages
-
-
 class ProductAdminForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -22,6 +18,12 @@ class ProductAdminForm(forms.ModelForm):
 class NewsAdminForm(forms.ModelForm):
     class Meta:
         model = NewsModel
+        fields = "__all__"
+
+
+class UsercaseAdminForm(forms.ModelForm):
+    class Meta:
+        model = Usercase
         fields = "__all__"
 
 
@@ -37,7 +39,6 @@ class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 class NewsAdmin(admin.ModelAdmin):
     form = NewsAdminForm
-    inlines = [NewsImagesInline]
     list_display = [
         "date",
         "title",
@@ -45,6 +46,15 @@ class NewsAdmin(admin.ModelAdmin):
     ]
 
 
+class UsercaseAdmin(admin.ModelAdmin):
+    form = UsercaseAdminForm
+    list_display = [
+        "date",
+        "title",
+    ]
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(NewsModel, NewsAdmin)
+admin.site.register(Usercase, UsercaseAdmin)
 admin.site.register(ServicesModel)

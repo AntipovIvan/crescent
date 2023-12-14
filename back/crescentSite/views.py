@@ -36,6 +36,12 @@ class NewsModelViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
 
 
+class UsercaseViewSet(viewsets.ModelViewSet):
+    queryset = Usercase.objects.all()
+    serializer_class = UsercaseSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

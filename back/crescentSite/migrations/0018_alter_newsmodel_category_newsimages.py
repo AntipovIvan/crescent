@@ -6,23 +6,45 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('crescentSite', '0017_product_sorting_order'),
+        ("crescentSite", "0017_product_sorting_order"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='newsmodel',
-            name='category',
-            field=models.CharField(choices=[('EVENT', 'イベント'), ('PRODUCT_INFO', '製品情報'), ('NOTICE', 'お知らせ')], default='イベント', max_length=20),
+            model_name="newsmodel",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("EVENT", "イベント"),
+                    ("PRODUCT_INFO", "製品情報"),
+                    ("NOTICE", "お知らせ"),
+                ],
+                default="イベント",
+                max_length=20,
+            ),
         ),
         migrations.CreateModel(
-            name='NewsImages',
+            name="NewsImages",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to=crescentSite.models.NewsImages.upload_to)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='crescentSite.newsmodel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("image", models.ImageField()),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="images",
+                        to="crescentSite.newsmodel",
+                    ),
+                ),
             ],
         ),
     ]

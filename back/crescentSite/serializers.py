@@ -9,12 +9,6 @@ class ProductContentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class NewsImagesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NewsImages
-        fields = "__all__"
-
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -28,8 +22,6 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class NewsModelSerializer(serializers.HyperlinkedModelSerializer):
-    images = NewsImagesSerializer(many=True, read_only=True)
-
     class Meta:
         model = NewsModel
         fields = [
@@ -37,8 +29,22 @@ class NewsModelSerializer(serializers.HyperlinkedModelSerializer):
             "date",
             "title",
             "content",
-            "images",
             "category",
+            "created_at",
+            "updated_at",
+        ]
+
+
+class UsercaseSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Usercase
+        fields = [
+            "id",
+            "date",
+            "title",
+            "thumbnail",
+            "content",
+            "sorting_order",
             "created_at",
             "updated_at",
         ]

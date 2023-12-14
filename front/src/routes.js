@@ -18,6 +18,8 @@ import Support from "./pages/development/Support.svelte";
 import BodyLightcage from "./pages/services/BodyLightcage.svelte";
 import FaceLightcage from "./pages/services/FaceLightcage.svelte";
 import Holosuite from "./pages/products/Holosuite.svelte";
+import Usercase from "./pages/Usercase.svelte";
+import UsercaseTemplate from "./pages/usercase/UsercaseTemplate.svelte";
 
 export const routes = {
   "/": Home,
@@ -39,5 +41,7 @@ export const routes = {
   "/products/:title": ProductTemplate,
   "/news": News,
   "/news/:id": NewsTemplate,
+  "/usercase": Usercase,
+  "/usercase/:id": UsercaseTemplate,
   "*": NotFound
 };

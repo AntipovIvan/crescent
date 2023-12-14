@@ -20,6 +20,7 @@
 	import urlSlug from 'url-slug';
 
 	let news;
+	let usercase;
 	let error;
 
 	const categoryMapping = {
@@ -34,11 +35,12 @@
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
-			const { results } = await response.json();
+			const results = await response.json();
 
-			news = results;
+			const response2 = await fetch('http://' + window.location.hostname + ':7000/api/usercase');
+			const data2 = await response2.json();
 
-			results.sort((a, b) => {
+			news = results.results.sort((a, b) => {
 				const dateA = a.date.toUpperCase();
 				const dateB = b.date.toUpperCase();
 				if (dateA < dateB) {
@@ -51,10 +53,13 @@
 				return 0;
 			});
 
-			news = results.map((result) => {
+			news = results.results.map((result) => {
 				result.category = categoryMapping[result.category];
 				return result;
 			});
+
+			usercase = data2.results;
+			console.log(usercase);
 		} catch (err) {
 			error = err;
 		}
@@ -189,15 +194,34 @@
 		<div class="blockHeader">
 			<h1>CUSTOMER STORIES</h1>
 			<h4>ユーザー事例</h4>
+			<!-- {#if usercase}
+				<ul class="posts">
+					{#each usercase as { id, date, title, content, category }, index}{#if index < 6}
+							<li class="news" data-category={category}>
+								<article class="news-article">
+									<a href={`/news/${urlSlug(id)}`} use:link>
+										<time>{date.replaceAll('-', '.')}</time>
+										<p>{title}</p>
+									</a>
+								</article>
+							</li>
+						{/if}
+					{/each}
+				</ul>
+			{:else}
+				<p>Loading...</p>
+			{/if} -->
 			<button class="more">
-				<span>VIEW MORE</span>
-				<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-					<circle cx="12" cy="12" r="12" fill="#313132" />
-					<path
-						d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
-						fill="white"
-					/>
-				</svg>
+				<a href={`/usercase/`} class="moreLink" use:link>
+					<span>VIEW MORE</span>
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+						<circle cx="12" cy="12" r="12" fill="#313132" />
+						<path
+							d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+							fill="white"
+						/>
+					</svg></a
+				>
 			</button>
 		</div>
 

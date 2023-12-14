@@ -53,6 +53,34 @@ class NewsModel(models.Model):
         verbose_name_plural = "News"
 
 
+class Usercase(models.Model):
+    date = models.DateField(null=True)
+    title = models.CharField(max_length=150)
+    content = RichTextUploadingField(verbose_name="Text", blank=True, null=True)
+    sorting_order = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def upload_to(self, filename):
+        date = self.date if self.date else "default"
+        date = str(date)
+        return os.path.join("images/usercase", date, filename)
+
+    thumbnail = models.ImageField(
+        upload_to=upload_to, default="images/Placeholder.png"
+    )
+
+    def __str__(self):
+        return self.title
+
+    def __repr__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Usercase"
+        ordering = ["sorting_order"]
+
+
 class Product(models.Model):
     title = models.CharField(max_length=100)
     category = models.CharField(
@@ -113,19 +141,7 @@ class ProductContent(models.Model):
         verbose_name_plural = "Product Content"
 
 
-class NewsImages(models.Model):
-    product = models.ForeignKey(
-        NewsModel, on_delete=models.CASCADE, related_name="images"
-    )
-
-    def upload_to(self, filename):
-        return self.product.upload_to(filename)
-
-    image = models.ImageField(upload_to=upload_to)
-
-
 @receiver(pre_delete, sender=ProductContent)
-@receiver(pre_delete, sender=NewsImages)
 def delete_image_files(sender, instance, **kwargs):
     instance.image.delete(save=False)
 
