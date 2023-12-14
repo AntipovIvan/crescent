@@ -90,8 +90,12 @@ a:visited {
 .image-text-flexbox {
   display: flex;
   flex-direction: row;
-  gap:2rem;
+  gap: 2rem;
   align-items: center;
+}
+
+.image-text-flexbox img{
+  width:auto;
 }
 
 hr{
