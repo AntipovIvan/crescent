@@ -63,6 +63,19 @@ class SpecialSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
+class BlogSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Blog
+        fields = [
+            "id",
+            "date",
+            "title",
+            "content",
+            "created_at",
+            "updated_at",
+        ]
+
+
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     productContent = ProductContentSerializer(many=True, read_only=True)
 

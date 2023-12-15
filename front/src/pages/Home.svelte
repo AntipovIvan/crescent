@@ -208,10 +208,11 @@
 			<figure>
 				<img src={geppei} alt="Geppei" />
 			</figure>
-			<figure>
-				<img src={blog} alt="Staff blog" />
-			</figure>
-
+			<a href={`/blog/`} use:link>
+				<figure>
+					<img src={blog} alt="Staff blog" />
+				</figure>
+			</a>
 			<a href="https://www.youtube.com/@user-we8zu8tu5h" target="_blank">
 				<figure>
 					<img src={rabbit} alt="Rabbitchant" />

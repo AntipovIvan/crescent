@@ -21,6 +21,8 @@ import Holosuite from "./pages/products/Holosuite.svelte";
 import Usercase from "./pages/Usercase.svelte";
 import UsercaseTemplate from "./pages/usercase/UsercaseTemplate.svelte";
 import SpecialTemplate from "./pages/special/SpecialTemplate.svelte";
+import Blog from "./pages/Blog.svelte";
+import BlogTemplate from "./pages/blog/BlogTemplate.svelte";
 
 export const routes = {
   "/": Home,
@@ -45,5 +47,7 @@ export const routes = {
   "/usercase": Usercase,
   "/usercase/:id": UsercaseTemplate,
   "/special/:id":SpecialTemplate,
+  "/blog": Blog,
+  "/blog/:id": BlogTemplate,
   "*": NotFound
 };

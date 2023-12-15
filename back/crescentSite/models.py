@@ -105,6 +105,23 @@ class Special(models.Model):
         verbose_name_plural = "Special Feature"
 
 
+class Blog(models.Model):
+    date = models.DateField(null=True)
+    title = models.CharField(max_length=150)
+    content = RichTextUploadingField(verbose_name="Text", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    def __repr__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Blog"
+
+
 class Product(models.Model):
     title = models.CharField(max_length=100)
     category = models.CharField(
