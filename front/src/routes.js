@@ -20,6 +20,7 @@ import FaceLightcage from "./pages/services/FaceLightcage.svelte";
 import Holosuite from "./pages/products/Holosuite.svelte";
 import Usercase from "./pages/Usercase.svelte";
 import UsercaseTemplate from "./pages/usercase/UsercaseTemplate.svelte";
+import SpecialTemplate from "./pages/special/SpecialTemplate.svelte";
 
 export const routes = {
   "/": Home,
@@ -43,5 +44,6 @@ export const routes = {
   "/news/:id": NewsTemplate,
   "/usercase": Usercase,
   "/usercase/:id": UsercaseTemplate,
+  "/special/:id":SpecialTemplate,
   "*": NotFound
 };

@@ -41,12 +41,14 @@
 				<a href={`/product/4dviews`} use:link>
 					<button class="button"><span>製品ページ</span></button>
 				</a>
-				<button class="button"
-					><span>スタジオページ</span><img
-						class="icon"
-						src={digicast}
-						alt="digicast logo"
-					/></button
+				<a href={`/services/4dstudio`} use:link>
+					<button class="button">
+						<span>スタジオページ</span><img
+							class="icon"
+							src={digicast}
+							alt="digicast logo"
+						/></button
+					></a
 				>
 			</div>
 		</div>

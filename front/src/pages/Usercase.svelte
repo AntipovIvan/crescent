@@ -52,12 +52,12 @@
 <section class="section">
 	<h1>ピックアップ&ユーザー事例</h1>
 	<div class="content">
-		<input type="radio" id="All" name="categories" value="All" checked />
+		<!-- <input type="radio" id="All" name="categories" value="All" checked />
 		<input type="radio" id="お知らせ" name="categories" value="お知らせ" />
 		<input type="radio" id="製品&開発情報" name="categories" value="製品&開発情報" />
-		<input type="radio" id="セミナー&イベント" name="categories" value="セミナー&イベント" />
+		<input type="radio" id="セミナー&イベント" name="categories" value="セミナー&イベント" /> -->
 
-		<nav class={Device.isPhone || Device.isTablet ? 'navMobile' : 'nav'}>
+		<!-- <nav class={Device.isPhone || Device.isTablet ? 'navMobile' : 'nav'}>
 			<h2>CATEGORY</h2>
 
 			<ul class="localNavContainer">
@@ -72,7 +72,7 @@
 					<label for="セミナー&イベント">セミナー&イベントリ</label>
 				</li>
 			</ul>
-		</nav>
+		</nav> -->
 
 		<ul class="posts cardList">
 			{#if usercase}

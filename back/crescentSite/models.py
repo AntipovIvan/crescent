@@ -57,7 +57,6 @@ class Usercase(models.Model):
     date = models.DateField(null=True)
     title = models.CharField(max_length=150)
     content = RichTextUploadingField(verbose_name="Text", blank=True, null=True)
-    sorting_order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -78,7 +77,32 @@ class Usercase(models.Model):
 
     class Meta:
         verbose_name_plural = "Usercase"
-        ordering = ["sorting_order"]
+
+
+class Special(models.Model):
+    date = models.DateField(null=True)
+    title = models.CharField(max_length=150)
+    content = RichTextUploadingField(verbose_name="Text", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def upload_to(self, filename):
+        date = self.date if self.date else "default"
+        date = str(date)
+        return os.path.join("images/special", date, filename)
+
+    thumbnail = models.ImageField(
+        upload_to=upload_to, default="images/Placeholder.png"
+    )
+
+    def __str__(self):
+        return self.title
+
+    def __repr__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Special Feature"
 
 
 class Product(models.Model):

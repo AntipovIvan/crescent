@@ -10,17 +10,13 @@
 	import blog from '../assets/staffblog.jpg';
 	import rabbit from '../assets/tsukimi.jpg';
 	import volumetrix from '../assets/volumetrix.jpg';
-	import story1 from '../assets/capcom.jpg';
-	import story2 from '../assets/osaka.jpg';
-	import story3 from '../assets/aura.jpg';
-	import story4 from '../assets/balus.jpg';
-	import story5 from '../assets/soup.jpg';
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
 	import urlSlug from 'url-slug';
 
 	let news;
 	let usercase;
+	let special;
 	let error;
 
 	const categoryMapping = {
@@ -40,6 +36,9 @@
 			const response2 = await fetch('http://' + window.location.hostname + ':7000/api/usercase');
 			const data2 = await response2.json();
 
+			const response3 = await fetch('http://' + window.location.hostname + ':7000/api/special');
+			const data3 = await response3.json();
+
 			news = results.results.sort((a, b) => {
 				const dateA = a.date.toUpperCase();
 				const dateB = b.date.toUpperCase();
@@ -58,8 +57,31 @@
 				return result;
 			});
 
-			usercase = data2.results;
-			console.log(usercase);
+			usercase = data2.results.sort((a, b) => {
+				const dateA = a.date.toUpperCase();
+				const dateB = b.date.toUpperCase();
+				if (dateA < dateB) {
+					return 1;
+				}
+				if (dateA > dateB) {
+					return -1;
+				}
+
+				return 0;
+			});
+
+			special = data3.results.sort((a, b) => {
+				const dateA = a.date.toUpperCase();
+				const dateB = b.date.toUpperCase();
+				if (dateA < dateB) {
+					return 1;
+				}
+				if (dateA > dateB) {
+					return -1;
+				}
+
+				return 0;
+			});
 		} catch (err) {
 			error = err;
 		}
@@ -146,26 +168,35 @@
 			</button>
 		</div>
 
-		<div class="featuredTopics">
-			<figure>
-				<img src={banner1} alt="Banner" />
-			</figure>
-			<figure>
-				<img src={banner2} alt="Banner" />
-			</figure>
-			<figure>
-				<img src={banner3} alt="Banner" />
-			</figure>
-			<figure>
-				<img src={banner4} alt="Banner" />
-			</figure>
-			<figure>
-				<img src={banner5} alt="Banner" />
-			</figure>
-			<figure>
-				<img src={banner6} alt="Banner" />
-			</figure>
-		</div>
+		{#if special}
+			<div class="featuredTopics">
+				{#each special as { id, date, title, content, thumbnail }, index}{#if index < 5}
+						<a href={`/special/${urlSlug(id)}`} use:link>
+							<figure>
+								<img src={thumbnail} alt="title" />
+							</figure></a
+						>
+					{/if}
+				{/each}
+				<figure>
+					<img src={banner2} alt="Banner" />
+				</figure>
+				<figure>
+					<img src={banner3} alt="Banner" />
+				</figure>
+				<figure>
+					<img src={banner4} alt="Banner" />
+				</figure>
+				<figure>
+					<img src={banner5} alt="Banner" />
+				</figure>
+				<figure>
+					<img src={banner6} alt="Banner" />
+				</figure>
+			</div>
+		{:else}
+			<p>Loading...</p>
+		{/if}
 	</section>
 
 	<!-- ORIGINAL CONTENTS -->
@@ -180,12 +211,18 @@
 			<figure>
 				<img src={blog} alt="Staff blog" />
 			</figure>
-			<figure>
-				<img src={rabbit} alt="Rabbitchant" />
-			</figure>
-			<figure>
-				<img src={volumetrix} alt="Volumetrix" />
-			</figure>
+
+			<a href="https://www.youtube.com/@user-we8zu8tu5h" target="_blank">
+				<figure>
+					<img src={rabbit} alt="Rabbitchant" />
+				</figure></a
+			>
+
+			<a href="https://www.volumetrix.jp/" target="_blank">
+				<figure>
+					<img src={volumetrix} alt="Volumetrix" />
+				</figure></a
+			>
 		</aside>
 	</section>
 
@@ -194,23 +231,7 @@
 		<div class="blockHeader">
 			<h1>CUSTOMER STORIES</h1>
 			<h4>ユーザー事例</h4>
-			<!-- {#if usercase}
-				<ul class="posts">
-					{#each usercase as { id, date, title, content, category }, index}{#if index < 6}
-							<li class="news" data-category={category}>
-								<article class="news-article">
-									<a href={`/news/${urlSlug(id)}`} use:link>
-										<time>{date.replaceAll('-', '.')}</time>
-										<p>{title}</p>
-									</a>
-								</article>
-							</li>
-						{/if}
-					{/each}
-				</ul>
-			{:else}
-				<p>Loading...</p>
-			{/if} -->
+
 			<button class="more">
 				<a href={`/usercase/`} class="moreLink" use:link>
 					<span>VIEW MORE</span>
@@ -225,77 +246,28 @@
 			</button>
 		</div>
 
-		<ul class="cardList">
-			<li class="card">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={story1} alt="Capcom" width="400" height="200" />
-					</a>
-					<figcaption>
-						<time>2023.08.10</time>
-						<span>カプコンが新しくクリエイティブスタジオをオープン</span>
-						<a href=""><p>&#8250;</p></a>
-						<div class="trapezoid" />
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card">
-				<figure>
-					<a target="_blank" href="story2.png">
-						<img src={story2} alt="Osaka University" width="400" height="200" />
-					</a>
-					<figcaption>
-						<time>2023.06.11</time>
-						<span>大阪電気通信大学に日本教育機関最大級のスタジオが完成</span>
-						<a href=""><p>&#8250;</p></a>
-						<div class="trapezoid" />
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={story3} alt="Capcom" width="400" height="200" />
-					</a>
-					<figcaption>
-						<time>2023.05.10</time>
-						<span>アウラの成り立ちやVICON導入のきっかけと今後の展望</span>
-						<a href=""><p>&#8250;</p></a>
-						<div class="trapezoid" />
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card">
-				<figure>
-					<a target="_blank" href="story2.png">
-						<img src={story4} alt="Osaka University" width="400" height="200" />
-					</a>
-					<figcaption>
-						<time>2023.03.10</time>
-						<span>多方面で活躍するBalusの最近のスタジオ動向を取材</span>
-						<a href=""><p>&#8250;</p></a>
-						<div class="trapezoid" />
-					</figcaption>
-				</figure>
-			</li>
-
-			<li class="card">
-				<figure>
-					<a target="_blank" href="story1.png">
-						<img src={story5} alt="Capcom" width="400" height="200" />
-					</a>
-					<figcaption>
-						<time>2023.02.10</time>
-						<span>渋谷区代々木のスタジオSoup.が一般に向けても利用可能に</span>
-						<a href=""><p>&#8250;</p></a>
-						<div class="trapezoid" />
-					</figcaption>
-				</figure>
-			</li>
-		</ul>
+		{#if usercase}
+			<ul class="cardList">
+				{#each usercase as { id, date, title, content, thumbnail }, index}{#if index < 5}
+						<li class="card">
+							<a href={`/usercase/${urlSlug(id)}`} use:link>
+								<figure>
+									<img src={thumbnail} alt="Capcom" width="400" height="200" />
+									<figcaption>
+										<time>{date.replaceAll('-', '.')}</time>
+										<span>{title}</span>
+										<p>&#8250;</p>
+										<div class="trapezoid" />
+									</figcaption>
+								</figure></a
+							>
+						</li>
+					{/if}
+				{/each}
+			</ul>
+		{:else}
+			<p>Loading...</p>
+		{/if}
 	</section>
 </div>
 
@@ -603,7 +575,7 @@
 		border: none;
 	}
 
-	.card figure a {
+	.card a {
 		display: block;
 	}
 	.card figure {
@@ -647,11 +619,16 @@
 		white-space: pre-wrap;
 	}
 
-	.card figcaption a {
+	.card a {
 		color: black;
 		z-index: 4;
 		margin: auto 0 0 auto;
 		font-size: 1.8rem;
+	}
+
+	.card figcaption p {
+		z-index: 99;
+		margin: auto 0 auto auto;
 	}
 
 	.card {

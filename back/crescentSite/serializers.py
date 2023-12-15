@@ -44,7 +44,20 @@ class UsercaseSerializer(serializers.HyperlinkedModelSerializer):
             "title",
             "thumbnail",
             "content",
-            "sorting_order",
+            "created_at",
+            "updated_at",
+        ]
+
+
+class SpecialSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Special
+        fields = [
+            "id",
+            "date",
+            "title",
+            "thumbnail",
+            "content",
             "created_at",
             "updated_at",
         ]

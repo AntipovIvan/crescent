@@ -36,7 +36,11 @@
 			<p>FAQ</p>
 		</div>
 		<div class="social">
-			<a href="#" class="generic-anchor" target="_blank" title="Twitter"
+			<a
+				href="https://twitter.com/jp_crescentinc"
+				class="generic-anchor"
+				target="_blank"
+				title="Twitter"
 				><svg viewBox="0 0 50 50" width="40px" height="40px">
 					<path
 						fill="black"
@@ -52,7 +56,11 @@
 					/></svg
 				></a
 			>
-			<a href="#" class="generic-anchor" target="_blank" title="Youtube"
+			<a
+				href="https://www.youtube.com/user/crescentinc"
+				class="generic-anchor"
+				target="_blank"
+				title="Youtube"
 				><svg viewBox="0 0 50 50" width="40px" height="40px">
 					<path
 						fill="black"

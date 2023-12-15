@@ -27,6 +27,12 @@ class UsercaseAdminForm(forms.ModelForm):
         fields = "__all__"
 
 
+class SpecialAdminForm(forms.ModelForm):
+    class Meta:
+        model = Special
+        fields = "__all__"
+
+
 class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = ProductAdminForm
     inlines = [ProductContentInline]
@@ -54,7 +60,16 @@ class UsercaseAdmin(admin.ModelAdmin):
     ]
 
 
+class SpecialAdmin(admin.ModelAdmin):
+    form = SpecialAdminForm
+    list_display = [
+        "date",
+        "title",
+    ]
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(NewsModel, NewsAdmin)
 admin.site.register(Usercase, UsercaseAdmin)
+admin.site.register(Special, SpecialAdmin)
 admin.site.register(ServicesModel)

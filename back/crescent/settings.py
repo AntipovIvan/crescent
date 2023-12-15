@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from ckeditor.configs import DEFAULT_CONFIG
+from django.utils.translation import gettext_lazy as _
 
 
 load_dotenv()
@@ -43,6 +44,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
@@ -106,6 +108,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = "en-us"
+
+LANGUAGES = [
+    ("jp", _("Japanese")),
+    ("en", _("English")),
+]
 
 TIME_ZONE = "UTC"
 
@@ -257,7 +264,6 @@ CKEDITOR_CONFIGS = {
                     "Embed",
                 ],
             },
-            {"extraPlugins": ",".join(["youtube"])},
             "/",
             {
                 "name": "styles",
@@ -265,7 +271,13 @@ CKEDITOR_CONFIGS = {
             },
             {"name": "colors", "items": ["TextColor", "BGColor"]},
             {"name": "tools", "items": ["Maximize", "ShowBlocks"]},
-            {"name": "about", "items": ["About"]},
+            {
+                "name": "about",
+                "items": [
+                    "About",
+                ],
+            },
         ],
+        "language": "en",
     }
 }

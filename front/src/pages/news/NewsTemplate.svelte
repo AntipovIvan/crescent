@@ -128,6 +128,7 @@
 	h2 {
 		padding-bottom: 1rem;
 		width: max-content;
+		font-size: calc(28px + 0.390625vw);
 	}
 	section {
 		padding: 5rem;
@@ -143,6 +144,7 @@
 		margin-bottom: 5rem;
 		align-items: baseline;
 		padding: 0 10%;
+		font-size: calc(14px + 0.390625vw);
 	}
 
 	.content * {

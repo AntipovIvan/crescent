@@ -42,6 +42,12 @@ class UsercaseViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
 
 
+class SpecialViewSet(viewsets.ModelViewSet):
+    queryset = Special.objects.all()
+    serializer_class = SpecialSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

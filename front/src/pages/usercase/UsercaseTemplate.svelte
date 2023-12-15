@@ -37,7 +37,7 @@
 	{#if isLoading}
 		<Loading />
 	{:else if news}
-		<h1>{news.category}</h1>
+		<h1>ピックアップ&ユーザー事例</h1>
 
 		<article class="content">
 			<time>{news.date.replaceAll('-', '.')}</time>
@@ -119,6 +119,7 @@
 	h2 {
 		padding-bottom: 1rem;
 		width: max-content;
+		font-size: calc(28px + 0.390625vw);
 	}
 	section {
 		padding: 5rem;
@@ -134,6 +135,7 @@
 		margin-bottom: 5rem;
 		align-items: baseline;
 		padding: 0 10%;
+		font-size: calc(14px + 0.390625vw);
 	}
 
 	.content * {
