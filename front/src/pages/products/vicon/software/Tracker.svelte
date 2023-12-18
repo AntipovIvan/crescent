@@ -1,8 +1,11 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../../../assets/products/vicon/camera/vero/veroxbanner.jpg';
-	import hero2 from '../../../../assets/products/vicon/camera/vero/verobanner.jpg';
+	import hero from '../../../../assets/products/vicon/software/tracker/tracker-600x450.png';
+	import image1 from '../../../../assets/products/vicon/software/shogun/Apose.png';
+	import image2 from '../../../../assets/products/vicon/software/shogun/overray.png';
+	import image3 from '../../../../assets/products/vicon/software/shogun/soft_shogun_realtime.png';
+	import image4 from '../../../../assets/products/vicon/software/shogun/soft_shogun_unbreak.png';
 	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
 	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
 	import { onMount } from 'svelte';
@@ -74,7 +77,7 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>Vero</h1>
+		<h1>Tracker</h1>
 		<figure class="hero-image-container">
 			<img class="hero-image" src={hero} alt="4d studios" />
 		</figure>
@@ -82,6 +85,7 @@
 
 	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
 		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>製品詳細</a>
+		<a class="sidebar-item" href="#speciality" on:click={scrollToElement}>製品特徴</a>
 		<a class="sidebar-item" href="#system" on:click={scrollToElement}>仕様・価格</a>
 	</div>
 
@@ -92,54 +96,31 @@
 			</div>
 
 			<div class="container">
-				<h3>Vero 1.3X</h3>
 				<p class="explanation">
-					コンパクトかつ高精度で世界中から大好評のVeroシリーズに、広角のVero 1.3Xが誕生しました。
-					視野の広いVero
-					1.3Xなら、限られた空間でも広いキャプチャエリアを確保でき、全身のトラッキングや収録が可能になります。
+					Vicon
+					Trackerは、MXカメラシステムをトラッキング用途にご利用いただく際のインターフェースとなるソフトウェアです。シミュレーション、ビジュアリゼーション、バーチャルリアリティ等の用途の制御用ソフトウェアです。
 				</p>
-
-				<ul class="features-list">
-					<li class="features-list-item">
-						SMALLNESS <p>
-							カメラの小型化に伴い、CAVEやHolo
-							Stageのようなカメラスペースの取れない空間であっても、他の機材と鑑賞すること無くスムースな設置が行えます。
-						</p>
-					</li>
-
-					<li class="features-list-item">
-						PoE(Power over Ethernet)接続 <p>
-							汎用Etherrnetケーブル一本で電源の供給と、データの伝送を行う為、シンプルで設置場所を選ばないシステム設計が可能です。
-						</p>
-					</li>
-					<li class="features-list-item">
-						SMALL but BRIGHT STROBE <p>
-							Veroにはより強力で高視野角のストロボが搭載されています。これにより、不要な光のノイズなどを識別しやすくなり、より的確なマーカーデータの検出が可能となります。
-						</p>
-					</li>
-				</ul>
+				<p>
+					Vicon
+					Trackerは、Viconのカメラシステム全ての技術を余すところ無くトラッキング用途に噛み砕き、それを簡単なインターフェースに仕上げたシステム制御ソフトウェアです。各カメラの制御、カリブレーション、オブジェクトの設定と、順を追って処理をしていく事で、誰でもが簡単に高精度トラッキングを行うことができます。
+				</p>
+				<p>
+					日々、同じ環境で同じオブジェクトをトラックするのであれば、1ボタンでViconTrackerを立ち上げ、即、トラッキングを開始できる設定にすることも可能です。出力データは、800番のポートに遅延無くネットワーク経由で出力されます。TrackDなどにも対応した出力形式ですので、簡単にプラグインを書く事が可能です。
+				</p>
 			</div>
+		</section>
 
+		<section class="speciality" id="speciality">
 			<div class="container">
-				<h2>Vero 2.2</h2>
-				<figure>
-					<img src={hero2} alt="Shooting system" />
-				</figure>
-				<p class="explanation">
-					Vero
-					2.2は、Viconのモーションキャプチャの目指す部分とは一線を画した、廉価でコンパクト、且つ高精度なRigid
-					Bodyに特化したトラッキング用のソリューションです。
-				</p>
+				<h2>特徴</h2>
 
-				<ul class="features-list">
-					<li class="features-list-item">
-						VARIFOCAL LENS
-						<p>
-							Vero
-							2.2にはズーム可能なレンズが搭載されており、焦点距離を6mmから12mmまで変更することができます。その為、設置場所や使用用途に応じて設定を自由に変更することが可能です。
-						</p>
-					</li>
-				</ul>
+				<li>高解像度・高分解能による高精度の座標・角度情報</li>
+				<li>DOF(自由度)を複数個同時出力可能</li>
+				<li>最大10msの低遅延</li>
+				<li>軽量でケーブル・ワイヤーの無いマーカー</li>
+				<li>計測範囲に制限の無い自由度</li>
+				<li>簡易で迅速な設定とカリブレーション</li>
+				<li>周囲環境に干渉されず、干渉しない独立性</li>
 			</div>
 		</section>
 
@@ -150,111 +131,24 @@
 					<tbody
 						><tr>
 							<th></th>
-							<!--<th>Vero v1.3</th>-->
-							<th colspan="3">Vero v2.2</th>
-							<th colspan="3">Vero 1.3X</th>
+							<th>tracker</th>
 						</tr>
 
 						<tr>
-							<td class="tblCap">解像度</td>
-							<!--<td>130万画素<br>1,280 x 1,024</td>-->
-							<td colspan="3">220万画素<br />2,048 x 1,088</td>
-							<td colspan="3">130万画素<br />1,280 x 1,024</td>
+							<td class="tblCap">名称</td>
+							<td>VR用3Dオブジェクトトラッキングソフトウェア</td>
 						</tr>
-
 						<tr>
-							<td class="tblCap">最大フレームレート</td>
-							<!--<td>250Hz</td>-->
-							<td colspan="3">330Hz</td>
-							<td colspan="3">250Hz</td>
+							<td class="tblCap">対応OS</td>
+							<td>Windows 10 (64bit)</td>
 						</tr>
-
-						<tr>
-							<td class="tblCap">給電・伝送路</td>
-							<td colspan="6">PoE+</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">レンズ</td>
-							<td colspan="3">6 - 12 mm （Varifocal：可変焦点レンズ）</td>
-							<td colspan="3">4mm固定焦点レンズ</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">視野角</td>
-							<!--<td>W:　60.8° x 50.3°<br>T:　32.7° x 26.4°</td>-->
-							<td colspan="3">W:　86.4° x 53.0°<br />T:　50.3° x 28.0°</td>
-							<td colspan="3">79.0° x 67.6°</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">ストロボ</td>
-							<td colspan="6">IR（850nm）</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">シャッタータイプ</td>
-							<td colspan="6">Global</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">接続ケーブル</td>
-							<td colspan="6">Cat5e / RJ45</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">消費電力/カメラ</td>
-							<td colspan="6">12W</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">サイズ</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 135 mm (D)、575g</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 112 mm (D)、560g</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">対応ソフトウェア<br />バージョン</td>
-							<td colspan="6">Shogun 1,Blade 3, Nexus 2, Tracker 3 以上必須</td>
-						</tr>
-
 						<tr>
 							<td class="tblCap">価格(税別)</td>
-							<!--<td>1,050,000円</td>-->
-							<td colspan="6">1,500,000円</td>
-						</tr>
-						<tr>
-							<td class="tblCap" rowspan="3">年間保守価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
-						</tr>
-						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">800,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>オンサイトサポート、代替機材無償貸出、<br
-								/>電話、メール、ファックス対応、修理品部品料のみ請求</td
-							>
-						</tr>
-						<tr>
-							<td class="tblCap" rowspan="3">取扱説明及び設置価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
-						</tr>
-						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">600,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>スタジオ内カメラ設置（工事費別途）、<br
-								/>取扱説明（約2日）、必要に応じて追加無償取扱説明１回実施</td
-							>
+							<td>1,200,000円</td>
 						</tr>
 					</tbody>
 				</table>
+				<p>※ソフトウェアメジャーアップグレードについては別途費用発生</p>
 			</div>
 		</section>
 		<br />
@@ -320,7 +214,6 @@
 		border-radius: 8px;
 		cursor: pointer;
 	}
-
 	th {
 		padding: 10px;
 		font-size: 12px;
@@ -328,7 +221,6 @@
 	}
 	table {
 		margin-bottom: 20px;
-
 		width: 100%;
 		word-wrap: break-word;
 	}
@@ -482,8 +374,14 @@
 		object-fit: contain;
 	}
 
-	p {
+	p,
+	li {
 		margin: 0;
+		font-size: calc(14px + 0.390625vw);
+	}
+
+	.image-text-flexbox img {
+		width: 14vw;
 	}
 	.explanation {
 		font-size: calc(14px + 0.390625vw);
@@ -519,12 +417,12 @@
 		padding: 3rem 0;
 		flex-direction: column;
 	}
-	section div div {
+	/* section div div {
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
 		justify-content: space-between;
-	}
+	} */
 	section div figure {
 		flex: 50%;
 	}

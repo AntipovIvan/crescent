@@ -1,10 +1,14 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../../../assets/products/vicon/camera/vero/veroxbanner.jpg';
-	import hero2 from '../../../../assets/products/vicon/camera/vero/verobanner.jpg';
+	import hero from '../../../../assets/products/vicon/software/shogun/shogunhead.png';
+	import image1 from '../../../../assets/products/vicon/software/shogun/Apose.png';
+	import image2 from '../../../../assets/products/vicon/software/shogun/overray.png';
+	import image3 from '../../../../assets/products/vicon/software/shogun/soft_shogun_realtime.png';
+	import image4 from '../../../../assets/products/vicon/software/shogun/soft_shogun_unbreak.png';
 	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
 	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
+
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
 
@@ -74,7 +78,7 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>Vero</h1>
+		<h1>Shogun</h1>
 		<figure class="hero-image-container">
 			<img class="hero-image" src={hero} alt="4d studios" />
 		</figure>
@@ -92,54 +96,79 @@
 			</div>
 
 			<div class="container">
-				<h3>Vero 1.3X</h3>
 				<p class="explanation">
-					コンパクトかつ高精度で世界中から大好評のVeroシリーズに、広角のVero 1.3Xが誕生しました。
-					視野の広いVero
-					1.3Xなら、限られた空間でも広いキャプチャエリアを確保でき、全身のトラッキングや収録が可能になります。
+					“Shogun”は“Final quality skeletal data by day's
+					end(キャプチャしたその日の内にデータを納品)”を目標に作られ、品質を犠牲にすることなくデータ処理のパイプラインを圧倒的に速めるエンターテインメント用モーションキャプチャーツールであり、“Blade”の後継ソフトウェアです。
+					Bladeよりも堅牢かつ高精度のデータをサードパーティのソリューションにあっという間にストリーミングできるため、キャプチャ前の準備時間も大幅に削減できます。
 				</p>
 
-				<ul class="features-list">
-					<li class="features-list-item">
-						SMALLNESS <p>
-							カメラの小型化に伴い、CAVEやHolo
-							Stageのようなカメラスペースの取れない空間であっても、他の機材と鑑賞すること無くスムースな設置が行えます。
-						</p>
-					</li>
-
-					<li class="features-list-item">
-						PoE(Power over Ethernet)接続 <p>
-							汎用Etherrnetケーブル一本で電源の供給と、データの伝送を行う為、シンプルで設置場所を選ばないシステム設計が可能です。
-						</p>
-					</li>
-					<li class="features-list-item">
-						SMALL but BRIGHT STROBE <p>
-							Veroにはより強力で高視野角のストロボが搭載されています。これにより、不要な光のノイズなどを識別しやすくなり、より的確なマーカーデータの検出が可能となります。
-						</p>
-					</li>
-				</ul>
-			</div>
-
-			<div class="container">
-				<h2>Vero 2.2</h2>
-				<figure>
-					<img src={hero2} alt="Shooting system" />
-				</figure>
-				<p class="explanation">
-					Vero
-					2.2は、Viconのモーションキャプチャの目指す部分とは一線を画した、廉価でコンパクト、且つ高精度なRigid
-					Bodyに特化したトラッキング用のソリューションです。
-				</p>
-
-				<ul class="features-list">
-					<li class="features-list-item">
-						VARIFOCAL LENS
+				<li>
+					Live Subject Calibration
+					<div class="image-text-flexbox">
 						<p>
-							Vero
-							2.2にはズーム可能なレンズが搭載されており、焦点距離を6mmから12mmまで変更することができます。その為、設置場所や使用用途に応じて設定を自由に変更することが可能です。
+							柔軟性高いアクティブマーカー。VirtualCameraや、動きの早いプロップ等に装着することで、複雑な形状にも容易にロックソリッドなRigidを作成することができます。
 						</p>
-					</li>
-				</ul>
+						<br />
+						<img src={image1} alt="title" width="100%" />
+					</div>
+				</li>
+				<br /> <br />
+				<li>
+					フルボディメッシュとビデオオーバーレイ表示
+
+					<div class="image-text-flexbox">
+						<p>
+							Shogunはスキンという専用のカスタムメッシュを持っています。スキンにより各アクターの判別が簡易になっただけでなく、Solvingのクオリティを即座に把握できます。
+							また、高解像度のデジタルリファレンスカメラVueをシステムに組み込むことによって、完全同期したビデオの映像に、スキンとSolving
+							Skeletonをオーバーレイ表示します。
+						</p>
+						<br />
+						<img src={image2} alt="title" width="100%" />
+					</div>
+				</li>
+				<br /> <br />
+				<li>
+					リアルタイムの新機能によるデータの品質向上
+
+					<div class="image-text-flexbox">
+						<p>
+							Shogunは今までにないリアルタイム用の機能を備えています。
+							<br />
+							ShogunはVantage、Veroの両カメラに備えられた加速度計と温度計を使って、一つひとつのカメラをモニタリングできます。また、撮影中に誤ってカメラを動かしてしまったとき、カメラの位置を変更したいときに、システム全体をキャリブレーションし直さなくても、その場にいるアクターやプロップを使って特定のカメラのみを再キャリブレーションできるようになりました。
+							<br />
+							これにより、システムを常に最適な状態に保ち、データの品質を向上させます。
+						</p>
+						<br />
+						<img src={image3} alt="title" width="100%" />
+					</div>
+				</li>
+				<br /> <br />
+				<li>
+					“UNBREAKABLE" Solving
+
+					<div class="image-text-flexbox">
+						<p>
+							Shogunのオクルージョンに対する性能は世界最高の品質を誇っています。マーカーが見えづらい状況でもキャラクターが崩壊せず、複数のアクターが複雑に入り乱れるテイクであっても正確なリアルタイムプレビューが可能です。
+							<br />
+							リアルタイムでのモーションキャプチャーへの需要が高まっている今、Shogunはあなたの強力な助けとなります。
+						</p>
+						<br />
+						<img src={image4} alt="title" width="100%" />
+					</div>
+				</li>
+				<br /> <br />
+				<li>
+					.mcpファイル
+
+					<div class="image-text-flexbox">
+						<p>
+							Shogunでは、これまでのように撮影したデータを三次元化するところからポスト処理を始める必要はありません。リアルタイムで直接ディスクに書き込まれた.mcpファイルをShogunPostで開くと、マーカーやカメラ、骨などの撮影した当時のデータをそのまま処理することが可能です。
+							<br />
+							また、データが荒れている箇所は新しく搭載されたヒートマップ機能により簡単に発見できるようになりました。
+						</p>
+						<br />
+					</div>
+				</li>
 			</div>
 		</section>
 
@@ -150,108 +179,20 @@
 					<tbody
 						><tr>
 							<th></th>
-							<!--<th>Vero v1.3</th>-->
-							<th colspan="3">Vero v2.2</th>
-							<th colspan="3">Vero 1.3X</th>
+							<th>Shogun</th>
 						</tr>
 
 						<tr>
-							<td class="tblCap">解像度</td>
-							<!--<td>130万画素<br>1,280 x 1,024</td>-->
-							<td colspan="3">220万画素<br />2,048 x 1,088</td>
-							<td colspan="3">130万画素<br />1,280 x 1,024</td>
+							<td class="tblCap">名称</td>
+							<td>エンターテインメント用モーションキャプチャ編集ソフトウェア</td>
 						</tr>
-
 						<tr>
-							<td class="tblCap">最大フレームレート</td>
-							<!--<td>250Hz</td>-->
-							<td colspan="3">330Hz</td>
-							<td colspan="3">250Hz</td>
+							<td class="tblCap">対応OS</td>
+							<td>Window 10 (64bit)<br />Windows 7 (64bit)</td>
 						</tr>
-
-						<tr>
-							<td class="tblCap">給電・伝送路</td>
-							<td colspan="6">PoE+</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">レンズ</td>
-							<td colspan="3">6 - 12 mm （Varifocal：可変焦点レンズ）</td>
-							<td colspan="3">4mm固定焦点レンズ</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">視野角</td>
-							<!--<td>W:　60.8° x 50.3°<br>T:　32.7° x 26.4°</td>-->
-							<td colspan="3">W:　86.4° x 53.0°<br />T:　50.3° x 28.0°</td>
-							<td colspan="3">79.0° x 67.6°</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">ストロボ</td>
-							<td colspan="6">IR（850nm）</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">シャッタータイプ</td>
-							<td colspan="6">Global</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">接続ケーブル</td>
-							<td colspan="6">Cat5e / RJ45</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">消費電力/カメラ</td>
-							<td colspan="6">12W</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">サイズ</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 135 mm (D)、575g</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 112 mm (D)、560g</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">対応ソフトウェア<br />バージョン</td>
-							<td colspan="6">Shogun 1,Blade 3, Nexus 2, Tracker 3 以上必須</td>
-						</tr>
-
 						<tr>
 							<td class="tblCap">価格(税別)</td>
-							<!--<td>1,050,000円</td>-->
-							<td colspan="6">1,500,000円</td>
-						</tr>
-						<tr>
-							<td class="tblCap" rowspan="3">年間保守価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
-						</tr>
-						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">800,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>オンサイトサポート、代替機材無償貸出、<br
-								/>電話、メール、ファックス対応、修理品部品料のみ請求</td
-							>
-						</tr>
-						<tr>
-							<td class="tblCap" rowspan="3">取扱説明及び設置価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
-						</tr>
-						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">600,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>スタジオ内カメラ設置（工事費別途）、<br
-								/>取扱説明（約2日）、必要に応じて追加無償取扱説明１回実施</td
-							>
+							<td>3,500,000円</td>
 						</tr>
 					</tbody>
 				</table>
@@ -320,7 +261,6 @@
 		border-radius: 8px;
 		cursor: pointer;
 	}
-
 	th {
 		padding: 10px;
 		font-size: 12px;
@@ -328,7 +268,6 @@
 	}
 	table {
 		margin-bottom: 20px;
-
 		width: 100%;
 		word-wrap: break-word;
 	}
@@ -482,8 +421,14 @@
 		object-fit: contain;
 	}
 
-	p {
+	p,
+	li {
 		margin: 0;
+		font-size: calc(14px + 0.390625vw);
+	}
+
+	.image-text-flexbox img {
+		width: 14vw;
 	}
 	.explanation {
 		font-size: calc(14px + 0.390625vw);
@@ -519,12 +464,12 @@
 		padding: 3rem 0;
 		flex-direction: column;
 	}
-	section div div {
+	/* section div div {
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
 		justify-content: space-between;
-	}
+	} */
 	section div figure {
 		flex: 50%;
 	}

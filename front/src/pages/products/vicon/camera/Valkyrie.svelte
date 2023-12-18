@@ -9,6 +9,8 @@
 	import image5 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie5.jpg';
 	import image6 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie6.jpg';
 	import image7 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie7.jpg';
+	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
+	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
 
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
@@ -79,7 +81,7 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>Vero</h1>
+		<h1>Valkyrie</h1>
 		<figure class="hero-image-container">
 			<img class="hero-image" src={hero} alt="4d studios" />
 		</figure>
@@ -171,14 +173,43 @@
 
 				<h3>④INCAM-VFXの蓄積をPerformance Capture3.0へ移植</h3>
 
-				<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
-					<li class="card">
+				<ul>
+					<li>
+						SuperNova
+						<p>
+							柔軟性高いアクティブマーカー。VirtualCameraや、動きの早いプロップ等に装着することで、複雑な形状にも容易にロックソリッドなRigidを作成することができます。
+						</p>
+						<br />
+						<img src={image4} alt="title" width="100%" />
+					</li>
+					<br />
+					<li>
+						Crown
+						<p>
+							柔軟性高いアクティブマーカー。VirtualCameraや、動きの早いプロップ等に装着することで、複雑な形状にも容易にロックソリッドなRigidを作成することができます。
+						</p>
+						<br />
+						<img src={image5} alt="title" width="100%" />
+					</li>
+					<br />
+					<li>
+						DCSをSHOGUNに統合　
+						<p>
+							レンズデータを自動で読み取ってくれるLDT-V1をSHOGUN側で入力できるように現在調整中。圧倒的な位置精度と共に、正確なレンズ値をリアルタイムにSHOGUN経由でモーションデータに統合できます。
+						</p>
+						<br />
+						<img src={image6} alt="title" width="100%" />
+					</li>
+				</ul>
+
+				<!-- <ul class="special-ul">
+					<li class="special-card">
 						<article>
 							<figure>
 								<img src={image4} alt="title" width="400" height="200" />
-								<figcaption>
+								<figcaption class="special-card-figcaption">
 									<p>SuperNova</p>
-									<span class="overflowed-text"
+									<span class="special-overflowed-text"
 										>柔軟性高いアクティブマーカー。VirtualCameraや、動きの早いプロップ等に装着することで、複雑な形状にも容易にロックソリッドなRigidを作成することができます。</span
 									>
 								</figcaption>
@@ -186,13 +217,13 @@
 						</article>
 					</li>
 
-					<li class="card">
+					<li class="special-card">
 						<article>
 							<figure>
 								<img src={image5} alt="title" width="400" height="200" />
-								<figcaption>
+								<figcaption class="special-card">
 									<p>Crown</p>
-									<span class="overflowed-text"
+									<span class="special-overflowed-text"
 										>複数台のVirtualCamera等に簡単にRigidの組み合わせを変更できるパワフルなアクティブマーカーに加え、IMUの慣性センサーを実装する事により、より強靭なトラッキングを実現しました。アクティブマーカーはVK26なら最大50m迄認識可能で、しかも15時間のバッテリー持ちします。</span
 									>
 								</figcaption>
@@ -200,169 +231,152 @@
 						</article>
 					</li>
 
-					<li class="card">
+					<li class="special-card">
 						<article>
 							<figure>
 								<img src={image6} alt="title" width="400" height="200" />
-								<figcaption>
+								<figcaption class="special-card">
 									<p>DCSをSHOGUNに統合</p>
-									<span class="overflowed-text"
+									<span class="special-overflowed-text"
 										>レンズデータを自動で読み取ってくれるLDT-V1をSHOGUN側で入力できるように現在調整中。圧倒的な位置精度と共に、正確なレンズ値をリアルタイムにSHOGUN経由でモーションデータに統合できます。</span
 									>
 								</figcaption>
 							</figure>
 						</article>
 					</li>
-				</ul>
+				</ul> -->
+
+				<h3>⑤自動Healing機能で素早いシステム立ち上げと、中断の無い撮影を実現</h3>
+				<figure>
+					<img src={image7} alt="Shooting system" />
+				</figure>
+				<p>
+					切削アルミケーシングによる熱を効率的に逃がすヒートフローとUPoEによるカメラへの供給電力の増加により、暖気時間を大幅削減。加速度センサと、熱電対サーモセンサ、トラッキング専用LEDを実装し、衝撃によるズレや熱による膨張を自動検知、自己診断的にリカリブレーションを行います。
+				</p>
 			</div>
 		</section>
 
 		<section class="price" id="price">
 			<div class="container">
-				<h2>仕様・価格</h2>
+				<h2>製品ラインアップ・価格</h2>
+
 				<table border="1" cellpadding="3">
 					<tbody
 						><tr>
 							<th></th>
-							<!--<th>Vero v1.3</th>-->
-							<th colspan="3">Vero v2.2</th>
-							<th colspan="3">Vero 1.3X</th>
+							<th>VK26</th>
+							<th>VK16</th>
+							<th>VK8</th>
 						</tr>
-
 						<tr>
-							<td class="tblCap">解像度</td>
-							<!--<td>130万画素<br>1,280 x 1,024</td>-->
-							<td colspan="3">220万画素<br />2,048 x 1,088</td>
-							<td colspan="3">130万画素<br />1,280 x 1,024</td>
+							<td class="tblCap">解像度<br />（万画素）</td>
+							<td>2600</td>
+							<td>1600</td>
+							<td>800</td>
 						</tr>
-
 						<tr>
-							<td class="tblCap">最大フレームレート</td>
+							<td class="tblCap">最高FPS<br />（フル解像度）</td>
 							<!--<td>250Hz</td>-->
-							<td colspan="3">330Hz</td>
-							<td colspan="3">250Hz</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">給電・伝送路</td>
-							<td colspan="6">PoE+</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">レンズ</td>
-							<td colspan="3">6 - 12 mm （Varifocal：可変焦点レンズ）</td>
-							<td colspan="3">4mm固定焦点レンズ</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">視野角</td>
-							<!--<td>W:　60.8° x 50.3°<br>T:　32.7° x 26.4°</td>-->
-							<td colspan="3">W:　86.4° x 53.0°<br />T:　50.3° x 28.0°</td>
-							<td colspan="3">79.0° x 67.6°</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">ストロボ</td>
-							<td colspan="6">IR（850nm）</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">シャッタータイプ</td>
-							<td colspan="6">Global</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">接続ケーブル</td>
-							<td colspan="6">Cat5e / RJ45</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">消費電力/カメラ</td>
-							<td colspan="6">12W</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">サイズ</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 135 mm (D)、575g</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 112 mm (D)、560g</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">対応ソフトウェア<br />バージョン</td>
-							<td colspan="6">Shogun 1,Blade 3, Nexus 2, Tracker 3 以上必須</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">価格(税別)</td>
-							<!--<td>1,050,000円</td>-->
-							<td colspan="6">1,500,000円</td>
+							<td>150</td>
+							<td>300</td>
+							<td>500</td>
 						</tr>
 						<tr>
-							<td class="tblCap" rowspan="3">年間保守価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
+							<td class="tblCap">最高画角<br />（縦x横°）</td>
+							<!--<td>250Hz</td>-->
+							<td>72 x 72</td>
+							<td>72 x 56</td>
+							<td>72 x 42</td>
 						</tr>
 						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">800,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>オンサイトサポート、代替機材無償貸出、<br
-								/>電話、メール、ファックス対応、修理品部品料のみ請求</td
-							>
-						</tr>
-						<tr>
-							<td class="tblCap" rowspan="3">取扱説明及び設置価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
-						</tr>
-						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">600,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>スタジオ内カメラ設置（工事費別途）、<br
-								/>取扱説明（約2日）、必要に応じて追加無償取扱説明１回実施</td
-							>
+							<td class="tblCap">価格<br />（税別）</td>
+							<!--<td>250Hz</td>-->
+							<td>9,500,000円</td>
+							<td>8,500,000円</td>
+							<td>6,500,000円</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</section>
+		<br />
+		<br />
+		<br />
+		<a href={`/product/vicon`} use:link>
+			<button class="more">
+				<span class="viewMore">VICONトップへ</span>
+			</button></a
+		>
 	</div>
 </div>
 <section class="relatedLinks">
 	<h2>関連リンク</h2>
 	<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
-		{#if products}
-			{#each products as { id, title, description, category, thumbnail }, index}
-				<li class="card">
-					<article>
-						<figure>
-							<a
-								href={title !== '4Dviews' ? `/products/${urlSlug(title)}` : `/product/4dviews`}
-								use:link
-							>
-								<img src={thumbnail} alt={title} width="400" height="200" />
-							</a>
-							<figcaption>
-								<p>{title}</p>
-								<span class="overflowed-text">{description}</span>
-							</figcaption>
-						</figure>
-					</article>
-				</li>
-			{/each}
-		{:else}
-			<p>Loading...</p>
-		{/if}
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/product/holosuite`} use:link>
+						<img src={link1} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">Faceware</p>
+						<span class="overflowed-text"
+							>ビデオベースのフェイシャル専用モーションキャプチャーシステム</span
+						>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
+
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/services/4dstudio`} use:link>
+						<img src={link2} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">StretchSense</p>
+						<span class="overflowed-text"
+							>シリコン素材の伸縮センサーを搭載したワイアレス対応グローブデバイス</span
+						>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
 	</ul>
 </section>
 
 <style>
+	.viewMore {
+		font-weight: 500;
+		font-size: calc(20px + 0.390625vw);
+	}
+	.linkTitle {
+		font-weight: bold;
+	}
+	.more {
+		text-align: center;
+		border: 1px solid rgb(143, 143, 143);
+		padding: 1rem 5rem;
+		background: none;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	.special-ul {
+		display: flex;
+		gap: 3rem;
+		list-style-type: none;
+	}
+	.special-overflowed-test {
+		margin: 0;
+	}
+	.card article figure .special-card-figcaption {
+		background: none;
+	}
 	li {
+		font-size: calc(14px + 0.390625vw);
+	}
+	p {
 		font-size: calc(14px + 0.390625vw);
 	}
 	th {

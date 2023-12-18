@@ -149,7 +149,7 @@
 		flex-direction: row;
 		gap: 2rem;
 	}
-	/* "More" button (like "View more") */
+	/* "More" button (like "VIEW MORE") */
 	.more {
 		display: flex;
 		align-items: center;

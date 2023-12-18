@@ -25,6 +25,11 @@ import Blog from "./pages/Blog.svelte";
 import BlogTemplate from "./pages/blog/BlogTemplate.svelte";
 import Vero from "./pages/products/vicon/camera/Vero.svelte";
 import Valkyrie from "./pages/products/vicon/camera/Valkyrie.svelte";
+import Shogun from "./pages/products/vicon/software/Shogun.svelte";
+import Holosys from "./pages/products/4dviews/Holosys.svelte";
+import Nexus from "./pages/products/vicon/software/Nexus.svelte";
+import Tracker from "./pages/products/vicon/software/Tracker.svelte";
+import Polygon from "./pages/products/vicon/software/Polygon.svelte";
 
 export const routes = {
   "/": Home,
@@ -43,7 +48,12 @@ export const routes = {
   "/product/vicon": Vicon,
   "/product/vicon/camera/valkyrie": Valkyrie,
   "/product/vicon/camera/vero": Vero,
+  "/product/vicon/software/shogun": Shogun,
+  "/product/vicon/software/nexus": Nexus,
+  "/product/vicon/software/tracker": Tracker,
+  "/product/vicon/software/polygon": Polygon,
   "/product/4dviews": Fourdviews,
+  "/product/4dviews/capture/holosys": Holosys,
   "/product/holosuite": Holosuite,
   "/products/:title": ProductTemplate,
   "/news": News,

@@ -101,6 +101,10 @@ a:visited {
 width:30vw;
 }
 
+.viewMore{
+  font-weight: 600;
+}
+
 hr{
   width: 100%;
 }

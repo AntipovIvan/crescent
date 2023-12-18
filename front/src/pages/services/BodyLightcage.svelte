@@ -1,7 +1,7 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../assets/services/lightcageFull.jpg';
+	import hero from '../../assets/services/lightcageFull.jpeg';
 	import man from '../../assets/services/lightcageBody/man.jpeg';
 	import studio1 from '../../assets/services/lightcageBody/Dress1.png';
 	import studio2 from '../../assets/services/lightcageBody/Dress2.png';

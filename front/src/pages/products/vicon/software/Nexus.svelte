@@ -1,10 +1,14 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../../../assets/products/vicon/camera/vero/veroxbanner.jpg';
-	import hero2 from '../../../../assets/products/vicon/camera/vero/verobanner.jpg';
+	import hero from '../../../../assets/products/vicon/software/nexus/biofeedback-600x300.png';
+	import image1 from '../../../../assets/products/vicon/software/shogun/Apose.png';
+	import image2 from '../../../../assets/products/vicon/software/shogun/overray.png';
+	import image3 from '../../../../assets/products/vicon/software/shogun/soft_shogun_realtime.png';
+	import image4 from '../../../../assets/products/vicon/software/shogun/soft_shogun_unbreak.png';
 	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
 	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
+
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
 
@@ -74,7 +78,7 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>Vero</h1>
+		<h1>Nexus</h1>
 		<figure class="hero-image-container">
 			<img class="hero-image" src={hero} alt="4d studios" />
 		</figure>
@@ -92,54 +96,46 @@
 			</div>
 
 			<div class="container">
-				<h3>Vero 1.3X</h3>
 				<p class="explanation">
-					コンパクトかつ高精度で世界中から大好評のVeroシリーズに、広角のVero 1.3Xが誕生しました。
-					視野の広いVero
-					1.3Xなら、限られた空間でも広いキャプチャエリアを確保でき、全身のトラッキングや収録が可能になります。
+					Vicon
+					Nexusは、初のライフサイエンスに特化したモーションキャプチャーソフトウェアです。日々のルーティンワークを簡略化し、如何なる条件下でも容易にカスタマイズが可能であり、且つ、如何なる複雑な要望にも対応可能なソフトウェアです。
 				</p>
 
-				<ul class="features-list">
-					<li class="features-list-item">
-						SMALLNESS <p>
-							カメラの小型化に伴い、CAVEやHolo
-							Stageのようなカメラスペースの取れない空間であっても、他の機材と鑑賞すること無くスムースな設置が行えます。
-						</p>
-					</li>
+				<li>
+					EASY TO LEARN, EASY TO USE
 
-					<li class="features-list-item">
-						PoE(Power over Ethernet)接続 <p>
-							汎用Etherrnetケーブル一本で電源の供給と、データの伝送を行う為、シンプルで設置場所を選ばないシステム設計が可能です。
-						</p>
-					</li>
-					<li class="features-list-item">
-						SMALL but BRIGHT STROBE <p>
-							Veroにはより強力で高視野角のストロボが搭載されています。これにより、不要な光のノイズなどを識別しやすくなり、より的確なマーカーデータの検出が可能となります。
-						</p>
-					</li>
-				</ul>
-			</div>
+					<p>
+						Nexusは卓越した使用感を提供します。インターフェースは、処理過程と同様にデータ準備、データ取得、レビューの順序で整頓されています。直感的に必要な作業ボタンを発見でき、ラーニングカーブが急速に上がる人間工学的設計に仕上がっています。
+					</p>
+				</li>
+				<br /> <br />
+				<li>
+					NATIVE REAL TIME
 
-			<div class="container">
-				<h2>Vero 2.2</h2>
-				<figure>
-					<img src={hero2} alt="Shooting system" />
-				</figure>
-				<p class="explanation">
-					Vero
-					2.2は、Viconのモーションキャプチャの目指す部分とは一線を画した、廉価でコンパクト、且つ高精度なRigid
-					Bodyに特化したトラッキング用のソリューションです。
-				</p>
+					<p>
+						Nexusの真髄は、リアルタイム性にあります。あらゆるデータはその場でリアルタイム視認が可能です。カメラを追加した場合、その設定を行う必要はありません。Nexusが自動認識し、処理を行います。Nexusには自己診断モニタ機能が搭載され、随時実行しています。従い、撮影の終わりに予期せぬデータばかりが蓄積されて、一日が台無しになるようなこともありません。
+					</p>
+				</li>
+				<br /> <br />
+				<li>
+					CUSTOMIZE EVERYTHING
 
-				<ul class="features-list">
-					<li class="features-list-item">
-						VARIFOCAL LENS
-						<p>
-							Vero
-							2.2にはズーム可能なレンズが搭載されており、焦点距離を6mmから12mmまで変更することができます。その為、設置場所や使用用途に応じて設定を自由に変更することが可能です。
-						</p>
-					</li>
-				</ul>
+					<p>
+						Nexusのカスタマイズ機能として、新たにProtocol
+						Builderを搭載しています。これは、ご要望のパイプラインワークフローをウィザードベースのワークフローとして登録し、業務フローを一元化することが可能となりました。
+					</p>
+				</li>
+				<br /> <br />
+				<li>
+					PAST PRESENT, FUTURE PERFECT
+
+					<p>
+						Nexusは、過去、現在、将来のデータコンパティビリティを保証します。現在、ご利用のデータはもちろん、今後撮られるデータも含め、全てPlug-in
+						GaitやPlug-in
+						Modelerとの互換が保証され、現在のプロセス課程を変更する必要は一切ありません。同様に、取得されたNexusのデータはシームレスにPolygonへの移行が可能です。
+					</p>
+				</li>
+				<br /> <br />
 			</div>
 		</section>
 
@@ -150,111 +146,42 @@
 					<tbody
 						><tr>
 							<th></th>
-							<!--<th>Vero v1.3</th>-->
-							<th colspan="3">Vero v2.2</th>
-							<th colspan="3">Vero 1.3X</th>
+							<th>nexus</th>
 						</tr>
 
 						<tr>
-							<td class="tblCap">解像度</td>
-							<!--<td>130万画素<br>1,280 x 1,024</td>-->
-							<td colspan="3">220万画素<br />2,048 x 1,088</td>
-							<td colspan="3">130万画素<br />1,280 x 1,024</td>
+							<td class="tblCap">名称</td>
+							<td>エンジニアリング用モーションキャプチャ解析ソフトウェア</td>
 						</tr>
-
 						<tr>
-							<td class="tblCap">最大フレームレート</td>
-							<!--<td>250Hz</td>-->
-							<td colspan="3">330Hz</td>
-							<td colspan="3">250Hz</td>
+							<td class="tblCap">対応OS</td>
+							<td>Windows 10 (64bit)</td>
 						</tr>
-
-						<tr>
-							<td class="tblCap">給電・伝送路</td>
-							<td colspan="6">PoE+</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">レンズ</td>
-							<td colspan="3">6 - 12 mm （Varifocal：可変焦点レンズ）</td>
-							<td colspan="3">4mm固定焦点レンズ</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">視野角</td>
-							<!--<td>W:　60.8° x 50.3°<br>T:　32.7° x 26.4°</td>-->
-							<td colspan="3">W:　86.4° x 53.0°<br />T:　50.3° x 28.0°</td>
-							<td colspan="3">79.0° x 67.6°</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">ストロボ</td>
-							<td colspan="6">IR（850nm）</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">シャッタータイプ</td>
-							<td colspan="6">Global</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">接続ケーブル</td>
-							<td colspan="6">Cat5e / RJ45</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">消費電力/カメラ</td>
-							<td colspan="6">12W</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">サイズ</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 135 mm (D)、575g</td>
-							<td colspan="3">83 mm (H) x 80 mm (W) x 112 mm (D)、560g</td>
-						</tr>
-
-						<tr>
-							<td class="tblCap">対応ソフトウェア<br />バージョン</td>
-							<td colspan="6">Shogun 1,Blade 3, Nexus 2, Tracker 3 以上必須</td>
-						</tr>
-
 						<tr>
 							<td class="tblCap">価格(税別)</td>
-							<!--<td>1,050,000円</td>-->
-							<td colspan="6">1,500,000円</td>
-						</tr>
-						<tr>
-							<td class="tblCap" rowspan="3">年間保守価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
-						</tr>
-						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">800,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>オンサイトサポート、代替機材無償貸出、<br
-								/>電話、メール、ファックス対応、修理品部品料のみ請求</td
-							>
-						</tr>
-						<tr>
-							<td class="tblCap" rowspan="3">取扱説明及び設置価格<br />(税別)</td>
-							<td class="hoshuL hoshuT">モーションキャプチャ</td>
-							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
-						</tr>
-						<tr>
-							<td class="hoshuL hoshuB">トラッキング</td>
-							<td colspan="5" class="hoshuR hoshuB">600,000円</td>
-						</tr>
-						<tr>
-							<td colspan="6"
-								>スタジオ内カメラ設置（工事費別途）、<br
-								/>取扱説明（約2日）、必要に応じて追加無償取扱説明１回実施</td
-							>
+							<td>3,500,000円</td>
 						</tr>
 					</tbody>
 				</table>
+				<p>※ソフトウェアメジャーアップグレードについては別途費用発生</p>
+				<br />
+
+				<li>
+					マーカーの3次元位置情報及び人体の姿勢データを、マーカー数の制限なく遅延なく記録し、TCP/IP経由でリアルタイムでの出力及び、ソフトウェア上で表示可能
+				</li>
+				<br /> <br />
+				<li>
+					Lock Labから最大64チャンネルのアナログ信号を完全同期し、更に信号データの取得も可能
+
+					<p>※Lock Labを追加すれば、64ch以上のアナログ信号動機も可能。</p>
+				</li>
+				<br /> <br />
+				<li>人体につけたマーカーから全身の人体骨格モデルが作成可能</li>
+				<br /> <br />
+				<li>キャリブレーション時に特定のカメラを選択し、再キャリブレーションが可能</li>
+				<br /> <br />
+				<li>CSV形式等のASCIIデータ及び、c3dデータの出力が可能。</li>
+				<br /> <br />
 			</div>
 		</section>
 		<br />
@@ -320,7 +247,6 @@
 		border-radius: 8px;
 		cursor: pointer;
 	}
-
 	th {
 		padding: 10px;
 		font-size: 12px;
@@ -328,7 +254,6 @@
 	}
 	table {
 		margin-bottom: 20px;
-
 		width: 100%;
 		word-wrap: break-word;
 	}
@@ -482,8 +407,14 @@
 		object-fit: contain;
 	}
 
-	p {
+	p,
+	li {
 		margin: 0;
+		font-size: calc(14px + 0.390625vw);
+	}
+
+	.image-text-flexbox img {
+		width: 14vw;
 	}
 	.explanation {
 		font-size: calc(14px + 0.390625vw);
@@ -519,12 +450,12 @@
 		padding: 3rem 0;
 		flex-direction: column;
 	}
-	section div div {
+	/* section div div {
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
 		justify-content: space-between;
-	}
+	} */
 	section div figure {
 		flex: 50%;
 	}

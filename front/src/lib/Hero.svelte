@@ -110,7 +110,7 @@
 		width: 100%;
 		object-fit: cover;
 		filter: brightness(85%);
-		margin-left: 7rem;
+		/* margin-left: 7rem; */
 		position: absolute;
 		height: 100%;
 	}

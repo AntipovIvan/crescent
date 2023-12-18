@@ -1,7 +1,7 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../assets/services/lightcageFace/lcstudio_top2.png';
+	import hero from '../../assets/services/lightcageFace/lightcageFace.png';
 	import man from '../../assets/services/lightcageFace/lcstudio_syosai1.png';
 	import video from '../../assets/services/lightcageFace/DigiTada_new_maps_test03.mp4';
 	import figures from '../../assets/services/4dstudio/figures.jpg';
