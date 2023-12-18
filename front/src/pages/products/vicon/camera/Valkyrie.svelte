@@ -1,0 +1,641 @@
+<script>
+	import { link } from 'svelte-spa-router';
+	import Device from 'svelte-device-info';
+	import hero from '../../../../assets/products/vicon/camera/valkyrie/valkyrieHero.jpg';
+	import image1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie1.jpg';
+	import image2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie2.jpg';
+	import image3 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie3.jpg';
+	import image4 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie4.jpg';
+	import image5 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie5.jpg';
+	import image6 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie6.jpg';
+	import image7 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie7.jpg';
+
+	import { onMount } from 'svelte';
+	import urlSlug from 'url-slug';
+
+	let products;
+	let error;
+	let isFixedNav = false;
+	let activeSection = null;
+
+	onMount(async () => {
+		try {
+			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			const { results } = await response.json();
+			products = results.filter((result) => {
+				return result.title.includes('4D') || result.title.includes('Holo');
+			});
+		} catch (err) {
+			error = err;
+		}
+
+		const heroHeight = document.querySelector('.hero');
+		const sidebarItems = document.querySelectorAll('.sidebar-item');
+		const sections = document.querySelectorAll('.content > section');
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+						const targetId = entry.target.id;
+						activeSection = targetId;
+						sidebarItems.forEach((item) => {
+							if (item.getAttribute('href') === `#${targetId}`) {
+								item.classList.add('active');
+							} else {
+								item.classList.remove('active');
+							}
+						});
+					}
+				});
+			},
+			{ threshold: 0.3 }
+		);
+
+		sections.forEach((section) => {
+			observer.observe(section);
+		});
+
+		window.addEventListener('scroll', () => {
+			const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+			isFixedNav = scrollPosition >= heroHeight.offsetHeight;
+		});
+	});
+
+	function scrollToElement(event) {
+		event.preventDefault();
+
+		const targetId = event.target.hash.substr(1);
+		const targetElement = document.getElementById(targetId);
+
+		if (targetElement) {
+			targetElement.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+</script>
+
+<div class="pageContent">
+	<div class="hero">
+		<h1>Vero</h1>
+		<figure class="hero-image-container">
+			<img class="hero-image" src={hero} alt="4d studios" />
+		</figure>
+	</div>
+
+	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
+		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>製品概要</a>
+		<a class="sidebar-item" href="#system" on:click={scrollToElement}>製品特徴</a>
+		<a class="sidebar-item" href="#perfCapt" on:click={scrollToElement}
+			>Valkyrie = “Performance Capture 3.0”</a
+		>
+		<a class="sidebar-item" href="#price" on:click={scrollToElement}>製品ラインアップ・価格</a>
+	</div>
+
+	<div class="content">
+		<section class="overview" id="overview">
+			<div class="container">
+				<h2>製品概要</h2>
+				<p class="explanation">
+					VANTAGEカメラのリリースから７年が過ぎ、満を持し最新カメラVALKYRIEが、遂にリリースされました。
+				</p>
+				<p class="explanation">
+					開発の追い込み時期がコロナ禍悲惨な時期と重なり、開発遅延の恐れもありましたが、つつがなく製品も生産され始めています。但し、半導体の供給不足、仕入部材の高騰化が響き、円安の追い打ちもあいまって、製品価格は大きく上昇しています。しかし、更なる製品機能の向上で製品パフォーマンスを一層引き上げ、お買い得感を維持しています。
+				</p>
+				<p class="explanation">
+					エントリーモデルのVEROは引き続き継続して生産されており、クレッセントとしては、お買い得のIratto1000でVICONをご体験頂き、VALKYRIEの800万画素VK8で本格導入をご検討頂き、“いつかは、VK26”のUXのシナリオを描いております
+				</p>
+			</div>
+		</section>
+
+		<section class="system" id="system">
+			<div class="container">
+				<h2>製品特徴</h2>
+				<ul>
+					<li>フラッグシップカメラの解像度が（1600万画素から）2600万画素に向上</li>
+					<li>
+						新搭載FPGA（TESLAにも搭載）によるカメラ内部の処理能力の大幅向上により、カメラの高精度、高速化を実現
+					</li>
+					<li>UPoEの供給電力能力向上を利用し、より強力で遠距離到達可能なLEDを実装</li>
+					<li>新開発のカメラセンサに最適化されたVARIFOCALレンズ</li>
+					<li>
+						ユーザ要望による、映像表示によるカリブレーション調整機能や、熱膨張やアクシデント時のカリブレーション誤差の自動修正モード
+					</li>
+					<li>屋外利用を想定してのIP65ミリタリスペックで雨天悪天候下での利用が可能</li>
+					<li>
+						Virtual
+						Productionでの所謂、ICVFXステージでのトラッキングデバイスとして、様々な機能の実装と、外部ハードウェアと連携
+					</li>
+				</ul>
+
+				<figure>
+					<img src={image1} alt="Shooting system" />
+				</figure>
+			</div>
+		</section>
+
+		<section class="perfCapt" id="perfCapt">
+			<div class="container">
+				<h2>Valkyrie = Performance Capture3.0</h2>
+				<p>
+					より高解像度でより高速撮像可能なカメラValkyrieシリーズは、より広範囲をより高精度に、しかもより操作性よくリアルタイムにキャプチャすることを実現しました。その上で、世界中の現場から要望されている機能をSHOGUN2.0にてんこ盛りして行きます。つまり、Valkyrieを導入することで、次世代リアルタイムキャプチャスタイル、Performance
+					Capture3.0にモーションキャプチャスタジオを進化させることができます。
+				</p>
+				<h3>①10本指＠10mmマーカ リアルタイムが現実的に！</h3>
+				<figure>
+					<img src={image2} alt="Shooting system" />
+				</figure>
+				<p>
+					VK26の超解像度が10mmマーカー捕捉に大きく貢献。今迄難しかった10同時10フィンガーキャプチャもリアルタイム処理が実現可能になりました。
+				</p>
+				<figure>
+					<img src={image3} alt="Shooting system" />
+				</figure>
+				<p>
+					クレッセント製専用手袋により装着性向上とマーカー位置保持、そして装着時間大幅短縮でアクターさんの負担を一気に軽減！
+				</p>
+
+				<h3>②リアルタイムデータ、MCPのPOST処理がSHOGUN2で楽ちんに</h3>
+				<p>
+					リアルタイムで出力されるMCPデータのPOSTがよりインテリジェントに高速になります。複雑で多くの処理が必要なシーンはX2Dで、ライブ中心のデータで多少の後処理で済みそうなデータはMCPで、SHOGUN
+					POSTに投げ込む新しいワークフローがますます充実します。
+				</p>
+
+				<h3>③Multi-Machine機能でリアルタイム処理40%効率化</h3>
+				<p>
+					AMDの新RyzenのWorkStationを多重化し、10G
+					HUBで接続することで大規模撮影時のリアルタイム処理のドロップフレームを40％改善します。10人＋10フィンガー同時撮影でも70～80％＠120fpsを実現します(社内比）
+				</p>
+
+				<h3>④INCAM-VFXの蓄積をPerformance Capture3.0へ移植</h3>
+
+				<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
+					<li class="card">
+						<article>
+							<figure>
+								<img src={image4} alt="title" width="400" height="200" />
+								<figcaption>
+									<p>SuperNova</p>
+									<span class="overflowed-text"
+										>柔軟性高いアクティブマーカー。VirtualCameraや、動きの早いプロップ等に装着することで、複雑な形状にも容易にロックソリッドなRigidを作成することができます。</span
+									>
+								</figcaption>
+							</figure>
+						</article>
+					</li>
+
+					<li class="card">
+						<article>
+							<figure>
+								<img src={image5} alt="title" width="400" height="200" />
+								<figcaption>
+									<p>Crown</p>
+									<span class="overflowed-text"
+										>複数台のVirtualCamera等に簡単にRigidの組み合わせを変更できるパワフルなアクティブマーカーに加え、IMUの慣性センサーを実装する事により、より強靭なトラッキングを実現しました。アクティブマーカーはVK26なら最大50m迄認識可能で、しかも15時間のバッテリー持ちします。</span
+									>
+								</figcaption>
+							</figure>
+						</article>
+					</li>
+
+					<li class="card">
+						<article>
+							<figure>
+								<img src={image6} alt="title" width="400" height="200" />
+								<figcaption>
+									<p>DCSをSHOGUNに統合</p>
+									<span class="overflowed-text"
+										>レンズデータを自動で読み取ってくれるLDT-V1をSHOGUN側で入力できるように現在調整中。圧倒的な位置精度と共に、正確なレンズ値をリアルタイムにSHOGUN経由でモーションデータに統合できます。</span
+									>
+								</figcaption>
+							</figure>
+						</article>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="price" id="price">
+			<div class="container">
+				<h2>仕様・価格</h2>
+				<table border="1" cellpadding="3">
+					<tbody
+						><tr>
+							<th></th>
+							<!--<th>Vero v1.3</th>-->
+							<th colspan="3">Vero v2.2</th>
+							<th colspan="3">Vero 1.3X</th>
+						</tr>
+
+						<tr>
+							<td class="tblCap">解像度</td>
+							<!--<td>130万画素<br>1,280 x 1,024</td>-->
+							<td colspan="3">220万画素<br />2,048 x 1,088</td>
+							<td colspan="3">130万画素<br />1,280 x 1,024</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">最大フレームレート</td>
+							<!--<td>250Hz</td>-->
+							<td colspan="3">330Hz</td>
+							<td colspan="3">250Hz</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">給電・伝送路</td>
+							<td colspan="6">PoE+</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">レンズ</td>
+							<td colspan="3">6 - 12 mm （Varifocal：可変焦点レンズ）</td>
+							<td colspan="3">4mm固定焦点レンズ</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">視野角</td>
+							<!--<td>W:　60.8° x 50.3°<br>T:　32.7° x 26.4°</td>-->
+							<td colspan="3">W:　86.4° x 53.0°<br />T:　50.3° x 28.0°</td>
+							<td colspan="3">79.0° x 67.6°</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">ストロボ</td>
+							<td colspan="6">IR（850nm）</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">シャッタータイプ</td>
+							<td colspan="6">Global</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">接続ケーブル</td>
+							<td colspan="6">Cat5e / RJ45</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">消費電力/カメラ</td>
+							<td colspan="6">12W</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">サイズ</td>
+							<td colspan="3">83 mm (H) x 80 mm (W) x 135 mm (D)、575g</td>
+							<td colspan="3">83 mm (H) x 80 mm (W) x 112 mm (D)、560g</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">対応ソフトウェア<br />バージョン</td>
+							<td colspan="6">Shogun 1,Blade 3, Nexus 2, Tracker 3 以上必須</td>
+						</tr>
+
+						<tr>
+							<td class="tblCap">価格(税別)</td>
+							<!--<td>1,050,000円</td>-->
+							<td colspan="6">1,500,000円</td>
+						</tr>
+						<tr>
+							<td class="tblCap" rowspan="3">年間保守価格<br />(税別)</td>
+							<td class="hoshuL hoshuT">モーションキャプチャ</td>
+							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
+						</tr>
+						<tr>
+							<td class="hoshuL hoshuB">トラッキング</td>
+							<td colspan="5" class="hoshuR hoshuB">800,000円</td>
+						</tr>
+						<tr>
+							<td colspan="6"
+								>オンサイトサポート、代替機材無償貸出、<br
+								/>電話、メール、ファックス対応、修理品部品料のみ請求</td
+							>
+						</tr>
+						<tr>
+							<td class="tblCap" rowspan="3">取扱説明及び設置価格<br />(税別)</td>
+							<td class="hoshuL hoshuT">モーションキャプチャ</td>
+							<td colspan="5" class="hoshuR hoshuT">1,200,000円</td>
+						</tr>
+						<tr>
+							<td class="hoshuL hoshuB">トラッキング</td>
+							<td colspan="5" class="hoshuR hoshuB">600,000円</td>
+						</tr>
+						<tr>
+							<td colspan="6"
+								>スタジオ内カメラ設置（工事費別途）、<br
+								/>取扱説明（約2日）、必要に応じて追加無償取扱説明１回実施</td
+							>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+</div>
+<section class="relatedLinks">
+	<h2>関連リンク</h2>
+	<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
+		{#if products}
+			{#each products as { id, title, description, category, thumbnail }, index}
+				<li class="card">
+					<article>
+						<figure>
+							<a
+								href={title !== '4Dviews' ? `/products/${urlSlug(title)}` : `/product/4dviews`}
+								use:link
+							>
+								<img src={thumbnail} alt={title} width="400" height="200" />
+							</a>
+							<figcaption>
+								<p>{title}</p>
+								<span class="overflowed-text">{description}</span>
+							</figcaption>
+						</figure>
+					</article>
+				</li>
+			{/each}
+		{:else}
+			<p>Loading...</p>
+		{/if}
+	</ul>
+</section>
+
+<style>
+	li {
+		font-size: calc(14px + 0.390625vw);
+	}
+	th {
+		padding: 10px;
+		font-size: 12px;
+		background: #e0e3e7;
+	}
+	table {
+		margin-bottom: 20px;
+
+		width: 100%;
+		word-wrap: break-word;
+	}
+	.overflowed-text {
+		margin: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		white-space: pre-wrap;
+	}
+	.sidebar-item {
+		font-size: calc(14px + 0.390625vw);
+		color: #ababab;
+		padding: 16px;
+		text-decoration: none;
+	}
+	.sidebar-item.active {
+		color: #000000;
+		font-size: calc(14px + 0.390625vw);
+	}
+	.features-list {
+		padding-left: 5rem;
+	}
+	.features-list-item {
+		list-style-type: disc;
+		font-size: calc(14px + 0.390625vw);
+		line-height: 1.5;
+	}
+	.pageContent {
+		padding: 2rem 8rem;
+	}
+	.sidebar {
+		margin: 0;
+		padding: 0;
+		width: 25vw;
+		position: absolute;
+		height: 100%;
+		overflow: auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.sidebar-fixed {
+		position: fixed;
+		top: 0;
+		left: 0;
+		padding: 2rem 8rem;
+	}
+
+	.content {
+		margin-left: 25vw;
+		padding: 1px 16px;
+	}
+
+	.relatedLinks {
+		overflow: hidden;
+		padding: 4rem 0;
+		background-color: #dddddd;
+		margin: 5rem 0 0 0;
+		text-align: center;
+		width: 100%;
+	}
+	.card article figure {
+		margin: 0;
+		width: inherit;
+		-webkit-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		-moz-box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		box-shadow: 0px 2px 12px 2px rgba(173, 173, 173, 1);
+		border-radius: 8px;
+		height: 100%;
+	}
+
+	.card article figure figcaption {
+		padding: 15px;
+		display: flex;
+		flex-direction: column;
+		align-items: baseline;
+		gap: 0.5rem;
+		font-size: calc(11px + 0.390625vw);
+		text-align: left;
+		min-height: 8rem;
+		background: white;
+	}
+
+	.card article figure a img {
+		width: 100%;
+		height: auto;
+		border-radius: 8px 8px 0 0;
+		cursor: pointer;
+		display: block;
+		max-height: 160px;
+		object-fit: cover;
+	}
+	.cardList {
+		width: 100%;
+		margin-top: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		list-style: none;
+	}
+
+	.cardList .card {
+		width: 15.5rem;
+		margin-right: 2rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	.cardListMobile {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 13.5rem);
+		grid-gap: 2rem;
+		justify-content: center;
+		align-content: flex-start;
+		list-style: none;
+		margin: 2vh auto;
+		padding: 0 0 1.5vh 0;
+		overflow: hidden;
+	}
+
+	.cardListMobile .card {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hero {
+		position: relative;
+		margin-bottom: 5rem;
+	}
+
+	.hero-image-container {
+		max-height: 70vh;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 15px;
+	}
+
+	.hero-image {
+		width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+
+	p {
+		margin: 0;
+	}
+	.explanation {
+		font-size: calc(14px + 0.390625vw);
+	}
+	h1 {
+		font-size: calc(36px + 0.390625vw);
+		font-weight: 600;
+		padding: 4rem 0;
+	}
+	h2 {
+		font-size: calc(32px + 0.390625vw);
+		font-weight: 600;
+	}
+
+	h3 {
+		font-size: calc(28px + 0.390625vw);
+		font-weight: 600;
+		color: #0b345b;
+	}
+
+	section:not(.relatedLinks) {
+		width: 100%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		border-top: 2px solid black;
+	}
+
+	.container {
+		display: flex;
+		gap: 2rem;
+		padding: 3rem 0;
+		flex-direction: column;
+	}
+	section div div {
+		display: flex;
+		flex-direction: column;
+		flex: 50%;
+		justify-content: space-between;
+	}
+	section div figure {
+		flex: 50%;
+	}
+	section div figure img {
+		width: 100%;
+	}
+
+	figure {
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+
+	@media (max-width: 800px) {
+		.container {
+			flex-direction: column;
+		}
+
+		.cardList {
+			grid-template-columns: repeat(auto-fill, 15.5rem);
+			margin: 0 auto;
+		}
+	}
+
+	@media screen and (max-width: 700px) {
+		.sidebar {
+			width: 100%;
+			height: auto;
+			position: relative;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+		}
+		.sidebar-fixed {
+			background-color: white;
+		}
+		.hero {
+			margin-bottom: 2rem;
+		}
+		.sidebar-fixed {
+			position: fixed;
+			padding: 0rem;
+		}
+		.sidebar a {
+			float: left;
+		}
+		div.content {
+			margin-left: 0;
+		}
+		iframe {
+			width: 100%;
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+		.pageContent {
+			padding: 0 1rem;
+		}
+		h1 {
+			padding: 2rem 0;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		.sidebar a {
+			text-align: center;
+			float: none;
+		}
+	}
+</style>

@@ -23,6 +23,8 @@ import UsercaseTemplate from "./pages/usercase/UsercaseTemplate.svelte";
 import SpecialTemplate from "./pages/special/SpecialTemplate.svelte";
 import Blog from "./pages/Blog.svelte";
 import BlogTemplate from "./pages/blog/BlogTemplate.svelte";
+import Vero from "./pages/products/vicon/camera/Vero.svelte";
+import Valkyrie from "./pages/products/vicon/camera/Valkyrie.svelte";
 
 export const routes = {
   "/": Home,
@@ -39,6 +41,8 @@ export const routes = {
   "/services/facelightcage": FaceLightcage,
   "/services/:title": ServiceTemplate,
   "/product/vicon": Vicon,
+  "/product/vicon/camera/valkyrie": Valkyrie,
+  "/product/vicon/camera/vero": Vero,
   "/product/4dviews": Fourdviews,
   "/product/holosuite": Holosuite,
   "/products/:title": ProductTemplate,

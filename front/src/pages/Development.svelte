@@ -3,6 +3,9 @@
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
 	import urlSlug from 'url-slug';
+	import appdev from '../assets/development/contentAppThumb.jpg';
+	import support from '../assets/development/contentSupportThumb.jpg';
+	import plugin from '../assets/development/contentPluginThumb.jpg';
 
 	// let services;
 	let error;
@@ -32,7 +35,7 @@
 				<article>
 					<figure>
 						<a href={`/development/appdev`} use:link>
-							<img src="" alt="" width="400" height="200" />
+							<img src={appdev} alt="appdev" width="400" height="200" />
 
 							<!-- svelte-ignore a11y-structure -->
 							<figcaption>
@@ -59,7 +62,7 @@
 				<article>
 					<figure>
 						<a href={`/development/support`} use:link>
-							<img src="" alt="" width="400" height="200" />
+							<img src={support} alt="support" width="400" height="200" />
 
 							<!-- svelte-ignore a11y-structure -->
 							<figcaption>
@@ -87,7 +90,7 @@
 				<article>
 					<figure>
 						<a href={`/development/plugindev`} use:link>
-							<img src="" alt="" width="400" height="200" />
+							<img src={plugin} alt="Plugin" width="400" height="200" />
 
 							<!-- svelte-ignore a11y-structure -->
 							<figcaption>

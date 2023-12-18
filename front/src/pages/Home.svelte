@@ -253,7 +253,13 @@
 						<li class="card">
 							<a href={`/usercase/${urlSlug(id)}`} use:link>
 								<figure>
-									<img src={thumbnail} alt="Capcom" width="400" height="200" />
+									<img
+										class="usercase-image"
+										src={thumbnail}
+										alt="Capcom"
+										width="400"
+										height="200"
+									/>
 									<figcaption>
 										<time>{date.replaceAll('-', '.')}</time>
 										<span>{title}</span>
@@ -504,8 +510,8 @@
 	/* FEATURED TOPICS BLOCK */
 	.featuredTopics {
 		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, 9.8rem);
+		display: flex;
+		flex-wrap: wrap;
 		grid-gap: 1rem;
 		justify-content: center;
 		align-content: flex-start;
@@ -526,8 +532,8 @@
 	.featuredTopics figure img {
 		object-fit: cover;
 		object-position: center;
-		height: 140px;
-		width: 145px;
+		/* height: 140px; */
+		width: 8.5vw;
 	}
 
 	/* ORIGINAL CONTENTS BLOCK */
@@ -674,6 +680,13 @@
 		border-left: calc(var(--card-width) / 3) solid transparent;
 	}
 
+	.usercase-image {
+		object-fit: cover;
+		object-position: center;
+
+		width: 100%;
+	}
+
 	@media only screen and (max-width: 500px) {
 		.card {
 			width: 100%;
@@ -687,7 +700,9 @@
 			display: flex;
 			flex-wrap: wrap;
 		}
-
+		.featuredTopics figure img {
+			width: 22.5vw;
+		}
 		.originalContentsSection {
 			position: relative;
 			right: 0;

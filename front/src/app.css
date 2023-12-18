@@ -87,7 +87,7 @@ a:visited {
   display: inline-block;
 }
 
-.image-text-flexbox {
+.image-text-flexbox,.dynamic-image-text-flexbox {
   display: flex;
   flex-direction: row;
   gap: 2rem;
@@ -96,6 +96,9 @@ a:visited {
 
 .image-text-flexbox img{
   width:auto;
+}
+.dynamic-image-text-flexbox img{
+width:30vw;
 }
 
 hr{
