@@ -5,6 +5,7 @@
 	let services;
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		const response1 = await fetch('http://' + window.location.hostname + ':7000/api/product');
 		const data1 = await response1.json();
 

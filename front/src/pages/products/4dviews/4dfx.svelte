@@ -190,7 +190,7 @@
 	.more {
 		text-align: center;
 		border: 1px solid rgb(92, 92, 92);
-		padding: 1rem 5rem;
+		padding: 1rem 4rem;
 		background: none;
 		border-radius: 8px;
 		cursor: pointer;

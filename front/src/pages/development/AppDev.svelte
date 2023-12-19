@@ -1,129 +1,117 @@
 <script>
-	import urlSlug from 'url-slug';
-	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
-	import NotFound from '../NotFound.svelte';
 	import Device from 'svelte-device-info';
-	import appdevImage from '../../assets/development/appdevimage.jpg';
+	import appdevImage from '../../assets/development/appdevImage.png';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		window.scrollTo(0, 0);
+	});
 </script>
 
 <div class="content">
-	<!-- <div class="hero">
-		<div class={Device.isPhone ? 'heroTextMobile' : 'heroText'}>
-			<p>V I C O N</p>
-		</div>
-	</div> -->
+	<div class="hero">
+		<h1>アプリケーション制作</h1>
+		<!-- <button class="icon"><span>製品ページ</span></button> -->
+	</div>
 
-	<!-- <div class="content-intro">
-		<p>Viconは、業界最高水準の光学反射式モーションキャプチャシステムです。</p>
+	<div class="content-intro">
+		<h2>産業向け受注案件事例</h2>
 		<p>
-			製品のバリエーションは圧倒的な価格訴求力のあるカメラから、業界最高分解能を持つ1600万画素のカメラまで、お客様の用途と予算に応じたシステム提案ができる幅広いラインナップをご用意しています。
+			経験豊富なエンジニアが最新のスタジオ設備・機器を活用して個々のご注文に答え、用途に応じたユニークなインタラクティブアプリケーションを制作いたします。
 		</p>
-	</div> -->
+		<p>
+			弊社の受注制作は担当責任制ですので、見積制作から納品まで、直接制作担当者が責任を持って作業を進めますので、綿密な打ち合わせの必要な前例のない開発案件でも安心してご発注いただけます。バージョンアップや機能追加に対してもできる限り同一担当者が対応いたします。
+		</p>
+		<p>
+			多くの会社・大学・研究所のお客様からご信頼をいただきリピート発注をいただいておりますが、ほとんどが内部向け開発なので残念ながら具体例をお伝えできません。
+		</p>
+		<a href={`/development/appdev/appdevsub`} use:link>（公開可能な事例紹介はこちら）</a>
+	</div>
 
 	<section class="cameraContent">
-		<div class="leftContent">
-			<ul>
-				<li>
-					産業向け受注案件事例
-					<p>
-						経験豊富なエンジニアが最新のスタジオ機器を活用して個々のご注文に答え、
-						用途に応じたユニークなインタラクティブアプリケーションを制作いたします。
-						(公開可能な事例紹介はこちら)
-					</p>
-				</li>
-				<li>
-					インタラクティブアプリケーションのタイプ
-					<ul>
-						<li>XR(VR/MR/AR)アプリケーション</li>
-						<li>自由視点ボリュメトリックアプリケーション</li>
-						<li>CAVE(没入型多面立体視映像システム)用アプリケーション</li>
-					</ul>
-				</li>
-				<li>
-					コンシューマ向け受注案件事例
-					<ul>
-						<li>
-							イベント・プレゼンテーション用コンテンツ
-							<p>博物館等、展示施設のインフォメーション</p>
-							<p>インタラクティブアートコンテンツ</p>
-							<p>プレゼンテーション用コンテンツ</p>
-							<p>街中にキャラクタや人物実写映像を重畳するARコンテンツ</p>
-						</li>
-						<li>
-							マーケティングコンテンツ
-							<p>カーコンフィギュレータ</p>
-							<p>ECアパレルサイト用自由視点動画</p>
-						</li>
-					</ul>
-				</li>
-				<li>
-					産業向け受注案件事例
-					<ul>
-						<li>
-							・設計・デザイン検討への応用
-							<ul>
-								<li>
-									(目的)
-									<p>試作・模型・モックアップ製作工程の省略化</p>
-									<p>国内・海外を問わない遠隔地事業所間での共同開発用</p>
-									<p>オフィスレイアウトを可視化</p>
-									<p>工場作業を効率化する</p>
-									<p>遠隔治療や治療効果の向上</p>
-									<p>高機能なEラーニング教材作成</p>
-								</li>
+		<div class="container">
+			<div>
+				<h2>インタラクティブアプリケーション</h2>
+				<ul>
+					<li>XR(VR/MR/AR)アプリケーション</li>
+					<li>自由視点ボリュメトリックアプリケーション</li>
+					<li>CAVE(没⼊型多⾯⽴体視映像システム)用アプリケーション</li>
+				</ul>
 
-								<li>
-									(具体的開発事例)
-									<p>核研究施設の構造把握用CAVE</p>
-									<p>重機(大型土木機械)のデザイン検討用CAVE</p>
-									<p>屋内の気流・温度3Dデータを可視化するアプリケーション</p>
-									<p>自動車整備作業をアシストするVR</p>
-									<p>工場内荷物の積下ろしを可視化</p>
-									<p>工場見学者向けの工場内可視化シミュレータ</p>
-									<p>工場内安全教育教材(体感型危機回避シミュレータ)</p>
-									<p>重機(大型土木機械)の操作シミュレータ</p>
-									<p>手術支援MRシステム</p>
-									<p>大学病院でのリハビリ支援コンテンツ</p>
-									<p>大学でのCAVE訓練用コンテンツ</p>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-					使用する技術・デバイスについて
-					<p>
-						弊社の理念である"Link-ALL"に基づき、多様な技術・デバイスを活用します。 「VICON」「4D
-						Views」「MREAL」等の弊社取扱い製品だけでなく、GPS、ジャイロ、アナログ信号
-						データ処理、MIDI等、様々なデバイスやツールを組み合わせてコンテンツ制作を行います。
-					</p>
-					<p>お問い合わせはこちらから</p>
-				</li>
-			</ul>
-		</div>
+				<h2>コンシューマ向け受注案件事例</h2>
+				<ul>
+					<li>
+						イベント・プレゼンテーション用コンテンツ
+						<ul>
+							<li>博物館等、展示施設のインフォメーション</li>
+							<li>インタラクティブアートコンテンツ</li>
+							<li>プレゼンテーション用コンテンツ</li>
+							<li>街中やイベント会場、家庭にキャラクタや人物実写映像を重畳するARコンテンツ</li>
+						</ul>
+					</li>
+					<li>
+						マーケティングコンテンツ
+						<ul>
+							<li>カーコンフィギュレータ</li>
+						</ul>
+					</li>
+				</ul>
 
-		<div class="rightContent">
+				<h2>産業向け受注案件事例</h2>
+				<ul>
+					<li>
+						設計・デザイン検討への応用
+						<p>(目的)</p>
+						<ul>
+							<li>試作・模型・モックアップ製作工程の省略化</li>
+							<li>国内・海外を問わない遠隔地事業所間での共同開発用</li>
+							<li>オフィスレイアウトを可視化する</li>
+							<li>工場作業を効率化する</li>
+							<li>遠隔治療や治療の効果向上</li>
+							<li>高機能なEラーニング教材作成</li>
+						</ul>
+					</li>
+
+					<p>(具体的開発事例)</p>
+					<ul>
+						<li>核研究施設の構造把握用CAVE</li>
+						<li>重機(大型土木機械)のデザイン検討用CAVE</li>
+						<li>屋内の気流・温度3Dデータを可視化するアプリケーション</li>
+						<li>自動車整備作業をアシストするVR</li>
+						<li>工場内荷物の積下ろしを可視化</li>
+						<li>工場見学者向けの工場内可視化シミュレータ</li>
+						<li>工場内安全教育教材（体感型危機回避シミュレータ）</li>
+						<li>重機(大型土木機械)の操作シミュレータ</li>
+						<li>手術支援MRシステム</li>
+						<li>大学病院でのリハビリ支援コンテンツ</li>
+						<li>大学でのCAVE訓練用コンテンツ</li>
+					</ul>
+				</ul>
+
+				<h2>使用する技術・デバイスについて</h2>
+				<p>弊社の理念である"Link-ALL"に基づき、多様な技術・デバイスを活用します。</p>
+				<p>
+					「VICON」「4D
+					Views」「MREAL」等の弊社取扱い製品だけでなく、GPS、ジャイロ、アナログ信号データ処理、MIDI等、様々なデバイスやツール、言語を組み合わせてコンテンツ制作を行います。
+				</p>
+				<a href={`/contact/`} use:link>お問い合わせはこちらから</a>
+			</div>
 			<figure>
-				<img src={appdevImage} alt="appdevImage" />
+				<img src={appdevImage} alt="Valkyrie banner" />
 			</figure>
 		</div>
 	</section>
 </div>
 
 <style>
+	.linkTitle {
+		font-weight: bold;
+		font-size: calc(10px + 0.390625vw);
+	}
 	ul {
 		margin: 0;
-		padding: 0 3rem;
-	}
-	p {
-		padding: 0 1rem;
-	}
-	li {
-		font-size: calc(14px + 0.390625vw);
-	}
-	.leftContent ul li {
-		padding-bottom: 1rem;
+		padding: 0;
 	}
 	.relatedLinks {
 		overflow: hidden;
@@ -151,7 +139,7 @@
 		gap: 0.5rem;
 		font-size: calc(11px + 0.390625vw);
 		text-align: left;
-		min-height: 8rem;
+		min-height: 6rem;
 		background: white;
 	}
 
@@ -223,31 +211,43 @@
 	.viewMore {
 		font-size: calc(12px + 0.390625vw);
 	}
-	p {
+	p,
+	a {
 		margin: 0;
-	}
-	.explanation {
 		font-size: calc(14px + 0.390625vw);
 	}
+	a {
+		text-decoration: underline;
+	}
+	ul {
+		margin-bottom: 2rem;
+	}
+	li {
+		font-size: calc(14px + 0.390625vw);
+		margin-left: 1rem;
+		margin-bottom: 0.5rem;
+	}
 	h1 {
-		font-size: calc(32px + 0.390625vw);
+		font-size: calc(36px + 0.390625vw);
 		font-weight: 600;
+		padding: 4rem 0 0 0;
 	}
 	h2 {
 		font-size: calc(28px + 0.390625vw);
 		font-weight: 600;
+		padding: 1rem 0 2rem 0;
 	}
 	.content {
 		background: #eeeeee;
+		padding: 2rem 8rem;
 	}
 
 	section {
 		width: 85%;
 		margin: 0 auto;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		gap: 2rem;
-		padding: 3rem 0;
 	}
 
 	.softwareContent,
@@ -278,21 +278,16 @@
 		width: 100%;
 	}
 	.content-intro {
-		max-width: 65rem;
+		width: 85%;
 		text-align: left;
 		font-size: calc(16px + 0.390625vw);
 		margin: 0 auto;
-		padding: 10rem 0;
+		padding: 4rem 0;
 	}
 
 	.hero {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(/src/assets/products/vicon/hero.png);
-		height: 88vh;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
 		position: relative;
+		margin-bottom: 3rem;
 	}
 	.heroText {
 		text-align: center;
@@ -301,7 +296,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		display: table;
-		color: white;
+		color: black;
 		font-size: calc(12px + 0.390625vw);
 	}
 
@@ -340,11 +335,26 @@
 	}
 
 	@media (max-width: 800px) {
+		section {
+			width: 100%;
+		}
+		h1 {
+			font-size: calc(28px + 0.390625vw);
+			padding: 1rem 0 0 0;
+		}
+		h2 {
+			font-size: calc(24px + 0.390625vw);
+			padding: 1rem 0 2rem 0;
+		}
 		.container {
 			flex-direction: column;
+			padding: 3rem 1rem;
+		}
+		.content {
+			padding: 2rem 2rem;
 		}
 		.content-intro {
-			padding: 5rem;
+			padding: 0rem;
 			max-width: 86vw;
 		}
 		.cardList {

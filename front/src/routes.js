@@ -34,6 +34,7 @@ import Polygon from "./pages/products/vicon/software/Polygon.svelte";
 import Vue from "./pages/products/vicon/hardware/Vue.svelte";
 import Lockstudio from "./pages/products/vicon/hardware/Lockstudio.svelte";
 import Bicam from "./pages/products/vicon/hardware/Bicam.svelte";
+import AppDevSub from "./pages/development/AppDevSub.svelte";
 
 export const routes = {
   "/": Home,
@@ -41,6 +42,7 @@ export const routes = {
   "/services": Services,
   "/development": Development,
   "/development/appdev": AppDev,
+  "/development/appdev/appdevsub": AppDevSub,
   "/development/plugindev": PluginDev,
   "/development/support": Support,
   "/contact": Contact,

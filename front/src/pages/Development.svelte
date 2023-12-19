@@ -132,7 +132,7 @@
 	.more {
 		display: flex;
 		align-items: center;
-		justify-content: flex-start;
+		justify-content: flex-end;
 		gap: 1rem;
 		background-color: unset;
 		border: none;
