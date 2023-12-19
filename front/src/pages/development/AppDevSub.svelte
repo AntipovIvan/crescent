@@ -38,7 +38,7 @@
 				Museum)：日系アメリカ人の歴史や文化を伝承、展示している博物館で、1992年に設立
 			</p>
 			<p class="explanation">
-				※この作品はJANMWebサイトよりダウンロード・体験できます（詳細は<a
+				※この作品はJANM Webサイトよりダウンロード・体験できます（詳細は<a
 					href="https://www.janm.org/ja/exhibits/behere1942"
 					target="_blank">こちら</a
 				>）
@@ -60,11 +60,17 @@
 			<p class="explanation">
 				<b>関連ページ：</b>
 			</p>
-			<p><a href="https://brain100studio.com" target="_blank">Brain100サイト</a></p>
+			<p>
+				<a href="https://brain100studio.com" target="_blank" style="padding-left: 1rem;"
+					>Brain100サイト</a
+				>
+			</p>
 
 			<p class="explanation">
-				<a href="https://www.youtube.com/watch?v=3ptagjaajjs" target="_blank"
-					>関係者向け紹介ビデオ</a
+				<a
+					href="https://www.youtube.com/watch?v=3ptagjaajjs"
+					target="_blank"
+					style="padding-left: 1rem;">関係者向け紹介ビデオ</a
 				>
 			</p>
 		</div>
@@ -72,7 +78,17 @@
 		<div class="container">
 			<h2>AR「とびだす佐渡さん」</h2>
 			<figure class="figure">
-				<img src={appDevSub3} alt="Valkyrie banner" />
+				<iframe
+					width="80%"
+					height="720"
+					src="https://www.youtube.com/embed/rf7YGbVMaEY"
+					title="チラシから佐渡さんが飛び出す！？ #shorts"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+					style="height: 33vw;"
+				></iframe>
+				<!-- <img src={appDevSub3} alt="Valkyrie banner" /> -->
 			</figure>
 			<p class="explanation">新日本フィルハーモニー交響楽団様</p>
 			<p class="explanation">
@@ -82,7 +98,11 @@
 			<p class="explanation">
 				<b>関連ページ：</b>
 			</p>
-			<p><a href="https://www.njp.or.jp/news/5754/" target="_blank">NJP</a></p>
+			<p>
+				<a href="https://www.njp.or.jp/news/5754/" target="_blank" style="padding-left: 1rem;"
+					>NJP</a
+				>
+			</p>
 		</div>
 
 		<div class="container">
@@ -108,17 +128,30 @@
 			<p class="explanation">
 				<b>関連ページ：</b>
 			</p>
-			<p><a href="https://www.njp.or.jp/news/6238/" target="_blank">NJP</a></p>
 			<p>
-				<a href="https://www.meta.com/ja-jp/experiences/8624751027549929/" target="_blank">Meta</a>
-			</p>
-			<p>
-				<a href="https://www.viveport.com/apps/c127156b-5f02-4cf6-8a42-7309eeca2071" target="_blank"
-					>Viveport</a
+				<a href="https://www.njp.or.jp/news/6238/" target="_blank" style="padding-left: 1rem;"
+					>NJP</a
 				>
 			</p>
 			<p>
-				<a href="https://www.youtube.com/watch?v=820JW-aCOCI" target="_blank"
+				<a
+					href="https://www.meta.com/ja-jp/experiences/8624751027549929/"
+					target="_blank"
+					style="padding-left: 1rem;">Meta</a
+				>
+			</p>
+			<p>
+				<a
+					href="https://www.viveport.com/apps/c127156b-5f02-4cf6-8a42-7309eeca2071"
+					target="_blank"
+					style="padding-left: 1rem;">Viveport</a
+				>
+			</p>
+			<p>
+				<a
+					href="https://www.youtube.com/watch?v=820JW-aCOCI"
+					target="_blank"
+					style="padding-left: 1rem;"
 					>NJP Virtual Club Launch Trailer
 				</a>
 			</p>
