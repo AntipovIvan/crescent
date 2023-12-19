@@ -35,6 +35,7 @@ import Vue from "./pages/products/vicon/hardware/Vue.svelte";
 import Lockstudio from "./pages/products/vicon/hardware/Lockstudio.svelte";
 import Bicam from "./pages/products/vicon/hardware/Bicam.svelte";
 import AppDevSub from "./pages/development/AppDevSub.svelte";
+import Recruit from "./pages/Recruit.svelte";
 
 export const routes = {
   "/": Home,
@@ -73,5 +74,6 @@ export const routes = {
   "/special/:id":SpecialTemplate,
   "/blog": Blog,
   "/blog/:id": BlogTemplate,
+  "/recruit":Recruit,
   "*": NotFound
 };

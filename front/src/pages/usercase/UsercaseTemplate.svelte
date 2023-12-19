@@ -44,15 +44,13 @@
 			<h2 class="cardTitle">{news.title}</h2>
 			{@html news.content}
 
-			<!-- {#if news.images.length > 0}
-				<ul class="image-gallery">
-					{#each news.images as image}
-						<li>
-							<img src={image.image} alt={image.id} />
-						</li>
-					{/each}
-				</ul>
-			{/if} -->
+			<!-- <object
+				data="http://localhost/media/uploads/2023/12/15/158_capcom.pdf"
+				type="application/pdf"
+				width="100%"
+				height="500px"
+			>
+			</object> -->
 		</article>
 	{:else}
 		<NotFound />

@@ -372,14 +372,11 @@
 				<li class="card">
 					<article>
 						<figure>
-							<a
-								href={title !== '4Dviews' ? `/products/${urlSlug(title)}` : `/product/4dviews`}
-								use:link
-							>
+							<a href={title !== '4Dviews' ? `/product/holosuite` : `/product/4dviews`} use:link>
 								<img src={thumbnail} alt={title} width="400" height="200" />
 							</a>
 							<figcaption>
-								<p>{title}</p>
+								<p class="linkTitle">{title}</p>
 								<span class="overflowed-text">{description}</span>
 							</figcaption>
 						</figure>
@@ -393,6 +390,10 @@
 </section>
 
 <style>
+	.linkTitle {
+		font-weight: bold;
+		font-size: calc(10px + 0.390625vw);
+	}
 	p {
 		font-size: calc(14px + 0.390625vw);
 	}

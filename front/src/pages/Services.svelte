@@ -156,6 +156,7 @@
 	h1 {
 		margin: 0;
 		font-size: calc(32px + 0.390625vw);
+		font-weight: 600;
 	}
 	section {
 		padding: 5rem 8rem;

@@ -23,6 +23,7 @@
 				throw new Error('Network response was not ok');
 			}
 			const { results } = await response.json();
+
 			products = results.filter((result) => {
 				return result.title.includes('4D') || result.title.includes('Holo');
 			});
@@ -202,14 +203,11 @@
 				<li class="card">
 					<article>
 						<figure>
-							<a
-								href={title !== '4Dviews' ? `/products/${urlSlug(title)}` : `/product/4dviews`}
-								use:link
-							>
+							<a href={title !== '4Dviews' ? `/product/holosuite` : `/product/4dviews`} use:link>
 								<img src={thumbnail} alt={title} width="400" height="200" />
 							</a>
 							<figcaption>
-								<p>{title}</p>
+								<p class="linkTitle">{title}</p>
 								<span class="overflowed-text">{description}</span>
 							</figcaption>
 						</figure>
@@ -223,6 +221,10 @@
 </section>
 
 <style>
+	.linkTitle {
+		font-weight: bold;
+		font-size: calc(10px + 0.390625vw);
+	}
 	.overflowed-text {
 		margin: 0;
 		white-space: nowrap;

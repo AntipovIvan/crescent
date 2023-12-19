@@ -27,7 +27,7 @@
 			<a href={`/`} use:link><p>ホーム</p></a>
 			<a href={`/news`} use:link><p>お知らせ</p></a>
 			<a href={`/aboutus`} use:link><p>会社情報</p></a>
-			<p>採用情報</p>
+			<a href={`/recruit`} use:link><p>採用情報</p></a>
 		</div>
 		<div class="sublinks">
 			<p>サイトマップ</p>
