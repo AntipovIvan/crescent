@@ -27,9 +27,13 @@ import Vero from "./pages/products/vicon/camera/Vero.svelte";
 import Valkyrie from "./pages/products/vicon/camera/Valkyrie.svelte";
 import Shogun from "./pages/products/vicon/software/Shogun.svelte";
 import Holosys from "./pages/products/4dviews/Holosys.svelte";
+import Fourdfx from "./pages/products/4dviews/4dfx.svelte";
 import Nexus from "./pages/products/vicon/software/Nexus.svelte";
 import Tracker from "./pages/products/vicon/software/Tracker.svelte";
 import Polygon from "./pages/products/vicon/software/Polygon.svelte";
+import Vue from "./pages/products/vicon/hardware/Vue.svelte";
+import Lockstudio from "./pages/products/vicon/hardware/Lockstudio.svelte";
+import Bicam from "./pages/products/vicon/hardware/Bicam.svelte";
 
 export const routes = {
   "/": Home,
@@ -52,8 +56,12 @@ export const routes = {
   "/product/vicon/software/nexus": Nexus,
   "/product/vicon/software/tracker": Tracker,
   "/product/vicon/software/polygon": Polygon,
+  "/product/vicon/hardware/vue": Vue,
+  "/product/vicon/hardware/lockstudio": Lockstudio,
+  "/product/vicon/hardware/bicam": Bicam,
   "/product/4dviews": Fourdviews,
   "/product/4dviews/capture/holosys": Holosys,
+  "/product/4dviews/software/4dfx": Fourdfx,
   "/product/holosuite": Holosuite,
   "/products/:title": ProductTemplate,
   "/news": News,

@@ -2,34 +2,15 @@
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
 	import hero from '../../../../assets/products/vicon/software/nexus/biofeedback-600x300.png';
-	import image1 from '../../../../assets/products/vicon/software/shogun/Apose.png';
-	import image2 from '../../../../assets/products/vicon/software/shogun/overray.png';
-	import image3 from '../../../../assets/products/vicon/software/shogun/soft_shogun_realtime.png';
-	import image4 from '../../../../assets/products/vicon/software/shogun/soft_shogun_unbreak.png';
 	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
 	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
-
 	import { onMount } from 'svelte';
-	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
-		try {
-			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
-			products = results.filter((result) => {
-				return result.title.includes('4D') || result.title.includes('Holo');
-			});
-		} catch (err) {
-			error = err;
-		}
+		window.scrollTo(0, 0);
 
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -103,39 +84,34 @@
 
 				<li>
 					EASY TO LEARN, EASY TO USE
-
 					<p>
 						Nexusは卓越した使用感を提供します。インターフェースは、処理過程と同様にデータ準備、データ取得、レビューの順序で整頓されています。直感的に必要な作業ボタンを発見でき、ラーニングカーブが急速に上がる人間工学的設計に仕上がっています。
 					</p>
 				</li>
-				<br /> <br />
+
 				<li>
 					NATIVE REAL TIME
-
 					<p>
 						Nexusの真髄は、リアルタイム性にあります。あらゆるデータはその場でリアルタイム視認が可能です。カメラを追加した場合、その設定を行う必要はありません。Nexusが自動認識し、処理を行います。Nexusには自己診断モニタ機能が搭載され、随時実行しています。従い、撮影の終わりに予期せぬデータばかりが蓄積されて、一日が台無しになるようなこともありません。
 					</p>
 				</li>
-				<br /> <br />
+
 				<li>
 					CUSTOMIZE EVERYTHING
-
 					<p>
 						Nexusのカスタマイズ機能として、新たにProtocol
 						Builderを搭載しています。これは、ご要望のパイプラインワークフローをウィザードベースのワークフローとして登録し、業務フローを一元化することが可能となりました。
 					</p>
 				</li>
-				<br /> <br />
+
 				<li>
 					PAST PRESENT, FUTURE PERFECT
-
 					<p>
 						Nexusは、過去、現在、将来のデータコンパティビリティを保証します。現在、ご利用のデータはもちろん、今後撮られるデータも含め、全てPlug-in
 						GaitやPlug-in
 						Modelerとの互換が保証され、現在のプロセス課程を変更する必要は一切ありません。同様に、取得されたNexusのデータはシームレスにPolygonへの移行が可能です。
 					</p>
 				</li>
-				<br /> <br />
 			</div>
 		</section>
 
@@ -169,19 +145,18 @@
 				<li>
 					マーカーの3次元位置情報及び人体の姿勢データを、マーカー数の制限なく遅延なく記録し、TCP/IP経由でリアルタイムでの出力及び、ソフトウェア上で表示可能
 				</li>
-				<br /> <br />
+
 				<li>
 					Lock Labから最大64チャンネルのアナログ信号を完全同期し、更に信号データの取得も可能
 
 					<p>※Lock Labを追加すれば、64ch以上のアナログ信号動機も可能。</p>
 				</li>
-				<br /> <br />
+
 				<li>人体につけたマーカーから全身の人体骨格モデルが作成可能</li>
-				<br /> <br />
+
 				<li>キャリブレーション時に特定のカメラを選択し、再キャリブレーションが可能</li>
-				<br /> <br />
+
 				<li>CSV形式等のASCIIデータ及び、c3dデータの出力が可能。</li>
-				<br /> <br />
 			</div>
 		</section>
 		<br />
@@ -249,8 +224,11 @@
 	}
 	th {
 		padding: 10px;
-		font-size: 12px;
+		font-size: calc(12px + 0.390625vw);
 		background: #e0e3e7;
+	}
+	td {
+		font-size: calc(12px + 0.390625vw);
 	}
 	table {
 		margin-bottom: 20px;
@@ -303,7 +281,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		padding: 2rem 8rem;
+		padding: 2rem 0 2rem 8rem;
 	}
 
 	.content {

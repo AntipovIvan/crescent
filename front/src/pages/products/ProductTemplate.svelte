@@ -94,7 +94,7 @@
 			});
 
 			setTimeout(() => {
-				targetElement.scrollIntoView();
+				targetElement.scrollIntoView({ behavior: 'smooth' });
 			}, 0);
 		}
 	}

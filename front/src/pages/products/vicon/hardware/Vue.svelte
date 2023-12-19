@@ -1,31 +1,16 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../assets/services/lightcageFace/lightcageFace.png';
-	import man from '../../assets/services/lightcageFace/lcstudio_syosai1.png';
-	import video from '../../assets/services/lightcageFace/DigiTada_new_maps_test03.mp4';
-	import figures from '../../assets/services/4dstudio/figures.jpg';
+	import hero from '../../../../assets/products/vicon/hardware/vue/vuebanner.jpg';
+	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
+	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
 	import { onMount } from 'svelte';
-	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
-		try {
-			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
-			products = results.filter((result) => {
-				return result.title.includes('4D') || result.title.includes('Holo');
-			});
-		} catch (err) {
-			error = err;
-		}
+		window.scrollTo(0, 0);
 
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -74,195 +59,197 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>LightCageスタジオ（顔用）</h1>
+		<h1>Vue</h1>
 		<figure class="hero-image-container">
-			<img class="hero-image" src={hero} alt="FullBodyLightCage" />
+			<img class="hero-image" src={hero} alt="4d studios" />
 		</figure>
 	</div>
 
 	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
-		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>概要</a>
-		<a class="sidebar-item" href="#system" on:click={scrollToElement}>詳細</a>
-		<a class="sidebar-item" href="#example" on:click={scrollToElement}>スタジオ利用価格</a>
+		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>製品詳細</a>
+		<a class="sidebar-item" href="#system" on:click={scrollToElement}>仕様・価格</a>
 	</div>
 
 	<div class="content">
 		<section class="overview" id="overview">
 			<div class="container">
-				<h2>クレッセント ESPER LIGHTCAGE 専用スタジオ</h2>
+				<h2>製品詳細</h2>
+			</div>
+
+			<div class="container">
 				<p class="explanation">
-					LIGHTCAGEを使用した高精細な3Dのフェイスメッシュスキャン、様々なテクスチャーのキャプチャーを行って頂けます。
-					デジタルヒューマン製作の要となります、フェイス製作に必要なハイクオリティな素材を提供致します。
-					控室、打合せスペースのご用意もございます。
+					Vueは業界唯一のHD高解像度デジタルリファレンスビデオとしてモーションキャプチャシステムとの完全同期を実現しました。PoE接続で設置場所を選ばず簡単に接続でき、3D情報のオーバーレイ表示等様々なデータ取得が可能になります。
 				</p>
+
+				<li>
+					完全同期
+					<p>
+						Vueは業界唯一のHD高解像度デジタルリファレンスビデオとしてモーションキャプチャシステムとの完全同期を実現しました。
+					</p>
+				</li>
+
+				<li>
+					オーバーレイ
+					<p>
+						それのみならず、ビデオ、モーションキャプチャシステムを同時にキャリブレーションする事により、ビデオ画像に対し取得中の3D情報をオーバーレイ表示させることが可能です。例えば、床反力計上に計算されたベクトルを表示したり、或いは、計算されたマーカー位置を表示することができます。
+					</p>
+				</li>
+
+				<li>
+					互換性
+					<p>
+						現状お使いのTシリーズやBonitaシリーズのシステム、新ラインナップのVantageシリーズやVeroシリーズのシステムにも互換性があり、簡単に追加することができます。
+					</p>
+				</li>
+
+				<li>
+					PoE(Power over Ethernet)接続
+					<p>
+						汎用Etherrnetケーブルの接続一本で電源の供給と、データの伝送を行う為、シンプルで設置場所を選ばないシステム設計が可能です。
+					</p>
+				</li>
+
+				<li>
+					VARIFOCAL LENS
+					<p>
+						Veroにはズーム可能なレンズが搭載されており、焦点距離を6mmから12mmまで変更することができます。その為、設置場所や使用用途に応じて設定を自由に変更することが可能です。
+					</p>
+				</li>
 			</div>
 		</section>
 
 		<section class="system" id="system">
 			<div class="container">
-				<h2>詳細</h2>
-
-				<h3>クレッセントスタジオ　設置カメラ</h3>
-				<p>CANON　EOS 7D MarkII 53台</p>
-			</div>
-
-			<div class="container">
-				<h3>出力データフォーマット</h3>
-				<div>
-					<ul>
-						<li>
-							撮影画像
-							<ul>
-								<li>
-									CANON EOS 7D MarkII　53台分
-									<ul>
-										<li>解像度　　3648×5472</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							テクスチャーマップ
-							<ul>
-								<li>DiffuseMap</li>
-								<li>SpecularMap</li>
-								<li>UnpolarizedMap</li>
-								<li>
-									TangentMap
-									<ul>
-										<li>bit 16bit</li>
-										<li>解像度　16384×16384</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							メッシュデータ
-							<ul>
-								<li>RAWメッシュ 500万ポリゴン程度</li>
-								<li>クリーンナップメッシュ</li>
-								<li>リトポロジーメッシュ</li>
-							</ul>
-						</li>
-					</ul>
-					<figure>
-						<img src={man} alt="man" />
-					</figure>
-				</div>
-				<p>※希望のベースメッシュを頂けますと、そちらに沿って製作致します。</p>
-			</div>
-
-			<div class="container">
-				<h3>レンダリング例</h3>
-
-				<p>MAYA/Arnold使用例</p>
-				<video width="100%" height="100%" controls>
-					<track default kind="captions" srclang="en" src="" />
-					<source src={video} type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div>
-
-			<div class="container">
-				<h3>サンプルデータ</h3>
-
-				<p>・メッシュ</p>
-				<p>・各種テクスチャーマップ</p>
-				<p>https://send.crescentinc.co.jp/LightCage/Sample/LightCage_Sample.zip 1.21GB</p>
+				<h2>仕様・価格</h2>
+				<table border="1" cellpadding="3">
+					<tbody
+						><tr>
+							<th></th>
+							<th>Vue</th>
+						</tr>
+						<tr>
+							<th class="tblCap">解像度</th>
+							<td>210万画素<br />1,920 x 1,080</td>
+						</tr>
+						<tr class="tblCap">
+							<th class="tblCap">フレームレート（最低）</th>
+							<td>30 FPS </td></tr
+						>
+						<tr class="tblCap">
+							<th class="tblCap">フル解像度時 最大フレームレート（1080p）</th>
+							<td>60 FPS </td></tr
+						>
+						<tr class="tblCap">
+							<th class="tblCap">フレームレート (720p)</th>
+							<td>120 FPS </td></tr
+						>
+						<tr>
+							<th class="tblCap">給電・伝送路</th>
+							<td>PoE+</td>
+						</tr>
+						<tr>
+							<th class="tblCap">レンズ</th>
+							<td>6 - 12 mm （Varifocal：可変焦点レンズ）</td>
+						</tr>
+						<tr>
+							<th class="tblCap">視野角</th>
+							<td>W:　82.7° x 52.7°<br />T:　47.5° x 27.8°</td>
+						</tr>
+						<tr>
+							<th class="tblCap">接続ケーブル</th>
+							<td>Cat5e / RJ45</td>
+						</tr>
+						<tr>
+							<th class="tblCap">消費電力/カメラ</th>
+							<td>12W</td>
+						</tr>
+						<tr>
+							<th class="tblCap">サイズ</th>
+							<td>83 mm (H) x 80 mm (W) x 125 mm (D)、512g</td>
+						</tr>
+						<tr>
+							<th class="tblCap">価格(税別)</th>
+							<td>1,050,000円</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
-
-		<section class="example" id="example">
-			<div class="container">
-				<h2>スタジオ利用価格</h2>
-
-				<h3>スタジオ利用価格</h3>
-				<p>◇一日撮影利用料：　60万円(税別)</p>
-				<p>(EOS 7D MarkII　53台分　撮影画像納品含む)</p>
-			</div>
-
-			<div class="container">
-				<h3>データ処理価格</h3>
-
-				<ul>
-					<li>
-						テクスチャマップフルセット生成・メッシュクリーンナップ：　18万円(税別)
-						<ul>
-							<li>
-								各テクスチャマップ生成
-								<ul>
-									<li>
-										DiffuseMap / SpecularMap / NormalMap (object space / tangent
-										spaceから選択できます)
-									</li>
-								</ul>
-							</li>
-							<li>メッシュ生成</li>
-							<li>クリーンナップ</li>
-							<li>リトポロジー処理</li>
-							<li>ブレンドシェイプ用処理</li>
-						</ul>
-					</li>
-				</ul>
-
-				<ul>
-					<li>
-						メッシュクリーンナップ（ブレンドシェイプ用）：　1表情 12万円(税別)
-						<ul>
-							<li>メッシュ生成</li>
-							<li>クリーンナップ</li>
-							<li>リトポロジー処理</li>
-							<li>ブレンドシェイプ用処理</li>
-						</ul>
-					</li>
-				</ul>
-
-				<p>撮影について詳細、デモや打合せのご要望につきましては、</p>
-				<p>
-					lightcage@crescentinc.co.jp もしくは お電話（ 03-5875-9707 ）まで お問い合わせください
-				</p>
-			</div>
-		</section>
+		<br />
+		<br />
+		<br />
+		<a href={`/product/vicon`} use:link>
+			<button class="more">
+				<span class="viewMore">VICONトップへ</span>
+			</button></a
+		>
 	</div>
 </div>
 <section class="relatedLinks">
 	<h2>関連リンク</h2>
 	<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
-		{#if products}
-			{#each products as { id, title, description, category, thumbnail }, index}
-				<li class="card">
-					<article>
-						<figure>
-							<a
-								href={title !== '4Dviews' ? `/products/${urlSlug(title)}` : `/product/4dviews`}
-								use:link
-							>
-								<img src={thumbnail} alt={title} width="400" height="200" />
-							</a>
-							<figcaption>
-								<p>{title}</p>
-								<span class="overflowed-text">{description}</span>
-							</figcaption>
-						</figure>
-					</article>
-				</li>
-			{/each}
-		{:else}
-			<p>Loading...</p>
-		{/if}
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/product/holosuite`} use:link>
+						<img src={link1} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">Faceware</p>
+						<span class="overflowed-text"
+							>ビデオベースのフェイシャル専用モーションキャプチャーシステム</span
+						>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
+
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/services/4dstudio`} use:link>
+						<img src={link2} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">StretchSense</p>
+						<span class="overflowed-text"
+							>シリコン素材の伸縮センサーを搭載したワイアレス対応グローブデバイス</span
+						>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
 	</ul>
 </section>
 
 <style>
-	p {
-		font-size: calc(14px + 0.390625vw);
+	.viewMore {
+		font-weight: 500;
+		font-size: calc(20px + 0.390625vw);
 	}
-	ul {
-		padding-left: 1rem;
-		font-size: calc(14px + 0.390625vw);
+	.linkTitle {
+		font-weight: bold;
 	}
-	li {
-		padding-bottom: 0.5rem;
+	.more {
+		text-align: center;
+		border: 1px solid rgb(143, 143, 143);
+		padding: 1rem 5rem;
+		background: none;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	th {
+		padding: 10px;
+		font-size: calc(12px + 0.390625vw);
+		background: #e0e3e7;
+	}
+	td {
+		font-size: calc(12px + 0.390625vw);
+	}
+	table {
+		margin-bottom: 20px;
+		width: 100%;
+		word-wrap: break-word;
 	}
 	.overflowed-text {
 		margin: 0;
@@ -409,13 +396,19 @@
 	}
 
 	.hero-image {
-		width: 83%;
+		width: 100%;
 		max-height: 100%;
 		object-fit: contain;
 	}
 
-	p {
+	p,
+	li {
 		margin: 0;
+		font-size: calc(14px + 0.390625vw);
+	}
+
+	.image-text-flexbox img {
+		width: 14vw;
 	}
 	.explanation {
 		font-size: calc(14px + 0.390625vw);
@@ -451,18 +444,12 @@
 		padding: 3rem 0;
 		flex-direction: column;
 	}
-	section div div {
+	/* section div div {
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
 		justify-content: space-between;
-	}
-	.system div div {
-		display: flex;
-		flex-direction: row;
-		gap: 5rem;
-		justify-content: space-between;
-	}
+	} */
 	section div figure {
 		flex: 50%;
 	}
@@ -512,9 +499,8 @@
 		div.content {
 			margin-left: 0;
 		}
-		.system div div {
-			flex-direction: column;
-			gap: 2rem;
+		iframe {
+			width: 100%;
 		}
 	}
 

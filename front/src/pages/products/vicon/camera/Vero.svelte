@@ -8,24 +8,11 @@
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
-		try {
-			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
-			products = results.filter((result) => {
-				return result.title.includes('4D') || result.title.includes('Holo');
-			});
-		} catch (err) {
-			error = err;
-		}
+		window.scrollTo(0, 0);
 
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -323,8 +310,11 @@
 
 	th {
 		padding: 10px;
-		font-size: 12px;
+		font-size: calc(12px + 0.390625vw);
 		background: #e0e3e7;
+	}
+	td {
+		font-size: calc(12px + 0.390625vw);
 	}
 	table {
 		margin-bottom: 20px;
@@ -378,7 +368,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		padding: 2rem 8rem;
+		padding: 2rem 0 2rem 8rem;
 	}
 
 	.content {

@@ -1,31 +1,19 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../assets/services/lightcageFace/lightcageFace.png';
-	import man from '../../assets/services/lightcageFace/lcstudio_syosai1.png';
-	import video from '../../assets/services/lightcageFace/DigiTada_new_maps_test03.mp4';
-	import figures from '../../assets/services/4dstudio/figures.jpg';
+	import hero from '../../../assets/products/4dviews/4dfx/4dfx_logo.png';
+	import image1 from '../../../assets/products/4dviews/4dfx/4dfx_1.jpg';
+	import image2 from '../../../assets/products/4dviews/4dfx/4dfx_2.jpg';
+	import link1 from '../../../assets/products/4dviews/holosys/holosysLink1.jpg';
+	import link2 from '../../../assets/products/4dviews/holosys/holosysLink2.jpg';
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
-		try {
-			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
-			products = results.filter((result) => {
-				return result.title.includes('4D') || result.title.includes('Holo');
-			});
-		} catch (err) {
-			error = err;
-		}
+		window.scrollTo(0, 0);
 
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -74,195 +62,152 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>LightCageスタジオ（顔用）</h1>
+		<h1>4DFX ―ボリュメトリックビデオ編集ソフトウエア―</h1>
 		<figure class="hero-image-container">
-			<img class="hero-image" src={hero} alt="FullBodyLightCage" />
+			<img class="hero-image" src={hero} alt="4d studios" />
 		</figure>
 	</div>
 
 	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
-		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>概要</a>
-		<a class="sidebar-item" href="#system" on:click={scrollToElement}>詳細</a>
-		<a class="sidebar-item" href="#example" on:click={scrollToElement}>スタジオ利用価格</a>
+		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>製品詳細 </a>
+		<a class="sidebar-item" href="#system" on:click={scrollToElement}>価格</a>
 	</div>
 
 	<div class="content">
 		<section class="overview" id="overview">
 			<div class="container">
-				<h2>クレッセント ESPER LIGHTCAGE 専用スタジオ</h2>
+				<h2>製品詳細</h2>
 				<p class="explanation">
-					LIGHTCAGEを使用した高精細な3Dのフェイスメッシュスキャン、様々なテクスチャーのキャプチャーを行って頂けます。
-					デジタルヒューマン製作の要となります、フェイス製作に必要なハイクオリティな素材を提供致します。
-					控室、打合せスペースのご用意もございます。
+					4DVIEWSで撮影した.4DS rawデータの加工、編集、調整する事が可能なソフトウエアです。
 				</p>
+				<br />
+				<img src={image1} alt="title" width="100%" />
+				<img src={image2} alt="title" width="100%" />
+				<br />
+				<ul>
+					<li>シーケンス上のトラッキングポイントでの処理</li>
+					<li>複数のボリューメトリックビデオ間のスムーズで目に見えないトランジションの作成</li>
+					<li>LODやVFXのために、ボリューメトリックビデオのジオメトリを簡素化</li>
+					<li>データのテクスチャに独自のカラーフィルタを追加可能</li>
+					<li>CGI要素に合わせたり、変更をするためにシーケンスのジオメトリをデフォルメ</li>
+					<li>最大5MB/Sまでの圧縮に対応した複数のフォーマットで書き出し可能</li>
+					<li>逆再生やループ再生、スローモーションなどの処理が可能</li>
+				</ul>
+				<p>他にも様々な機能が利用可能になります。</p>
+				<p>チュートリアル動画は以下になります。</p>
+				<iframe
+					width="100%"
+					height=""
+					src="https://www.youtube.com/embed/c0DXGgFvui0"
+					title="4Dfx - Tutorial - Overview"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+				></iframe>
 			</div>
 		</section>
 
 		<section class="system" id="system">
 			<div class="container">
-				<h2>詳細</h2>
+				<h2>価格</h2>
 
-				<h3>クレッセントスタジオ　設置カメラ</h3>
-				<p>CANON　EOS 7D MarkII 53台</p>
-			</div>
-
-			<div class="container">
-				<h3>出力データフォーマット</h3>
-				<div>
-					<ul>
-						<li>
-							撮影画像
-							<ul>
-								<li>
-									CANON EOS 7D MarkII　53台分
-									<ul>
-										<li>解像度　　3648×5472</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							テクスチャーマップ
-							<ul>
-								<li>DiffuseMap</li>
-								<li>SpecularMap</li>
-								<li>UnpolarizedMap</li>
-								<li>
-									TangentMap
-									<ul>
-										<li>bit 16bit</li>
-										<li>解像度　16384×16384</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							メッシュデータ
-							<ul>
-								<li>RAWメッシュ 500万ポリゴン程度</li>
-								<li>クリーンナップメッシュ</li>
-								<li>リトポロジーメッシュ</li>
-							</ul>
-						</li>
-					</ul>
-					<figure>
-						<img src={man} alt="man" />
-					</figure>
-				</div>
-				<p>※希望のベースメッシュを頂けますと、そちらに沿って製作致します。</p>
-			</div>
-
-			<div class="container">
-				<h3>レンダリング例</h3>
-
-				<p>MAYA/Arnold使用例</p>
-				<video width="100%" height="100%" controls>
-					<track default kind="captions" srclang="en" src="" />
-					<source src={video} type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div>
-
-			<div class="container">
-				<h3>サンプルデータ</h3>
-
-				<p>・メッシュ</p>
-				<p>・各種テクスチャーマップ</p>
-				<p>https://send.crescentinc.co.jp/LightCage/Sample/LightCage_Sample.zip 1.21GB</p>
+				<table border="1" cellpadding="3">
+					<tbody
+						><tr>
+							<th>1ユーザーあたり</th>
+							<th>金額（税別）</th>
+						</tr>
+						<tr>
+							<td class="tblCap">1カ月</td>
+							<td>110,000円</td>
+						</tr>
+						<tr>
+							<td class="tblCap">3カ月</td>
+							<td>270,000円</td>
+						</tr>
+						<tr>
+							<td class="tblCap">12カ月</td>
+							<td>720,000円</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
 
-		<section class="example" id="example">
-			<div class="container">
-				<h2>スタジオ利用価格</h2>
-
-				<h3>スタジオ利用価格</h3>
-				<p>◇一日撮影利用料：　60万円(税別)</p>
-				<p>(EOS 7D MarkII　53台分　撮影画像納品含む)</p>
-			</div>
-
-			<div class="container">
-				<h3>データ処理価格</h3>
-
-				<ul>
-					<li>
-						テクスチャマップフルセット生成・メッシュクリーンナップ：　18万円(税別)
-						<ul>
-							<li>
-								各テクスチャマップ生成
-								<ul>
-									<li>
-										DiffuseMap / SpecularMap / NormalMap (object space / tangent
-										spaceから選択できます)
-									</li>
-								</ul>
-							</li>
-							<li>メッシュ生成</li>
-							<li>クリーンナップ</li>
-							<li>リトポロジー処理</li>
-							<li>ブレンドシェイプ用処理</li>
-						</ul>
-					</li>
-				</ul>
-
-				<ul>
-					<li>
-						メッシュクリーンナップ（ブレンドシェイプ用）：　1表情 12万円(税別)
-						<ul>
-							<li>メッシュ生成</li>
-							<li>クリーンナップ</li>
-							<li>リトポロジー処理</li>
-							<li>ブレンドシェイプ用処理</li>
-						</ul>
-					</li>
-				</ul>
-
-				<p>撮影について詳細、デモや打合せのご要望につきましては、</p>
-				<p>
-					lightcage@crescentinc.co.jp もしくは お電話（ 03-5875-9707 ）まで お問い合わせください
-				</p>
-			</div>
-		</section>
+		<br />
+		<br />
+		<br />
+		<a href={`/product/4dviews`} use:link>
+			<button class="more">
+				<span class="viewMore">4DVIEWSトップへ</span>
+			</button></a
+		>
 	</div>
 </div>
 <section class="relatedLinks">
 	<h2>関連リンク</h2>
 	<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
-		{#if products}
-			{#each products as { id, title, description, category, thumbnail }, index}
-				<li class="card">
-					<article>
-						<figure>
-							<a
-								href={title !== '4Dviews' ? `/products/${urlSlug(title)}` : `/product/4dviews`}
-								use:link
-							>
-								<img src={thumbnail} alt={title} width="400" height="200" />
-							</a>
-							<figcaption>
-								<p>{title}</p>
-								<span class="overflowed-text">{description}</span>
-							</figcaption>
-						</figure>
-					</article>
-				</li>
-			{/each}
-		{:else}
-			<p>Loading...</p>
-		{/if}
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/product/holosuite`} use:link>
+						<img src={link1} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">HoloSuite</p>
+						<span class="overflowed-text">ボリュメトリックデータの編集・配信ソフトウェア群</span>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
+
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/services/4dstudio`} use:link>
+						<img src={link2} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">4D STUDIO</p>
+						<span class="overflowed-text"
+							>4Dviews社 HOLOSYSを使用したボリュメトリックキャプチャスタジオ</span
+						>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
 	</ul>
 </section>
 
 <style>
-	p {
-		font-size: calc(14px + 0.390625vw);
+	.viewMore {
+		font-weight: 500;
+		font-size: calc(20px + 0.390625vw);
 	}
-	ul {
-		padding-left: 1rem;
-		font-size: calc(14px + 0.390625vw);
+	.linkTitle {
+		font-weight: bold;
 	}
-	li {
-		padding-bottom: 0.5rem;
+	.more {
+		text-align: center;
+		border: 1px solid rgb(92, 92, 92);
+		padding: 1rem 5rem;
+		background: none;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	th {
+		padding: 10px;
+		font-size: calc(12px + 0.390625vw);
+		background: #e0e3e7;
+	}
+	td {
+		font-size: calc(12px + 0.390625vw);
+	}
+	table {
+		margin-bottom: 20px;
+
+		width: 100%;
+		word-wrap: break-word;
 	}
 	.overflowed-text {
 		margin: 0;
@@ -409,13 +354,18 @@
 	}
 
 	.hero-image {
-		width: 83%;
+		width: 100%;
 		max-height: 100%;
 		object-fit: contain;
 	}
-
-	p {
+	iframe {
+		width: 100%;
+		height: 35vw;
+	}
+	p,
+	li {
 		margin: 0;
+		font-size: calc(14px + 0.390625vw);
 	}
 	.explanation {
 		font-size: calc(14px + 0.390625vw);
@@ -455,12 +405,6 @@
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
-		justify-content: space-between;
-	}
-	.system div div {
-		display: flex;
-		flex-direction: row;
-		gap: 5rem;
 		justify-content: space-between;
 	}
 	section div figure {
@@ -512,9 +456,8 @@
 		div.content {
 			margin-left: 0;
 		}
-		.system div div {
-			flex-direction: column;
-			gap: 2rem;
+		iframe {
+			width: 100%;
 		}
 	}
 

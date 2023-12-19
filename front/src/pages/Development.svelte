@@ -141,8 +141,7 @@
 		width: 13rem;
 		padding: 0;
 		margin: 2rem 0 0 0;
-
-		align-self: self-start;
+		align-self: self-end;
 	}
 	.viewMore {
 		font-size: calc(12px + 0.390625vw);

@@ -2,7 +2,6 @@
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
 	import hero from '../../../../assets/products/vicon/camera/valkyrie/valkyrieHero.jpg';
-	import image1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie1.jpg';
 	import image2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie2.jpg';
 	import image3 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie3.jpg';
 	import image4 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie4.jpg';
@@ -11,28 +10,22 @@
 	import image7 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie7.jpg';
 	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
 	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
-
+	import imageSlide1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie1-0.jpg';
+	import imageSlide2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie1-1.jpg';
+	import imageSlide3 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie1-2.jpg';
+	import imageSlide4 from '../../../../assets/products/vicon/camera/valkyrie/valkyrie1-3.jpg';
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
+	let thumbnails = [imageSlide1, imageSlide2, imageSlide3, imageSlide4];
+
+	let selectedImage = thumbnails[0];
+
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
-		try {
-			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
-			products = results.filter((result) => {
-				return result.title.includes('4D') || result.title.includes('Holo');
-			});
-		} catch (err) {
-			error = err;
-		}
+		window.scrollTo(0, 0);
 
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -41,7 +34,7 @@
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
-					if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+					if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
 						const targetId = entry.target.id;
 						activeSection = targetId;
 						sidebarItems.forEach((item) => {
@@ -54,7 +47,7 @@
 					}
 				});
 			},
-			{ threshold: 0.3 }
+			{ threshold: 0.1 }
 		);
 
 		sections.forEach((section) => {
@@ -76,6 +69,10 @@
 		if (targetElement) {
 			targetElement.scrollIntoView({ behavior: 'smooth' });
 		}
+	}
+
+	function selectImage(image) {
+		selectedImage = image;
 	}
 </script>
 
@@ -131,10 +128,16 @@
 						Productionでの所謂、ICVFXステージでのトラッキングデバイスとして、様々な機能の実装と、外部ハードウェアと連携
 					</li>
 				</ul>
-
-				<figure>
-					<img src={image1} alt="Shooting system" />
-				</figure>
+				<div class="full-scale-image">
+					<img src={selectedImage} alt="Full-scale Image" />
+				</div>
+				<div class="thumbnails">
+					{#each thumbnails as thumbnail}
+						<div class="thumbnail" on:click={() => selectImage(thumbnail)}>
+							<img src={thumbnail} alt="Thumbnail" />
+						</div>
+					{/each}
+				</div>
 			</div>
 		</section>
 
@@ -201,50 +204,6 @@
 						<img src={image6} alt="title" width="100%" />
 					</li>
 				</ul>
-
-				<!-- <ul class="special-ul">
-					<li class="special-card">
-						<article>
-							<figure>
-								<img src={image4} alt="title" width="400" height="200" />
-								<figcaption class="special-card-figcaption">
-									<p>SuperNova</p>
-									<span class="special-overflowed-text"
-										>柔軟性高いアクティブマーカー。VirtualCameraや、動きの早いプロップ等に装着することで、複雑な形状にも容易にロックソリッドなRigidを作成することができます。</span
-									>
-								</figcaption>
-							</figure>
-						</article>
-					</li>
-
-					<li class="special-card">
-						<article>
-							<figure>
-								<img src={image5} alt="title" width="400" height="200" />
-								<figcaption class="special-card">
-									<p>Crown</p>
-									<span class="special-overflowed-text"
-										>複数台のVirtualCamera等に簡単にRigidの組み合わせを変更できるパワフルなアクティブマーカーに加え、IMUの慣性センサーを実装する事により、より強靭なトラッキングを実現しました。アクティブマーカーはVK26なら最大50m迄認識可能で、しかも15時間のバッテリー持ちします。</span
-									>
-								</figcaption>
-							</figure>
-						</article>
-					</li>
-
-					<li class="special-card">
-						<article>
-							<figure>
-								<img src={image6} alt="title" width="400" height="200" />
-								<figcaption class="special-card">
-									<p>DCSをSHOGUNに統合</p>
-									<span class="special-overflowed-text"
-										>レンズデータを自動で読み取ってくれるLDT-V1をSHOGUN側で入力できるように現在調整中。圧倒的な位置精度と共に、正確なレンズ値をリアルタイムにSHOGUN経由でモーションデータに統合できます。</span
-									>
-								</figcaption>
-							</figure>
-						</article>
-					</li>
-				</ul> -->
 
 				<h3>⑤自動Healing機能で素早いシステム立ち上げと、中断の無い撮影を実現</h3>
 				<figure>
@@ -347,6 +306,28 @@
 </section>
 
 <style>
+	.thumbnails {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.thumbnail {
+		width: 100px;
+		margin: 5px;
+		cursor: pointer;
+	}
+
+	.full-scale-image {
+		display: flex;
+		justify-content: center;
+		margin-top: 20px;
+	}
+
+	.full-scale-image img {
+		max-width: 100%;
+	}
+
 	.viewMore {
 		font-weight: 500;
 		font-size: calc(20px + 0.390625vw);
@@ -381,8 +362,11 @@
 	}
 	th {
 		padding: 10px;
-		font-size: 12px;
+		font-size: calc(12px + 0.390625vw);
 		background: #e0e3e7;
+	}
+	td {
+		font-size: calc(12px + 0.390625vw);
 	}
 	table {
 		margin-bottom: 20px;
@@ -436,7 +420,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		padding: 2rem 8rem;
+		padding: 2rem 0 2rem 8rem;
 	}
 
 	.content {

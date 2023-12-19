@@ -269,7 +269,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		padding: 2rem 8rem;
+		padding: 2rem 0 2rem 8rem;
 	}
 
 	.content {

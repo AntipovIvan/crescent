@@ -12,24 +12,11 @@
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
-		try {
-			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
-			products = results.filter((result) => {
-				return result.title.includes('4D') || result.title.includes('Holo');
-			});
-		} catch (err) {
-			error = err;
-		}
+		window.scrollTo(0, 0);
 
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -112,10 +99,9 @@
 						<img src={image1} alt="title" width="100%" />
 					</div>
 				</li>
-				<br /> <br />
+
 				<li>
 					フルボディメッシュとビデオオーバーレイ表示
-
 					<div class="image-text-flexbox">
 						<p>
 							Shogunはスキンという専用のカスタムメッシュを持っています。スキンにより各アクターの判別が簡易になっただけでなく、Solvingのクオリティを即座に把握できます。
@@ -126,10 +112,9 @@
 						<img src={image2} alt="title" width="100%" />
 					</div>
 				</li>
-				<br /> <br />
+
 				<li>
 					リアルタイムの新機能によるデータの品質向上
-
 					<div class="image-text-flexbox">
 						<p>
 							Shogunは今までにないリアルタイム用の機能を備えています。
@@ -142,10 +127,9 @@
 						<img src={image3} alt="title" width="100%" />
 					</div>
 				</li>
-				<br /> <br />
+
 				<li>
 					“UNBREAKABLE" Solving
-
 					<div class="image-text-flexbox">
 						<p>
 							Shogunのオクルージョンに対する性能は世界最高の品質を誇っています。マーカーが見えづらい状況でもキャラクターが崩壊せず、複数のアクターが複雑に入り乱れるテイクであっても正確なリアルタイムプレビューが可能です。
@@ -156,7 +140,7 @@
 						<img src={image4} alt="title" width="100%" />
 					</div>
 				</li>
-				<br /> <br />
+
 				<li>
 					.mcpファイル
 
@@ -263,8 +247,11 @@
 	}
 	th {
 		padding: 10px;
-		font-size: 12px;
+		font-size: calc(12px + 0.390625vw);
 		background: #e0e3e7;
+	}
+	td {
+		font-size: calc(12px + 0.390625vw);
 	}
 	table {
 		margin-bottom: 20px;
@@ -317,7 +304,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		padding: 2rem 8rem;
+		padding: 2rem 0 2rem 8rem;
 	}
 
 	.content {

@@ -1,8 +1,5 @@
 <script>
-	import urlSlug from 'url-slug';
-	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
-	import NotFound from '../NotFound.svelte';
 	import Device from 'svelte-device-info';
 	import valkyrie from '../../assets/products/vicon/valkyrie.jpg';
 	import vero from '../../assets/products/vicon/vero.jpg';
@@ -14,6 +11,11 @@
 	import cert from '../../assets/products/vicon/viconCert.jpg';
 	import tutorial from '../../assets/products/vicon/videoTut.jpg';
 	import customers from '../../assets/products/vicon/customerLink.jpg';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		window.scrollTo(0, 0);
+	});
 </script>
 
 <div class="content">
@@ -42,7 +44,7 @@
 				<p class="explanation">
 					製品のバリエーションは圧倒的な価格訴求力のあるカメラから、業界最高分解能を持つ1600万画素のカメラまで、お客様の用途と予算に応じたシステム提案ができる幅広いラインナップをご用意しています。
 				</p>
-				<a href={`/product/vicon/camera/valkyrie`} use:link>
+				<a class="more" href={`/product/vicon/camera/valkyrie`} use:link>
 					<button class="more">
 						<span class="viewMore">VIEW MORE</span>
 						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -68,7 +70,7 @@
 					1.3Xが誕生しました。視野の広いVero
 					1.3Xなら、限られた空間でも広いキャプチャエリアを確保でき、全身のトラッキングや収録が可能になります。
 				</p>
-				<a href={`/product/vicon/camera/vero`} use:link>
+				<a class="more" href={`/product/vicon/camera/vero`} use:link>
 					<button class="more">
 						<span class="viewMore">VIEW MORE</span>
 						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -98,7 +100,7 @@
 				<p class="explanation">
 					製品のバリエーションは圧倒的な価格訴求力のあるカメラから、業界最高分解能を持つ1600万画素のカメラまで、お客様の用途と予算に応じたシステム提案ができる幅広いラインナップをご用意しています。
 				</p>
-				<a href={`/product/vicon/software/shogun`} use:link>
+				<a class="more" href={`/product/vicon/software/shogun`} use:link>
 					<button class="more">
 						<span class="viewMore">VIEW MORE</span>
 						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -123,7 +125,7 @@
 					Vicon
 					Nexusは、初のライフサイエンスに特化したモーションキャプチャーソフトウェアです。日々のルーティンワークを簡略化し、如何なる条件下でも容易にカスタマイズが可能であり、且つ、如何なる複雑な要望にも対応可能なソフトウェアです。
 				</p>
-				<a href={`/product/vicon/software/nexus`} use:link>
+				<a class="more" href={`/product/vicon/software/nexus`} use:link>
 					<button class="more">
 						<span class="viewMore">VIEW MORE</span>
 						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -149,7 +151,7 @@
 						Vicon
 						Trackerは、MXカメラシステムをトラッキング用途にご利用いただく際のインターフェースとなるソフトウェアです。シミュレーション、ビジュアリゼーション、バーチャルリアリティ等の用途の制御用ソフトウェアです。
 					</p>
-					<a href={`/product/vicon/software/tracker`} use:link>
+					<a class="more" href={`/product/vicon/software/tracker`} use:link>
 						<button class="more">
 							<span class="viewMore">VIEW MORE</span>
 							<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -171,7 +173,7 @@
 						Vicon
 						Polygonは、世界で唯一、インタラクティブに3Dデータを含むマルチメディアの素材を簡単に扱えるレポートツールです。最新のVer4に至る現在、Polygonは、世界中数百のサイトで様々なレポート作成に携わっています。
 					</p>
-					<a href={`/product/vicon/software/polygon`} use:link>
+					<a class="more" href={`/product/vicon/software/polygon`} use:link>
 						<button class="more">
 							<span class="viewMore">VIEW MORE</span>
 							<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -196,16 +198,18 @@
 				<p class="explanation">
 					Vueは業界唯一のHD高解像度デジタルリファレンスビデオとしてモーションキャプチャシステムとの完全同期を実現しました。PoE接続で設置場所を選ばず簡単に接続でき、3D情報のオーバーレイ表示等様々なデータ取得が可能になります。
 				</p>
-				<button class="more">
-					<span class="viewMore">VIEW MORE</span>
-					<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-						<circle cx="12" cy="12" r="12" fill="#313132" />
-						<path
-							d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
-							fill="white"
-						/>
-					</svg>
-				</button>
+				<a class="more" href={`/product/vicon/hardware/vue`} use:link>
+					<button class="more">
+						<span class="viewMore">VIEW MORE</span>
+						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+							<circle cx="12" cy="12" r="12" fill="#313132" />
+							<path
+								d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+								fill="white"
+							/>
+						</svg>
+					</button></a
+				>
 			</div>
 			<figure>
 				<img src={vue} alt="Vue banner" />
@@ -219,17 +223,18 @@
 					Lock
 					Studio/LabはViconから新たにリリースされた他の周辺機器システムとの接続、融合、同期用のコントロールボックスになります。
 				</p>
-
-				<button class="more">
-					<span class="viewMore">VIEW MORE</span>
-					<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-						<circle cx="12" cy="12" r="12" fill="#313132" />
-						<path
-							d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
-							fill="white"
-						/>
-					</svg>
-				</button>
+				<a class="more" href={`/product/vicon/hardware/lockstudio`} use:link>
+					<button class="more">
+						<span class="viewMore">VIEW MORE</span>
+						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+							<circle cx="12" cy="12" r="12" fill="#313132" />
+							<path
+								d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+								fill="white"
+							/>
+						</svg>
+					</button></a
+				>
 			</div>
 			<figure>
 				<img src={lock} alt="LOCK STUDIO banner" />
@@ -242,17 +247,18 @@
 				<p class="explanation">
 					BICAMはViconの光学式モーションキャプチャカメラVEROをより手軽に、スピーディーにご利用頂く為に弊社独自に開発したシステムです。簡単に一方向だけを3次元的にリアルタイムにトラッキングしたい用途に最適です。
 				</p>
-
-				<button class="more">
-					<span class="viewMore">VIEW MORE</span>
-					<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-						<circle cx="12" cy="12" r="12" fill="#313132" />
-						<path
-							d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
-							fill="white"
-						/>
-					</svg>
-				</button>
+				<a class="more" href={`/product/vicon/hardware/bicam`} use:link>
+					<button class="more">
+						<span class="viewMore">VIEW MORE</span>
+						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+							<circle cx="12" cy="12" r="12" fill="#313132" />
+							<path
+								d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+								fill="white"
+							/>
+						</svg>
+					</button></a
+				>
 			</div>
 			<figure>
 				<img src={bicam} alt="Bicam banner" />

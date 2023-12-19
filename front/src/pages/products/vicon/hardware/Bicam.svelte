@@ -1,31 +1,17 @@
 <script>
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
-	import hero from '../../assets/services/lightcageFace/lightcageFace.png';
-	import man from '../../assets/services/lightcageFace/lcstudio_syosai1.png';
-	import video from '../../assets/services/lightcageFace/DigiTada_new_maps_test03.mp4';
-	import figures from '../../assets/services/4dstudio/figures.jpg';
+	import hero from '../../../../assets/products/vicon/hardware/bicam/keyv (1).png';
+	import image1 from '../../../../assets/products/vicon/hardware/bicam/img_BICAM_Box.png';
+	import link1 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink1.png';
+	import link2 from '../../../../assets/products/vicon/camera/valkyrie/valkyrieLink2.png';
 	import { onMount } from 'svelte';
-	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
-		try {
-			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			const { results } = await response.json();
-			products = results.filter((result) => {
-				return result.title.includes('4D') || result.title.includes('Holo');
-			});
-		} catch (err) {
-			error = err;
-		}
+		window.scrollTo(0, 0);
 
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -74,195 +60,154 @@
 
 <div class="pageContent">
 	<div class="hero">
-		<h1>LightCageスタジオ（顔用）</h1>
+		<h1>BICAM</h1>
 		<figure class="hero-image-container">
-			<img class="hero-image" src={hero} alt="FullBodyLightCage" />
+			<img class="hero-image" src={hero} alt="4d studios" />
 		</figure>
 	</div>
 
 	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
-		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>概要</a>
-		<a class="sidebar-item" href="#system" on:click={scrollToElement}>詳細</a>
-		<a class="sidebar-item" href="#example" on:click={scrollToElement}>スタジオ利用価格</a>
+		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>製品詳細</a>
+		<a class="sidebar-item" href="#usage" on:click={scrollToElement}>用途</a>
+		<a class="sidebar-item" href="#composition" on:click={scrollToElement}>構成</a>
+		<a class="sidebar-item" href="#system" on:click={scrollToElement}>仕様・価格</a>
 	</div>
 
 	<div class="content">
 		<section class="overview" id="overview">
 			<div class="container">
-				<h2>クレッセント ESPER LIGHTCAGE 専用スタジオ</h2>
+				<h2>製品詳細</h2>
+			</div>
+
+			<div class="container">
 				<p class="explanation">
-					LIGHTCAGEを使用した高精細な3Dのフェイスメッシュスキャン、様々なテクスチャーのキャプチャーを行って頂けます。
-					デジタルヒューマン製作の要となります、フェイス製作に必要なハイクオリティな素材を提供致します。
-					控室、打合せスペースのご用意もございます。
+					BICAMはViconの光学式モーションキャプチャカメラVEROをより手軽に、スピーディーにご利用頂く為に弊社独自に開発したシステムです。
+					簡単に一方向だけを3次元的にリアルタイムにトラッキングしたい用途に最適です。
 				</p>
+				<p>
+					光学式マーカーを装着した対象を最速250Hzで最大3mの距離まで（25mmマーカー使用時）精度よく撮れる、高パフォーマンスで、それでいてお手頃価格な画期的トラッキングシステムです。
+				</p>
+			</div>
+		</section>
+
+		<section class="usage" id="usage">
+			<div class="container">
+				<h2>用途</h2>
+				<li>OculusやMREALなどのヘッドトラッキングに</li>
+				<li>
+					より高精度なARトラッキングデバイスに
+					<p>
+						<iframe
+							width="1280"
+							height="720"
+							src="https://www.youtube.com/embed/yPSWktA8r1I"
+							title="BICAM"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen
+						></iframe>
+					</p>
+				</li>
+			</div>
+		</section>
+
+		<section class="composition" id="composition">
+			<div class="container">
+				<h2>構成</h2>
+
+				<li>BICAM本体　（アルミ製支柱及びカメラ本体ｘ２台）</li>
+				<li>制御用ソフトウェア Tracker3.0</li>
+				<li>カリブレーションキット</li>
+				<li>PoE Hub　1台</li>
+				<img src={image1} alt="title" width="100%" />
 			</div>
 		</section>
 
 		<section class="system" id="system">
 			<div class="container">
-				<h2>詳細</h2>
-
-				<h3>クレッセントスタジオ　設置カメラ</h3>
-				<p>CANON　EOS 7D MarkII 53台</p>
-			</div>
-
-			<div class="container">
-				<h3>出力データフォーマット</h3>
-				<div>
-					<ul>
-						<li>
-							撮影画像
-							<ul>
-								<li>
-									CANON EOS 7D MarkII　53台分
-									<ul>
-										<li>解像度　　3648×5472</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							テクスチャーマップ
-							<ul>
-								<li>DiffuseMap</li>
-								<li>SpecularMap</li>
-								<li>UnpolarizedMap</li>
-								<li>
-									TangentMap
-									<ul>
-										<li>bit 16bit</li>
-										<li>解像度　16384×16384</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							メッシュデータ
-							<ul>
-								<li>RAWメッシュ 500万ポリゴン程度</li>
-								<li>クリーンナップメッシュ</li>
-								<li>リトポロジーメッシュ</li>
-							</ul>
-						</li>
-					</ul>
-					<figure>
-						<img src={man} alt="man" />
-					</figure>
-				</div>
-				<p>※希望のベースメッシュを頂けますと、そちらに沿って製作致します。</p>
-			</div>
-
-			<div class="container">
-				<h3>レンダリング例</h3>
-
-				<p>MAYA/Arnold使用例</p>
-				<video width="100%" height="100%" controls>
-					<track default kind="captions" srclang="en" src="" />
-					<source src={video} type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div>
-
-			<div class="container">
-				<h3>サンプルデータ</h3>
-
-				<p>・メッシュ</p>
-				<p>・各種テクスチャーマップ</p>
-				<p>https://send.crescentinc.co.jp/LightCage/Sample/LightCage_Sample.zip 1.21GB</p>
+				<h2>仕様・価格</h2>
+				<li>最大250Hz</li>
+				<li>測定可能距離500mm～3000mm　最大幅2000mm</li>
+				<li>PoE経由の電源供給</li>
+				<h3>価格</h3>
+				<p>3,000,000円</p>
 			</div>
 		</section>
-
-		<section class="example" id="example">
-			<div class="container">
-				<h2>スタジオ利用価格</h2>
-
-				<h3>スタジオ利用価格</h3>
-				<p>◇一日撮影利用料：　60万円(税別)</p>
-				<p>(EOS 7D MarkII　53台分　撮影画像納品含む)</p>
-			</div>
-
-			<div class="container">
-				<h3>データ処理価格</h3>
-
-				<ul>
-					<li>
-						テクスチャマップフルセット生成・メッシュクリーンナップ：　18万円(税別)
-						<ul>
-							<li>
-								各テクスチャマップ生成
-								<ul>
-									<li>
-										DiffuseMap / SpecularMap / NormalMap (object space / tangent
-										spaceから選択できます)
-									</li>
-								</ul>
-							</li>
-							<li>メッシュ生成</li>
-							<li>クリーンナップ</li>
-							<li>リトポロジー処理</li>
-							<li>ブレンドシェイプ用処理</li>
-						</ul>
-					</li>
-				</ul>
-
-				<ul>
-					<li>
-						メッシュクリーンナップ（ブレンドシェイプ用）：　1表情 12万円(税別)
-						<ul>
-							<li>メッシュ生成</li>
-							<li>クリーンナップ</li>
-							<li>リトポロジー処理</li>
-							<li>ブレンドシェイプ用処理</li>
-						</ul>
-					</li>
-				</ul>
-
-				<p>撮影について詳細、デモや打合せのご要望につきましては、</p>
-				<p>
-					lightcage@crescentinc.co.jp もしくは お電話（ 03-5875-9707 ）まで お問い合わせください
-				</p>
-			</div>
-		</section>
+		<br />
+		<br />
+		<br />
+		<a href={`/product/vicon`} use:link>
+			<button class="more">
+				<span class="viewMore">VICONトップへ</span>
+			</button></a
+		>
 	</div>
 </div>
 <section class="relatedLinks">
 	<h2>関連リンク</h2>
 	<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
-		{#if products}
-			{#each products as { id, title, description, category, thumbnail }, index}
-				<li class="card">
-					<article>
-						<figure>
-							<a
-								href={title !== '4Dviews' ? `/products/${urlSlug(title)}` : `/product/4dviews`}
-								use:link
-							>
-								<img src={thumbnail} alt={title} width="400" height="200" />
-							</a>
-							<figcaption>
-								<p>{title}</p>
-								<span class="overflowed-text">{description}</span>
-							</figcaption>
-						</figure>
-					</article>
-				</li>
-			{/each}
-		{:else}
-			<p>Loading...</p>
-		{/if}
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/product/holosuite`} use:link>
+						<img src={link1} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">Faceware</p>
+						<span class="overflowed-text"
+							>ビデオベースのフェイシャル専用モーションキャプチャーシステム</span
+						>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
+
+		<li class="card">
+			<article>
+				<figure>
+					<a href={`/services/4dstudio`} use:link>
+						<img src={link2} alt="title" width="400" height="200" />
+					</a>
+					<figcaption>
+						<p class="linkTitle">StretchSense</p>
+						<span class="overflowed-text"
+							>シリコン素材の伸縮センサーを搭載したワイアレス対応グローブデバイス</span
+						>
+					</figcaption>
+				</figure>
+			</article>
+		</li>
 	</ul>
 </section>
 
 <style>
-	p {
-		font-size: calc(14px + 0.390625vw);
+	.viewMore {
+		font-weight: 500;
+		font-size: calc(20px + 0.390625vw);
 	}
-	ul {
-		padding-left: 1rem;
-		font-size: calc(14px + 0.390625vw);
+	.linkTitle {
+		font-weight: bold;
 	}
-	li {
-		padding-bottom: 0.5rem;
+	.more {
+		text-align: center;
+		border: 1px solid rgb(143, 143, 143);
+		padding: 1rem 5rem;
+		background: none;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	th {
+		padding: 10px;
+		font-size: calc(12px + 0.390625vw);
+		background: #e0e3e7;
+	}
+	td {
+		font-size: calc(12px + 0.390625vw);
+	}
+	table {
+		margin-bottom: 20px;
+		width: 100%;
+		word-wrap: break-word;
 	}
 	.overflowed-text {
 		margin: 0;
@@ -409,13 +354,19 @@
 	}
 
 	.hero-image {
-		width: 83%;
+		width: 100%;
 		max-height: 100%;
 		object-fit: contain;
 	}
 
-	p {
+	p,
+	li {
 		margin: 0;
+		font-size: calc(14px + 0.390625vw);
+	}
+
+	.image-text-flexbox img {
+		width: 14vw;
 	}
 	.explanation {
 		font-size: calc(14px + 0.390625vw);
@@ -451,18 +402,12 @@
 		padding: 3rem 0;
 		flex-direction: column;
 	}
-	section div div {
+	/* section div div {
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
 		justify-content: space-between;
-	}
-	.system div div {
-		display: flex;
-		flex-direction: row;
-		gap: 5rem;
-		justify-content: space-between;
-	}
+	} */
 	section div figure {
 		flex: 50%;
 	}
@@ -512,9 +457,8 @@
 		div.content {
 			margin-left: 0;
 		}
-		.system div div {
-			flex-direction: column;
-			gap: 2rem;
+		iframe {
+			width: 100%;
 		}
 	}
 

@@ -1,13 +1,14 @@
 <script>
-	import urlSlug from 'url-slug';
-	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
-	import NotFound from '../NotFound.svelte';
 	import Device from 'svelte-device-info';
 	import holosys from '../../assets/products/4dviews/holosys.jpg';
 	import fourdfx from '../../assets/products/4dviews/4dfx.jpg';
-
 	import cert from '../../assets/hero.png';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		window.scrollTo(0, 0);
+	});
 </script>
 
 <div class="content">
@@ -35,7 +36,7 @@
 					3.0の高評価を得て、より高速処理、高効率化され、信頼度が増したHOLOSYS
 					3.5をリリースしました。
 				</p>
-				<a href={`/product/4dviews/capture/holosys`} use:link>
+				<a class="more" href={`/product/4dviews/capture/holosys`} use:link>
 					<button class="more">
 						<span class="viewMore">VIEW MORE</span>
 						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -62,16 +63,18 @@
 				<p class="explanation">
 					4Dfxは、4Dviews社が開発した、ボリュメトリックビデオ加工ソフトウェアです。HOLOSYSでキャプチャしたデータの色補正や形状補正、メッシュリダクション、トランジションなど様々な加工を施すことができます。また、各種ファイル形式への書き出しやテクスチャサイズの調整なども柔軟に行うことができます。
 				</p>
-				<button class="more">
-					<span class="viewMore">VIEW MORE</span>
-					<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-						<circle cx="12" cy="12" r="12" fill="#313132" />
-						<path
-							d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
-							fill="white"
-						/>
-					</svg>
-				</button>
+				<a class="more" href={`/product/4dviews/software/4dfx`} use:link>
+					<button class="more">
+						<span class="viewMore">VIEW MORE</span>
+						<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+							<circle cx="12" cy="12" r="12" fill="#313132" />
+							<path
+								d="M12.9561 7.64645C12.7608 7.45118 12.4442 7.45118 12.249 7.64645C12.0537 7.84171 12.0537 8.15829 12.249 8.35355L15.998 12.1025L12.249 15.8515C12.0537 16.0468 12.0537 16.3634 12.249 16.5586C12.4442 16.7539 12.7608 16.7539 12.9561 16.5586L16.7168 12.798C17.1008 12.4139 17.1008 11.7912 16.7168 11.4071L12.9561 7.64645ZM8 11.5C7.72386 11.5 7.5 11.7239 7.5 12C7.5 12.2761 7.72386 12.5 8 12.5H12C12.2761 12.5 12.5 12.2761 12.5 12C12.5 11.7239 12.2761 11.5 12 11.5H8Z"
+								fill="white"
+							/>
+						</svg>
+					</button></a
+				>
 			</div>
 			<figure>
 				<img src={fourdfx} alt="4DFX banner" />

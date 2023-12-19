@@ -211,7 +211,7 @@
 		border-radius: 8px 8px 0 0;
 		cursor: pointer;
 		display: block;
-		height: 300px;
+		height: 16vw;
 		object-fit: cover;
 	}
 	figcaption {
@@ -267,6 +267,9 @@
 	@media screen and (max-width: 950px) {
 		h1 {
 			text-align: center;
+		}
+		img {
+			height: 60vw;
 		}
 		section {
 			padding: 2rem;
