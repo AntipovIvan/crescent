@@ -11,6 +11,7 @@
 	let isLoading = true;
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		try {
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/usercase');
 			if (!response.ok) {

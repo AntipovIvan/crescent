@@ -1,5 +1,10 @@
 <script>
+	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
+
+	onMount(() => {
+		window.scrollTo(0, 0);
+	});
 </script>
 
 <div class="errorPage">
@@ -30,7 +35,9 @@
 		background-size: cover;
 		font-size: 1.5rem;
 		color: rgba(128, 255, 128, 0.8);
-		text-shadow: 0 0 1ex #33ff33, 0 0 2px rgba(255, 255, 255, 0.8);
+		text-shadow:
+			0 0 1ex #33ff33,
+			0 0 2px rgba(255, 255, 255, 0.8);
 	}
 
 	.noise {
@@ -115,7 +122,9 @@
 
 	.output {
 		color: rgba(128, 255, 128, 0.8);
-		text-shadow: 0 0 1px rgba(51, 255, 51, 0.4), 0 0 2px rgba(255, 255, 255, 0.8);
+		text-shadow:
+			0 0 1px rgba(51, 255, 51, 0.4),
+			0 0 2px rgba(255, 255, 255, 0.8);
 	}
 
 	.output::before {

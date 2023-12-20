@@ -5,6 +5,9 @@
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
 	import Pagination from '../lib/Pagination.svelte';
+	import { fade, blur, fly, slide, scale, draw } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+	import Loading from '../lib/Loading.svelte';
 
 	const categoryMapping = {
 		EVENT: 'イベント',
@@ -17,9 +20,11 @@
 	let error;
 	let currentPage = 1;
 	let totalPages = 1;
-	const pageSize = 10;
+	let pageSize = 10;
+	let selected = 'All';
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		try {
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/newsmodels');
 			if (!response.ok) {
@@ -62,24 +67,26 @@
 <section class="section">
 	<h1>ニュース</h1>
 	<div class="content">
-		<input type="radio" id="All" name="categories" value="All" checked />
-		<input type="radio" id="お知らせ" name="categories" value="お知らせ" />
-		<input type="radio" id="製品&開発情報" name="categories" value="製品&開発情報" />
-		<input type="radio" id="セミナー&イベント" name="categories" value="セミナー&イベント" />
+		<input type="radio" id="All" name="categories" value="All" bind:group={selected} />
+		<input type="radio" id="お知らせ" name="categories" value="お知らせ" bind:group={selected} />
+		<input type="radio" id="製品情報" name="categories" value="製品情報" bind:group={selected} />
+		<input type="radio" id="イベント" name="categories" value="イベント" bind:group={selected} />
 
 		<nav class={Device.isPhone || Device.isTablet ? 'navMobile' : 'nav'}>
 			<h2>CATEGORY</h2>
 
 			<ul class="localNavContainer">
-				<li class="localNavContainerList"><label for="All">All</label></li>
-				<li class="localNavContainerList">
+				<li class="localNavContainerList" class:selectedInput={selected === 'All'}>
+					<label for="All">All</label>
+				</li>
+				<li class="localNavContainerList" class:selectedInput={selected === 'お知らせ'}>
 					<label for="お知らせ">お知らせ</label>
 				</li>
-				<li class="localNavContainerList">
-					<label for="製品&開発情報">製品&開発情報</label>
+				<li class="localNavContainerList" class:selectedInput={selected === '製品情報'}>
+					<label for="製品情報">製品&開発情報</label>
 				</li>
-				<li class="localNavContainerList">
-					<label for="セミナー&イベント">セミナー&イベントリ</label>
+				<li class="localNavContainerList" class:selectedInput={selected === 'イベント'}>
+					<label for="イベント">セミナー&イベント</label>
 				</li>
 			</ul>
 		</nav>
@@ -87,17 +94,23 @@
 		<ul class="posts cardList">
 			{#if news}
 				{#each news.slice((currentPage - 1) * pageSize, currentPage * pageSize) as { id, date, title, contents, category }, index}
-					<li class="card" data-category={category}>
-						<article>
-							<a href={`/news/${urlSlug(id)}`} use:link class="cardLink">
-								<time>{date.replaceAll('-', '.')}</time>
-								<span class="cardTitle">{title}</span>
-							</a>
-						</article>
-					</li>
+					{#if selected === 'All' ? (selected = 'All') : selected === category}
+						<li
+							class="card"
+							data-category={category}
+							transition:slide={{ delay: 0, duration: 500, easing: quintOut, axis: 'y' }}
+						>
+							<article>
+								<a href={`/news/${urlSlug(id)}`} use:link class="cardLink">
+									<time>{date.replaceAll('-', '.')}</time>
+									<span class="cardTitle">{title}</span>
+								</a>
+							</article>
+						</li>
+					{/if}
 				{/each}
 			{:else}
-				<p>Loading...</p>
+				<Loading />
 			{/if}
 		</ul>
 	</div>
@@ -166,22 +179,10 @@
 
 	/* FILTERING RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-	[value='All']:checked ~ nav .localNavContainer [for='All'],
-	[value='お知らせ']:checked ~ nav .localNavContainer [for='お知らせ'],
-	[value='製品&開発情報']:checked ~ nav .localNavContainer [for='製品&開発情報'],
-	[value='セミナー&イベント']:checked ~ nav .localNavContainer [for='セミナー&イベント'] {
+
+	.selectedInput {
 		background: #0b345b;
 		color: #fff;
-	}
-
-	[value='All']:checked ~ .posts [data-category] {
-		display: block;
-	}
-
-	[value='お知らせ']:checked ~ .posts .card:not([data-category~='お知らせ']),
-	[value='製品&開発情報']:checked ~ .posts .card:not([data-category~='製品情報']),
-	[value='セミナー&イベント']:checked ~ .posts .card:not([data-category~='イベント']) {
-		display: none;
 	}
 
 	h1 {

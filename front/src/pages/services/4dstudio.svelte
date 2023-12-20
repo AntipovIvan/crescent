@@ -10,6 +10,7 @@
 	import figures from '../../assets/services/4dstudio/figures.jpg';
 	import { onMount } from 'svelte';
 	import urlSlug from 'url-slug';
+	import Loading from '../../lib/Loading.svelte';
 
 	let products;
 	let error;
@@ -17,6 +18,7 @@
 	let activeSection = null;
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		try {
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
 			if (!response.ok) {
@@ -215,7 +217,7 @@
 				</li>
 			{/each}
 		{:else}
-			<p>Loading...</p>
+			<Loading />
 		{/if}
 	</ul>
 </section>

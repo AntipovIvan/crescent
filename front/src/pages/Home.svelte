@@ -13,11 +13,15 @@
 	import { onMount } from 'svelte';
 	import { link } from 'svelte-spa-router';
 	import urlSlug from 'url-slug';
+	import { fade, blur, fly, slide, scale, draw } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+	import Loading from '../lib/Loading.svelte';
 
 	let news;
 	let usercase;
 	let special;
 	let error;
+	let selected = 'All';
 
 	const categoryMapping = {
 		EVENT: 'イベント',
@@ -26,6 +30,7 @@
 	};
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		try {
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/newsmodels');
 			if (!response.ok) {
@@ -101,10 +106,10 @@
 			</button>
 		</div>
 
-		<input type="radio" id="All" name="categories" value="All" checked />
-		<input type="radio" id="お知らせ" name="categories" value="お知らせ" />
-		<input type="radio" id="製品情報" name="categories" value="製品情報" />
-		<input type="radio" id="イベント" name="categories" value="イベント" />
+		<input type="radio" id="All" name="categories" value="All" bind:group={selected} />
+		<input type="radio" id="お知らせ" name="categories" value="お知らせ" bind:group={selected} />
+		<input type="radio" id="製品情報" name="categories" value="製品情報" bind:group={selected} />
+		<input type="radio" id="イベント" name="categories" value="イベント" bind:group={selected} />
 
 		<nav class="navMobile">
 			<ul class="localNavContainer">
@@ -124,19 +129,25 @@
 		{#if news}
 			<ul class="posts">
 				{#each news as { id, date, title, content, category }, index}{#if index < 6}
-						<li class="news" data-category={category}>
-							<article class="news-article">
-								<a href={`/news/${urlSlug(id)}`} use:link>
-									<time>{date.replaceAll('-', '.')}</time>
-									<p>{title}</p>
-								</a>
-							</article>
-						</li>
+						{#if selected === 'All' ? (selected = 'All') : selected === category}
+							<li
+								class="news"
+								data-category={category}
+								transition:slide={{ delay: 0, duration: 500, easing: quintOut, axis: 'y' }}
+							>
+								<article class="news-article">
+									<a href={`/news/${urlSlug(id)}`} use:link>
+										<time>{date.replaceAll('-', '.')}</time>
+										<p>{title}</p>
+									</a>
+								</article>
+							</li>
+						{/if}
 					{/if}
 				{/each}
 			</ul>
 		{:else}
-			<p>Loading...</p>
+			<Loading />
 		{/if}
 	</section>
 
@@ -145,7 +156,7 @@
 		<div class="blockHeader">
 			<h1>FEATURES</h1>
 			<h4>特集</h4>
-			<button class="more">
+			<!-- <button class="more">
 				<span>VIEW MORE</span>
 				<svg width="28" height="28" viewBox="0 0 24 24" fill="none">
 					<circle cx="12" cy="12" r="12" fill="#313132" />
@@ -154,7 +165,7 @@
 						fill="white"
 					/>
 				</svg>
-			</button>
+			</button> -->
 		</div>
 
 		{#if special}
@@ -187,7 +198,7 @@
 				>
 			</div>
 		{:else}
-			<p>Loading...</p>
+			<Loading />
 		{/if}
 	</section>
 
@@ -265,7 +276,7 @@
 				{/each}
 			</ul>
 		{:else}
-			<p>Loading...</p>
+			<Loading />
 		{/if}
 	</section>
 </div>
@@ -313,10 +324,6 @@
 		color: black;
 	}
 
-	[value='All']:checked ~ nav .localNavContainer .localNavContainerList:has(label[for='All']) {
-		border-top: 3px solid #ff4b33;
-	}
-
 	[data-category='イベント'] .news-article a time {
 		border-left: 6px solid #3ed144;
 	}
@@ -327,36 +334,26 @@
 		border-left: 6px solid #ffb34e;
 	}
 
+	[value='All']:checked ~ nav .localNavContainer .localNavContainerList:has(label[for='All']) {
+		border-top: 3px solid #ff4b33;
+	}
 	[value='イベント']:checked
 		~ nav
 		.localNavContainer
 		.localNavContainerList:has(label[for='イベント']) {
 		border-top: 3px solid #3ed144;
 	}
-
 	[value='製品情報']:checked
 		~ nav
 		.localNavContainer
 		.localNavContainerList:has(label[for='製品情報']) {
 		border-top: 3px solid #47b7f6;
 	}
-
 	[value='お知らせ']:checked
 		~ nav
 		.localNavContainer
 		.localNavContainerList:has(label[for='お知らせ']) {
 		border-top: 3px solid #ffb34e;
-	}
-
-	[value='All']:checked ~ .posts [data-category] {
-		display: block;
-	}
-
-	[value='イベント']:checked ~ .posts .news:not([data-category~='イベント']),
-	[value='製品情報']:checked ~ .posts .news:not([data-category~='製品情報']),
-	[value='お知らせ']:checked ~ .posts .news:not([data-category~='お知らせ']),
-	[value='ComingSoon']:checked ~ .posts .news:not([data-category~='ComingSoon']) {
-		display: none;
 	}
 
 	h1 {

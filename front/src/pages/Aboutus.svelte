@@ -7,6 +7,7 @@
 	let activeSection = null;
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
 		const sections = document.querySelectorAll('.content > section');

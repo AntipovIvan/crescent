@@ -5,6 +5,7 @@
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
 	import Pagination from '../lib/Pagination.svelte';
+	import Loading from '../lib/Loading.svelte';
 
 	let usercase;
 	let error;
@@ -13,6 +14,7 @@
 	const pageSize = 10;
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		try {
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/usercase');
 			if (!response.ok) {
@@ -87,7 +89,7 @@
 					</li>
 				{/each}
 			{:else}
-				<p>Loading...</p>
+				<Loading />
 			{/if}
 		</ul>
 	</div>

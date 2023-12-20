@@ -4,12 +4,16 @@
 	import { link } from 'svelte-spa-router';
 	import urlSlug from 'url-slug';
 	import Pagination from '../lib/Pagination.svelte';
+	import { fade, blur, fly, slide, scale, draw } from 'svelte/transition';
+	import { quintOut, circIn } from 'svelte/easing';
+	import Loading from '../lib/Loading.svelte';
 
 	let products;
 	let error;
 	let currentPage = 1;
 	let totalPages = 1;
-	const pageSize = 20;
+	let pageSize = 20;
+	let selected = 'All';
 
 	const categoryMapping = {
 		SOLUTION: 'ソリューション',
@@ -18,6 +22,7 @@
 	};
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		try {
 			const response = await fetch('http://' + window.location.hostname + ':7000/api/product');
 			if (!response.ok) {
@@ -50,26 +55,37 @@
 <section class="section">
 	<h1>製品販売</h1>
 	<div class="content">
-		<input type="radio" id="All" name="categories" value="All" checked />
-		<!-- {#each Object.entries(categoryMapping) as [fetch, category]}
-			<input type="radio" id={category} name="categories" value={category} />
-		{/each} -->
-		<input type="radio" id="ソリューション" name="categories" value="ソリューション" />
-		<input type="radio" id="ソフトウェア" name="categories" value="ソフトウェア" />
-		<input type="radio" id="デバイス" name="categories" value="デバイス" />
+		<input type="radio" id="All" name="categories" value="All" bind:group={selected} />
+		<input
+			type="radio"
+			id="ソリューション"
+			name="categories"
+			value="ソリューション"
+			bind:group={selected}
+		/>
+		<input
+			type="radio"
+			id="ソフトウェア"
+			name="categories"
+			value="ソフトウェア"
+			bind:group={selected}
+		/>
+		<input type="radio" id="デバイス" name="categories" value="デバイス" bind:group={selected} />
 
 		<nav class={Device.isPhone || Device.isTablet ? 'navMobile' : 'nav'}>
 			<h2>CATEGORY</h2>
 
 			<ul class="localNavContainer">
-				<li class="localNavContainerList"><label for="All">All</label></li>
-				<li class="localNavContainerList">
+				<li class="localNavContainerList" class:selectedInput={selected === 'All'}>
+					<label for="All">All</label>
+				</li>
+				<li class="localNavContainerList" class:selectedInput={selected === 'ソリューション'}>
 					<label for="ソリューション">ソリューション</label>
 				</li>
-				<li class="localNavContainerList">
+				<li class="localNavContainerList" class:selectedInput={selected === 'ソフトウェア'}>
 					<label for="ソフトウェア">ソフトウェア</label>
 				</li>
-				<li class="localNavContainerList">
+				<li class="localNavContainerList" class:selectedInput={selected === 'デバイス'}>
 					<label for="デバイス">デバイス</label>
 				</li>
 			</ul>
@@ -78,44 +94,47 @@
 		<ul class={Device.isPhone || Device.isTablet ? 'posts cardListMobile' : 'posts cardList'}>
 			{#if products}
 				{#each products.slice((currentPage - 1) * pageSize, currentPage * pageSize) as { id, title, description, category, thumbnail }, index}
-					<li
-						class="card"
-						data-category={category === 'Coming soon' ? (category = 'Coming soon') : category}
-					>
-						<article>
-							<figure>
-								<a
-									href={title !== 'Vicon' &&
-									title !== '4Dviews' &&
-									title !== 'HoloSuite' &&
-									title !== 'SyncVV'
-										? `/products/${urlSlug(title)}`
-										: title === 'Vicon'
-										  ? `/product/vicon`
-										  : title === 'HoloSuite'
-										    ? `/product/holosuite`
-										    : title === 'SyncVV'
-										      ? `/product/syncvv`
-										      : `/product/4dviews`}
-									use:link
-								>
-									<img src={thumbnail} alt={title} width="400" height="200" />
-								</a>
-								<figcaption>
-									<ul class="cardTags">
-										<li>
-											{category}
-										</li>
-									</ul>
-									<p>{title}</p>
-									<span class="overflowed-text">{description}</span>
-								</figcaption>
-							</figure>
-						</article>
-					</li>
+					{#if selected === 'All' ? (selected = 'All') : selected === category}
+						<li
+							class="card"
+							data-category={category === 'Coming soon' ? (category = 'Coming soon') : category}
+							transition:slide={{ delay: 0, duration: 1000, easing: quintOut, axis: 'y' }}
+						>
+							<article>
+								<figure>
+									<a
+										href={title !== 'Vicon' &&
+										title !== '4Dviews' &&
+										title !== 'HoloSuite' &&
+										title !== 'SyncVV'
+											? `/products/${urlSlug(title)}`
+											: title === 'Vicon'
+											  ? `/product/vicon`
+											  : title === 'HoloSuite'
+											    ? `/product/holosuite`
+											    : title === 'SyncVV'
+											      ? `/product/syncvv`
+											      : `/product/4dviews`}
+										use:link
+									>
+										<img src={thumbnail} alt={title} width="400" height="200" />
+									</a>
+									<figcaption>
+										<ul class="cardTags">
+											<li>
+												{category}
+											</li>
+										</ul>
+										<p>{title}</p>
+										<span class="overflowed-text">{description}</span>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{/if}
 				{/each}
 			{:else}
-				<p>Loading...</p>
+				<Loading />
 			{/if}
 		</ul>
 	</div>
@@ -194,22 +213,9 @@
 
 	/* FILTERING RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-	[value='All']:checked ~ nav .localNavContainer [for='All'],
-	[value='ソリューション']:checked ~ nav .localNavContainer [for='ソリューション'],
-	[value='ソフトウェア']:checked ~ nav .localNavContainer [for='ソフトウェア'],
-	[value='デバイス']:checked ~ nav .localNavContainer [for='デバイス'] {
+	.selectedInput {
 		background: #0b345b;
 		color: #fff;
-	}
-
-	[value='All']:checked ~ .posts [data-category] {
-		display: block;
-	}
-
-	[value='ソリューション']:checked ~ .posts .card:not([data-category~='ソリューション']),
-	[value='ソフトウェア']:checked ~ .posts .card:not([data-category~='ソフトウェア']),
-	[value='デバイス']:checked ~ .posts .card:not([data-category~='デバイス']) {
-		display: none;
 	}
 
 	h1 {

@@ -10,21 +10,9 @@
 	// let services;
 	let error;
 
-	// onMount(async () => {
-	// 	try {
-	// 		const response = await fetch(
-	// 			'http://' + window.location.hostname + ':7000/api/servicesmodels'
-	// 		);
-	// 		if (!response.ok) {
-	// 			throw new Error('Network response was not ok');
-	// 		}
-	// 		const { results } = await response.json();
-
-	// 		services = results;
-	// 	} catch (err) {
-	// 		error = err;
-	// 	}
-	// });
+	onMount(async () => {
+		window.scrollTo(0, 0);
+	});
 </script>
 
 <section>

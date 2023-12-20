@@ -1,21 +1,16 @@
 <script>
-	import { link } from 'svelte-spa-router';
-	import Device from 'svelte-device-info';
 	import hero from '../../assets/products/holosuite/holo-hero.jpg';
 	import holoedit from '../../assets/products/holosuite/image5.png';
 	import holostream from '../../assets/products/holosuite/image8.png';
 	import holoeditImage from '../../assets/products/holosuite/image1.png';
 	import holostreamImage from '../../assets/products/holosuite/image4.png';
-	import figures from '../../assets/services/4dstudio/figures.jpg';
 	import { onMount } from 'svelte';
-	import urlSlug from 'url-slug';
 
-	let products;
-	let error;
 	let isFixedNav = false;
 	let activeSection = null;
 
 	onMount(async () => {
+		window.scrollTo(0, 0);
 		const heroHeight = document.querySelector('.hero');
 		const sidebarItems = document.querySelectorAll('.sidebar-item');
 		const sections = document.querySelectorAll('.content > section');
