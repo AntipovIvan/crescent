@@ -160,24 +160,8 @@
 		margin-left: 3rem;
 	}
 
-	.posts .cardTags * {
-		display: inline-block;
-	}
-
-	.posts .cardTags li {
-		margin-bottom: 0.2rem;
-	}
-
-	.posts .cardTags a {
-		padding: 0.2rem 0.5rem;
-		border-radius: 1rem;
-		border: 1px solid;
-		line-height: normal;
-	}
-
-	.posts .cardTags a:hover {
-		background: #0b345b;
-		color: #fff;
+	.posts a {
+		text-decoration: none;
 	}
 
 	/* FILTERING RULES

@@ -70,18 +70,7 @@
 				return 0;
 			});
 
-			special = data3.results.sort((a, b) => {
-				const dateA = a.date.toUpperCase();
-				const dateB = b.date.toUpperCase();
-				if (dateA < dateB) {
-					return 1;
-				}
-				if (dateA > dateB) {
-					return -1;
-				}
-
-				return 0;
-			});
+			special = data3.results;
 		} catch (err) {
 			error = err;
 		}
@@ -179,23 +168,23 @@
 						>
 					{/if}
 				{/each}
-				<figure>
-					<img src={banner2} alt="Banner" />
-				</figure>
-				<figure>
-					<img src={banner3} alt="Banner" />
-				</figure>
+
 				<a href={`/products/robo-geppei`} use:link>
 					<figure>
 						<img src={banner4} alt="Banner" />
 					</figure></a
 				>
-				<figure>
-					<img src={banner5} alt="Banner" />
-				</figure>
-				<figure>
-					<img src={banner6} alt="Banner" />
-				</figure>
+				<a href={`/products/stretch-sense`} use:link>
+					<figure>
+						<img src={banner5} alt="Banner" />
+					</figure></a
+				>
+
+				<a href={`/product/syncvv`} use:link>
+					<figure>
+						<img src={banner6} alt="Banner" />
+					</figure></a
+				>
 			</div>
 		{:else}
 			<p>Loading...</p>

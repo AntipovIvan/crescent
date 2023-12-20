@@ -85,6 +85,7 @@ class Special(models.Model):
     content = RichTextUploadingField(verbose_name="Text", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    sorting_order = models.IntegerField(default=0)
 
     def upload_to(self, filename):
         date = self.date if self.date else "default"
@@ -103,6 +104,7 @@ class Special(models.Model):
 
     class Meta:
         verbose_name_plural = "Special Feature"
+        ordering = ["sorting_order"]
 
 
 class Blog(models.Model):

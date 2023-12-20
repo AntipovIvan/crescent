@@ -104,7 +104,7 @@
 								<figcaption>
 									<ul class="cardTags">
 										<li>
-											<a href="">{category}</a>
+											{category}
 										</li>
 									</ul>
 									<p>{title}</p>
@@ -181,9 +181,6 @@
 
 	.posts .cardTags li {
 		margin-bottom: 0.2rem;
-	}
-
-	.posts .cardTags a {
 		padding: 0.2rem 0.5rem;
 		border-radius: 1rem;
 		border: 1px solid;

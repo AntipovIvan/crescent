@@ -120,6 +120,10 @@
 		gap: 2rem;
 	}
 
+	.heroButtonContainer a {
+		text-decoration: none;
+	}
+
 	.button span {
 		font-size: calc(11px + 0.390625vw);
 	}

@@ -133,24 +133,9 @@
 	.viewMore {
 		font-size: calc(12px + 0.390625vw);
 	}
-	.posts .cardTags * {
-		display: inline-block;
-	}
 
-	.posts .cardTags li {
-		margin-bottom: 0.2rem;
-	}
-
-	.posts .cardTags a {
-		padding: 0.2rem 0.5rem;
-		border-radius: 1rem;
-		border: 1px solid;
-		line-height: normal;
-	}
-
-	.posts .cardTags a:hover {
-		background: #49b293;
-		color: #fff;
+	.posts a {
+		text-decoration: none;
 	}
 
 	h1 {

@@ -66,11 +66,12 @@ class UsercaseAdmin(admin.ModelAdmin):
     ]
 
 
-class SpecialAdmin(admin.ModelAdmin):
+class SpecialAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = SpecialAdminForm
     list_display = [
         "date",
         "title",
+        "sorting_order",
     ]
 
 

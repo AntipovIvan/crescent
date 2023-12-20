@@ -1,7 +1,4 @@
 <script>
-	import { link } from 'svelte-spa-router';
-	import Device from 'svelte-device-info';
-
 	import { onMount } from 'svelte';
 
 	onMount(() => {
