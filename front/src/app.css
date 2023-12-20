@@ -104,6 +104,10 @@ width:30vw;
 .viewMore{
   font-weight: 600;
 }
+details {
+  margin: 0 0 0 auto;
+}
+,
 
 hr{
   width: 100%;

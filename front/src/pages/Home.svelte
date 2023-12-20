@@ -170,7 +170,8 @@
 
 		{#if special}
 			<div class="featuredTopics">
-				{#each special as { id, date, title, content, thumbnail }, index}{#if index < 5}
+				{#each special as { id, date, title, content, thumbnail }, index}
+					{#if index < 5}
 						<a href={`/special/${urlSlug(id)}`} use:link>
 							<figure>
 								<img src={thumbnail} alt="title" />
@@ -184,9 +185,11 @@
 				<figure>
 					<img src={banner3} alt="Banner" />
 				</figure>
-				<figure>
-					<img src={banner4} alt="Banner" />
-				</figure>
+				<a href={`/products/robo-geppei`} use:link>
+					<figure>
+						<img src={banner4} alt="Banner" />
+					</figure></a
+				>
 				<figure>
 					<img src={banner5} alt="Banner" />
 				</figure>

@@ -36,6 +36,7 @@ import Lockstudio from "./pages/products/vicon/hardware/Lockstudio.svelte";
 import Bicam from "./pages/products/vicon/hardware/Bicam.svelte";
 import AppDevSub from "./pages/development/AppDevSub.svelte";
 import Recruit from "./pages/Recruit.svelte";
+import Syncvv from "./pages/products/Syncvv.svelte";
 
 export const routes = {
   "/": Home,
@@ -53,6 +54,7 @@ export const routes = {
   "/services/facelightcage": FaceLightcage,
   "/services/:title": ServiceTemplate,
   "/product/vicon": Vicon,
+  "/product/syncvv": Syncvv,
   "/product/vicon/camera/valkyrie": Valkyrie,
   "/product/vicon/camera/vero": Vero,
   "/product/vicon/software/shogun": Shogun,

@@ -85,13 +85,18 @@
 						<article>
 							<figure>
 								<a
-									href={title !== 'Vicon' && title !== '4Dviews' && title !== 'HoloSuite'
+									href={title !== 'Vicon' &&
+									title !== '4Dviews' &&
+									title !== 'HoloSuite' &&
+									title !== 'SyncVV'
 										? `/products/${urlSlug(title)}`
 										: title === 'Vicon'
 										  ? `/product/vicon`
 										  : title === 'HoloSuite'
 										    ? `/product/holosuite`
-										    : `/product/4dviews`}
+										    : title === 'SyncVV'
+										      ? `/product/syncvv`
+										      : `/product/4dviews`}
 									use:link
 								>
 									<img src={thumbnail} alt={title} width="400" height="200" />
