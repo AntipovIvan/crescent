@@ -279,5 +279,7 @@ CKEDITOR_CONFIGS = {
             },
         ],
         "language": "en",
+        "extraAllowedContent": "iframe[*]",
+        "allowedContent ": True,
     }
 }
