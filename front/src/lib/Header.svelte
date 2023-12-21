@@ -107,12 +107,6 @@
 {/if}
 
 <style>
-	:global(header li:has(a.active)) {
-		background-color: black;
-	}
-	:global(header a.active) {
-		color: #f9f7f0;
-	}
 	.mobileHeader {
 		padding: 1rem 1rem;
 	}

@@ -2,7 +2,7 @@
 	import { link } from 'svelte-spa-router';
 	import Device from 'svelte-device-info';
 	import valkyrie from '../../assets/products/vicon/valkyrie.jpg';
-	import vero from '../../assets/products/vicon/vero.jpg';
+	import vero from '../../assets/products/vicon/camera/vero/verobanner.jpg';
 	import shogun from '../../assets/products/vicon/shogun.jpg';
 	import nexus from '../../assets/products/vicon/nexus.jpg';
 	import vue from '../../assets/products/vicon/vue.jpg';

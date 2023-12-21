@@ -76,17 +76,19 @@
 			<h2>CATEGORY</h2>
 
 			<ul class="localNavContainer">
-				<li class="localNavContainerList" class:selectedInput={selected === 'All'}>
-					<label for="All">All</label>
+				<li class="localNavContainerList">
+					<label for="All" class:selectedInput={selected === 'All'}>All</label>
 				</li>
-				<li class="localNavContainerList" class:selectedInput={selected === 'お知らせ'}>
-					<label for="お知らせ">お知らせ</label>
+				<li class="localNavContainerList">
+					<label for="お知らせ" class:selectedInput={selected === 'お知らせ'}>お知らせ</label>
 				</li>
-				<li class="localNavContainerList" class:selectedInput={selected === '製品情報'}>
-					<label for="製品情報">製品&開発情報</label>
+				<li class="localNavContainerList">
+					<label for="製品情報" class:selectedInput={selected === '製品情報'}>製品&開発情報</label>
 				</li>
-				<li class="localNavContainerList" class:selectedInput={selected === 'イベント'}>
-					<label for="イベント">セミナー&イベント</label>
+				<li class="localNavContainerList">
+					<label for="イベント" class:selectedInput={selected === 'イベント'}
+						>セミナー&イベント</label
+					>
 				</li>
 			</ul>
 		</nav>
@@ -139,27 +141,80 @@
 
 	.localNavContainerList {
 		cursor: pointer;
-		border: 1px solid #8b8b8b;
-		color: #8b8b8b;
 		margin: 0.5rem 0;
 		border-radius: 25px;
+		height: auto;
+		place-items: center;
+		background-color: #f3eded;
+		font-size: 1.2rem;
+		line-height: 1;
+		color: currentColor;
+		text-decoration: none;
+		display: block;
+		position: relative;
+		text-align: center;
 	}
+
+	.localNavContainerList:hover {
+		background-position: 0% 100%;
+	}
+
+	.localNavContainerList label:hover {
+		transform: translate(0px, 0px);
+		transition: 0.2s ease-in-out;
+	}
+	.localNavContainerList::after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 2em;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: 2px solid currentColor;
+		background-color: inherit;
+		pointer-events: none;
+		mix-blend-mode: darken;
+		filter: contrast(1200%) brightness(100%) saturate(0.25);
+		overflow: hidden;
+		background: linear-gradient(182deg, currentColor, currentColor 25%, rgba(0, 0, 0, 0) 100%),
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 400 75' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+	}
+
 	.localNavContainer * {
 		display: inline-block;
 	}
 
 	.localNavContainer label {
 		padding: 0.5rem 1rem;
-		/* margin-bottom: 0.25rem; */
-		border-radius: 2rem;
 		min-width: 50px;
 		line-height: normal;
 		cursor: pointer;
 		transition: all 0.1s;
+		display: inherit;
+		border-radius: 2em;
+		position: relative;
+		z-index: 1;
+	}
+
+	.localNavContainer label:not(.selectedInput) {
+		transform: translate(-0.4rem, -0.4rem);
+		transition: 0.2s ease-in-out;
+		background-color: #efefef;
+		border: 2px solid currentColor;
 	}
 
 	.localNavContainer label:hover {
-		background: #0b345b;
+		transform: translate(0px, 0px);
+		transition: 0.2s ease-in-out;
+		background-color: #0b345b;
+		color: #fff;
+	}
+	.selectedInput {
+		transform: translate(0px, 0px);
+		transition: 0.2s ease-in-out;
+		background-color: #0b345b;
 		color: #fff;
 	}
 
@@ -179,11 +234,6 @@
 
 	/* FILTERING RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-	.selectedInput {
-		background: #0b345b;
-		color: #fff;
-	}
 
 	h1 {
 		margin: 0 0 3rem 0;

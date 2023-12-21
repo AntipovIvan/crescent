@@ -79,52 +79,10 @@
 		min-height: 53vh;
 		position: relative;
 	}
-	input[type='radio'] {
-		position: absolute;
-		left: -9999px;
-	}
-
-	/* localNavContainer
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-	.localNavContainer {
-		text-align: center;
-		margin: 1rem 0;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
-	.localNavContainerList {
-		cursor: pointer;
-		border: 1px solid #8b8b8b;
-		color: #8b8b8b;
-		margin: 0.5rem 0;
-		border-radius: 25px;
-	}
-	.localNavContainer * {
-		display: inline-block;
-	}
-
-	.localNavContainer label {
-		padding: 0.5rem 1rem;
-		/* margin-bottom: 0.25rem; */
-		border-radius: 2rem;
-		min-width: 50px;
-		line-height: normal;
-		cursor: pointer;
-		transition: all 0.1s;
-	}
-
-	.localNavContainer label:hover {
-		background: #0b345b;
-		color: #fff;
-	}
-
-	/* FILTERED ELEMENTS (POSTS)
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 	.cardLink {
 		font-size: calc(16px + 0.390625vw);
+		text-decoration: none;
 	}
 	.cardTitle {
 		margin-left: 3rem;
@@ -150,36 +108,12 @@
 		color: #fff;
 	}
 
-	/* FILTERING RULES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-	/* [value='All']:checked ~ nav .localNavContainer [for='All'],
-	[value='お知らせ']:checked ~ nav .localNavContainer [for='お知らせ'],
-	[value='製品&開発情報']:checked ~ nav .localNavContainer [for='製品&開発情報'],
-	[value='セミナー&イベント']:checked ~ nav .localNavContainer [for='セミナー&イベント'] {
-		background: #0b345b;
-		color: #fff;
-	}
-
-	[value='All']:checked ~ .posts [data-category] {
-		display: block;
-	}
-
-	[value='お知らせ']:checked ~ .posts .card:not([data-category~='お知らせ']),
-	[value='製品&開発情報']:checked ~ .posts .card:not([data-category~='製品情報']),
-	[value='セミナー&イベント']:checked ~ .posts .card:not([data-category~='イベント']) {
-		display: none;
-	} */
-
 	h1 {
 		margin: 0 0 3rem 0;
 		font-size: calc(32px + 0.390625vw);
 		font-weight: 600;
 	}
-	h2 {
-		padding-bottom: 1rem;
 
-		width: max-content;
-	}
 	section {
 		padding: 5rem;
 		background-color: #efefef;
@@ -195,29 +129,11 @@
 		align-items: baseline;
 	}
 
-	p {
-		margin: 0;
-		font-weight: bold;
-	}
-
 	ul {
 		margin: 0;
 		padding: 0;
 	}
 
-	.nav {
-		width: 20%;
-	}
-	.navMobile {
-		width: 100%;
-		text-align: center;
-	}
-	.navMobile .localNavContainer {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		column-gap: 1rem;
-	}
 	.cardList {
 		display: flex;
 		flex-direction: column;

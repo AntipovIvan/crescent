@@ -322,7 +322,7 @@
 	}
 
 	.hero-image-container {
-		max-height: 70vh;
+		max-height: 105vh;
 		overflow: hidden;
 		display: flex;
 		justify-content: center;
