@@ -396,7 +396,9 @@
 		font-weight: bold;
 		font-size: calc(10px + 0.390625vw);
 	}
-	p {
+	p,
+	td,
+	th {
 		font-size: calc(14px + 0.390625vw);
 	}
 	ul {

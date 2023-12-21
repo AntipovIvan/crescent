@@ -99,8 +99,8 @@
 	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
 		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>概要</a>
 		<a class="sidebar-item" href="#specs" on:click={scrollToElement}>特徴</a>
+		<a class="sidebar-item" href="#usage" on:click={scrollToElement}>仕様</a>
 		<a class="sidebar-item" href="#support" on:click={scrollToElement}>サポート</a>
-		<!-- <a class="sidebar-item" href="#contact" on:click={scrollToElement}>お問い合わせ</a> -->
 	</div>
 
 	<div class="content">
@@ -778,6 +778,599 @@
 			</div>
 		</section>
 
+		<section class="usage" id="usage">
+			<div class="container">
+				<h2>仕様</h2>
+				<h3>ハードウェア</h3>
+
+				<table border="1" cellspacing="1">
+					<thead>
+						<tr>
+							<th style="text-align:left">項目</th>
+							<th>SyncVV-II</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align:left">最大同時収録可能チャネル数</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">最大収録可能解像度</td>
+							<td>2048x1080</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">最大収録可能フレームレート</td>
+							<td>60</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">SDI I/O Card</td>
+							<td>Bluefish Supernova S+ (x2)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">External LTC Input</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">NVIDIA NVENC/NVDEC対応GPU</td>
+							<td>必須 (4 concurrent sessions)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">RAID System</td>
+							<td>推奨</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h3>コア機能</h3>
+				<table border="1" cellspacing="1">
+					<thead>
+						<tr>
+							<th style="text-align:left">Item</th>
+							<th>SyncVV-II</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align:left">Input video physical interface</td>
+							<td>SDI (BNC connector)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Input video channels</td>
+							<td>4 channels</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Input video impedance</td>
+							<td>75 ohm</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Input video maximum voltage</td>
+							<td>+-1V (DC + peak AC)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Input video format list</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p60.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p59.94</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p50.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p30.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p29.97</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p25.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p24.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>2048x1080p23.98</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p60.00 (Level A)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p60.00 (Level B)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p59.94 (Level A)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p59.94 (Level B)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p50.00 (Level A)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p50.00 (Level B)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p48.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p47.95</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p30.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p29.97</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p25.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p24.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080p23.98</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080psf30.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080psf29.97</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080psf25.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080psf24.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080psf23.98</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080i60.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080i59.94</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1920x1080i50.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p60.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p59.94</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p50.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p48.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p47.95</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p30.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p29.97</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p25.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p24.00</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"></td>
+							<td>1280x720p23.98</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Input audio physical interface</td>
+							<td>SDI (BNC connector)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Input audio sampling frequency</td>
+							<td>48000Hz</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Input audio channels</td>
+							<td>2 channels</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Local audio system</td>
+							<td>48000Hz, 2 channels</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h3>ソフトウェア</h3>
+				<table border="1" cellspacing="1">
+					<thead>
+						<tr>
+							<th style="text-align:left">項目</th>
+							<th>SyncVV-II</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align:left">Windows 10対応 / Windows 11対応</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">リサイズ可能なアプリケーションウィンドウ</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">フルスクリーンアプリケーションモード</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">SDI収録機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Vicon連携動作機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Vicon連携動作方式</td>
+							<td>統合プラグインシステム</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Vicon連携タイムコード先頭フレーム同期</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Vicon連携タイムコード最終フレーム同期</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Viconテイク名受け渡し</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Viconテイクノート受け渡し</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">Viconテイク詳細情報受け渡し</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">タイムコードのドロップフレーム表記対応</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">タイムコード焼き込み機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">タイムコード焼き込み位置指定機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">タイムコード焼き込みサイズ指定機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">タイムコード焼き込み前景色指定機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">タイムコード焼き込み背景色指定機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">H.264 (MP4コンテナ) 形式</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">H.265 (MP4コンテナ) 形式</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">プレビューの回転表示機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">ラージプレビュー機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">ディレクター用ウィンドウプレビュー機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">プロジェクト管理機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">プロジェクト読み込み機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">プロジェクト書き込み機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">大きく見やすいテイクリスト</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクのレイティング機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクのカラー機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクのノート機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクの詳細説明機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクリストの表示高さ調整</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクリストの素材サムネイル機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクリストの素材サムネイル拡大縮小</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクリストの素材ダブルクリック再生</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクリストのMicrosoft Excelエクスポート</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクのフィルタリング表示機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクのエクスポート機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">プロジェクトフォルダを開く</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">テイクフォルダを開く</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">収録開始タイムコード記録機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">収録終了タイムコード記録機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">収録開始システム時刻記録機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">収録終了システム時刻記録機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">収録済み素材PC再生機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">収録時収録時間長表示機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">階層化された収録データ管理機能</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">GPUアクセラレーションエンコーダー</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">GPUアクセラレーションタイムコード焼き込み</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">ショートカットキーによる操作</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">クラウドファイル同期サービス連携</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">専用操作デバイス</td>
+							<td>対応</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">ユーザーマニュアル</td>
+							<td>対応 (英語/日本語)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">リリースノート</td>
+							<td>対応 (英語/日本語)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">ユーザーインターフェース言語対応</td>
+							<td>対応 (英語/日本語)</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">開発組織の所在地</td>
+							<td>日本国内</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h3>Vicon Linked Automatic Control</h3>
+				<div style="overflow: auto;">
+					<table border="1" cellspacing="1">
+						<thead>
+							<tr>
+								<th>Control</th>
+								<th>Start</th>
+								<th>Stop</th>
+								<th>Complete</th>
+								<th>Timecode Start</th>
+								<th>Timecode Stop</th>
+								<th>Duration Stop</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Control Type</td>
+								<td>CaptureStart</td>
+								<td>CaptureStop</td>
+								<td>CaptureComplete</td>
+								<td>CaptureStart</td>
+								<td>CaptureStop</td>
+								<td>CaptureStop</td>
+							</tr>
+							<tr>
+								<td>Arguments</td>
+								<td>-</td>
+								<td>RESULT</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>TimeCode</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>YES</td>
+								<td>YES</td>
+								<td>NO</td>
+							</tr>
+							<tr>
+								<td>Duration</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>YES (A)</td>
+							</tr>
+							<tr>
+								<td>Name</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+							</tr>
+							<tr>
+								<td>Notes</td>
+								<td>YES</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>YES</td>
+								<td>NO</td>
+								<td>NO</td>
+							</tr>
+							<tr>
+								<td>Description</td>
+								<td>YES</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>YES</td>
+								<td>NO</td>
+								<td>NO</td>
+							</tr>
+							<tr>
+								<td>DatabasePath</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+							</tr>
+							<tr>
+								<td>Delay</td>
+								<td>YES</td>
+								<td>YES</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>NO</td>
+								<td>NO</td>
+							</tr>
+							<tr>
+								<td>PacketID</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+								<td>YES *</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>(*) Required</p>
+				<p>(A) Duration: FRAMES *, PERIOD, TICKS</p>
+			</div>
+		</section>
+
 		<section class="support" id="support">
 			<div class="container">
 				<h2>サポート</h2>
@@ -1224,8 +1817,6 @@
 				</ul>
 			</div>
 		</section>
-
-		<!-- <section class="contact" id="contact"></section> -->
 	</div>
 </div>
 
@@ -1429,8 +2020,8 @@
 
 	.container {
 		display: flex;
-		gap: 2rem;
-		padding: 3rem 0;
+		gap: 1rem;
+		padding: 1rem 0;
 		flex-direction: column;
 	}
 	/* section div div {

@@ -235,7 +235,7 @@
 	h2 {
 		font-size: calc(28px + 0.390625vw);
 		font-weight: 600;
-		padding: 1rem 0 2rem 0;
+		padding: 0;
 	}
 	.content {
 		background: #eeeeee;
@@ -269,7 +269,7 @@
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
-		justify-content: space-between;
+		justify-content: unset;
 	}
 	section div figure {
 		flex: 50%;

@@ -89,7 +89,7 @@
 	<div class={isFixedNav ? 'sidebar sidebar-fixed' : 'sidebar'}>
 		<a class="sidebar-item active" href="#overview" on:click={scrollToElement}>スタジオ概要</a>
 		<a class="sidebar-item" href="#system" on:click={scrollToElement}>撮影システム</a>
-		<a class="sidebar-item" href="#example" on:click={scrollToElement}>用途・事例</a>
+		<!-- <a class="sidebar-item" href="#example" on:click={scrollToElement}>用途・事例</a> -->
 	</div>
 
 	<div class="content">
@@ -186,7 +186,7 @@
 			</div>
 		</section>
 
-		<section class="example" id="example">
+		<!-- <section class="example" id="example">
 			<div class="container">
 				<h2>用途・事例</h2>
 
@@ -194,7 +194,7 @@
 					<img src={figures} alt="Figures" />
 				</figure>
 			</div>
-		</section>
+		</section> -->
 	</div>
 </div>
 <section class="relatedLinks">
