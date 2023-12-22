@@ -14,6 +14,14 @@ SECRET_KEY = "42le!p&pkezf(n#ymp6j7s&&t!@uv@r2yd!_vvfu62v+dg6fb)"
 
 DEBUG = True
 
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 ALLOWED_HOSTS = [
     "localhost",
     "52.69.50.8",
@@ -148,7 +156,8 @@ CSP_MIDDLEWARE = {
     ],
 }
 
-CSP_DEFAULT_SRC = ("'self'",)
+CSP_DEFAULT_SRC = ("'self'", "*")
+CSP_FRAME_ANCESTORS = "'self'"
 CSP_SCRIPT_SRC = (
     "'self'",
     "'unsafe-inline'",
@@ -159,18 +168,20 @@ CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://cdn.ckeditor.com/")
 CSP_IMG_SRC = ("'self'", "data:")
 CSP_CONNECT_SRC = ("'self'", "https://cke4.ckeditor.com/")
 
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
-X_FRAME_OPTIONS = "DENY"
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = True
 
 CKEDITOR_CONFIGS = {
     "default": {
         "skin": "moono",
         "toolbar": "Custom",
+        "allowedContent": True,
+        "extraAllowedContent": "object[id,name,width,height];",
+        "extraPlugins": "iframe",
+        "iframe_attributes": {
+            "sandbox": "allow-scripts allow-same-origin allow-popups allow-presentation allow-forms",
+            "allowfullscreen": "",
+            "loading": "lazy",
+            "referrerpolicy": "no-referrer-when-downgrade",
+        },
         "toolbar_Custom": [
             {
                 "name": "document",
@@ -279,7 +290,5 @@ CKEDITOR_CONFIGS = {
             },
         ],
         "language": "en",
-        "extraAllowedContent": "iframe[*]",
-        "allowedContent ": True,
     }
 }

@@ -208,9 +208,11 @@
 			<h2>ORIGINAL CONTENTS</h2>
 		</div>
 		<aside>
-			<figure>
-				<img src={geppei} alt="Geppei" />
-			</figure>
+			<a href={`/geppeiblog/`} use:link>
+				<figure>
+					<img src={geppei} alt="Geppei" />
+				</figure></a
+			>
 			<a href={`/blog/`} use:link>
 				<figure>
 					<img src={blog} alt="Staff blog" />

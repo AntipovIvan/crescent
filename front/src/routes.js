@@ -37,6 +37,10 @@ import Bicam from "./pages/products/vicon/hardware/Bicam.svelte";
 import AppDevSub from "./pages/development/AppDevSub.svelte";
 import Recruit from "./pages/Recruit.svelte";
 import Syncvv from "./pages/products/Syncvv.svelte";
+import Geppeiblog from "./pages/Geppeiblog.svelte";
+import GeppeiblogTemplate from "./pages/geppeiblog/GeppeiblogTemplate.svelte";
+import Privacypolicy from "./pages/Privacypolicy.svelte";
+import Disclaimer from "./pages/Disclaimer.svelte";
 
 export const routes = {
   "/": Home,
@@ -76,6 +80,10 @@ export const routes = {
   "/special/:id":SpecialTemplate,
   "/blog": Blog,
   "/blog/:id": BlogTemplate,
+  "/geppeiblog": Geppeiblog,
+  "/geppeiblog/:id": GeppeiblogTemplate,
   "/recruit":Recruit,
+  "/privacypolicy": Privacypolicy,
+  "/disclaimer": Disclaimer,
   "*": NotFound
 };

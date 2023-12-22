@@ -31,8 +31,8 @@
 		</div>
 		<div class="sublinks">
 			<p>サイトマップ</p>
-			<p>プライバシーポリシー</p>
-			<p>免責事項</p>
+			<a href={`/privacypolicy`} use:link><p>プライバシーポリシー</p></a>
+			<a href={`/disclaimer`} use:link><p>免責事項</p></a>
 			<p>FAQ</p>
 		</div>
 		<div class="social">

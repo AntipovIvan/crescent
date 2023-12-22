@@ -14,6 +14,7 @@ router.register(r"newsmodels", views.NewsModelViewSet)
 router.register(r"usercase", views.UsercaseViewSet)
 router.register(r"special", views.SpecialViewSet)
 router.register(r"blog", views.BlogViewSet)
+router.register(r"geppeiblog", views.GeppeiViewSet)
 router.register(r"product", views.ProductViewSet)
 router.register(r"servicesmodels", views.ServicesModelViewSet)
 

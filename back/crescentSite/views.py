@@ -54,6 +54,12 @@ class BlogViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
 
 
+class GeppeiViewSet(viewsets.ModelViewSet):
+    queryset = Geppei.objects.all()
+    serializer_class = GeppeiSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
