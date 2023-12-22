@@ -1,72 +1,103 @@
 <script>
-	import urlSlug from 'url-slug';
+	import hero from '../../assets/logo.png';
 	import { onMount } from 'svelte';
-	import { link } from 'svelte-spa-router';
-	import NotFound from '../NotFound.svelte';
-	import Device from 'svelte-device-info';
-	import appdevImage from '../../assets/development/appdevimage.jpg';
+
+	onMount(() => {
+		window.scrollTo(0, 0);
+	});
 </script>
 
-<div class="content">
-	<!-- <div class="hero">
-		<div class={Device.isPhone ? 'heroTextMobile' : 'heroText'}>
-			<p>V I C O N</p>
-		</div>
-	</div> -->
-
-	<div class="content-intro">
-		<p>
-			最新の映像技術を使用した高機能な映像を制作するには、企画段階から
-			のエンジニアの参画が不可欠です。
-		</p>
-		<p>
-			自社スタジオにおいて日々開発・実験に取り組んでいる経験豊富な技術
-			スタッフが貴社企画のコンテンツ製作への先端技術の導入をサポートします。
-		</p>
-	</div>
-
-	<section class="cameraContent">
-		<div class="leftContent">
-			<ul>
-				<li>
-					弊社の提供するサポート技術の特徴
-					<ul>
-						<li>
-							社内のモーションキャプチャースタジオ、4D スタジオを
-							活用した開発環境と運用実績を背景にした熟練スタッフがサ ポートします。
-						</li>
-						<li>
-							最新の技術要素を導入するに当たって、3Dグラフィクスソ
-							フトやミドルウェアの活用はもちろんのこと、必要に応じて
-							C#などのプログラム言語レベルでの開発も行いますので、
-							様々なご要望に対して柔軟な対応が可能となります。
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-
-		<div class="rightContent">
-			<figure>
-				<img src={appdevImage} alt="appdevImage" />
+<div class="pageContent">
+	<div class="content">
+		<div class="hero">
+			<h1>映像企画・制作サポート</h1>
+			<figure class="hero-image-container">
+				<img class="hero-image" src={hero} alt="FullBodyLightCage" />
 			</figure>
 		</div>
-	</section>
+
+		<div class="content-intro">
+			<p>
+				従来のメディア（2D映像、通常のWebコンテンツ）やCM・イベント・プロモーション企画も、
+				最新の技術要素を付け加えるだけで斬新な映像効果が得られ、強いインパクトを与えることができます。
+			</p>
+		</div>
+
+		<section class="overview" id="overview">
+			<div class="container">
+				<div>
+					<p class="explanation">
+						従来のメディア（2D映像、通常のWebコンテンツ）やCM・イベント・プロモーション企画も、
+						最新の技術要素を付け加えるだけで斬新な映像効果が得られ、強いインパクトを与えることができます。
+					</p>
+
+					<ul>
+						<li>モーションキャプチャを使用することで3DCGキャラクターが しなやかにに動きます</li>
+						<li>4Dスタジオで収録することで、自由視点映像の表示が可能になります</li>
+						<li>デジタル・ヒューマンの繊細な作り込みも最早身近になりました</li>
+						<li>スマホを利用することでARの配信も普及してきました</li>
+						<li>
+							最新のプリビズ（プレビズ/アニマティック）技術を導入する
+							ことでロケのリスク・コストを減らせます
+						</li>
+					</ul>
+					<p>
+						こうした新しい技術・素材を活用したコンテンツ制作を企画の段階からクレッセントがサポートします。
+					</p>
+					<details>
+						<summary>サポート事例はこちら</summary>
+						<div class="dynamic-image-text-flexbox"></div>
+					</details>
+					<p>
+						最新の映像技術を使用した高機能な映像を制作するには、企画段階からのエンジニアの参画が必要です。自社スタジオにおいて日々開発・実験に取り組んでいる経験豊富な技術スタッフが、貴社企画、コンテンツ製作への先端技術の導入をサポートします。
+					</p>
+					<p>弊社の提供するサポート技術の特徴</p>
+					<ul>
+						<li>
+							社内のモーションキャプチャースタジオ、4D
+							スタジオを活用した開発環境と運用実績を背景にした熟練スタッフがサポートします。
+						</li>
+						<li>
+							最新の技術要素を導入するに当たって、3Dグラフィクスソフトやミドルウェアの活用はもちろんのこと、必要に応じてプログラム言語レベルからで開発も行いますので、様々なご要望に対して柔軟な対応が可能となります。
+						</li>
+					</ul>
+				</div>
+
+				<div>
+					<figure>
+						<img src={hero} alt="Valkyrie banner" />
+					</figure>
+					<figure>
+						<img src={hero} alt="Valkyrie banner" />
+					</figure>
+				</div>
+			</div>
+		</section>
+	</div>
 </div>
 
 <style>
+	.hero-image-container {
+		max-height: 105vh;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 15px;
+	}
+
+	.hero-image {
+		width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+	.linkTitle {
+		font-weight: bold;
+		font-size: calc(10px + 0.390625vw);
+	}
 	ul {
 		margin: 0;
-		padding: 0 3rem;
-	}
-	p {
-		padding: 0 1rem;
-	}
-	li {
-		font-size: calc(14px + 0.390625vw);
-	}
-	.leftContent ul li {
-		padding-bottom: 1rem;
+		padding: 0;
 	}
 	.relatedLinks {
 		overflow: hidden;
@@ -94,7 +125,7 @@
 		gap: 0.5rem;
 		font-size: calc(11px + 0.390625vw);
 		text-align: left;
-		min-height: 8rem;
+		min-height: 6rem;
 		background: white;
 	}
 
@@ -166,31 +197,43 @@
 	.viewMore {
 		font-size: calc(12px + 0.390625vw);
 	}
-	p {
+	p,
+	a {
 		margin: 0;
-	}
-	.explanation {
 		font-size: calc(14px + 0.390625vw);
 	}
+	a {
+		text-decoration: underline;
+	}
+	ul {
+		margin-bottom: 2rem;
+	}
+	li {
+		font-size: calc(14px + 0.390625vw);
+		margin-left: 1rem;
+		margin-bottom: 0.5rem;
+	}
 	h1 {
-		font-size: calc(32px + 0.390625vw);
+		font-size: calc(36px + 0.390625vw);
 		font-weight: 600;
+		padding: 4rem 0 0 0;
 	}
 	h2 {
 		font-size: calc(28px + 0.390625vw);
 		font-weight: 600;
+		padding: 0;
 	}
 	.content {
 		background: #eeeeee;
+		padding: 2rem 8rem;
 	}
 
 	section {
 		width: 85%;
 		margin: 0 auto;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		gap: 2rem;
-		padding: 3rem 0;
 	}
 
 	.softwareContent,
@@ -212,7 +255,7 @@
 		display: flex;
 		flex-direction: column;
 		flex: 50%;
-		justify-content: space-between;
+		justify-content: unset;
 	}
 	section div figure {
 		flex: 50%;
@@ -221,21 +264,16 @@
 		width: 100%;
 	}
 	.content-intro {
-		/* max-width: 65rem; */
-		text-align: center;
+		width: 85%;
+		text-align: left;
 		font-size: calc(16px + 0.390625vw);
 		margin: 0 auto;
-		padding: 10rem 0 5rem 0;
+		padding: 4rem 0;
 	}
 
 	.hero {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(/src/assets/products/vicon/hero.png);
-		height: 88vh;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
 		position: relative;
+		margin-bottom: 3rem;
 	}
 	.heroText {
 		text-align: center;
@@ -244,7 +282,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		display: table;
-		color: white;
+		color: black;
 		font-size: calc(12px + 0.390625vw);
 	}
 
@@ -283,11 +321,26 @@
 	}
 
 	@media (max-width: 800px) {
+		section {
+			width: 100%;
+		}
+		h1 {
+			font-size: calc(28px + 0.390625vw);
+			padding: 1rem 0 0 0;
+		}
+		h2 {
+			font-size: calc(24px + 0.390625vw);
+			padding: 1rem 0 2rem 0;
+		}
 		.container {
 			flex-direction: column;
+			padding: 3rem 1rem;
+		}
+		.content {
+			padding: 2rem 2rem;
 		}
 		.content-intro {
-			padding: 5rem;
+			padding: 0rem;
 			max-width: 86vw;
 		}
 		.cardList {
