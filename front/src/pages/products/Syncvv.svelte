@@ -299,7 +299,7 @@
 			</div>
 
 			<div class="container">
-				<h3>撮影素材を効率的に管理する素材管理システムを装備しました</h3>
+				<h3>撮影素材を効率的に管理する素材管理システムを装備</h3>
 				<p class="explanation-big">
 					大量のテイクを効率的に把握し、格付け・分類して収録後即座にポストプロセスに撮影素材を引き渡すためのツールを提供しました。
 				</p>
@@ -2020,7 +2020,7 @@
 
 	.container {
 		display: flex;
-		gap: 1rem;
+		gap: 0.5rem;
 		padding: 1rem 0;
 		flex-direction: column;
 	}
